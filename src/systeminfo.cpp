@@ -27,7 +27,7 @@ int main() {
 		    int nr_line=1;
 
 		    fstream file;
-		    file.open(".ysteminfo-file.txt", ios::in);
+		    file.open(".systeminfo-file.txt", ios::in);
 
 		    if(file.good()==false)
 		    	cout<<"Error 001: Not found file \".systeminfo-file.txt\"";
