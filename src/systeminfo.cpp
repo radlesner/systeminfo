@@ -15,21 +15,22 @@ using namespace std;
 string osname, kernel, architecture, shell, hostname, uptime;
 
 int main() {
-	system("uname -o >> systeminfo-file.txt");
-	system("uname -r >> systeminfo-file.txt");
-	system("arch >> systeminfo-file.txt");
-	system("echo $SHELL >> systeminfo-file.txt");
-	system("hostname >> systeminfo-file.txt");
-	system("uptime -p >> systeminfo-file.txt");
+	system("cd ~/");
+	system("uname -o >> .systeminfo-file.txt");
+	system("uname -r >> .systeminfo-file.txt");
+	system("arch >> .systeminfo-file.txt");
+	system("echo $SHELL >> .systeminfo-file.txt");
+	system("hostname >> .systeminfo-file.txt");
+	system("uptime -p >> .systeminfo-file.txt");
 
 	string line;
 		    int nr_line=1;
 
 		    fstream file;
-		    file.open("systeminfo-file.txt", ios::in);
+		    file.open(".ysteminfo-file.txt", ios::in);
 
 		    if(file.good()==false)
-		    	cout<<"Error 001: Not found file \"systeminfo-file.txt\"";
+		    	cout<<"Error 001: Not found file \".systeminfo-file.txt\"";
 
 		    while (getline(file, line)) {
 		        switch (nr_line) {
@@ -52,7 +53,7 @@ int main() {
 			cout << "Hostname:			" << hostname << endl;
 			cout << "Uptime:				" << uptime << endl;
 
-			system("rm systeminfo-file.txt");
+			system("rm .systeminfo-file.txt");
 
 		    return 0;
 }
