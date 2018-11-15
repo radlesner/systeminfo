@@ -3,37 +3,56 @@
 // Author      : Radek Lesner
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Description : systeminfo in C++, Ansi-style
 //============================================================================
 
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+
 using namespace std;
 
+string osname, kernel, architecture, shell, hostname, uptime;
+
 int main() {
+	system("uname -o >> systeminfo-file.txt");
+	system("uname -r >> systeminfo-file.txt");
+	system("arch >> systeminfo-file.txt");
+	system("echo $SHELL >> systeminfo-file.txt");
+	system("hostname >> systeminfo-file.txt");
+	system("uptime -p >> systeminfo-file.txt");
 
-	cout << "OS Name:" << endl;
-	system("uname -o");
-	cout << endl;
+	string line;
+		    int nr_line=1;
 
-	cout << "Kernel version:" << endl;
-	system("uname -r");
-	cout << endl;
+		    fstream file;
+		    file.open("systeminfo-file.txt", ios::in);
 
-	cout << "System architecture:" << endl;
-	system("arch");
-	cout << endl;
+		    if(file.good()==false)
+		    	cout<<"Error 001: Not found file \"systeminfo-file.txt\"";
 
-	cout << "Shell:" << endl;
-	system("echo $SHELL");
-	cout << endl;
+		    while (getline(file, line)) {
+		        switch (nr_line) {
+		            case 1: osname=line; break;
+		            case 2: kernel=line; break;
+		            case 3: architecture=line; break;
+		            case 4: shell=line; break;
+		            case 5: hostname=line; break;
+		            case 6: uptime=line; break;
+		        }
+		        nr_line++;
+		    }
 
-	cout << "Hostname:" << endl;
-	system("hostname");
-	cout << endl;
+		    file.close();
 
-	cout << "Uptime:" << endl;
-	system("uptime -p");
-	cout << endl;
+		    cout << "OS Name:			" << osname << endl;
+			cout << "Kernel version:			" << kernel << endl;
+			cout << "System architecture:		" << architecture << endl;
+			cout << "Shell:				" << shell << endl;
+			cout << "Hostname:			" << hostname << endl;
+			cout << "Uptime:				" << uptime << endl;
+
+			system("rm systeminfo-file.txt");
+
+		    return 0;
 }
