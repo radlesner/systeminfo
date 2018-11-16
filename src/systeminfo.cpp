@@ -20,7 +20,7 @@ void distribution();
 
 int main(void) {
 	system("cd /systeminfo-files && uptime -p >> systeminfo-uptime.txt");
-	system("cd /systeminfo-files && lsb_release -i | grep \"Fedora\" >> systeminfo-distro.txt");
+	system("cd /systeminfo-files && lsb_release -i >> systeminfo-distro.txt");
 
 	openfile();
 
