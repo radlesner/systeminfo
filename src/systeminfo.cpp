@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.2.3
+// Version     : 0.2.4
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -10,35 +10,19 @@
 #include <fstream>
 #include <cstdlib>
 #include <sys/utsname.h>
-#include <sys/sysinfo.h>
 
 using namespace std;
 
 string osname, kernel, architecture, shell, hostname, uptime;
 
+void openfile();
+void distribution();
+
 int main(void) {
-	system("cd /systeminfo-files && uptime -p >> systeminfo-file.txt");
+	system("cd /systeminfo-files && uptime -p >> systeminfo-uptime.txt");
+	system("cd /systeminfo-files && lsb_release -i | grep \"Fedora\" >> systeminfo-distro.txt");
 
-	//-----------------------------------------------------------------------------------------------
-	string line;
-				    int nr_line=1;
-
-				    //fstream file;
-				    ifstream file("/systeminfo-files/systeminfo-file.txt");
-				    //file.open(".systeminfo-file.txt", ios::in);
-
-				    if(file.good()==false)
-				    	cout<<"Error 001: Not found file \"systeminfo-file.txt\"";
-
-				    while (getline(file, line)) {
-				        switch (nr_line) {
-				            case 1: uptime=line; break;
-				        }
-				        nr_line++;
-				    }
-
-				    file.close();
-	//-----------------------------------------------------------------------------------------------
+	openfile();
 
 	char* Shell;
 	Shell = getenv ("SHELL");
@@ -52,6 +36,7 @@ int main(void) {
 		}
 
 	cout << "OS Name:			" << buffer.sysname << endl;
+	distribution();
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	if (Shell!=NULL) {
@@ -60,7 +45,67 @@ int main(void) {
 	cout << "Hostname:			" << buffer.nodename << endl;
 	cout << "Uptime:				" << uptime << endl;
 
-	system("rm /systeminfo-files/systeminfo-file.txt");
+	system("rm /systeminfo-files/systeminfo-uptime.txt");
+	system("rm /systeminfo-files/systeminfo-distro.txt");
 
 	return 0;
+}
+
+void openfile() {
+	string line;
+	int nr_line=1;
+
+	ifstream file("/systeminfo-files/systeminfo-uptime.txt");
+
+	if(file.good()==false)
+		cout<<"Error 001: Not found file \"systeminfo-uptime.txt\"";
+
+	while (getline(file, line)) {
+		switch (nr_line) {
+			case 1: uptime=line; break;
+		}
+		nr_line++;
+	}
+
+	file.close();
+}
+
+void distribution() {
+	fstream plik("/systeminfo-files/systeminfo-distro.txt");
+	string tekst;
+	while(!plik.eof()) {
+		getline(plik, tekst);
+		if(!(string::npos == tekst.find("Fedora"))) {
+			cout << "Distribution:			Fedora" << endl;
+			break;
+		}
+		if(!(string::npos == tekst.find("Ubuntu"))) {
+			cout << "Distribution:			Ubuntu" << endl;
+			break;
+		}
+		if(!(string::npos == tekst.find("Debian"))) {
+			cout << "Distribution:			Debian" << endl;
+			break;
+		}
+		if(!(string::npos == tekst.find("Ubuntu"))) {
+			cout << "Distribution:			Ubuntu" << endl;
+			break;
+		}
+		if(!(string::npos == tekst.find("ManjaroLinux"))) {
+			cout << "Distribution:			Manjaro" << endl;
+			break;
+		}
+		if(!(string::npos == tekst.find("ArchLinux"))) {
+			cout << "Distribution:			ArchLinux" << endl;
+			break;
+		}
+		if(!(string::npos == tekst.find("openSUSE project"))) {
+			cout << "Distribution:			openSUSE" << endl;
+			break;
+		}
+		else {
+			cout << "Distribution:			Unknown distribution or not instaled \"lsb-release\"" << endl;
+			break;
+		}
+	}
 }
