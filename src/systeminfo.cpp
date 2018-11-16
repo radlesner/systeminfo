@@ -17,7 +17,7 @@ using namespace std;
 string osname, kernel, architecture, shell, hostname, uptime;
 
 int main(void) {
-	system("cd /systeminfo-files && pwd && uptime -p >> systeminfo-file.txt");
+	system("cd /systeminfo-files && uptime -p >> systeminfo-file.txt");
 
 	//-----------------------------------------------------------------------------------------------
 	string line;
