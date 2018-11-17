@@ -53,22 +53,22 @@ int main(void) {
 }
 
 void openfile() {
-	string line;
-	int nr_line=1;
+	string uptime_line;
+	int uptime_nr_line=1;
 
-	ifstream file("/systeminfo-files/systeminfo-uptime.txt");
+	ifstream uptime_file("/systeminfo-files/systeminfo-uptime.txt");
 
-	if(file.good()==false)
+	if(uptime_file.good()==false)
 		cout<<"Error 001: Not found file \"systeminfo-uptime.txt\"" << endl;
 
-	while (getline(file, line)) {
-		switch (nr_line) {
-			case 1: uptime=line; break;
+	while (getline(uptime_file, uptime_line)) {
+		switch (uptime_nr_line) {
+			case 1: uptime=uptime_line; break;
 		}
-		nr_line++;
+		uptime_nr_line++;
 	}
 
-	file.close();
+	uptime_file.close();
 }
 
 void distribution() {
