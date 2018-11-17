@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.2.5
+// Version     : 0.2.6
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -13,17 +13,20 @@
 
 using namespace std;
 
-string osname, distro, kernel, architecture, hostname, uptime;
+string osname, distro, kernel, architecture, cpu, hostname, uptime;
 
 void uptime_file();
 void distribution_file();
+void cpu_file();
 
 int main(void) {
 	system("cd /systeminfo-files && uptime -p >> systeminfo-uptime.txt");
-	system("cd /systeminfo-files && lsb_release -i | cut -d\: -f2 >> systeminfo-distro.txt");
+	system("cd /systeminfo-files && lsb_release -i | cut -d\\: -f2 >> systeminfo-distro.txt");
+	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"name\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cpu.txt");
 
 	uptime_file();
 	distribution_file();
+	cpu_file();
 
 	char* shell;
 	shell = getenv ("SHELL");
@@ -40,6 +43,7 @@ int main(void) {
 	cout << "Distribution:		" << distro << endl;
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
+	cout << "CPU:	    		       " << cpu << endl;
 	if (shell!=NULL) {
 		cout << "Shell:				" << shell << endl;
 	}
@@ -48,6 +52,7 @@ int main(void) {
 
 	system("rm /systeminfo-files/systeminfo-uptime.txt");
 	system("rm /systeminfo-files/systeminfo-distro.txt");
+	system("rm /systeminfo-files/systeminfo-cpu.txt");
 
 	return 0;
 }
@@ -89,3 +94,23 @@ void distribution_file() {
 
 		distro_file.close();
 }
+
+void cpu_file() {
+	string cpu_line;
+		int cpu_nr_line=1;
+
+		ifstream cpu_file("/systeminfo-files/systeminfo-cpu.txt");
+
+		if(cpu_file.good()==false)
+			cout<<"Error 002: Not found file \"systeminfo-cpu.txt\"" << endl;
+
+		while (getline(cpu_file, cpu_line)) {
+			switch (cpu_nr_line) {
+				case 1: cpu=cpu_line; break;
+			}
+			cpu_nr_line++;
+		}
+
+		cpu_file.close();
+}
+
