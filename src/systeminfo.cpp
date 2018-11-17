@@ -13,7 +13,7 @@
 
 using namespace std;
 
-string osname, distro, kernel, architecture, shell, hostname, uptime;
+string osname, distro, kernel, architecture, hostname, uptime;
 
 void uptime_file();
 void distribution_file();
@@ -25,8 +25,8 @@ int main(void) {
 	uptime_file();
 	distribution_file();
 
-	char* Shell;
-	Shell = getenv ("SHELL");
+	char* shell;
+	shell = getenv ("SHELL");
 
 	struct utsname buffer;
 
@@ -40,8 +40,8 @@ int main(void) {
 	cout << "Distribution:		" << distro << endl;
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
-	if (Shell!=NULL) {
-		cout << "Shell:				" << Shell << endl;
+	if (shell!=NULL) {
+		cout << "Shell:				" << shell << endl;
 	}
 	cout << "Hostname:			" << buffer.nodename << endl;
 	cout << "Uptime:				" << uptime << endl;
