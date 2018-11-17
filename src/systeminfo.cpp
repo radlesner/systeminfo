@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.2.4
+// Version     : 0.2.5
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -13,16 +13,17 @@
 
 using namespace std;
 
-string osname, kernel, architecture, shell, hostname, uptime;
+string osname, distro, kernel, architecture, shell, hostname, uptime;
 
 void openfile();
 void distribution();
 
 int main(void) {
 	system("cd /systeminfo-files && uptime -p >> systeminfo-uptime.txt");
-	system("cd /systeminfo-files && lsb_release -i >> systeminfo-distro.txt");
+	system("cd /systeminfo-files && lsb_release -i | cut -d\: -f2 >> systeminfo-distro.txt");
 
 	openfile();
+	distribution();
 
 	char* Shell;
 	Shell = getenv ("SHELL");
@@ -36,7 +37,7 @@ int main(void) {
 		}
 
 	cout << "OS Name:			" << buffer.sysname << endl;
-	distribution();
+	cout << "Distribution:		" << distro << endl;
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	if (Shell!=NULL) {
@@ -58,7 +59,7 @@ void openfile() {
 	ifstream file("/systeminfo-files/systeminfo-uptime.txt");
 
 	if(file.good()==false)
-		cout<<"Error 001: Not found file \"systeminfo-uptime.txt\"";
+		cout<<"Error 001: Not found file \"systeminfo-uptime.txt\"" << endl;
 
 	while (getline(file, line)) {
 		switch (nr_line) {
@@ -71,41 +72,20 @@ void openfile() {
 }
 
 void distribution() {
-	fstream plik("/systeminfo-files/systeminfo-distro.txt");
-	string tekst;
-	while(!plik.eof()) {
-		getline(plik, tekst);
-		if(!(string::npos == tekst.find("Ubuntu"))) {
-			cout << "Distribution:			Ubuntu" << endl;
-			break;
+	string distro_line;
+		int distro_nr_line=1;
+
+		ifstream distro_file("/systeminfo-files/systeminfo-distro.txt");
+
+		if(distro_file.good()==false)
+			cout<<"Error 002: Not found file \"systeminfo-distro.txt\"" << endl;
+
+		while (getline(distro_file, distro_line)) {
+			switch (distro_nr_line) {
+				case 1: distro=distro_line; break;
+			}
+			distro_nr_line++;
 		}
-		if(!(string::npos == tekst.find("Debian"))) {
-			cout << "Distribution:			Debian" << endl;
-			break;
-		}
-		if(!(string::npos == tekst.find("Ubuntu"))) {
-			cout << "Distribution:			Ubuntu" << endl;
-			break;
-		}
-		if(!(string::npos == tekst.find("ManjaroLinux"))) {
-			cout << "Distribution:			Manjaro" << endl;
-			break;
-		}
-		if(!(string::npos == tekst.find("ArchLinux"))) {
-			cout << "Distribution:			ArchLinux" << endl;
-			break;
-		}
-		if(!(string::npos == tekst.find("openSUSE"))) {
-			cout << "Distribution:			openSUSE" << endl;
-			break;
-		}
-		if(!(string::npos == tekst.find("Fedora"))) {
-			cout << "Distribution:			Fedora" << endl;
-			break;
-		}
-		else {
-			cout << "Distribution:			Unknown distribution or not instaled \"lsb-release\"" << endl;
-			break;
-		}
-	}
+
+		distro_file.close();
 }
