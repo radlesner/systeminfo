@@ -15,15 +15,15 @@ using namespace std;
 
 string osname, distro, kernel, architecture, shell, hostname, uptime;
 
-void openfile();
-void distribution();
+void uptime_file();
+void distribution_file();
 
 int main(void) {
 	system("cd /systeminfo-files && uptime -p >> systeminfo-uptime.txt");
 	system("cd /systeminfo-files && lsb_release -i | cut -d\: -f2 >> systeminfo-distro.txt");
 
-	openfile();
-	distribution();
+	uptime_file();
+	distribution_file();
 
 	char* Shell;
 	Shell = getenv ("SHELL");
@@ -52,7 +52,7 @@ int main(void) {
 	return 0;
 }
 
-void openfile() {
+void uptime_file() {
 	string uptime_line;
 	int uptime_nr_line=1;
 
@@ -71,7 +71,7 @@ void openfile() {
 	uptime_file.close();
 }
 
-void distribution() {
+void distribution_file() {
 	string distro_line;
 		int distro_nr_line=1;
 
