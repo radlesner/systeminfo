@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.2.7
+// Version     : 0.2.7.1
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -48,20 +48,29 @@ int main(void) {
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	cout << "CPU:	    		       " << cpu << endl;
-	if(shell_name == "/bin/zsh")
-		cout << "Shell:				Z-Shell (" << shell_name << ")" << endl;
-	if(shell_name == "/bin/bash")
-		cout << "Shell:				Bash (" << shell_name << ")" << endl;
-	if(shell_name == "/bin/sh")
-		cout << "Shell:				Sh (" << shell_name << ")" << endl;
-	if(shell_name == "/bin/dash")
-		cout << "Shell:				Dash (" << shell_name << ")" << endl;
-	if(shell_name == "/bin/ksh")
-		cout << "Shell:				Ksh (" << shell_name << ")" << endl;
-	if(shell_name == "/bin/rsh")
-		cout << "Shell:				Rsh (" << shell_name << ")" << endl;
-	else
-		cout << "Shell:				" << shell_name << endl;
+	for(;;) {
+		if(shell_name == "/bin/zsh") {
+			cout << "Shell:				Z-Shell (" << shell_name << ")" << endl; break;
+		}
+		if(shell_name == "/bin/bash") {
+			cout << "Shell:				Bash (" << shell_name << ")" << endl; break;
+		}
+		if(shell_name == "/bin/sh") {
+			cout << "Shell:				Sh (" << shell_name << ")" << endl; break;
+		}
+		if(shell_name == "/bin/dash") {
+			cout << "Shell:				Dash (" << shell_name << ")" << endl; break;
+		}
+		if(shell_name == "/bin/ksh") {
+			cout << "Shell:				Ksh (" << shell_name << ")" << endl; break;
+		}
+		if(shell_name == "/bin/rsh") {
+			cout << "Shell:				Rsh (" << shell_name << ")" << endl; break;
+		}
+		else {
+			cout << "Shell:				" << shell_name << endl; break;
+		}
+	}
 	cout << "Hostname:			" << buffer.nodename << endl;
 	cout << "Uptime:				" << uptime << endl;
 
