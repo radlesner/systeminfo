@@ -75,10 +75,6 @@ void distribution() {
 	string tekst;
 	while(!plik.eof()) {
 		getline(plik, tekst);
-		if(!(string::npos == tekst.find("Fedora"))) {
-			cout << "Distribution:			Fedora" << endl;
-			break;
-		}
 		if(!(string::npos == tekst.find("Ubuntu"))) {
 			cout << "Distribution:			Ubuntu" << endl;
 			break;
@@ -101,6 +97,10 @@ void distribution() {
 		}
 		if(!(string::npos == tekst.find("openSUSE project"))) {
 			cout << "Distribution:			openSUSE" << endl;
+			break;
+		}
+		if(!(string::npos == tekst.find("Fedora"))) {
+			cout << "Distribution:			Fedora" << endl;
 			break;
 		}
 		else {
