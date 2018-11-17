@@ -95,7 +95,7 @@ void distribution() {
 			cout << "Distribution:			ArchLinux" << endl;
 			break;
 		}
-		if(!(string::npos == tekst.find("openSUSE project"))) {
+		if(!(string::npos == tekst.find("openSUSE"))) {
 			cout << "Distribution:			openSUSE" << endl;
 			break;
 		}
