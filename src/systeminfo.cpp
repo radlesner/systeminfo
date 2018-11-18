@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.2.9
+// Version     : 0.3
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -17,8 +17,10 @@
 using namespace std;
 
 string osname, distro, kernel, architecture, cpu, cores, hostname, uptime;
-string mem_max_string, mem_free_string;
-float mem_max_contenter, mem_max, mem_free_contenter, mem_free;
+string mem_max_string, mem_available_string;
+double mem_max_conventer, mem_max, mem_available_conventer, mem_available;
+string swap_total_string, swap_free_string;
+double swap_total_conventer, swap_total, swap_free_conventer, swap_free;
 string shell_name;
 
 void uptime_file();
@@ -27,6 +29,7 @@ void cpu_file();
 void shell_file();
 void cores_file();
 void mem_file();
+void swap_file();
 
 int main(void) {
 	system("cd /systeminfo-files && uptime -p >> systeminfo-uptime.txt");
@@ -36,6 +39,8 @@ int main(void) {
 	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cores.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemAvailable: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
+	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
+	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapFree: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
 
 	uptime_file();
 	distribution_file();
@@ -43,6 +48,7 @@ int main(void) {
 	shell_file();
 	cores_file();
 	mem_file();
+	swap_file();
 
 	char* shell;
 	shell = getenv ("SHELL");
@@ -62,7 +68,8 @@ int main(void) {
 	cout << "CPU:	    		       " << cpu << endl;
 	cout << "Cores:		  " << cores << endl;
 	cout.precision(3);
-	cout << "RAM Total/Available:		" << mem_max << " GB/" << mem_free << " GB" << endl;
+	cout << "RAM Total/Available:		" << mem_max << " GB/" << mem_available << " GB" << endl;
+	cout << "Swap Total/Available:		" << swap_total << " GB/" << swap_free << " GB" << endl;
 	for(;;) {
 		if(shell_name == "/bin/zsh") {
 			cout << "Shell:				Z-Shell (" << shell_name << ")" << endl; break;
@@ -95,6 +102,7 @@ int main(void) {
 	system("rm /systeminfo-files/systeminfo-cores.txt");
 	system("rm /systeminfo-files/systeminfo-shell.txt");
 	system("rm /systeminfo-files/systeminfo-mem.txt");
+	system("rm /systeminfo-files/systeminfo-swap.txt");
 
 	return 0;
 }
@@ -194,7 +202,7 @@ void cores_file() {
 		cores_file.close();
 }
 
-void mem_file(){
+void mem_file() {
 	string mem_line;
 		int mem_nr_line=1;
 
@@ -206,22 +214,52 @@ void mem_file(){
 		while (getline(mem_file, mem_line)) {
 			switch (mem_nr_line) {
 				case 1: mem_max_string=mem_line; break;
-				case 2: mem_free_string=mem_line; break;
+				case 2: mem_available_string=mem_line; break;
 			}
 			mem_nr_line++;
 		}
 
 		mem_file.close();
 
-		istringstream iss(mem_max_string);
-		iss >> mem_max_contenter;
+		istringstream memmax(mem_max_string);
+		memmax >> mem_max_conventer;
 
-		mem_max = mem_max_contenter / 1024 / 1024;
+		mem_max = mem_max_conventer / 1024 / 1024;
 
 
-		istringstream isss(mem_free_string);
-		isss >> mem_free_contenter;
+		istringstream memavailable(mem_available_string);
+		memavailable >> mem_available_conventer;
 
-		mem_free = mem_free_contenter / 1024 / 1024;
+		mem_available = mem_available_conventer / 1024 / 1024;
 }
 
+void swap_file() {
+	string swap_line;
+		int swap_nr_line=1;
+
+		ifstream swap_file("/systeminfo-files/systeminfo-swap.txt");
+
+		if(swap_file.good()==false)
+			cout << "Error 007: Not found file \"systeminfo-swap.txt\"" << endl;
+
+		while (getline(swap_file, swap_line)) {
+			switch (swap_nr_line) {
+				case 1: swap_total_string=swap_line; break;
+				case 2: swap_free_string=swap_line; break;
+			}
+			swap_nr_line++;
+		}
+
+		swap_file.close();
+
+		istringstream swaptotal(swap_free_string);
+		swaptotal >> swap_total_conventer;
+
+		swap_total = swap_total_conventer / 1024 / 1024;
+
+
+		istringstream swapfree(swap_free_string);
+		swapfree >> swap_free_conventer;
+
+		swap_free = swap_free_conventer / 1024 / 1024;
+}
