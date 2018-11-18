@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.2.8
+// Version     : 0.2.9
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -10,10 +10,15 @@
 #include <fstream>
 #include <cstdlib>
 #include <sys/utsname.h>
+#include <sstream>
+#include <math.h>
+#include <stdio.h>
 
 using namespace std;
 
 string osname, distro, kernel, architecture, cpu, cores, hostname, uptime;
+string mem_max_string, mem_free_string;
+float mem_max_contenter, mem_max, mem_free_contenter, mem_free;
 string shell_name;
 
 void uptime_file();
@@ -21,6 +26,7 @@ void distribution_file();
 void cpu_file();
 void shell_file();
 void cores_file();
+void mem_file();
 
 int main(void) {
 	system("cd /systeminfo-files && uptime -p >> systeminfo-uptime.txt");
@@ -28,13 +34,15 @@ int main(void) {
 	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"name\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cpu.txt");
 	system("cd /systeminfo-files && echo $SHELL >> systeminfo-shell.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cores.txt");
-
+	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
+	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemAvailable: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
 
 	uptime_file();
 	distribution_file();
 	cpu_file();
 	shell_file();
 	cores_file();
+	mem_file();
 
 	char* shell;
 	shell = getenv ("SHELL");
@@ -53,6 +61,8 @@ int main(void) {
 	cout << "System architecture:		" << buffer.machine << endl;
 	cout << "CPU:	    		       " << cpu << endl;
 	cout << "Cores:		  " << cores << endl;
+	cout.precision(3);
+	cout << "RAM Total/Available:		" << mem_max << " GB/" << mem_free << " GB" << endl;
 	for(;;) {
 		if(shell_name == "/bin/zsh") {
 			cout << "Shell:				Z-Shell (" << shell_name << ")" << endl; break;
@@ -84,6 +94,7 @@ int main(void) {
 	system("rm /systeminfo-files/systeminfo-cpu.txt");
 	system("rm /systeminfo-files/systeminfo-cores.txt");
 	system("rm /systeminfo-files/systeminfo-shell.txt");
+	system("rm /systeminfo-files/systeminfo-mem.txt");
 
 	return 0;
 }
@@ -171,7 +182,7 @@ void cores_file() {
 		ifstream cores_file("/systeminfo-files/systeminfo-cores.txt");
 
 		if(cores_file.good()==false)
-			cout << "Error 004: Not found file \"systeminfo-cores.txt\"" << endl;
+			cout << "Error 005: Not found file \"systeminfo-cores.txt\"" << endl;
 
 		while (getline(cores_file, cores_line)) {
 			switch (cores_nr_line) {
@@ -182,3 +193,35 @@ void cores_file() {
 
 		cores_file.close();
 }
+
+void mem_file(){
+	string mem_line;
+		int mem_nr_line=1;
+
+		ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
+
+		if(mem_file.good()==false)
+			cout << "Error 006: Not found file \"systeminfo-mem.txt\"" << endl;
+
+		while (getline(mem_file, mem_line)) {
+			switch (mem_nr_line) {
+				case 1: mem_max_string=mem_line; break;
+				case 2: mem_free_string=mem_line; break;
+			}
+			mem_nr_line++;
+		}
+
+		mem_file.close();
+
+		istringstream iss(mem_max_string);
+		iss >> mem_max_contenter;
+
+		mem_max = mem_max_contenter / 1024 / 1024;
+
+
+		istringstream isss(mem_free_string);
+		isss >> mem_free_contenter;
+
+		mem_free = mem_free_contenter / 1024 / 1024;
+}
+
