@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.2.7.1
+// Version     : 0.2.8
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -13,24 +13,28 @@
 
 using namespace std;
 
-string osname, distro, kernel, architecture, cpu, hostname, uptime;
+string osname, distro, kernel, architecture, cpu, cores, hostname, uptime;
 string shell_name;
 
 void uptime_file();
 void distribution_file();
 void cpu_file();
 void shell_file();
+void cores_file();
 
 int main(void) {
 	system("cd /systeminfo-files && uptime -p >> systeminfo-uptime.txt");
 	system("cd /systeminfo-files && lsb_release -i | cut -d\\: -f2 >> systeminfo-distro.txt");
 	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"name\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cpu.txt");
 	system("cd /systeminfo-files && echo $SHELL >> systeminfo-shell.txt");
+	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cores.txt");
+
 
 	uptime_file();
 	distribution_file();
 	cpu_file();
 	shell_file();
+	cores_file();
 
 	char* shell;
 	shell = getenv ("SHELL");
@@ -48,6 +52,7 @@ int main(void) {
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	cout << "CPU:	    		       " << cpu << endl;
+	cout << "Cores:		  " << cores << endl;
 	for(;;) {
 		if(shell_name == "/bin/zsh") {
 			cout << "Shell:				Z-Shell (" << shell_name << ")" << endl; break;
@@ -77,6 +82,7 @@ int main(void) {
 	system("rm /systeminfo-files/systeminfo-uptime.txt");
 	system("rm /systeminfo-files/systeminfo-distro.txt");
 	system("rm /systeminfo-files/systeminfo-cpu.txt");
+	system("rm /systeminfo-files/systeminfo-cores.txt");
 	system("rm /systeminfo-files/systeminfo-shell.txt");
 
 	return 0;
@@ -89,7 +95,7 @@ void uptime_file() {
 	ifstream uptime_file("/systeminfo-files/systeminfo-uptime.txt");
 
 	if(uptime_file.good()==false)
-		cout<<"Error 001: Not found file \"systeminfo-uptime.txt\"" << endl;
+		cout << "Error 001: Not found file \"systeminfo-uptime.txt\"" << endl;
 
 	while (getline(uptime_file, uptime_line)) {
 		switch (uptime_nr_line) {
@@ -108,7 +114,7 @@ void distribution_file() {
 		ifstream distro_file("/systeminfo-files/systeminfo-distro.txt");
 
 		if(distro_file.good()==false)
-			cout<<"Error 002: Not found file \"systeminfo-distro.txt\"" << endl;
+			cout << "Error 002: Not found file \"systeminfo-distro.txt\"" << endl;
 
 		while (getline(distro_file, distro_line)) {
 			switch (distro_nr_line) {
@@ -127,7 +133,7 @@ void cpu_file() {
 		ifstream cpu_file("/systeminfo-files/systeminfo-cpu.txt");
 
 		if(cpu_file.good()==false)
-			cout<<"Error 002: Not found file \"systeminfo-cpu.txt\"" << endl;
+			cout << "Error 003: Not found file \"systeminfo-cpu.txt\"" << endl;
 
 		while (getline(cpu_file, cpu_line)) {
 			switch (cpu_nr_line) {
@@ -146,7 +152,7 @@ void shell_file() {
 		ifstream shell_file("/systeminfo-files/systeminfo-shell.txt");
 
 		if(shell_file.good()==false)
-			cout<<"Error 002: Not found file \"systeminfo-shell.txt\"" << endl;
+			cout << "Error 004: Not found file \"systeminfo-shell.txt\"" << endl;
 
 		while (getline(shell_file, shell_line)) {
 			switch (shell_nr_line) {
@@ -156,4 +162,23 @@ void shell_file() {
 		}
 
 		shell_file.close();
+}
+
+void cores_file() {
+	string cores_line;
+		int cores_nr_line=1;
+
+		ifstream cores_file("/systeminfo-files/systeminfo-cores.txt");
+
+		if(cores_file.good()==false)
+			cout << "Error 004: Not found file \"systeminfo-cores.txt\"" << endl;
+
+		while (getline(cores_file, cores_line)) {
+			switch (cores_nr_line) {
+				case 1: cores=cores_line; break;
+			}
+			cores_nr_line++;
+		}
+
+		cores_file.close();
 }
