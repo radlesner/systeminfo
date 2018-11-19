@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.3
+// Version     : 0.3.1
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -18,7 +18,7 @@ using namespace std;
 
 string osname, distro, kernel, architecture, cpu, cores, hostname, uptime;
 string mem_max_string, mem_available_string;
-double mem_max_conventer, mem_max, mem_available_conventer, mem_available;
+double mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used;
 string swap_total_string, swap_free_string;
 double swap_total_conventer, swap_total, swap_free_conventer, swap_free;
 string shell_name;
@@ -66,9 +66,12 @@ int main(void) {
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	cout << "CPU:	    		       " << cpu << endl;
-	cout << "Cores:		  " << cores << endl;
+	if(cores == "1")
+		cout << "Cores:		  " << cores << " core" << endl;
+	else
+		cout << "Cores:		  " << cores << " cores" << endl;
 	cout.precision(3);
-	cout << "RAM Total/Available:		" << mem_max << " GB/" << mem_available << " GB" << endl;
+	cout << "RAM Total/Available/Used:	" << mem_max << " GB/" << mem_available << " GB/" << mem_used << " GB" << endl;
 	cout << "Swap Total/Available:		" << swap_total << " GB/" << swap_free << " GB" << endl;
 	for(;;) {
 		if(shell_name == "/bin/zsh") {
@@ -231,6 +234,8 @@ void mem_file() {
 		memavailable >> mem_available_conventer;
 
 		mem_available = mem_available_conventer / 1024 / 1024;
+
+		mem_used = mem_max - mem_available;
 }
 
 void swap_file() {
