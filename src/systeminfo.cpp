@@ -22,6 +22,7 @@ double mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_u
 string swap_total_string, swap_free_string;
 double swap_total_conventer, swap_total, swap_free_conventer, swap_free;
 string shell_name;
+int cores_int;
 
 void uptime_file();
 void distribution_file();
@@ -36,7 +37,7 @@ int main(void) {
 	system("cd /systeminfo-files && lsb_release -i | cut -d\\: -f2 >> systeminfo-distro.txt");
 	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"name\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cpu.txt");
 	system("cd /systeminfo-files && echo $SHELL >> systeminfo-shell.txt");
-	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cores.txt");
+	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | cut -d\\: -f2 | tr -d ' '  >> systeminfo-cores.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemAvailable: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
@@ -66,10 +67,12 @@ int main(void) {
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	cout << "CPU:	    		       " << cpu << endl;
-	if(cores == "1")
-		cout << "Cores:		  " << cores << " core" << endl;
-	else
-		cout << "Cores:		  " << cores << " cores" << endl;
+	if(cores_int == 1) {
+		cout << "Cores:		  		" << cores_int << " core" << endl;
+	}
+	else {
+		cout << "Cores:		  		" << cores_int << " cores" << endl;
+	}
 	cout.precision(3);
 	cout << "RAM Total/Available/Used:	" << mem_max << " GB/" << mem_available << " GB/" << mem_used << " GB" << endl;
 	cout << "Swap Total/Available:		" << swap_total << " GB/" << swap_free << " GB" << endl;
@@ -203,6 +206,9 @@ void cores_file() {
 		}
 
 		cores_file.close();
+
+		istringstream corecpu(cores);
+		corecpu >> cores_int;
 }
 
 void mem_file() {
