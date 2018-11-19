@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.3.1
+// Version     : 0.3.2
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -16,12 +16,12 @@
 
 using namespace std;
 
-string osname, distro, kernel, architecture, cpu, cores, hostname, uptime;
+string osname, distro, kernel, architecture, cpu, cores, shell_name, hostname, uptime;
 string mem_max_string, mem_available_string;
 double mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used;
 string swap_total_string, swap_free_string;
 double swap_total_conventer, swap_total, swap_free_conventer, swap_free;
-string shell_name;
+
 int cores_int;
 
 void uptime_file();
@@ -33,7 +33,7 @@ void mem_file();
 void swap_file();
 
 int main(void) {
-	system("cd /systeminfo-files && uptime -p >> systeminfo-uptime.txt");
+	system("cd /systeminfo-files && uptime -p | cut -d\p -f2 >> systeminfo-uptime.txt");
 	system("cd /systeminfo-files && lsb_release -i | cut -d\\: -f2 >> systeminfo-distro.txt");
 	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"name\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cpu.txt");
 	system("cd /systeminfo-files && echo $SHELL >> systeminfo-shell.txt");
@@ -67,15 +67,13 @@ int main(void) {
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	cout << "CPU:	    		       " << cpu << endl;
-	if(cores_int == 1) {
+	if(cores_int == 1)
 		cout << "Cores:		  		" << cores_int << " core" << endl;
-	}
-	else {
+	else
 		cout << "Cores:		  		" << cores_int << " cores" << endl;
-	}
 	cout.precision(3);
 	cout << "RAM Total/Available/Used:	" << mem_max << " GB/" << mem_available << " GB/" << mem_used << " GB" << endl;
-	cout << "Swap Total/Available:		" << swap_total << " GB/" << swap_free << " GB" << endl;
+	cout << "Swap Total/Free:		" << swap_total << " GB/" << swap_free << " GB" << endl;
 	for(;;) {
 		if(shell_name == "/bin/zsh") {
 			cout << "Shell:				Z-Shell (" << shell_name << ")" << endl; break;
@@ -100,15 +98,15 @@ int main(void) {
 		}
 	}
 	cout << "Hostname:			" << buffer.nodename << endl;
-	cout << "Uptime:				" << uptime << endl;
+	cout << "Uptime:			       " << uptime << endl;
 
-	system("rm /systeminfo-files/systeminfo-uptime.txt");
-	system("rm /systeminfo-files/systeminfo-distro.txt");
-	system("rm /systeminfo-files/systeminfo-cpu.txt");
-	system("rm /systeminfo-files/systeminfo-cores.txt");
-	system("rm /systeminfo-files/systeminfo-shell.txt");
-	system("rm /systeminfo-files/systeminfo-mem.txt");
-	system("rm /systeminfo-files/systeminfo-swap.txt");
+	system("cd /systeminfo-files && rm systeminfo-uptime.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-distro.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-cpu.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-cores.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-shell.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-swap.txt >> systeminfo-errors.txt");
 
 	return 0;
 }
