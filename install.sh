@@ -1,4 +1,4 @@
 #!/bin/bash
 mkdir $HOME/.systeminfo-files
-sudo ln -s $HOME/.systeminfo-files /systeminfo-files
-sudo cp Debug/systeminfo /usr/bin
+ln -s $HOME/.systeminfo-files /systeminfo-files
+cp Debug/systeminfo /usr/bin
