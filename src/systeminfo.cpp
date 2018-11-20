@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.4
+// Version     : 0.4.1
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -17,6 +17,7 @@
 
 using namespace std;
 
+string version = "0.4.1";
 string osname, distro, kernel, architecture, cpu, cores, shell_name, hostname, uptime;
 string mem_max_string, mem_available_string;
 double mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used;
@@ -30,6 +31,7 @@ void output_system();
 void output_memory();
 void output_hostname_only();
 void output_cpu_only();
+void output_version();
 void output_help();
 
 void uptime_file();
@@ -56,7 +58,8 @@ int main(int argc, char **argv) {
 		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))		output_system();
 		else if(!strcmp(argv[1], "-h") || !strcmp(argv[1], "--hostname"))	output_hostname_only();
 		else if(!strcmp(argv[1], "-c") || !strcmp(argv[1], "--cpu"))		output_cpu_only();
-		else if(!strcmp(argv[1], "--help"))		output_help();
+		else if(!strcmp(argv[1], "--version"))								output_version();
+		else if(!strcmp(argv[1], "--help"))									output_help();
 		else {
 			cout << "Bad option: " << argv[1] << endl << endl;
 			output_help();
@@ -191,6 +194,10 @@ void output_cpu_only() {
 		cout << "Cores:		  		" << cores_int << " cores" << endl;
 }
 
+void output_version() {
+	cout << "systeminfo 2018, version " << version << endl;
+}
+
 void output_help() {
 	cout << "Usage: system [option] #not required" << endl;
 	cout << "Options:" << endl;
@@ -199,6 +206,7 @@ void output_help() {
 	cout << "	-h	--hostname		Information of hostname" << endl;
 	cout << "	-c	--cpu			Information of cpu only" << endl;
 	cout << "		--help			Information of program and help panel" << endl;
+	cout << "		--version		Show version information" << endl;
 }
 
 void uptime_file() {
