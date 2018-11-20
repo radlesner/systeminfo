@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.3.3
+// Version     : 0.4
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
