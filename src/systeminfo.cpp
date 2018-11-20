@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.3.2
+// Version     : 0.3.3
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -13,6 +13,7 @@
 #include <sstream>
 #include <math.h>
 #include <stdio.h>
+#include <cstring>
 
 using namespace std;
 
@@ -24,6 +25,13 @@ double swap_total_conventer, swap_total, swap_free_conventer, swap_free;
 
 int cores_int;
 
+void output_all();
+void output_system();
+void output_memory();
+void output_hostname_only();
+void output_cpu_only();
+void output_help();
+
 void uptime_file();
 void distribution_file();
 void cpu_file();
@@ -32,7 +40,7 @@ void cores_file();
 void mem_file();
 void swap_file();
 
-int main(void) {
+int main(int argc, char **argv) {
 	system("cd /systeminfo-files && uptime -p | cut -d\p -f2 >> systeminfo-uptime.txt");
 	system("cd /systeminfo-files && lsb_release -i | cut -d\\: -f2 >> systeminfo-distro.txt");
 	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"name\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cpu.txt");
@@ -43,6 +51,31 @@ int main(void) {
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapFree: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
 
+	if(argc > 1) {
+		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory"))			output_memory();
+		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))		output_system();
+		else if(!strcmp(argv[1], "-h") || !strcmp(argv[1], "--hostname"))	output_hostname_only();
+		else if(!strcmp(argv[1], "-c") || !strcmp(argv[1], "--cpu"))		output_cpu_only();
+		else if(!strcmp(argv[1], "--help"))		output_help();
+		else {
+			cout << "Bad option: " << argv[1] << endl << endl;
+			output_help();
+		}
+	}
+	else output_all();
+
+	system("cd /systeminfo-files && rm systeminfo-uptime.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-distro.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-cpu.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-cores.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-shell.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-swap.txt >> systeminfo-errors.txt");
+
+	return 0;
+}
+
+void output_all() {
 	uptime_file();
 	distribution_file();
 	cpu_file();
@@ -74,41 +107,98 @@ int main(void) {
 	cout.precision(3);
 	cout << "RAM Total/Available/Used:	" << mem_max << " GB/" << mem_available << " GB/" << mem_used << " GB" << endl;
 	cout << "Swap Total/Free:		" << swap_total << " GB/" << swap_free << " GB" << endl;
-	for(;;) {
-		if(shell_name == "/bin/zsh") {
-			cout << "Shell:				Z-Shell (" << shell_name << ")" << endl; break;
-		}
-		if(shell_name == "/bin/bash") {
-			cout << "Shell:				Bash (" << shell_name << ")" << endl; break;
-		}
-		if(shell_name == "/bin/sh") {
-			cout << "Shell:				Sh (" << shell_name << ")" << endl; break;
-		}
-		if(shell_name == "/bin/dash") {
-			cout << "Shell:				Dash (" << shell_name << ")" << endl; break;
-		}
-		if(shell_name == "/bin/ksh") {
-			cout << "Shell:				Ksh (" << shell_name << ")" << endl; break;
-		}
-		if(shell_name == "/bin/rsh") {
-			cout << "Shell:				Rsh (" << shell_name << ")" << endl; break;
-		}
-		else {
-			cout << "Shell:				" << shell_name << endl; break;
-		}
-	}
+		if(shell_name == "/bin/zsh")		cout << "Shell:				Z-Shell (" << shell_name << ")" << endl;
+		else if(shell_name == "/bin/bash")	cout << "Shell:				Bash (" << shell_name << ")" << endl;
+		else if(shell_name == "/bin/sh")	cout << "Shell:				Sh (" << shell_name << ")" << endl;
+		else if(shell_name == "/bin/dash")	cout << "Shell:				Dash (" << shell_name << ")" << endl;
+		else if(shell_name == "/bin/ksh")	cout << "Shell:				Ksh (" << shell_name << ")" << endl;
+		else if(shell_name == "/bin/rsh")	cout << "Shell:				Rsh (" << shell_name << ")" << endl;
+		else								cout << "Shell:				" << shell_name << endl;
 	cout << "Hostname:			" << buffer.nodename << endl;
 	cout << "Uptime:			       " << uptime << endl;
+}
 
-	system("cd /systeminfo-files && rm systeminfo-uptime.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-distro.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-cpu.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-cores.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-shell.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-swap.txt >> systeminfo-errors.txt");
+void output_system() {
+	distribution_file();
+	cpu_file();
+	shell_file();
+	cores_file();
 
-	return 0;
+	char* shell;
+	shell = getenv ("SHELL");
+
+	struct utsname buffer;
+
+	errno = 0;
+		if (uname(&buffer) != 0) {
+			perror("uname");
+			exit(EXIT_FAILURE);
+		}
+
+	cout << "OS Name:			" << buffer.sysname << endl;
+	cout << "Distribution:		" << distro << endl;
+	cout << "Kernel version:			" << buffer.release << endl;
+	cout << "System architecture:		" << buffer.machine << endl;
+	cout << "CPU:	    		       " << cpu << endl;
+	if(cores_int == 1)
+		cout << "Cores:		  		" << cores_int << " core" << endl;
+	else
+		cout << "Cores:		  		" << cores_int << " cores" << endl;
+	if(shell_name == "/bin/zsh")		cout << "Shell:				Z-Shell (" << shell_name << ")" << endl;
+	else if(shell_name == "/bin/bash")	cout << "Shell:				Bash (" << shell_name << ")" << endl;
+	else if(shell_name == "/bin/sh")	cout << "Shell:				Sh (" << shell_name << ")" << endl;
+	else if(shell_name == "/bin/dash")	cout << "Shell:				Dash (" << shell_name << ")" << endl;
+	else if(shell_name == "/bin/ksh")	cout << "Shell:				Ksh (" << shell_name << ")" << endl;
+	else if(shell_name == "/bin/rsh")	cout << "Shell:				Rsh (" << shell_name << ")" << endl;
+	else								cout << "Shell:				" << shell_name << endl;
+}
+
+void output_memory() {
+	mem_file();
+	swap_file();
+
+	cout.precision(3);
+	cout << "RAM Total:			" << mem_max << " GB" << endl;
+	cout << "RAM Available:			" << mem_available << " GB" << endl;
+	cout << "RAM Used:			" << mem_used << " GB" << endl;
+	cout << "Swap Total:			" << swap_total << " GB" << endl;
+	cout << "Swap Free:			" << swap_free << " GB" << endl;
+}
+
+void output_hostname_only() {
+	char* shell;
+	shell = getenv ("SHELL");
+
+	struct utsname buffer;
+
+	errno = 0;
+		if (uname(&buffer) != 0) {
+			perror("uname");
+			exit(EXIT_FAILURE);
+		}
+
+	cout << "Hostname:			" << buffer.nodename << endl;
+}
+
+void output_cpu_only() {
+	cpu_file();
+	cores_file();
+
+	cout << "CPU:	    		       " << cpu << endl;
+	if(cores_int == 1)
+		cout << "Cores:		  		" << cores_int << " core" << endl;
+	else
+		cout << "Cores:		  		" << cores_int << " cores" << endl;
+}
+
+void output_help() {
+	cout << "Usage: system [option] #not required" << endl;
+	cout << "Options:" << endl;
+	cout << "	-m	--memory		Information of memory RAM and Swap" << endl;
+	cout << "	-s	--system		Information of system and hardware" << endl;
+	cout << "	-h	--hostname		Information of hostname" << endl;
+	cout << "	-c	--cpu			Information of cpu only" << endl;
+	cout << "		--help			Information of program and help panel" << endl;
 }
 
 void uptime_file() {
