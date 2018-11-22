@@ -15,4 +15,4 @@
   sudo cp Debug/systeminfo /usr/bin
   ```
 # Screenshots
-  ![alt text](https://imgur.com/5LNtxWA)
+  ![alt text](https://i.imgur.com/5LNtxWA.png?1)
