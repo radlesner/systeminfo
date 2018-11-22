@@ -37,4 +37,3 @@ void command_remove() {
 	system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-swap.txt >> systeminfo-errors.txt");
 }
-

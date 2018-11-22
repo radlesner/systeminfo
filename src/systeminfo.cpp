@@ -23,7 +23,6 @@ using namespace std;
 
 int main(int argc, char **argv) {
 	command_activate();
-
 	if(argc > 1) {
 		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory"))			output_memory();
 		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))		output_system();
@@ -36,17 +35,9 @@ int main(int argc, char **argv) {
 			output_help();
 		}
 	}
-	else output_all();
-
+	else
+		output_all();
 	command_remove();
 
 	return 0;
 }
-
-
-
-
-
-
-
-
