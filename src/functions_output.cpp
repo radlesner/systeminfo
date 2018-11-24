@@ -92,11 +92,6 @@ void output_cpu_only() {
 	cores_file();
 }
 
-void output_version() {
-	string version = "0.5";
-	cout << "systeminfo 2018, version " << version << endl;
-}
-
 void output_help() {
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;

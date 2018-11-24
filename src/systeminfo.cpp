@@ -14,12 +14,18 @@
 #include <math.h>
 #include <stdio.h>
 #include <cstring>
+#include <time.h>
 
 #include "functions_output.h"
 #include "functions_file.h"
 #include "functions_command.h"
 
 using namespace std;
+
+void output_version() {
+	string version = "0.5";
+	cout << "systeminfo 2018, version " << version << endl;
+}
 
 int main(int argc, char **argv) {
 	command_activate();

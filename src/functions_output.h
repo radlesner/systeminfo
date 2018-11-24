@@ -24,7 +24,6 @@ using namespace std;
 	void output_memory();
 	void output_hostname_only();
 	void output_cpu_only();
-	void output_version();
 	void output_help();
 
 #endif /* FUNCTIONS_OUTPUT_H_ */
