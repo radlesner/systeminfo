@@ -15,13 +15,13 @@
 
 #include "functions_output.h"
 #include "functions_file.h"
-#include "functions_output_memory.h"
+#include "functions_output_memory_swap.h"
 #include "functions_file_memory.h"
+#include "functions_file_swap.h"
 
 using namespace std;
 
 void output_memory_megabyte() {
-	cout.precision(3);
 	mem_megabyte_file();
 	swap_megabyte_file();
 }

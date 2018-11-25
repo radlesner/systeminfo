@@ -16,6 +16,7 @@
 #include "functions_output.h"
 #include "functions_file.h"
 #include "functions_file_memory.h"
+#include "functions_file_swap.h"
 
 using namespace std;
 
@@ -94,6 +95,8 @@ void output_help() {
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;
 	cout << "	-m	--memory		Information of memory RAM and Swap" << endl;
+	cout << "	-M	--memory-megabyte	Information of memory RAM and Swap" << endl;
+	cout << "					in megabyte form" << endl;
 	cout << "	-s	--system		Information of system and hardware" << endl;
 	cout << "	-h	--hostname		Information of hostname" << endl;
 	cout << "	-c	--cpu			Information of cpu only" << endl;

@@ -15,7 +15,7 @@
 
 #include "functions_output.h"
 #include "functions_file.h"
-#include "functions_output_memory.h"
+#include "functions_output_memory_swap.h"
 
 using namespace std;
 

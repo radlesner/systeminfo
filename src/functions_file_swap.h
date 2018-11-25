@@ -1,12 +1,12 @@
 /*
- * output_memory.h
+ * functions_output_swap.h
  *
  *  Created on: Nov 25, 2018
  *      Author: krupier
  */
 
-#ifndef FUNCTIONS_OUTPUT_MEMORY_H_
-#define FUNCTIONS_OUTPUT_MEMORY_H_
+#ifndef FUNCTIONS_FILE_SWAP_H_
+#define FUNCTIONS_FILE_SWAP_H_
 
 #include <iostream>
 #include <fstream>
@@ -19,6 +19,7 @@
 
 using namespace std;
 
-	void output_memory_megabyte();
+	void swap_file();
+	void swap_megabyte_file();
 
-#endif /* FUNCTIONS_OUTPUT_MEMORY_H_ */
+#endif /* FUNCTIONS_FILE_SWAP_H_ */
