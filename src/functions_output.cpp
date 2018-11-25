@@ -15,6 +15,7 @@
 
 #include "functions_output.h"
 #include "functions_file.h"
+#include "functions_file_memory.h"
 
 using namespace std;
 
@@ -25,7 +26,6 @@ void output_all() {
 
 	struct utsname buffer;
 
-	errno = 0;
 		if (uname(&buffer) != 0) {
 			perror("uname");
 			exit(EXIT_FAILURE);
@@ -51,7 +51,6 @@ void output_system() {
 
 	struct utsname buffer;
 
-	errno = 0;
 		if (uname(&buffer) != 0) {
 			perror("uname");
 			exit(EXIT_FAILURE);
@@ -78,7 +77,6 @@ void output_hostname_only() {
 
 	struct utsname buffer;
 
-	errno = 0;
 		if (uname(&buffer) != 0) {
 			perror("uname");
 			exit(EXIT_FAILURE);

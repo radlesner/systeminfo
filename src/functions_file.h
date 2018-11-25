@@ -24,7 +24,6 @@ using namespace std;
 	void cpu_file();
 	void shell_file();
 	void cores_file();
-	void mem_file();
 	void swap_file();
 
 #endif /* FUNCTIONS_FILE_H_ */
