@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.5.2
+// Version     : 0.5.3
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -25,11 +25,12 @@
 using namespace std;
 
 void output_version() {
-	string version = "0.5.2";
+	string version = "0.5.3";
 	cout << "systeminfo 2018, v" << version << endl;
 }
 
 int main(int argc, char **argv) {
+	command_check_folder_exist();
 	command_activate();
 	if(argc > 1) {
 		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory"))					output_memory();

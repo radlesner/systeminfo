@@ -63,7 +63,7 @@ void swap_megabyte_file() {
 	string swap_line;
 	int swap_nr_line=1;
 
-	double swap_total_conventer, swap_total, swap_free_conventer, swap_free;
+	int swap_total_conventer, swap_total, swap_free_conventer, swap_free;
 	string swap_total_string, swap_free_string;
 
 	ifstream swap_file("/systeminfo-files/systeminfo-swap.txt");

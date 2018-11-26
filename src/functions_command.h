@@ -19,6 +19,7 @@
 
 using namespace std;
 
+	void command_check_folder_exist();
 	void command_activate();
 	void command_remove();
 

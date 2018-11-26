@@ -61,7 +61,7 @@ void mem_megabyte_file() {
 	string mem_line;
 	int mem_nr_line=1;
 
-	double mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used;
+	int mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used;
 	string mem_max_string, mem_available_string;
 
 	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
