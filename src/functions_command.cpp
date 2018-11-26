@@ -20,11 +20,13 @@ using namespace std;
 void command_check_folder_exist() {
 	ifstream mem_file("/systeminfo-files");
 	if(mem_file.good()==false) {
+		cout << "-------------------------------------" << endl;
 		cout << "Not found /systeminfo-files" << endl;
 		cout << "Create folder /systeminfo-files" << endl;
 		system("sudo mkdir /systeminfo-files");
 		system("sudo chmod 777 /systeminfo-files");
 		cout << "Ok." << endl;
+		cout << "-------------------------------------" << endl;
 	}
 }
 
