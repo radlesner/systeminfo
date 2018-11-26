@@ -23,6 +23,7 @@ void command_check_folder_exist() {
 		cout << "Not found /systeminfo-files" << endl;
 		cout << "Create folder /systeminfo-files" << endl;
 		system("sudo mkdir /systeminfo-files");
+		system("sudo chmod 777 /systeminfo-files");
 		cout << "Ok." << endl;
 	}
 }
