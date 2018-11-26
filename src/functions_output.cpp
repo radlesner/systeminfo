@@ -91,6 +91,29 @@ void output_cpu_only() {
 	cores_file();
 }
 
+void output_check_files() {
+	char check;
+	ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
+	if(mem_file.good()==false) {
+		cout << "Not found \"/systeminfo-files\"" << endl;
+		cout << "Create this folder? [y/n]... " << endl;
+		cin >> check;
+		switch(check) {
+		case 't':
+			system("sudo mkdir /systeminfo-files");
+			system("sudo chmod 777 /systeminfo-files");
+			break;
+		case 'n':
+			exit(0);
+		default:
+			exit(0);
+		}
+	}
+	else {
+		cout << "> All files is integrated ✔" << endl;
+	}
+}
+
 void output_help() {
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;
@@ -100,6 +123,7 @@ void output_help() {
 	cout << "	-s	--system		Information of system and hardware" << endl;
 	cout << "	-h	--hostname		Information of hostname" << endl;
 	cout << "	-c	--cpu			Information of cpu only" << endl;
+	cout << "		--check-files		Check integration files" << endl;
 	cout << "		--help			Information of program and help panel" << endl;
 	cout << "		--version		Show version information" << endl;
 }

@@ -26,5 +26,6 @@ using namespace std;
 	void output_hostname_only();
 	void output_cpu_only();
 	void output_help();
+	void output_check_files();
 
 #endif /* FUNCTIONS_OUTPUT_H_ */

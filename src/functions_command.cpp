@@ -18,7 +18,7 @@
 using namespace std;
 
 void command_check_folder_exist() {
-	ifstream mem_file("/systeminfo-files");
+	ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
 	if(mem_file.good()==false) {
 		cout << "-------------------------------------" << endl;
 		cout << "Not found /systeminfo-files" << endl;
