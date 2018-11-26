@@ -18,6 +18,7 @@
 using namespace std;
 
 void command_check_folder_exist() {
+	string user = getenv("USER");
 	char check;
 	ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
 	if(mem_file.good()==false) {
@@ -27,8 +28,14 @@ void command_check_folder_exist() {
 		switch(check) {
 		case 'y':
 			cout << "------------------------------------------------------------------------" << endl;
-			system("sudo mkdir /systeminfo-files"); 	cout << "Done." << endl;
-			system("sudo chmod 777 /systeminfo-files");	cout << "Done." << endl;
+			if (user == "root") {
+				system("mkdir /systeminfo-files"); 			cout << "mkdir /systeminfo-files, 		done." << endl;
+				system("chmod 777 /systeminfo-files");		cout << "chmod 777 /systeminfo-files, 	done." << endl;
+			}
+			else {
+				system("sudo mkdir /systeminfo-files"); 	cout << "sudo mkdir /systeminfo-files,.........	done." << endl;
+				system("sudo chmod 777 /systeminfo-files");	cout << "sudo chmod 777 /systeminfo-files,.....	done." << endl;
+			}
 			cout << "------------------------------------------------------------------------" << endl;
 			break;
 		case 'n':
@@ -49,6 +56,7 @@ void command_activate() {
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemAvailable: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapFree: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
+	system("cd /systeminfo-files && echo $USER >> systeminfo-user.txt");
 }
 
 void command_remove() {
@@ -59,4 +67,5 @@ void command_remove() {
 	system("cd /systeminfo-files && rm systeminfo-shell.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-swap.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-user.txt >> systeminfo-errors.txt");
 }

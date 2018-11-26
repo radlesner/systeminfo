@@ -43,6 +43,7 @@ void output_all() {
 	mem_file();
 	swap_file();
 	shell_file();
+	user_file();
 	cout << "Hostname:			" << buffer.nodename << endl;
 	uptime_file();
 }

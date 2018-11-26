@@ -123,6 +123,27 @@ void cores_file() {
 			cout << "Cores:		  		" << cores_int << " cores" << endl;
 }
 
+void user_file() {
+	string user_line;
+	int user_nr_line = 1;
+
+	string user;
+
+	fstream user_file("/systeminfo-files/systeminfo-user.txt");
+
+	if(user_file.good() == false)
+		cout << "Error 010: Not found file \"systeminfo-user.txt\"" << endl;
+
+	while (getline(user_file, user_line)) {
+		switch (user_nr_line) {
+		case 1: user = user_line; break;
+		}
+	user_nr_line++;
+	}
+	user_file.close();
+	cout << "Logged user:			" << user << endl;
+}
+
 void uptime_file() {
 	string uptime_line;
 		int uptime_nr_line=1;
