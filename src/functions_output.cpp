@@ -17,6 +17,7 @@
 #include "functions_file.h"
 #include "functions_file_memory.h"
 #include "functions_file_swap.h"
+#include "functions_command.h"
 
 using namespace std;
 
@@ -95,22 +96,10 @@ void output_check_files() {
 	char check;
 	ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
 	if(mem_file.good()==false) {
-		cout << "Not found \"/systeminfo-files\"" << endl;
-		cout << "Create this folder? [y/n]... " << endl;
-		cin >> check;
-		switch(check) {
-		case 't':
-			system("sudo mkdir /systeminfo-files");
-			system("sudo chmod 777 /systeminfo-files");
-			break;
-		case 'n':
-			exit(0);
-		default:
-			exit(0);
-		}
+		command_check_folder_exist();
 	}
 	else {
-		cout << "> All files is integrated ✔" << endl;
+		cout << "All files is integrated ✔" << endl;
 	}
 }
 

@@ -18,15 +18,24 @@
 using namespace std;
 
 void command_check_folder_exist() {
+	char check;
 	ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
 	if(mem_file.good()==false) {
-		cout << "-------------------------------------" << endl;
-		cout << "Not found /systeminfo-files" << endl;
-		cout << "Create folder /systeminfo-files" << endl;
-		system("sudo mkdir /systeminfo-files");
-		system("sudo chmod 777 /systeminfo-files");
-		cout << "Ok." << endl;
-		cout << "-------------------------------------" << endl;
+		cout << "Not found \"/systeminfo-files\"" << endl;
+		cout << "Create this folder /systeminfo-files? [y/n]... ";
+		cin >> check;
+		switch(check) {
+		case 'y':
+			cout << "------------------------------------------------------------------------" << endl;
+			system("sudo mkdir /systeminfo-files"); 	cout << "Done." << endl;
+			system("sudo chmod 777 /systeminfo-files");	cout << "Done." << endl;
+			cout << "------------------------------------------------------------------------" << endl;
+			break;
+		case 'n':
+			exit(0);
+		default:
+			exit(0);
+		}
 	}
 }
 
