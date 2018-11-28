@@ -29,8 +29,8 @@ void command_check_folder_exist() {
 		case 'y':
 			cout << "------------------------------------------------------------------------" << endl;
 			if (user == "root") {
-				system("mkdir /systeminfo-files"); 			cout << "mkdir /systeminfo-files, 		done." << endl;
-				system("chmod 777 /systeminfo-files");		cout << "chmod 777 /systeminfo-files, 	done." << endl;
+				system("mkdir /systeminfo-files"); 			cout << "mkdir /systeminfo-files,.............. done." << endl;
+				system("chmod 777 /systeminfo-files");		cout << "chmod 777 /systeminfo-files,.......... done." << endl;
 			}
 			else {
 				system("sudo mkdir /systeminfo-files"); 	cout << "sudo mkdir /systeminfo-files,.........	done." << endl;
