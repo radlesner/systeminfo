@@ -45,7 +45,7 @@ void swap_file() {
 
 	swap_file.close();
 
-	istringstream swaptotal(swap_free_string);
+	istringstream swaptotal(swap_total_string);
 	swaptotal >> swap_total_conventer;
 
 	swap_total = swap_total_conventer / 1024 / 1024;
