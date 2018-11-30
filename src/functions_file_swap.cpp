@@ -27,7 +27,7 @@ void swap_file() {
 	string swap_line;
 	int swap_nr_line=1;
 
-	double swap_total_conventer, swap_total, swap_free_conventer, swap_free;
+	double swap_total_conventer, swap_total, swap_free_conventer, swap_free, swap_usage;
 	string swap_total_string, swap_free_string;
 
 	ifstream swap_file("/systeminfo-files/systeminfo-swap.txt");
@@ -47,23 +47,22 @@ void swap_file() {
 
 	istringstream swaptotal(swap_total_string);
 	swaptotal >> swap_total_conventer;
-
 	swap_total = swap_total_conventer / 1024 / 1024;
-
 
 	istringstream swapfree(swap_free_string);
 	swapfree >> swap_free_conventer;
-
 	swap_free = swap_free_conventer / 1024 / 1024;
 
-	cout << "Swap Total/Free:		" << swap_total << " GB/" << swap_free << " GB" << endl;
+	swap_usage = swap_total - swap_free;
+
+	cout << "Swap Total/Free/Usage:		" << swap_total << "/" << swap_free << "/" << swap_usage << "	GB" << endl;
 }
 
 void swap_megabyte_file() {
 	string swap_line;
 	int swap_nr_line=1;
 
-	int swap_total_conventer, swap_total, swap_free_conventer, swap_free;
+	int swap_total_conventer, swap_total, swap_free_conventer, swap_free, swap_usage;
 	string swap_total_string, swap_free_string;
 
 	ifstream swap_file("/systeminfo-files/systeminfo-swap.txt");
@@ -81,16 +80,15 @@ void swap_megabyte_file() {
 
 	swap_file.close();
 
-	istringstream swaptotal(swap_free_string);
+	istringstream swaptotal(swap_total_string);
 	swaptotal >> swap_total_conventer;
-
 	swap_total = swap_total_conventer / 1024;
-
 
 	istringstream swapfree(swap_free_string);
 	swapfree >> swap_free_conventer;
-
 	swap_free = swap_free_conventer / 1024;
 
-	cout << "Swap Total/Free:		" << swap_total << " MB/" << swap_free << " MB" << endl;
+	swap_usage = swap_total - swap_free;
+
+	cout << "Swap Total/Free/Usage:		" << swap_total << "/" << swap_free << "/" << swap_usage << "	MB" << endl;
 }
