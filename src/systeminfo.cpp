@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.5.6
+// Version     : 0.5.7
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -25,7 +25,7 @@
 using namespace std;
 
 void output_version() {
-	string version = "0.5.6";
+	string version = "0.5.7";
 	cout << "systeminfo 2018, v" << version << endl;
 }
 
