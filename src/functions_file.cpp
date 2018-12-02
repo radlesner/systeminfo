@@ -61,7 +61,13 @@ void cpu_file() {
 
 		cpu_file.close();
 
-		cout << "CPU:	    		       " << cpu << endl;
+		int length = cpu.length();
+
+		cout << "CPU:				";
+		for(int i = 1; i < length; i++) {
+			cout << cpu[i];
+		}
+		cout << endl;
 }
 
 void shell_file() {
