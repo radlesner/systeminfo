@@ -1,18 +1,8 @@
 # systeminfo
  A simple program showing system information in C++
-# Automatic instalation
+# Usage
   ```
-  ./install.sh
-  ```
-  or
-  ```
-  sudo ./install.sh
-  ```
-# Manual instalation
- Commands:
-  ```
-  mkdir /systeminfo-files
-  sudo cp Debug/systeminfo /usr/bin
+  ./Debug/systeminfo
   ```
 # Screenshots
   ![alt text](https://i.imgur.com/5LNtxWA.png?1)
