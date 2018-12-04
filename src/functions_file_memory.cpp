@@ -23,11 +23,11 @@ void mem_file() {
 	string mem_line;
 	int mem_nr_line=1;
 
-	double mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used, mem_free_conventer, mem_free;
-	string mem_max_string, mem_available_string, mem_free_string;
+	double mem_max_conventer, mem_max, mem_free_conventer, mem_free;
+	string mem_max_string, mem_free_string;
 
 	mem_max_string = "0";
-	mem_available_string = "0";
+	mem_free_string = "0";
 
 	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
 
@@ -37,8 +37,7 @@ void mem_file() {
 	while (getline(mem_file, mem_line)) {
 		switch (mem_nr_line) {
 			case 1: mem_max_string=mem_line; break;
-			case 2: mem_available_string=mem_line; break;
-			case 3: mem_free_string=mem_line; break;
+			case 2: mem_free_string=mem_line; break;
 		}
 		mem_nr_line++;
 	}
@@ -49,30 +48,22 @@ void mem_file() {
 	memmax >> mem_max_conventer;
 	mem_max = mem_max_conventer / 1024 / 1000;
 
-	istringstream memavailable(mem_available_string);
-	memavailable >> mem_available_conventer;
-	mem_available = mem_available_conventer / 1024 / 1000;
-
-	istringstream memfree(mem_free_string);
+	istringstream memavailable(mem_free_string);
 	memavailable >> mem_free_conventer;
 	mem_free = mem_free_conventer / 1024 / 1000;
 
-	mem_used = mem_max - mem_available;
-	if(mem_available_string == "")
-		cout << "RAM Total/Free:	" << mem_max << "/" << mem_free << "	GB" << endl;
-	else
-		cout << "RAM Total/Available/Used:	" << mem_max << "/" << mem_available << "/" << mem_used << "	GB" << endl;
+	cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << "		GB" << endl;
 }
 
 void mem_megabyte_file() {
 	string mem_line;
 	int mem_nr_line=1;
 
-	int mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used, mem_free_conventer, mem_free;
-	string mem_max_string, mem_available_string, mem_free_string;
+	int mem_max_conventer, mem_max, mem_free_conventer, mem_free;
+	string mem_max_string, mem_free_string;
 
 	mem_max_string = "0";
-	mem_available_string = "0";
+	mem_free_string = "0";
 
 	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
 
@@ -82,8 +73,7 @@ void mem_megabyte_file() {
 	while (getline(mem_file, mem_line)) {
 		switch (mem_nr_line) {
 			case 1: mem_max_string=mem_line; break;
-			case 2: mem_available_string=mem_line; break;
-			case 3: mem_free_string=mem_line; break;
+			case 2: mem_free_string=mem_line; break;
 		}
 		mem_nr_line++;
 	}
@@ -94,17 +84,9 @@ void mem_megabyte_file() {
 	memmax >> mem_max_conventer;
 	mem_max = mem_max_conventer / 1024;
 
-	istringstream memavailable(mem_available_string);
-	memavailable >> mem_available_conventer;
-	mem_available = mem_available_conventer / 1024;
-
-	istringstream memfree(mem_free_string);
+	istringstream memavailable(mem_free_string);
 	memavailable >> mem_free_conventer;
 	mem_free = mem_free_conventer / 1024;
 
-	mem_used = mem_max - mem_available;
-	if(mem_available == 0)
-		cout << "RAM Total/Free:	" << mem_max << "/" << mem_free << "	GB" << endl;
-	else
-		cout << "RAM Total/Available/Used:	" << mem_max << "/" << mem_available << "/" << mem_used << "	MB" << endl;
+	cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << "	MB" << endl;
 }
