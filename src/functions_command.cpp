@@ -54,7 +54,7 @@ void command_activate() {
 	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | cut -d\\: -f2 | tr -d ' '  >> systeminfo-cores.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemAvailable: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
-	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemFree: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
+	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemFreerwrewerwerwerwrewrewrewr: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapFree: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
 	system("cd /systeminfo-files && echo $USER >> systeminfo-user.txt");
@@ -66,7 +66,7 @@ void command_remove() {
 	system("cd /systeminfo-files && rm systeminfo-cpu.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-cores.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-shell.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
+	//system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-swap.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-user.txt >> systeminfo-errors.txt");
 }

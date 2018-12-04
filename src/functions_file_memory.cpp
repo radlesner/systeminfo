@@ -58,7 +58,7 @@ void mem_file() {
 	mem_free = mem_free_conventer / 1024 / 1000;
 
 	mem_used = mem_max - mem_available;
-	if(mem_available == 0)
+	if(mem_available_string == "")
 		cout << "RAM Total/Free:	" << mem_max << "/" << mem_free << "	GB" << endl;
 	else
 		cout << "RAM Total/Available/Used:	" << mem_max << "/" << mem_available << "/" << mem_used << "	GB" << endl;
