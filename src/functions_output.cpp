@@ -39,9 +39,8 @@ void output_all() {
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();
 	cores_file();
-	cout.precision(2);
-	mem_file();
-	swap_file();
+	//cout.precision(2);
+	output_memory();
 	shell_file();
 	user_file();
 	cout << "Hostname:			" << buffer.nodename << endl;

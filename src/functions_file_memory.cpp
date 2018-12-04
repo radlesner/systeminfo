@@ -26,6 +26,9 @@ void mem_file() {
 	double mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used;
 	string mem_max_string, mem_available_string;
 
+	mem_max_string = "0";
+	mem_available_string = "0";
+
 	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
 
 	if(mem_file.good()==false)
@@ -60,6 +63,9 @@ void mem_megabyte_file() {
 
 	int mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used;
 	string mem_max_string, mem_available_string;
+
+	mem_max_string = "0";
+	mem_available_string = "0";
 
 	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
 

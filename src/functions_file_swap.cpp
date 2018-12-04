@@ -30,6 +30,9 @@ void swap_file() {
 	double swap_total_conventer, swap_total, swap_free_conventer, swap_free, swap_usage;
 	string swap_total_string, swap_free_string;
 
+	swap_total_string = "0";
+	swap_free_string = "0";
+
 	ifstream swap_file("/systeminfo-files/systeminfo-swap.txt");
 
 	if(swap_file.good()==false)
@@ -64,6 +67,9 @@ void swap_megabyte_file() {
 
 	int swap_total_conventer, swap_total, swap_free_conventer, swap_free, swap_usage;
 	string swap_total_string, swap_free_string;
+
+	swap_total_string = "0";
+	swap_free_string = "0";
 
 	ifstream swap_file("/systeminfo-files/systeminfo-swap.txt");
 
