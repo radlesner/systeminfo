@@ -47,11 +47,11 @@ void swap_file() {
 
 	istringstream swaptotal(swap_total_string);
 	swaptotal >> swap_total_conventer;
-	swap_total = swap_total_conventer / 1024 / 1024;
+	swap_total = swap_total_conventer / 1024 / 1000;
 
 	istringstream swapfree(swap_free_string);
 	swapfree >> swap_free_conventer;
-	swap_free = swap_free_conventer / 1024 / 1024;
+	swap_free = swap_free_conventer / 1024 / 1000;
 
 	swap_usage = swap_total - swap_free;
 

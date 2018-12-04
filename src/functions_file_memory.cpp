@@ -43,11 +43,11 @@ void mem_file() {
 
 	istringstream memmax(mem_max_string);
 	memmax >> mem_max_conventer;
-	mem_max = mem_max_conventer / 1024 / 1024;
+	mem_max = mem_max_conventer / 1024 / 1000;
 
 	istringstream memavailable(mem_available_string);
 	memavailable >> mem_available_conventer;
-	mem_available = mem_available_conventer / 1024 / 1024;
+	mem_available = mem_available_conventer / 1024 / 1000;
 
 	mem_used = mem_max - mem_available;
 

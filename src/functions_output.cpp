@@ -39,7 +39,7 @@ void output_all() {
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();
 	cores_file();
-	cout.precision(3);
+	cout.precision(2);
 	mem_file();
 	swap_file();
 	shell_file();
@@ -69,7 +69,7 @@ void output_system() {
 }
 
 void output_memory() {
-	cout.precision(3);
+	cout.precision(2);
 	mem_file();
 	swap_file();
 }
