@@ -56,7 +56,7 @@ void swap_file() {
 	swapfree >> swap_free_conventer;
 	swap_free = swap_free_conventer / 1024 / 1000;
 
-	cout << "Swap Total/Free:		" << swap_total << "/" << swap_free << "		GB" << endl;
+	cout << "Swap Total/Free:		" << swap_total << "/" << swap_free << " GB" << endl;
 }
 
 void swap_megabyte_file() {
@@ -92,5 +92,5 @@ void swap_megabyte_file() {
 	swapfree >> swap_free_conventer;
 	swap_free = swap_free_conventer / 1024;
 
-	cout << "Swap Total/Free:		" << swap_total << "/" << swap_free << "	MB" << endl;
+	cout << "Swap Total/Free:		" << swap_total << "/" << swap_free << " MB" << endl;
 }

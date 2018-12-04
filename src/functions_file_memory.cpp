@@ -52,7 +52,7 @@ void mem_file() {
 	memavailable >> mem_free_conventer;
 	mem_free = mem_free_conventer / 1024 / 1000;
 
-	cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << "		GB" << endl;
+	cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << " GB" << endl;
 }
 
 void mem_megabyte_file() {
@@ -88,5 +88,5 @@ void mem_megabyte_file() {
 	memavailable >> mem_free_conventer;
 	mem_free = mem_free_conventer / 1024;
 
-	cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << "	MB" << endl;
+	cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << " MB" << endl;
 }
