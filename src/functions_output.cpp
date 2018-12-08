@@ -4,15 +4,6 @@
  *  Created on: Nov 21, 2018
  *      Author: krupier
  */
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <sys/utsname.h>
-#include <sstream>
-#include <math.h>
-#include <stdio.h>
-#include <cstring>
-
 #include "functions_output.h"
 #include "functions_file.h"
 #include "functions_file_memory.h"
@@ -39,7 +30,6 @@ void output_all() {
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();
 	cores_file();
-	//cout.precision(2);
 	output_memory();
 	shell_file();
 	user_file();
@@ -68,7 +58,7 @@ void output_system() {
 }
 
 void output_memory() {
-	cout.precision(2);
+	cout.precision(3);
 	mem_file();
 	swap_file();
 }

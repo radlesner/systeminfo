@@ -4,15 +4,6 @@
  *  Created on: Nov 21, 2018
  *      Author: krupier
  */
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <sys/utsname.h>
-#include <sstream>
-#include <math.h>
-#include <stdio.h>
-#include <cstring>
-
 #include "functions_command.h"
 
 using namespace std;

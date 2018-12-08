@@ -4,16 +4,6 @@
  *  Created on: Nov 21, 2018
  *      Author: krupier
  */
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <sys/utsname.h>
-#include <sstream>
-#include <math.h>
-#include <stdio.h>
-#include <cstring>
-
-#include "functions_output.h"
 #include "functions_file.h"
 
 using namespace std;
@@ -120,13 +110,10 @@ void cores_file() {
 
 		cores_file.close();
 
-		istringstream corecpu(cores);
-		corecpu >> cores_int;
-
-		if(cores_int == 1)
-			cout << "Cores:		  		" << cores_int << " core" << endl;
+		if(cores == "1")
+			cout << "Cores:		  		" << cores << " core" << endl;
 		else
-			cout << "Cores:		  		" << cores_int << " cores" << endl;
+			cout << "Cores:		  		" << cores << " cores" << endl;
 }
 
 void user_file() {
