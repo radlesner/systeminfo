@@ -13,8 +13,7 @@
 using namespace std;
 
 void output_all() {
-
-	char* shell;
+	string shell;
 	shell = getenv ("SHELL");
 
 	struct utsname buffer;
@@ -38,7 +37,7 @@ void output_all() {
 }
 
 void output_system() {
-	char* shell;
+	string shell;
 	shell = getenv ("SHELL");
 
 	struct utsname buffer;
@@ -64,7 +63,7 @@ void output_memory() {
 }
 
 void output_hostname_only() {
-	char* shell;
+	string shell;
 	shell = getenv ("SHELL");
 
 	struct utsname buffer;
@@ -83,7 +82,6 @@ void output_cpu_only() {
 }
 
 void output_check_files() {
-	char check;
 	ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
 	if(mem_file.good()==false) {
 		command_check_folder_exist();

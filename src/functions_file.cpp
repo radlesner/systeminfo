@@ -93,7 +93,6 @@ void cores_file() {
 	string cores_line;
 		int cores_nr_line=1;
 
-		int cores_int;
 		string cores;
 
 		ifstream cores_file("/systeminfo-files/systeminfo-cores.txt");
