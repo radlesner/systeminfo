@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <sys/utsname.h>
+#include <cstdlib>
 
 using namespace std;
 

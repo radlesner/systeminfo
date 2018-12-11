@@ -9,6 +9,7 @@
 #define FUNCTIONS_OUTPUT_MEMORY_SWAP_H_
 
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 

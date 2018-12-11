@@ -12,6 +12,7 @@
 #include <fstream>
 #include <sys/utsname.h>
 #include <sstream>
+#include <cstdlib>
 
 using namespace std;
 
