@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.6.1
+// Version     : 0.6.2
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -17,8 +17,9 @@
 using namespace std;
 
 void output_version() {
-	string version = "0.6.1";
+	string version = "0.6.2";
 	cout << "systeminfo 2018, v" << version << endl;
+	cout << "Compiled: " << __FILE__ << "/" << __DATE__ << "/" << __TIME__ << endl;
 }
 
 int main(int argc, char **argv) {
@@ -33,6 +34,8 @@ int main(int argc, char **argv) {
 		else if(!strcmp(argv[1], "--check-files"))									output_check_files();
 		else if(!strcmp(argv[1], "--version"))										output_version();
 		else if(!strcmp(argv[1], "--help"))											output_help();
+		else if(!strcmp(argv[1], "--"))												output_all();
+		else if(!strcmp(argv[1], "-"))												output_all();
 		else {
 			cout << "Bad option: " << argv[1] << endl << endl;
 			output_help();
