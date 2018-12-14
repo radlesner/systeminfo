@@ -19,7 +19,7 @@ using namespace std;
 void output_version() {
 	string version = "0.6.2";
 	cout << "systeminfo 2018, v" << version << endl;
-	cout << "Compiled: " << __FILE__ << "/" << __DATE__ << "/" << __TIME__ << endl;
+	cout << "Compiled: " << __DATE__ << " | " << __TIME__ << " | " << __FILE__ << endl;
 }
 
 int main(int argc, char **argv) {
