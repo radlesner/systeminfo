@@ -6,12 +6,12 @@ A simple program showing system information in C++ language
 ```
 # Compile
 ```
-$ make clean
-$ make
+$ ./build
 ```
 or
 ```
-$ ./build
+$ make clean
+$ make
 ```
 or
 ```
