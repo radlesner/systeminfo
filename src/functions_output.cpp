@@ -100,7 +100,17 @@ void output_help() {
 	cout << "	-s	--system		Information of system and hardware" << endl;
 	cout << "	-h	--hostname		Information of hostname" << endl;
 	cout << "	-c	--cpu			Information of cpu only" << endl;
+	cout << "	-l	--logo			Show the logo" << endl;
 	cout << "		--check-files		Check integration files" << endl;
 	cout << "		--help			Information of program and help panel" << endl;
 	cout << "		--version		Show version information" << endl;
+}
+
+void output_logo() {
+   cout << " ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ " << endl;
+   cout << "||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||" << endl;
+   cout << "||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||" << endl;
+   cout << "|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|" << endl;
+
+   cout << endl;
 }

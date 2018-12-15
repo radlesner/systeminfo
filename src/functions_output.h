@@ -22,5 +22,6 @@ using namespace std;
 	void output_cpu_only();
 	void output_help();
 	void output_check_files();
+	void output_logo();
 
 #endif /* FUNCTIONS_OUTPUT_H_ */
