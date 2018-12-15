@@ -17,5 +17,49 @@ or
 ```
 $ g++ *.cpp -o systeminfo
 ```
-# Screenshots
-![alt text](https://i.imgur.com/5LNtxWA.png?1)
+# Examples of the program results
+systeminfo -l or --logo
+```
+ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ 
+||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||
+||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||
+|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+
+OS Name:			Linux
+Distribution:			Fedora
+Kernel version:			4.13.9-300.fc27.x86_64
+System architecture:		x86_64
+CPU:				Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz
+Cores:		  		4 cores
+RAM Total/Free:			7.86/1.92 GB
+Swap Total/Free:		7.99/7.99 GB
+Shell:				Z-Shell (/bin/zsh)
+Logged user:			krupier
+Hostname:			pancernik
+Uptime:			        4 hours, 50 minutes
+```
+systeminfo -M or --memory-megabyte
+```
+RAM Total/Free:			7862/1847 MB
+Swap Total/Free:		7990/7990 MB
+```
+systeminfo -c or --cpu
+```
+CPU:				Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz
+Cores:		  		4 cores
+```
+systeminfo --help
+```
+Usage: system [optional_option]
+Options:
+	-m	--memory		RAM and Swap information gigabyte form
+	-M	--memory-megabyte	RAM and Swap information megabyte form
+	-s	--system		System and hardware information
+	-h	--ssh			SSH information
+	-c	--cpu			CPU information
+	-l	--logo			Show the logo
+		--check-files		Check integration files
+		--help			Help panel
+		--version		Version program and compilation
+					information
+```
