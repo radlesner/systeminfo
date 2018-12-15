@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void distribution_file() {
+string distribution_file() {
 	string distro_line;
 		int distro_nr_line=1;
 
@@ -28,7 +28,7 @@ void distribution_file() {
 
 		distro_file.close();
 
-		cout << "Distribution:		" << distro << endl;
+		return distro;
 }
 
 void cpu_file() {
@@ -115,7 +115,7 @@ void cores_file() {
 			cout << "Cores:		  		" << cores << " cores" << endl;
 }
 
-void user_file() {
+string user_file() {
 	string user_line;
 	int user_nr_line = 1;
 
@@ -133,10 +133,10 @@ void user_file() {
 	user_nr_line++;
 	}
 	user_file.close();
-	cout << "Logged user:			" << user << endl;
+	return user;
 }
 
-void uptime_file() {
+string uptime_file() {
 	string uptime_line;
 		int uptime_nr_line=1;
 
@@ -156,5 +156,5 @@ void uptime_file() {
 
 		uptime_file.close();
 
-		cout << "Uptime:			       " << uptime << endl;
+		return uptime;
 }

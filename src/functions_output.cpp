@@ -24,16 +24,16 @@ void output_all() {
 		}
 
 	cout << "OS Name:			" << buffer.sysname << endl;
-	distribution_file();
+	cout << "Distribution:		" << distribution_file() << endl;
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();
 	cores_file();
 	output_memory();
 	shell_file();
-	user_file();
+	cout << "Logged user:			" << user_file() << endl;
 	cout << "Hostname:			" << buffer.nodename << endl;
-	uptime_file();
+	cout << "Uptime:			       " << uptime_file() << endl;
 }
 
 void output_system() {
@@ -48,7 +48,7 @@ void output_system() {
 		}
 
 	cout << "OS Name:			" << buffer.sysname << endl;
-	distribution_file();
+	cout << "Distribution:		" << distribution_file() << endl;
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();
@@ -62,7 +62,7 @@ void output_memory() {
 	swap_file();
 }
 
-void output_hostname_only() {
+void output_ssh_info() {
 	string shell;
 	shell = getenv ("SHELL");
 
@@ -74,6 +74,9 @@ void output_hostname_only() {
 		}
 
 	cout << "Hostname:			" << buffer.nodename << endl;
+	cout << "Logged user:			" << user_file() << endl << endl;
+
+	cout << "SSH Command:			" << user_file() << "@" << buffer.nodename << ".local" << endl;
 }
 
 void output_cpu_only() {
@@ -94,16 +97,16 @@ void output_check_files() {
 void output_help() {
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;
-	cout << "	-m	--memory		Information of memory RAM and Swap" << endl;
-	cout << "	-M	--memory-megabyte	Information of memory RAM and Swap" << endl;
-	cout << "					in megabyte form" << endl;
-	cout << "	-s	--system		Information of system and hardware" << endl;
-	cout << "	-h	--hostname		Information of hostname" << endl;
-	cout << "	-c	--cpu			Information of cpu only" << endl;
+	cout << "	-m	--memory		RAM and Swap information gigabyte form" << endl;
+	cout << "	-M	--memory-megabyte	RAM and Swap information megabyte form" << endl;
+	cout << "	-s	--system		System and hardware information" << endl;
+	cout << "	-h	--ssh			SSH information" << endl;
+	cout << "	-c	--cpu			CPU information" << endl;
 	cout << "	-l	--logo			Show the logo" << endl;
 	cout << "		--check-files		Check integration files" << endl;
-	cout << "		--help			Information of program and help panel" << endl;
-	cout << "		--version		Show version information" << endl;
+	cout << "		--help			Help panel" << endl;
+	cout << "		--version		Version program and compilation" << endl;
+	cout << "					information" << endl;
 }
 
 void output_logo() {

@@ -14,11 +14,11 @@
 
 using namespace std;
 
-	void uptime_file();
-	void distribution_file();
+	string uptime_file();
+	string distribution_file();
 	void cpu_file();
 	void shell_file();
 	void cores_file();
-	void user_file();
+	string user_file();
 
 #endif /* FUNCTIONS_FILE_H_ */

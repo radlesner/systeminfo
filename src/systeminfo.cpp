@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.6.3
+// Version     : 0.6.4
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -17,7 +17,7 @@
 using namespace std;
 
 void output_version() {
-	string version = "0.6.3";
+	string version = "0.6.4";
 	cout << "systeminfo 2018, v" << version << endl;
 	cout << "Compiled: " << __DATE__ << " | " << __TIME__ << " | " << __FILE__ << endl;
 }
@@ -29,12 +29,12 @@ int main(int argc, char **argv) {
 		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory"))					output_memory();
 		else if(!strcmp(argv[1], "-M") || !strcmp(argv[1], "--memory-megabyte"))	output_memory_megabyte();
 		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))				output_system();
-		else if(!strcmp(argv[1], "-h") || !strcmp(argv[1], "--hostname"))			output_hostname_only();
 		else if(!strcmp(argv[1], "-c") || !strcmp(argv[1], "--cpu"))				output_cpu_only();
 		else if(!strcmp(argv[1], "-l") || !strcmp(argv[1], "--logo")) {
 			output_logo();
 			output_all();
 		}
+		else if(!strcmp(argv[1], "-h") || !strcmp(argv[1], "--ssh"))				output_ssh_info();
 		else if(!strcmp(argv[1], "--check-files"))									output_check_files();
 		else if(!strcmp(argv[1], "--version"))										output_version();
 		else if(!strcmp(argv[1], "--help"))											output_help();
