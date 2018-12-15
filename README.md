@@ -18,6 +18,21 @@ or
 $ g++ *.cpp -o systeminfo
 ```
 # Examples of the program results
+systeminfo
+```
+OS Name:			Linux
+Distribution:			Fedora
+Kernel version:			4.13.9-300.fc27.x86_64
+System architecture:		x86_64
+CPU:				Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz
+Cores:		  		4 cores
+RAM Total/Free:			7.86/1.92 GB
+Swap Total/Free:		7.99/7.99 GB
+Shell:				Z-Shell (/bin/zsh)
+Logged user:			krupier
+Hostname:			pancernik
+Uptime:			        4 hours, 50 minutes
+```
 systeminfo -l or --logo
 ```
  ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ 
