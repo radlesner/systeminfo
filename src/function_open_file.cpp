@@ -12,7 +12,7 @@ string open_file(string path_file) {
 	string line, read_file;
 	int nr_line=1;
 
-	ifstream file(path_file);
+	ifstream file(path_file.c_str());
 
 	if(file.good() == false)	cout << "Error 002: Not found file \"systeminfo-distro.txt\"" << endl;
 
