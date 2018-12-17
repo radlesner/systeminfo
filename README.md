@@ -15,7 +15,7 @@ $ make
 ```
 or
 ```
-$ g++ *.cpp -o systeminfo
+$ g++ src/*.cpp -o systeminfo
 ```
 # Examples of the program results
 systeminfo
