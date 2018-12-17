@@ -6,6 +6,8 @@
  */
 #include "function_open_file.h"
 
+using namespace std;
+
 string open_file(string path_file) {
 	string line, read_file;
 	int nr_line=1;
