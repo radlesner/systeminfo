@@ -14,6 +14,6 @@
 
 using namespace std;
 
-	string open_file(string file);
+	string open_file(string path_file);
 
 #endif /* FUNCTION_OPEN_FILE_H_ */
