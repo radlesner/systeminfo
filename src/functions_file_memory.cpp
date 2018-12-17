@@ -5,6 +5,7 @@
  *      Author: krupier
  */
 #include "functions_file_memory.h"
+#include "function_open_file.h"
 
 using namespace std;
 

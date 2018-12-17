@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/function_open_file.cpp \
 ../src/functions_command.cpp \
 ../src/functions_file.cpp \
 ../src/functions_file_memory.cpp \
@@ -13,6 +14,7 @@ CPP_SRCS += \
 ../src/systeminfo.cpp 
 
 OBJS += \
+./src/function_open_file.o \
 ./src/functions_command.o \
 ./src/functions_file.o \
 ./src/functions_file_memory.o \
@@ -22,6 +24,7 @@ OBJS += \
 ./src/systeminfo.o 
 
 CPP_DEPS += \
+./src/function_open_file.d \
 ./src/functions_command.d \
 ./src/functions_file.d \
 ./src/functions_file_memory.d \

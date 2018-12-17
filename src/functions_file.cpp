@@ -5,156 +5,75 @@
  *      Author: krupier
  */
 #include "functions_file.h"
+#include "function_open_file.h"
 
 using namespace std;
 
 string distribution_file() {
-	string distro_line;
-		int distro_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
 
-		string distro;
+	string value;
+	value = open_file(input_value);
 
-		ifstream distro_file("/systeminfo-files/systeminfo-distro.txt");
-
-		if(distro_file.good()==false)
-			cout << "Error 002: Not found file \"systeminfo-distro.txt\"" << endl;
-
-		while (getline(distro_file, distro_line)) {
-			switch (distro_nr_line) {
-				case 1: distro=distro_line; break;
-			}
-			distro_nr_line++;
-		}
-
-		distro_file.close();
-
-		return distro;
+	return value;
 }
 
 void cpu_file() {
-	string cpu_line;
-		int cpu_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-cpu.txt";
 
-		string cpu;
+	string value;
+	value = open_file(input_value);
 
-		ifstream cpu_file("/systeminfo-files/systeminfo-cpu.txt");
+	int length = value.length();
 
-		if(cpu_file.good()==false)
-			cout << "Error 003: Not found file \"systeminfo-cpu.txt\"" << endl;
-
-		while (getline(cpu_file, cpu_line)) {
-			switch (cpu_nr_line) {
-				case 1: cpu=cpu_line; break;
-			}
-			cpu_nr_line++;
-		}
-
-		cpu_file.close();
-
-		int length = cpu.length();
-
-		cout << "CPU:				";
-		for(int i = 1; i < length; i++) {
-			cout << cpu[i];
-		}
-		cout << endl;
+	cout << "CPU:				";
+	for(int i = 1; i < length; i++) {
+		cout << value[i];
+	}
+	cout << endl;
 }
 
 void shell_file() {
-	string shell_line;
-		int shell_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-shell.txt";
 
-		string shell_name;
+	string value;
+	value = open_file(input_value);
 
-		ifstream shell_file("/systeminfo-files/systeminfo-shell.txt");
-
-		if(shell_file.good()==false)
-			cout << "Error 004: Not found file \"systeminfo-shell.txt\"" << endl;
-
-		while (getline(shell_file, shell_line)) {
-			switch (shell_nr_line) {
-				case 1: shell_name=shell_line; break;
-			}
-			shell_nr_line++;
-		}
-
-		shell_file.close();
-
-		if(shell_name == "/bin/zsh")		cout << "Shell:				Z-Shell (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/bash")	cout << "Shell:				Bash (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/sh")	cout << "Shell:				Sh (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/dash")	cout << "Shell:				Dash (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/ksh")	cout << "Shell:				Ksh (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/rsh")	cout << "Shell:				Rsh (" << shell_name << ")" << endl;
-		else								cout << "Shell:				" << shell_name << endl;
+		if(value == "/bin/zsh")			cout << "Shell:				Z-Shell (" << value << ")" << endl;
+		else if(value == "/bin/bash")	cout << "Shell:				Bash (" << value << ")" << endl;
+		else if(value == "/bin/sh")		cout << "Shell:				Sh (" << value << ")" << endl;
+		else if(value == "/bin/dash")	cout << "Shell:				Dash (" << value << ")" << endl;
+		else if(value == "/bin/ksh")	cout << "Shell:				Ksh (" << value << ")" << endl;
+		else if(value == "/bin/rsh")	cout << "Shell:				Rsh (" << value << ")" << endl;
+		else							cout << "Shell:				" << value << endl;
 }
 
 void cores_file() {
-	string cores_line;
-		int cores_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-cores.txt";
 
-		string cores;
+	string value;
+	value = open_file(input_value);
 
-		ifstream cores_file("/systeminfo-files/systeminfo-cores.txt");
-
-		if(cores_file.good()==false)
-			cout << "Error 005: Not found file \"systeminfo-cores.txt\"" << endl;
-
-		while (getline(cores_file, cores_line)) {
-			switch (cores_nr_line) {
-				case 1: cores=cores_line; break;
-			}
-			cores_nr_line++;
-		}
-
-		cores_file.close();
-
-		if(cores == "1")
-			cout << "Cores:		  		" << cores << " core" << endl;
-		else
-			cout << "Cores:		  		" << cores << " cores" << endl;
+	if(value == "1")
+		cout << "Cores:		  		" << value << " core" << endl;
+	else
+		cout << "Cores:		  		" << value << " cores" << endl;
 }
 
 string user_file() {
-	string user_line;
-	int user_nr_line = 1;
+	const string input_value = "/systeminfo-files/systeminfo-user.txt";
 
-	string user;
+	string value;
+	value = open_file(input_value);
 
-	fstream user_file("/systeminfo-files/systeminfo-user.txt");
-
-	if(user_file.good() == false)
-		cout << "Error 010: Not found file \"systeminfo-user.txt\"" << endl;
-
-	while (getline(user_file, user_line)) {
-		switch (user_nr_line) {
-		case 1: user = user_line; break;
-		}
-	user_nr_line++;
-	}
-	user_file.close();
-	return user;
+	return value;
 }
 
 string uptime_file() {
-	string uptime_line;
-		int uptime_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-uptime.txt";
 
-		string uptime;
+	string value;
+	value = open_file(input_value);
 
-		ifstream uptime_file("/systeminfo-files/systeminfo-uptime.txt");
-
-		if(uptime_file.good()==false)
-			cout << "Error 001: Not found file \"systeminfo-uptime.txt\"" << endl;
-
-		while (getline(uptime_file, uptime_line)) {
-			switch (uptime_nr_line) {
-				case 1: uptime=uptime_line; break;
-			}
-			uptime_nr_line++;
-		}
-
-		uptime_file.close();
-
-		return uptime;
+	return value;
 }
