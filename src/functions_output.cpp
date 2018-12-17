@@ -107,6 +107,7 @@ void output_help() {
 	cout << "		--help			Help panel" << endl;
 	cout << "		--version		Version program and compilation" << endl;
 	cout << "					information" << endl;
+	cout << "Example: systeminfo -s -l" << endl;
 }
 
 void output_logo() {

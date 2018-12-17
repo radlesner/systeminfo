@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
-// Version     : 0.6.4
+// Version     : 0.6.5
 // Copyright   : Your copyright notice
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
@@ -17,7 +17,7 @@
 using namespace std;
 
 void output_version() {
-	string version = "0.6.4";
+	string version = "0.6.5";
 	cout << "systeminfo 2018, v" << version << endl;
 	cout << "Compiled: " << __DATE__ << " | " << __TIME__ << " | " << __FILE__ << endl;
 }
@@ -26,6 +26,9 @@ int main(int argc, char **argv) {
 	command_check_folder_exist();
 	command_activate();
 	if(argc > 1) {
+		if(argc > 2)
+			if(!strcmp(argv[2], "-l") || !strcmp(argv[2], "--logo"))				output_logo();
+
 		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory"))					output_memory();
 		else if(!strcmp(argv[1], "-M") || !strcmp(argv[1], "--memory-megabyte"))	output_memory_megabyte();
 		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))				output_system();
@@ -41,7 +44,8 @@ int main(int argc, char **argv) {
 		else if(!strcmp(argv[1], "--"))												output_all();
 		else if(!strcmp(argv[1], "-"))												output_all();
 		else {
-			cout << "Bad option: " << argv[1] << endl;
+			if(argc > 2)	cout << "Bad option: " << argv[1] << " " << argv[2] << endl;
+			else			cout << "Bad option: " << argv[1]<< endl;
 			output_help();
 		}
 	}
