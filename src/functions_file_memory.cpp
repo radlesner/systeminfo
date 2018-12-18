@@ -5,13 +5,12 @@
  *      Author: krupier
  */
 #include "functions_file_memory.h"
-#include "function_open_file.h"
 
 using namespace std;
 
 void mem_file() {
 	string mem_line;
-	int mem_nr_line=1;
+	int mem_nr_line = 1;
 
 	double mem_max_conventer, mem_max, mem_free_conventer, mem_free;
 	string mem_max_string, mem_free_string;
@@ -21,7 +20,7 @@ void mem_file() {
 
 	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
 
-	if(mem_file.good()==false)
+	if(mem_file.good() == false)
 		cout << "Error 006: Not found file \"systeminfo-mem.txt\"" << endl;
 
 	while (getline(mem_file, mem_line)) {
@@ -47,7 +46,7 @@ void mem_file() {
 
 void mem_megabyte_file() {
 	string mem_line;
-	int mem_nr_line=1;
+	int mem_nr_line = 1;
 
 	int mem_max_conventer, mem_max, mem_free_conventer, mem_free;
 	string mem_max_string, mem_free_string;
@@ -57,7 +56,7 @@ void mem_megabyte_file() {
 
 	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
 
-	if(mem_file.good()==false)
+	if(mem_file.good() == false)
 		cout << "Error 006: Not found file \"systeminfo-mem.txt\"" << endl;
 
 	while (getline(mem_file, mem_line)) {

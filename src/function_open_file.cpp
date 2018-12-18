@@ -10,17 +10,17 @@ using namespace std;
 
 string open_file(string path_file) {
 	string line, read_file;
-	int nr_line=1;
+	int nr_line = 1;
 
 	ifstream file(path_file.c_str());
 
-	if(file.good() == false)	cout << "Error 002: Not found file \"systeminfo-distro.txt\"" << endl;
+	if(file.good() == false) cout << "Error 002: Not found file in /systeminfo-files" << endl;
 
 	while (getline(file, line)) {
-	switch (nr_line) {
-		case 1: read_file=line; break;
-	}
-	nr_line++;
+		switch (nr_line) {
+			case 1: read_file=line; break;
+		}
+		nr_line++;
 	}
 
 	file.close();

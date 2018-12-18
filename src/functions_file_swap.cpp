@@ -10,7 +10,7 @@ using namespace std;
 
 void swap_file() {
 	string swap_line;
-	int swap_nr_line=1;
+	int swap_nr_line = 1;
 
 	double swap_total_conventer, swap_total, swap_free_conventer, swap_free;
 	string swap_total_string, swap_free_string;
@@ -20,7 +20,7 @@ void swap_file() {
 
 	ifstream swap_file("/systeminfo-files/systeminfo-swap.txt");
 
-	if(swap_file.good()==false)
+	if(swap_file.good() == false)
 		cout << "Error 007: Not found file \"systeminfo-swap.txt\"" << endl;
 
 	while (getline(swap_file, swap_line)) {
@@ -46,7 +46,7 @@ void swap_file() {
 
 void swap_megabyte_file() {
 	string swap_line;
-	int swap_nr_line=1;
+	int swap_nr_line = 1;
 
 	int swap_total_conventer, swap_total, swap_free_conventer, swap_free;
 	string swap_total_string, swap_free_string;
@@ -56,7 +56,7 @@ void swap_megabyte_file() {
 
 	ifstream swap_file("/systeminfo-files/systeminfo-swap.txt");
 
-	if(swap_file.good()==false)
+	if(swap_file.good() == false)
 		cout << "Error 007: Not found file \"systeminfo-swap.txt\"" << endl;
 
 	while (getline(swap_file, swap_line)) {

@@ -28,7 +28,6 @@ int main(int argc, char **argv) {
 	if(argc > 1) {
 		if(argc > 2)
 			if(!strcmp(argv[2], "-l") || !strcmp(argv[2], "--logo"))				output_logo();
-
 		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory"))					output_memory();
 		else if(!strcmp(argv[1], "-M") || !strcmp(argv[1], "--memory-megabyte"))	output_memory_megabyte();
 		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))				output_system();
