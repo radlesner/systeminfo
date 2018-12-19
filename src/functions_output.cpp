@@ -118,11 +118,13 @@ void output_monitor(int value_1, char** value_2) {
 			}
 			else {
 				cout << "systeminfo: Too few arguments" << endl;
+				cout << "Example: systeminfo -t -m" << endl;
 				break;
 			}
 		}
 		else {
-			cout << "systeminfo: Too few arguments" << endl;
+			cout << "systeminfo: Too few arguments, minimum two" << endl;
+			cout << "example: systeminfo -t -m" << endl;
 			break;
 		}
 
@@ -135,12 +137,13 @@ void output_monitor(int value_1, char** value_2) {
 void output_help() {
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;
-	cout << "	-m	--memory		RAM and Swap information in gigabyte form" << endl;
-	cout << "	-M	--memory-megabyte	RAM and Swap information in megabyte form" << endl;
+	cout << "	-m	--memory		Memory information in gigabyte form" << endl;
+	cout << "	-M	--memory-megabyte	Memory information in megabyte form" << endl;
 	cout << "	-s	--system		System and hardware information" << endl;
 	cout << "	-h	--ssh			SSH information" << endl;
 	cout << "	-c	--cpu			CPU information" << endl;
 	cout << "	-l	--logo			Show the logo" << endl;
+	cout << "	-t	--monitor		real-time monitoring" << endl;
 	cout << "		--check-files		Check integration files" << endl;
 	cout << "		--help			Help panel" << endl;
 	cout << "		--version		Version program and compilation" << endl;
