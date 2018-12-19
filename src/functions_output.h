@@ -11,6 +11,9 @@
 #include <iostream>
 #include <sys/utsname.h>
 #include <cstdlib>
+#include <unistd.h>
+#include <chrono>
+#include <cstring>
 
 using namespace std;
 
@@ -23,5 +26,6 @@ using namespace std;
 	void output_help();
 	void output_check_files();
 	void output_logo();
+	void output_monitor(int value_1, char** value_2);
 
 #endif /* FUNCTIONS_OUTPUT_H_ */

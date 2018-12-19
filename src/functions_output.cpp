@@ -5,6 +5,7 @@
  *      Author: krupier
  */
 #include "functions_output.h"
+#include "functions_output_memory_swap.h"
 #include "functions_file.h"
 #include "functions_file_memory.h"
 #include "functions_file_swap.h"
@@ -53,6 +54,7 @@ void output_system() {
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();
 	cores_file();
+	cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
 	shell_file();
 }
 
@@ -86,7 +88,7 @@ void output_cpu_only() {
 
 void output_check_files() {
 	ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
-	if(mem_file.good()==false) {
+	if(mem_file.good() == false) {
 		command_check_folder_exist();
 	}
 	else {
@@ -94,11 +96,47 @@ void output_check_files() {
 	}
 }
 
+void output_monitor(int value_1, char** value_2) {
+	for(;;) {
+		system("clear");
+		command_activate();
+
+		if(value_1 > 2) {
+			if(value_1 > 3)
+				if(!strcmp(value_2[3], "-l") || !strcmp(value_2[3], "--logo"))	output_logo();
+			if(!strcmp(value_2[2], "-m")) {
+				cpu_file();
+				cores_file();
+				cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl << endl;
+				output_memory();
+			}
+			else if(!strcmp(value_2[2], "-M")){
+				cpu_file();
+				cores_file();
+				cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl << endl;
+				output_memory_megabyte();
+			}
+			else {
+				cout << "systeminfo: Too few arguments" << endl;
+				break;
+			}
+		}
+		else {
+			cout << "systeminfo: Too few arguments" << endl;
+			break;
+		}
+
+		command_remove();
+		cout << endl << "Exit to: CTRL + C" << endl;
+		sleep(1);
+	}
+}
+
 void output_help() {
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;
-	cout << "	-m	--memory		RAM and Swap information gigabyte form" << endl;
-	cout << "	-M	--memory-megabyte	RAM and Swap information megabyte form" << endl;
+	cout << "	-m	--memory		RAM and Swap information in gigabyte form" << endl;
+	cout << "	-M	--memory-megabyte	RAM and Swap information in megabyte form" << endl;
 	cout << "	-s	--system		System and hardware information" << endl;
 	cout << "	-h	--ssh			SSH information" << endl;
 	cout << "	-c	--cpu			CPU information" << endl;

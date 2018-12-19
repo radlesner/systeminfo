@@ -60,6 +60,15 @@ void cores_file() {
 		cout << "Cores:		  		" << value << " cores" << endl;
 }
 
+string cpu_frequency() {
+	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
+
+	string value;
+	value = open_file(input_value);
+
+	return value;
+}
+
 string user_file() {
 	const string input_value = "/systeminfo-files/systeminfo-user.txt";
 

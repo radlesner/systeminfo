@@ -17,8 +17,9 @@ using namespace std;
 	string uptime_file();
 	string distribution_file();
 	void cpu_file();
-	void shell_file();
+	string cpu_frequency();
 	void cores_file();
+	void shell_file();
 	string user_file();
 
 #endif /* FUNCTIONS_FILE_H_ */

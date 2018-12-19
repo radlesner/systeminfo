@@ -14,7 +14,7 @@ string open_file(string path_file) {
 
 	ifstream file(path_file.c_str());
 
-	if(file.good() == false) cout << "Error 002: Not found file in /systeminfo-files" << endl;
+	if(file.good() == false) cout << "systeminfo: Not found file in /systeminfo-files" << endl;
 
 	while (getline(file, line)) {
 		switch (nr_line) {

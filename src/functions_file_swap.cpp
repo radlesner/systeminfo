@@ -21,7 +21,7 @@ void swap_file() {
 	ifstream swap_file("/systeminfo-files/systeminfo-swap.txt");
 
 	if(swap_file.good() == false)
-		cout << "Error 007: Not found file \"systeminfo-swap.txt\"" << endl;
+		cout << "systeminfo: Not found file \"systeminfo-swap.txt\"" << endl;
 
 	while (getline(swap_file, swap_line)) {
 		switch (swap_nr_line) {

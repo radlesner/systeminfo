@@ -21,7 +21,7 @@ void mem_file() {
 	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
 
 	if(mem_file.good() == false)
-		cout << "Error 006: Not found file \"systeminfo-mem.txt\"" << endl;
+		cout << "systeminfo: Not found file \"systeminfo-mem.txt\"" << endl;
 
 	while (getline(mem_file, mem_line)) {
 		switch (mem_nr_line) {
