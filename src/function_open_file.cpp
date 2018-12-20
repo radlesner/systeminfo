@@ -8,9 +8,8 @@
 
 using namespace std;
 
-string open_file(string path_file) {
+string open_file(string path_file, int nr_line = 1) {
 	string line, read_file;
-	int nr_line = 1;
 
 	ifstream file(path_file.c_str());
 
@@ -19,6 +18,10 @@ string open_file(string path_file) {
 	while (getline(file, line)) {
 		switch (nr_line) {
 			case 1: read_file=line; break;
+			case 2: read_file=line; break;
+			case 3: read_file=line; break;
+			case 4: read_file=line; break;
+			case 5: read_file=line; break;
 		}
 		nr_line++;
 	}

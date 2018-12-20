@@ -11,18 +11,20 @@ using namespace std;
 
 string distribution_file() {
 	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const int line = 1;
 
 	string value;
-	value = open_file(input_value);
+	value = open_file(input_value, line);
 
 	return value;
 }
 
 void cpu_file() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu.txt";
+	const int line = 1;
 
 	string value;
-	value = open_file(input_value);
+	value = open_file(input_value, line);
 
 	int length = value.length();
 
@@ -35,9 +37,10 @@ void cpu_file() {
 
 void shell_file() {
 	const string input_value = "/systeminfo-files/systeminfo-shell.txt";
+	const int line = 1;
 
 	string value;
-	value = open_file(input_value);
+	value = open_file(input_value, line);
 
 		if(value == "/bin/zsh")			cout << "Shell:				Z-Shell (" << value << ")" << endl;
 		else if(value == "/bin/bash")	cout << "Shell:				Bash (" << value << ")" << endl;
@@ -50,9 +53,10 @@ void shell_file() {
 
 void cores_file() {
 	const string input_value = "/systeminfo-files/systeminfo-cores.txt";
+	const int line = 1;
 
 	string value;
-	value = open_file(input_value);
+	value = open_file(input_value, line);
 
 	if(value == "1")
 		cout << "Cores:		  		" << value << " core" << endl;
@@ -62,27 +66,30 @@ void cores_file() {
 
 string cpu_frequency() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
+	const int line = 1;
 
 	string value;
-	value = open_file(input_value);
+	value = open_file(input_value, line);
 
 	return value;
 }
 
 string user_file() {
 	const string input_value = "/systeminfo-files/systeminfo-user.txt";
+	const int line = 1;
 
 	string value;
-	value = open_file(input_value);
+	value = open_file(input_value, line);
 
 	return value;
 }
 
 string uptime_file() {
 	const string input_value = "/systeminfo-files/systeminfo-uptime.txt";
+	const int line = 1;
 
 	string value;
-	value = open_file(input_value);
+	value = open_file(input_value, line);
 
 	return value;
 }
