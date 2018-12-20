@@ -8,7 +8,7 @@
 
 using namespace std;
 
-string open_file(string path_file, int nr_line = 1) {
+string open_file(string path_file, int nr_line) {
 	string line, read_file;
 
 	ifstream file(path_file.c_str());
