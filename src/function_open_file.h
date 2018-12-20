@@ -14,6 +14,6 @@
 
 using namespace std;
 
-	string open_file(string path_file, int nr_linee);
+	string open_file(string path_file, int nr_line);
 
 #endif /* FUNCTION_OPEN_FILE_H_ */

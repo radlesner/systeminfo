@@ -57,7 +57,7 @@ void command_remove() {
 	system("cd /systeminfo-files && rm systeminfo-cpu.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-cores.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-shell.txt >> systeminfo-errors.txt");
-	//system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-swap.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-user.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-cpu-frequency.txt >> systeminfo-errors.txt");
