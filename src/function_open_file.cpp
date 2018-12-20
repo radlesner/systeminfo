@@ -10,8 +10,9 @@ using namespace std;
 
 string open_file(string path_file, int nr_line) {
 	string line;
+	ifstream file;
 
-	ifstream file(path_file.c_str());
+	file.open(path_file.c_str());
 
 	if(file.good() == false) {
 		cout << "systeminfo: Not found file in /systeminfo-files" << endl;
@@ -19,9 +20,7 @@ string open_file(string path_file, int nr_line) {
 	}
 
 	for(int i = 0; i < nr_line; i++)
-	{
 		getline(file, line);
-	}
 
 	file.close();
 
