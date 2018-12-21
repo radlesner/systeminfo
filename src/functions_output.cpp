@@ -101,10 +101,10 @@ void output_check_files() {
 
 void output_monitor(int value_1, char** value_2) {
 	for(;;) {
-		system("clear");
 		command_activate();
 
 		if(value_1 > 2) {
+			system("clear");
 			if(value_1 > 3)
 				if(!strcmp(value_2[3], "-l") || !strcmp(value_2[3], "--logo"))	output_logo();
 			if(!strcmp(value_2[2], "-m")) {
