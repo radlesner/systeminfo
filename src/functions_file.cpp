@@ -64,12 +64,35 @@ void cores_file() {
 		cout << "Cores:		  		" << value << " cores" << endl;
 }
 
-string cpu_frequency() {
+int cpu_frequency() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
 	const int line = 1;
 
-	string value;
-	value = open_file(input_value, line);
+	string read_value;
+	read_value = open_file(input_value, line);
+	int value = atoi(read_value.c_str());
+
+	return value;
+}
+
+int cpu_frequency_max() {
+	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
+	const int line = 2;
+
+	string read_value;
+	read_value = open_file(input_value, line);
+	int value = atoi(read_value.c_str());
+
+	return value;
+}
+
+int cpu_frequency_min() {
+	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
+	const int line = 3;
+
+	string read_value;
+	read_value = open_file(input_value, line);
+	int value = atoi(read_value.c_str());
 
 	return value;
 }
