@@ -12,7 +12,6 @@
 #include <sys/utsname.h>
 #include <cstdlib>
 #include <unistd.h>
-#include <chrono>
 #include <cstring>
 
 using namespace std;
