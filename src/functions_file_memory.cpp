@@ -58,7 +58,7 @@ void mem_megabyte_file() {
 		mem_available = (double)atoi(value_3.c_str()) / 1024;
 		mem_used = mem_max - mem_available;
 
-		cout << "RAM Total/Available/Used:	" << mem_max << "/" << mem_available << "/" << mem_used << " GB" << endl;
+		cout << "RAM Total/Available/Used:	" << mem_max << "/" << mem_available << "/" << mem_used << " MB" << endl;
 	}
 	else {
 		string value_1 = open_file(input_value, line_1);
