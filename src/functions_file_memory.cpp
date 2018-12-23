@@ -18,7 +18,9 @@ void mem_file() {
 	const int line_3 = 3;
 	double mem_max, mem_free, mem_available, mem_used;
 
-	check_available();
+	const string search_file_input = "/proc/meminfo";
+	const string search_file_text = "MemAvailable:";
+	check_file_text(search_file_input, search_file_text);
 
 	if(string_confirmed == 1) {
 		string value_1 = open_file(input_value, line_1);
@@ -48,7 +50,9 @@ void mem_megabyte_file() {
 	const int line_3 = 3;
 	int mem_max, mem_free, mem_available, mem_used;
 
-	check_available();
+	const string search_file_input = "/proc/meminfo";
+	const string search_file_text = "MemAvailable:";
+	check_file_text(search_file_input, search_file_text);
 
 	if(string_confirmed == 1) {
 		string value_1 = open_file(input_value, line_1);

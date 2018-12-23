@@ -11,8 +11,8 @@ using namespace std;
 void command_check_folder_exist() {
 	string user = getenv("USER");
 	char check;
-	ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
-	if(mem_file.good()==false) {
+	ifstream mem_file("/systeminfo-files"); //------------------------/ systeminfo-files is a directory /------------------------
+	if(mem_file.good() == false) {
 		cout << "Not found \"/systeminfo-files\"" << endl;
 		cout << "Create this folder /systeminfo-files? [y/n]... ";
 		cin >> check;
