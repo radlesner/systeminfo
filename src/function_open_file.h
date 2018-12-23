@@ -10,10 +10,14 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <cstdlib>
+#include <string>
 
 using namespace std;
 
 	string open_file(string path_file, int nr_line);
+	void check_available();
+	void find_string_file( string & text, string find_string );
 
 #endif /* FUNCTION_OPEN_FILE_H_ */
