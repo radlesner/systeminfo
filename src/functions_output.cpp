@@ -110,7 +110,8 @@ void output_monitor(int value_1, char** value_2) {
 			if(!strcmp(value_2[2], "-m")) {
 				cpu_file();
 				cores_file();
-				cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl << endl;
+				cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
+				cout << "Uptime:			       " << uptime_file() << endl << endl;
 				output_memory();
 			}
 			else if(!strcmp(value_2[2], "-M")){
