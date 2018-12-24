@@ -5,7 +5,7 @@
  *      Author: krupier
  */
 #include "functions_file_swap.h"
-#include "function_open_file.h"
+#include "functions_file_operations.h"
 
 using namespace std;
 

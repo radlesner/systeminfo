@@ -54,6 +54,7 @@ void command_activate() {
 	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"cpu MHz\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"CPU max\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"CPU min\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency.txt");
+	system("cd /systeminfo-files && cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq >> systeminfo-cpu-frequency.txt");
 }
 
 void command_remove() {

@@ -5,7 +5,7 @@
  *      Author: krupier
  */
 #include "functions_file.h"
-#include "function_open_file.h"
+#include "functions_file_operations.h"
 
 using namespace std;
 
@@ -66,13 +66,29 @@ void cores_file() {
 
 int cpu_frequency() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
-	const int line = 1;
+	const string input_value_cores = "/systeminfo-files/systeminfo-cores.txt";
+	int line = 4;
+	int line_cores = 1;
+	double sum;
 
-	string read_value;
-	read_value = open_file(input_value, line);
-	int value = atoi(read_value.c_str());
+	string value_cores;
+	value_cores = open_file(input_value_cores, line_cores);
+	int value_cores_int = atoi(value_cores.c_str());
 
-	return value;
+	string read_value[128];
+	int value[128];
+	for(int i = 0; i < value_cores_int; i++) {
+		read_value[i] = open_file(input_value, line++);
+		value[i] = atoi(read_value[i].c_str());
+	}
+
+	for(int a = 0; a < value_cores_int; a++) {
+		sum = sum + value[a];
+	}
+
+	sum = sum / value_cores_int / 1000;
+
+	return sum;
 }
 
 int cpu_frequency_max() {
