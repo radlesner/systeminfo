@@ -115,9 +115,8 @@ void output_monitor(int value_1, char** value_2) {
 			if(!strcmp(value_2[2], "-m")) {
 				cpu_file();
 				cores_file();
-				if(distribution_file() != "Raspbian") {
-					if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
-					else						cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
+				if(distribution_file() == "Raspbian") {
+					cout << "CPU Frequency:			N/A" << endl;
 				}
 				else {
 					if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
@@ -129,9 +128,8 @@ void output_monitor(int value_1, char** value_2) {
 			else if(!strcmp(value_2[2], "-M")){
 				cpu_file();
 				cores_file();
-				if(distribution_file() != "Raspbian") {
-					if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
-					else						cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
+				if(distribution_file() == "Raspbian") {
+					cout << "CPU Frequency:			N/A" << endl;
 				}
 				else {
 					if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
