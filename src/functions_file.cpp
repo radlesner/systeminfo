@@ -72,7 +72,7 @@ int cpu_frequency() {
 	int value;
 	read_value = open_file(input_value, line);
 
-	if(read_value == "N/A") return 000;
+	if(read_value == "N/A") return 1;
 
 	value = atoi(read_value.c_str()) / 1000;
 

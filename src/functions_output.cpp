@@ -54,7 +54,8 @@ void output_system() {
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();
 	cores_file();
-	cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
+	if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl << endl;
+	else						cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
 	shell_file();
 }
 
@@ -84,9 +85,12 @@ void output_ssh_info() {
 void output_cpu_only() {
 	cpu_file();
 	cores_file();
-	cout << "Frequency:			" << cpu_frequency() << " MHz" << endl;
-	cout << "Max Frequency:			" << cpu_frequency_max() << " MHz" << endl;
-	cout << "Min Frequency:			" << cpu_frequency_min() << " MHz" << endl;
+	if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
+	else {
+		cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
+		cout << "Max Frequency:			" << cpu_frequency_max() << " MHz" << endl;
+		cout << "Min Frequency:			" << cpu_frequency_min() << " MHz" << endl;
+	}
 }
 
 void output_check_files() {
@@ -110,14 +114,17 @@ void output_monitor(int value_1, char** value_2) {
 			if(!strcmp(value_2[2], "-m")) {
 				cpu_file();
 				cores_file();
-				cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
+				if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl << endl;
+				else						cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
 				cout << "Uptime:			       " << uptime_file() << endl << endl;
 				output_memory();
 			}
 			else if(!strcmp(value_2[2], "-M")){
 				cpu_file();
 				cores_file();
-				cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl << endl;
+				if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl << endl;
+				else						cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
+				cout << "Uptime:			       " << uptime_file() << endl << endl;
 				output_memory_megabyte();
 			}
 			else {
