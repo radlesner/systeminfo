@@ -51,9 +51,8 @@ void command_activate() {
 	// CPU
 	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"name\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cpu.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | cut -d\\: -f2 | tr -d ' '  >> systeminfo-cores.txt");
-	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"cpu MHz\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency.txt");
-	system("cd /systeminfo-files && lscpu | grep -i \"max\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency.txt");
-	system("cd /systeminfo-files && lscpu | grep -i \"min\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency.txt");
+	system("cd /systeminfo-files && lscpu | grep -i \"max\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_max.txt");
+	system("cd /systeminfo-files && lscpu | grep -i \"min\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_min.txt");
 }
 
 void command_remove() {
@@ -67,5 +66,5 @@ void command_remove() {
 	// CPU
 	system("cd /systeminfo-files && rm systeminfo-cpu.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-cores.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-cpu-frequency.txt >> systeminfo-errors.txt");
+	system("cd /systeminfo-files && rm systeminfo-cpu-frequency*.txt >> systeminfo-errors.txt");
 }

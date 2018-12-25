@@ -80,24 +80,22 @@ int cpu_frequency() {
 }
 
 int cpu_frequency_max() {
-	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
-
-	cout << endl << distribution_file() << endl << endl;
+	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency_max.txt";
+	const int line = 1;
 
 	string read_value;
-	if(distribution_file() == "Raspbian")	read_value = open_file(input_value, 1);
-	else									read_value = open_file(input_value, 2);
+	read_value = open_file(input_value, line);
 	int value = atoi(read_value.c_str());
 
 	return value;
 }
 
 int cpu_frequency_min() {
-	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
+	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency_min.txt";
+	const int line = 1;
 
 	string read_value;
-	if(distribution_file() == "Raspbian")	read_value = open_file(input_value, 2);
-	else									read_value = open_file(input_value, 3);
+	read_value = open_file(input_value, line);
 	int value = atoi(read_value.c_str());
 
 	return value;
