@@ -114,7 +114,7 @@ void output_monitor(int value_1, char** value_2) {
 			if(!strcmp(value_2[2], "-m")) {
 				cpu_file();
 				cores_file();
-				if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl << endl;
+				if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
 				else						cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
 				cout << "Uptime:			       " << uptime_file() << endl << endl;
 				output_memory();
@@ -122,7 +122,7 @@ void output_monitor(int value_1, char** value_2) {
 			else if(!strcmp(value_2[2], "-M")){
 				cpu_file();
 				cores_file();
-				if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl << endl;
+				if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
 				else						cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
 				cout << "Uptime:			       " << uptime_file() << endl << endl;
 				output_memory_megabyte();
