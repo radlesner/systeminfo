@@ -65,6 +65,8 @@ void cores_file() {
 }
 
 int cpu_frequency() {
+	if(distribution_file() == "Raspbian") return 1;
+
 	const string input_value = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
 	int line = 1;
 
@@ -81,10 +83,10 @@ int cpu_frequency() {
 
 int cpu_frequency_max() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
-	const int line = 2;
 
 	string read_value;
-	read_value = open_file(input_value, line);
+	if(distribution_file() == "Raspbian")	read_value = open_file(input_value, 1);
+	else									read_value = open_file(input_value, 2);
 	int value = atoi(read_value.c_str());
 
 	return value;
@@ -92,10 +94,10 @@ int cpu_frequency_max() {
 
 int cpu_frequency_min() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
-	const int line = 3;
 
 	string read_value;
-	read_value = open_file(input_value, line);
+	if(distribution_file() == "Raspbian")	read_value = open_file(input_value, 2);
+	else									read_value = open_file(input_value, 3);
 	int value = atoi(read_value.c_str());
 
 	return value;
