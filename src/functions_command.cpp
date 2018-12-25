@@ -39,7 +39,7 @@ void command_check_folder_exist() {
 
 void command_activate() {
 	system("cd /systeminfo-files && uptime -p | cut -d p -f2 >> systeminfo-uptime.txt");
-	system("cd /systeminfo-files && awk {'print $3'} >> systeminfo-distro.txt");
+	system("cd /systeminfo-files && lsb_release -i | awk {'print $3'} >> systeminfo-distro.txt");
 	system("cd /systeminfo-files && echo $USER >> systeminfo-user.txt");
 	system("cd /systeminfo-files && echo $SHELL >> systeminfo-shell.txt");
 	// Memory
