@@ -65,30 +65,15 @@ void cores_file() {
 }
 
 int cpu_frequency() {
-	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
-	const string input_value_cores = "/systeminfo-files/systeminfo-cores.txt";
-	int line = 4;
-	int line_cores = 1;
-	double sum;
+	const string input_value = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
+	int line = 1;
 
-	string value_cores;
-	value_cores = open_file(input_value_cores, line_cores);
-	int value_cores_int = atoi(value_cores.c_str());
+	string read_value;
+	int value;
+	read_value = open_file(input_value, line);
+	value = atoi(read_value.c_str()) / 1000;
 
-	string read_value[128];
-	int value[128];
-	for(int i = 0; i < value_cores_int; i++) {
-		read_value[i] = open_file(input_value, line++);
-		value[i] = atoi(read_value[i].c_str());
-	}
-
-	for(int a = 0; a < value_cores_int; a++) {
-		sum = sum + value[a];
-	}
-
-	sum = sum / value_cores_int / 1000;
-
-	return sum;
+	return value;
 }
 
 int cpu_frequency_max() {

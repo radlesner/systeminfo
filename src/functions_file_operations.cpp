@@ -17,7 +17,7 @@ string open_file(string path_file, int nr_line) {
 	file.open(path_file.c_str(), ios::in);
 
 		if(file.good() == false) {
-			cout << "systeminfo: Not found file in /systeminfo-files" << endl;
+			cout << "N/A" << endl;
 			return 0;
 		}
 
