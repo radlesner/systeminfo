@@ -2,7 +2,7 @@
 // Name        : systeminfo.cpp
 // Author      : Radek Lesner
 // Version     : 0.7.7
-// Copyright   : Your copyright notice
+// Copyright   : GNU General Public License (GPL)
 // Description : systeminfo in C++, Ansi-style
 //============================================================================
 #include <iostream>
