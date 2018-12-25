@@ -9,6 +9,7 @@
 #include <cstring>
 
 #include "functions_output.h"
+#include "functions_output_memory_swap.h"
 #include "functions_command.h"
 
 using namespace std;

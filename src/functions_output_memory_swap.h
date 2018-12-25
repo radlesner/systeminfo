@@ -13,6 +13,7 @@
 
 using namespace std;
 
+	void output_memory();
 	void output_memory_megabyte();
 
 #endif /* FUNCTIONS_OUTPUT_MEMORY_SWAP_H_ */

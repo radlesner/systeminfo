@@ -10,6 +10,12 @@
 
 using namespace std;
 
+void output_memory() {
+	cout.precision(3);
+	mem_file();
+	swap_file();
+}
+
 void output_memory_megabyte() {
 	mem_megabyte_file();
 	swap_megabyte_file();

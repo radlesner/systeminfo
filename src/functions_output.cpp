@@ -59,12 +59,6 @@ void output_system() {
 	shell_file();
 }
 
-void output_memory() {
-	cout.precision(3);
-	mem_file();
-	swap_file();
-}
-
 void output_ssh_info() {
 	string shell;
 	shell = getenv ("SHELL");

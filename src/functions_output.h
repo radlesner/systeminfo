@@ -18,8 +18,6 @@ using namespace std;
 
 	void output_all();
 	void output_system();
-	void output_memory();
-	void output_memory_megabyte();
 	void output_ssh_info();
 	void output_cpu_only();
 	void output_help();
