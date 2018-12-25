@@ -65,8 +65,6 @@ void cores_file() {
 }
 
 int cpu_frequency() {
-	if(distribution_file() == "Raspbian") return 1;
-
 	const string input_value = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
 	int line = 1;
 
@@ -83,6 +81,8 @@ int cpu_frequency() {
 
 int cpu_frequency_max() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency.txt";
+
+	cout << endl << distribution_file() << endl << endl;
 
 	string read_value;
 	if(distribution_file() == "Raspbian")	read_value = open_file(input_value, 1);

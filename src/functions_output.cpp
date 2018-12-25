@@ -85,6 +85,12 @@ void output_ssh_info() {
 void output_cpu_only() {
 	cpu_file();
 	cores_file();
+	if(distribution_file() == "Raspbian") {
+		cout << "CPU Frequency:			N/A" << endl;
+		cout << "Max Frequency:			" << cpu_frequency_max() << " MHz" << endl;
+		cout << "Min Frequency:			" << cpu_frequency_min() << " MHz" << endl;
+		return;
+	}
 	if(cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
 	else {
 		cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
