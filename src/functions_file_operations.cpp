@@ -17,8 +17,7 @@ string open_file(string path_file, int nr_line) {
 	file.open(path_file.c_str(), ios::in);
 
 		if(file.good() == false) {
-			cout << "N/A" << endl;
-			return 0;
+			return "N/A";
 		}
 
 		for(int i = 0; i < nr_line; i++)
