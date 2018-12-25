@@ -65,7 +65,8 @@ void cores_file() {
 }
 
 int cpu_frequency() {
-	if(distribution_file() == "Raspbian") return 1;
+	string distro = distribution_file();
+	if(distro == "Raspbian") return 1;
 
 	const string input_value = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
 	int line = 1;
