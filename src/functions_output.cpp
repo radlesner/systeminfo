@@ -25,7 +25,7 @@ void output_all() {
 		}
 
 	cout << "OS Name:			" << buffer.sysname << endl;
-	cout << "Distribution:			" << distribution_file() << endl;
+	cout << "Distribution:			" << distribution_file() << " " << release_system() << endl;
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();
@@ -50,6 +50,7 @@ void output_system() {
 
 	cout << "OS Name:			" << buffer.sysname << endl;
 	cout << "Distribution:			" << distribution_file() << endl;
+	cout << "Release:			" << release_system() << endl;
 	cout << "Kernel version:			" << buffer.release << endl;
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();

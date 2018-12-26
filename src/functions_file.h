@@ -16,6 +16,7 @@ using namespace std;
 
 	string uptime_file();
 	string distribution_file();
+	string release_system();
 	void cpu_file();
 	void freq_check_system(string distro);
 	int cpu_frequency();

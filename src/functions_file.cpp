@@ -19,6 +19,16 @@ string distribution_file() {
 	return value;
 }
 
+string release_system() {
+	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const int line = 2;
+
+	string value;
+	value = open_file(input_value, line);
+
+	return value;
+}
+
 void cpu_file() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu.txt";
 	const int line = 1;
