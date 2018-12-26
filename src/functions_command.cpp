@@ -51,7 +51,8 @@ void command_activate() {
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapFree: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
 	// CPU
-	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"name\" --max-count=1 | cut -d\\: -f2 >> systeminfo-cpu.txt");
+	system("cd /systeminfo-files && cat /proc/cpuinfo | grep \"name\" --max-count=1 | awk {'print $4 \" \" $5 \" \" $6 \" \" $7 \" \" $8 \" \" $9 \" \" $10\
+			\" \" $11 \" \" $12 \" \" $13 \" \" $14 \" \" $15 \" \" $16 \" \" $17 \" \" $18 \" \" $19 \" \" $20'} >> systeminfo-cpu.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | cut -d\\: -f2 | tr -d ' '  >> systeminfo-cores.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"max\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_max.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"min\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_min.txt");

@@ -36,13 +36,7 @@ void cpu_file() {
 	string value;
 	value = open_file(input_value, line);
 
-	int length = value.length();
-
-	cout << "CPU:				";
-	for(int i = 1; i < length; i++) {
-		cout << value[i];
-	}
-	cout << endl;
+	cout << "CPU:				" << value << endl;
 }
 
 void shell_file() {
