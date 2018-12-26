@@ -125,15 +125,3 @@ string uptime_file() {
 
 	return value;
 }
-
-string ssh() {
-	const string input_value = "/systeminfo-files/systeminfo-ssh.txt";
-	int line = 1;
-
-	string value, value_2;
-	value = open_file(input_value, line);
-
-	if(value == "active(running)")	return "Enabled";
-	if(value == "inactive(dead)")	return "Disabled";
-	else							return "N/A";
-}

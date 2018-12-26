@@ -43,13 +43,6 @@ void command_activate() {
 	system("cd /systeminfo-files && lsb_release -i | awk {'print $3'} >> systeminfo-distro.txt");
 	system("cd /systeminfo-files && echo $USER >> systeminfo-user.txt");
 	system("cd /systeminfo-files && echo $SHELL >> systeminfo-shell.txt");
-	//SSH
-	if(distribution_file() == "Raspbian")
-		system("cd /systeminfo-files && service ssh status | grep \"Active\" | awk {'print $2 $3'} >> systeminfo-ssh.txt");
-	else if(distribution_file() == "Fedora" || distribution_file() == "CentOS")
-		system("cd /systeminfo-files && service sshd status | grep \"Active\" | awk {'print $2 $3'} >> systeminfo-ssh.txt");
-	else if(distribution_file() == "Ubuntu" || distribution_file() == "Mint" || distribution_file() == "Debian" || distribution_file() == "Deppin")
-		system("cd /systeminfo-files && service sshd status | grep \"Active\" | awk {'print $2 $3'} >> systeminfo-ssh.txt");
 	// Memory
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemFree: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
@@ -68,7 +61,6 @@ void command_remove() {
 	system("cd /systeminfo-files && rm systeminfo-distro.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-shell.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-user.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-ssh.txt >> systeminfo-errors.txt");
 	// Memory
 	system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
 	system("cd /systeminfo-files && rm systeminfo-swap.txt >> systeminfo-errors.txt");

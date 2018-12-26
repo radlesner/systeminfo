@@ -72,7 +72,6 @@ void output_ssh_info() {
 	cout << "Hostname:			" << buffer.nodename << endl;
 	cout << "Logged user:			" << user_file() << endl << endl;
 
-	cout << "SSH Status: 			" << ssh() << endl;
 	cout << "SSH Command:			" << user_file() << "@" << buffer.nodename << ".local" << endl;
 }
 
@@ -140,7 +139,7 @@ void output_help() {
 	cout << "	-m	--memory		Memory information in gigabyte form" << endl;
 	cout << "	-M	--memory-megabyte	Memory information in megabyte form" << endl;
 	cout << "	-s	--system		System and hardware information" << endl;
-	cout << "	-h	--ssh			SSH information !EXPERIMENTAL!" << endl;
+	cout << "	-h	--ssh			SSH information" << endl;
 	cout << "	-c	--cpu			CPU information" << endl;
 	cout << "	-l	--logo			Show the logo" << endl;
 	cout << "	-t	--monitor		real-time monitoring" << endl;
