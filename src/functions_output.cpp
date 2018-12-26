@@ -72,6 +72,7 @@ void output_ssh_info() {
 	cout << "Hostname:			" << buffer.nodename << endl;
 	cout << "Logged user:			" << user_file() << endl << endl;
 
+	cout << "SSH Status: 			" << ssh() << endl;
 	cout << "SSH Command:			" << user_file() << "@" << buffer.nodename << ".local" << endl;
 }
 

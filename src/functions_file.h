@@ -24,5 +24,6 @@ using namespace std;
 	void cores_file();
 	void shell_file();
 	string user_file();
+	string ssh();
 
 #endif /* FUNCTIONS_FILE_H_ */
