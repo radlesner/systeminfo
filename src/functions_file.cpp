@@ -64,6 +64,11 @@ void cores_file() {
 		cout << "Cores:		  		" << value << " cores" << endl;
 }
 
+void freq_check_system(string distro) {
+	if(distro == "Raspbian" || cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
+	else cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
+}
+
 int cpu_frequency() {
 	const string input_value = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
 	int line = 1;
