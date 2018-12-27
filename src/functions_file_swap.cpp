@@ -22,7 +22,8 @@ void swap_file() {
 	swap_free	= (double)atoi(value_2.c_str())	/ 1024 / 1000;
 	swap_used	= swap_total - swap_free;
 
-	cout << "Swap Total/Free/Used:		" << swap_total << "/" << swap_free << "/" << swap_used << " GB" << endl;
+	if(swap_total < 0)	cout << "Swap Total/Free/Used:		" << swap_total * 1000 << "/" << swap_free * 1000 << "/" << swap_used * 1000 << " MB" << endl;
+	else			cout << "Swap Total/Free/Used:		" << swap_total << "/" << swap_free << "/" << swap_used << " GB" << endl;
 }
 
 void swap_megabyte_file() {
