@@ -30,10 +30,7 @@ void mem_file() {
 		mem_available = (double)atoi(value_3.c_str()) / 1024 / 1000;
 		mem_used = mem_max - mem_available;
 
-		if(mem_max < 1) {
-			cout.precision(0);
-			cout << "RAM Total/Available/Used:	" << mem_max * 1000 << "/" << mem_available * 1000 << "/" << mem_used * 1000 << " MB" << endl;
-		}
+		if(mem_max < 1) mem_megabyte_file();
 		else {
 			cout.precision(3);
 			cout << "RAM Total/Available/Used:	" << mem_max << "/" << mem_available << "/" << mem_used << " GB" << endl;
