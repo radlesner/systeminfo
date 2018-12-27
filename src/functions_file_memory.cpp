@@ -46,10 +46,7 @@ void mem_file() {
 		mem_max		= (double)atoi(value_1.c_str()) / 1024 / 1000;
 		mem_free	= (double)atoi(value_2.c_str()) / 1024 / 1000;
 
-		if(mem_max < 1)	{
-			cout.precision(0);
-			cout << "RAM Total/Free:			" << mem_max * 1000 << "/" << mem_free * 1000 << " GB" << endl;
-		}
+		if(mem_max < 1)	mem_megabyte_file();
 		else {
 			cout.precision(3);
 			cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << " GB" << endl;
