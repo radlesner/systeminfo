@@ -39,35 +39,9 @@ void command_check_folder_exist() {
 }
 
 void command_activate() {
-	system("cd /systeminfo-files && uptime -p | cut -d p -f2 >> systeminfo-uptime.txt");
-	system("cd /systeminfo-files && lsb_release -i | awk {'print $3'} >> systeminfo-distro.txt");
-	system("cd /systeminfo-files && lsb_release -r | awk {'print $2'} >> systeminfo-distro.txt");
-	system("cd /systeminfo-files && echo $USER >> systeminfo-user.txt");
-	system("cd /systeminfo-files && echo $SHELL >> systeminfo-shell.txt");
-	// Memory
-	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
-	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemFree: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-mem.txt");
-	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemAvailable:\" --max-count=1 | awk {'print $2'} >> systeminfo-mem.txt");
-	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapTotal: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
-	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapFree: \" --max-count=1 | cut -d\\: -f2 | tr -d ' ' | tr -d 'kB' >> systeminfo-swap.txt");
-	// CPU
-	system("cd /systeminfo-files && cat /proc/cpuinfo | grep \"name\" --max-count=1 | awk {'print $4 \" \" $5 \" \" $6 \" \" $7 \" \" $8 \" \" $9 \" \" $10\
-			\" \" $11 \" \" $12 \" \" $13 \" \" $14 \" \" $15 \" \" $16 \" \" $17 \" \" $18 \" \" $19 \" \" $20'} >> systeminfo-cpu.txt");
-	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | cut -d\\: -f2 | tr -d ' '  >> systeminfo-cores.txt");
-	system("cd /systeminfo-files && lscpu | grep -i \"max\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_max.txt");
-	system("cd /systeminfo-files && lscpu | grep -i \"min\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_min.txt");
+	system("./systeminfo-command.sh -a");
 }
 
 void command_remove() {
-	system("cd /systeminfo-files && rm systeminfo-uptime.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-distro.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-shell.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-user.txt >> systeminfo-errors.txt");
-	// Memory
-	system("cd /systeminfo-files && rm systeminfo-mem.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-swap.txt >> systeminfo-errors.txt");
-	// CPU
-	system("cd /systeminfo-files && rm systeminfo-cpu.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-cores.txt >> systeminfo-errors.txt");
-	system("cd /systeminfo-files && rm systeminfo-cpu-frequency*.txt >> systeminfo-errors.txt");
+	system("./systeminfo-command.sh -d");
 }
