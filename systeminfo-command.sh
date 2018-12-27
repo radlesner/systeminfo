@@ -1,6 +1,6 @@
 #/bin/sh
 
-if [ "-a" == $1 ]; then
+if "-a" == $1 ; then
 	cd /systeminfo-files && uptime -p | cut -d p -f2 >> systeminfo-uptime.txt
 	cd /systeminfo-files && lsb_release -i | awk {'print $3'} >> systeminfo-distro.txt
 	cd /systeminfo-files && lsb_release -r | awk {'print $2'} >> systeminfo-distro.txt
@@ -17,7 +17,7 @@ if [ "-a" == $1 ]; then
 	cd /systeminfo-files && lscpu | grep -i "CPU(s):" --max-count=1 | cut -d\: -f2 | tr -d ' '  >> systeminfo-cores.txt
 	cd /systeminfo-files && lscpu | grep -i "max" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_max.txt
 	cd /systeminfo-files && lscpu | grep -i "min" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_min.txt
-elif [ "-d" == $1 ]; then
+elif "-d" == $1 ; then
 	cd /systeminfo-files && rm systeminfo-uptime.txt >> systeminfo-errors.txt
 	cd /systeminfo-files && rm systeminfo-distro.txt >> systeminfo-errors.txt
 	cd /systeminfo-files && rm systeminfo-shell.txt >> systeminfo-errors.txt
