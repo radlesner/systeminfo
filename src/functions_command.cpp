@@ -43,5 +43,5 @@ void command_activate() {
 }
 
 void command_remove() {
-	system("./usr/bin/systeminfo-command-deactivate.sh -d");
+	system("./usr/bin/systeminfo-command-deactivate.sh");
 }
