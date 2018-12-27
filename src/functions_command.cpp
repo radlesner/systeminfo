@@ -39,9 +39,9 @@ void command_check_folder_exist() {
 }
 
 void command_activate() {
-	system("./systeminfo-command-activate.sh");
+	system("./usr/bin/systeminfo-command-activate.sh");
 }
 
 void command_remove() {
-	system("./systeminfo-command-deactivate.sh -d");
+	system("./usr/bin/systeminfo-command-deactivate.sh -d");
 }
