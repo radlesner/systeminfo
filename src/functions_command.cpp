@@ -51,7 +51,7 @@ void command_activate() {
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapTotal: \" --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-swap.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapFree: \" --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-swap.txt");
 
-	system("cd /systeminfo-files && lscpu | grep \"Model name:\" --max-count=1 | awk '{for (i=3; i<NF; i++) printf $i \" \"; print $NF}' >> systeminfo-cpu.txt");
+	system("cd /systeminfo-files && cat /proc/cpuinfo | grep \"model name:\" --max-count=1 | awk '{for (i=4; i<NF; i++) printf $i \" \"; print $NF}' >> systeminfo-cpu.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | awk {'print $2'}  >> systeminfo-cores.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"max\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_max.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"min\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_min.txt");
