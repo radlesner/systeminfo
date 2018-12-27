@@ -34,7 +34,7 @@ void output_all() {
 	shell_file();
 	cout << "Logged user:			" << user_file() << endl;
 	cout << "Hostname:			" << buffer.nodename << endl;
-	cout << "Uptime:			       " << uptime_file() << endl;
+	cout << "Uptime:				" << uptime_file() << endl;
 }
 
 void output_system() {
@@ -106,14 +106,14 @@ void output_monitor(int value_1, char** value_2) {
 				cpu_file();
 				cores_file();
 				freq_check_system(distribution_file());
-				cout << "Uptime:			       " << uptime_file() << endl << endl;
+				cout << "Uptime:				" << uptime_file() << endl << endl;
 				output_memory();
 			}
 			else if(!strcmp(value_2[2], "-M")){
 				cpu_file();
 				cores_file();
 				freq_check_system(distribution_file());
-				cout << "Uptime:			       " << uptime_file() << endl << endl;
+				cout << "Uptime:				" << uptime_file() << endl << endl;
 				output_memory_megabyte();
 			}
 			else {
