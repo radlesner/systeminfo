@@ -30,7 +30,8 @@ void mem_file() {
 		mem_available = (double)atoi(value_3.c_str()) / 1024 / 1000;
 		mem_used = mem_max - mem_available;
 
-		if(mem_max < 1)	cout << "RAM Total/Available/Used:	" << mem_max * 1000 << "/" << mem_available * 1000 << "/" << mem_used * 1000 << " MB" << endl;
+		if(mem_max < 1)
+			cout << "RAM Total/Available/Used:	" << (int)mem_max * 1000 << "/" << (int)mem_available * 1000 << "/" << (int)mem_used * 1000 << " MB" << endl;
 		else 			cout << "RAM Total/Available/Used:	" << mem_max << "/" << mem_available << "/" << mem_used << " GB" << endl;
 	}
 	else {
@@ -40,7 +41,7 @@ void mem_file() {
 		mem_max		= (double)atoi(value_1.c_str()) / 1024 / 1000;
 		mem_free	= (double)atoi(value_2.c_str()) / 1024 / 1000;
 
-		if(mem_max < 1)	cout << "RAM Total/Free:			" << mem_max * 1000 << "/" << mem_free * 1000 << " GB" << endl;
+		if(mem_max < 1)	cout << "RAM Total/Free:			" << (int)mem_max * 1000 << "/" << (int)mem_free * 1000 << " GB" << endl;
 		else 			cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << " GB" << endl;
 	}
 }
