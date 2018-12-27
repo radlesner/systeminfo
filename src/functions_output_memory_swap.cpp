@@ -11,7 +11,6 @@
 using namespace std;
 
 void output_memory() {
-	cout.precision(3);
 	mem_file();
 	swap_file();
 }
