@@ -15,7 +15,7 @@ apps:
 parts:
   dosbox:
     plugin: autotools
-    source-type: tar
+    source-type: git
     source: https://github.com/CasinoRoyaleKrupier/systeminfo.git
     build-packages:
       - g++
