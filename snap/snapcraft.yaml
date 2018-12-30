@@ -13,7 +13,7 @@ apps:
     command: systeminfo
 
 parts:
-  dosbox:
+  systeminfo:
     plugin: autotools
     source-type: git
     source: https://github.com/CasinoRoyaleKrupier/systeminfo.git
