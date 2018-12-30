@@ -4,165 +4,128 @@
  *  Created on: Nov 21, 2018
  *      Author: krupier
  */
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <sys/utsname.h>
-#include <sstream>
-#include <math.h>
-#include <stdio.h>
-#include <cstring>
-
-#include "functions_output.h"
 #include "functions_file.h"
+#include "functions_file_operations.h"
 
 using namespace std;
 
-void distribution_file() {
-	string distro_line;
-		int distro_nr_line=1;
+string distribution_file() {
+	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const int line = 1;
 
-		string distro;
+	string value;
+	value = open_file(input_value, line);
 
-		ifstream distro_file("/systeminfo-files/systeminfo-distro.txt");
+	return value;
+}
 
-		if(distro_file.good()==false)
-			cout << "Error 002: Not found file \"systeminfo-distro.txt\"" << endl;
+string release_system() {
+	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const int line = 2;
 
-		while (getline(distro_file, distro_line)) {
-			switch (distro_nr_line) {
-				case 1: distro=distro_line; break;
-			}
-			distro_nr_line++;
-		}
+	string value;
+	value = open_file(input_value, line);
 
-		distro_file.close();
-
-		cout << "Distribution:		" << distro << endl;
+	return value;
 }
 
 void cpu_file() {
-	string cpu_line;
-		int cpu_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-cpu.txt";
+	const int line = 1;
 
-		string cpu;
+	string value;
+	value = open_file(input_value, line);
 
-		ifstream cpu_file("/systeminfo-files/systeminfo-cpu.txt");
-
-		if(cpu_file.good()==false)
-			cout << "Error 003: Not found file \"systeminfo-cpu.txt\"" << endl;
-
-		while (getline(cpu_file, cpu_line)) {
-			switch (cpu_nr_line) {
-				case 1: cpu=cpu_line; break;
-			}
-			cpu_nr_line++;
-		}
-
-		cpu_file.close();
-
-		cout << "CPU:	    		       " << cpu << endl;
+	cout << "CPU:				" << value << endl;
 }
 
 void shell_file() {
-	string shell_line;
-		int shell_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-shell.txt";
+	const int line = 1;
 
-		string shell_name;
+	string value;
+	value = open_file(input_value, line);
 
-		ifstream shell_file("/systeminfo-files/systeminfo-shell.txt");
-
-		if(shell_file.good()==false)
-			cout << "Error 004: Not found file \"systeminfo-shell.txt\"" << endl;
-
-		while (getline(shell_file, shell_line)) {
-			switch (shell_nr_line) {
-				case 1: shell_name=shell_line; break;
-			}
-			shell_nr_line++;
-		}
-
-		shell_file.close();
-
-		if(shell_name == "/bin/zsh")		cout << "Shell:				Z-Shell (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/bash")	cout << "Shell:				Bash (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/sh")	cout << "Shell:				Sh (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/dash")	cout << "Shell:				Dash (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/ksh")	cout << "Shell:				Ksh (" << shell_name << ")" << endl;
-		else if(shell_name == "/bin/rsh")	cout << "Shell:				Rsh (" << shell_name << ")" << endl;
-		else								cout << "Shell:				" << shell_name << endl;
+		if(value == "/bin/zsh" || value == "/usr/bin/zsh")			cout << "Shell:				Z-Shell (" << value << ")" << endl;
+		else if(value == "/bin/bash" || value == "/usr/bin/bash")	cout << "Shell:				Bash (" << value << ")" << endl;
+		else if(value == "/bin/sh" || value == "/usr/bin/sh")		cout << "Shell:				Sh (" << value << ")" << endl;
+		else if(value == "/bin/dash" || value == "/usr/bin/dash")	cout << "Shell:				Dash (" << value << ")" << endl;
+		else if(value == "/bin/ksh" || value == "/usr/bin/ksh")		cout << "Shell:				Ksh (" << value << ")" << endl;
+		else if(value == "/bin/rsh" || value == "/usr/bin/rsh")		cout << "Shell:				Rsh (" << value << ")" << endl;
+		else							cout << "Shell:				" << value << endl;
 }
 
 void cores_file() {
-	string cores_line;
-		int cores_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-cores.txt";
+	const int line = 1;
 
-		int cores_int;
-		string cores;
+	string value;
+	value = open_file(input_value, line);
 
-		ifstream cores_file("/systeminfo-files/systeminfo-cores.txt");
-
-		if(cores_file.good()==false)
-			cout << "Error 005: Not found file \"systeminfo-cores.txt\"" << endl;
-
-		while (getline(cores_file, cores_line)) {
-			switch (cores_nr_line) {
-				case 1: cores=cores_line; break;
-			}
-			cores_nr_line++;
-		}
-
-		cores_file.close();
-
-		istringstream corecpu(cores);
-		corecpu >> cores_int;
-
-		if(cores_int == 1)
-			cout << "Cores:		  		" << cores_int << " core" << endl;
-		else
-			cout << "Cores:		  		" << cores_int << " cores" << endl;
+	if(value == "1")
+		cout << "Cores:		  		" << value << " core" << endl;
+	else
+		cout << "Cores:		  		" << value << " cores" << endl;
 }
 
-void user_file() {
-	string user_line;
-	int user_nr_line = 1;
-
-	string user;
-
-	fstream user_file("/systeminfo-files/systeminfo-user.txt");
-
-	if(user_file.good() == false)
-		cout << "Error 010: Not found file \"systeminfo-user.txt\"" << endl;
-
-	while (getline(user_file, user_line)) {
-		switch (user_nr_line) {
-		case 1: user = user_line; break;
-		}
-	user_nr_line++;
-	}
-	user_file.close();
-	cout << "Logged user:			" << user << endl;
+void freq_check_system(string distro) {
+	if(distro == "Raspbian" || cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
+	else cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
 }
 
-void uptime_file() {
-	string uptime_line;
-		int uptime_nr_line=1;
+int cpu_frequency() {
+	const string input_value = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
+	int line = 1;
 
-		string uptime;
+	string read_value;
+	int value;
+	read_value = open_file(input_value, line);
 
-		ifstream uptime_file("/systeminfo-files/systeminfo-uptime.txt");
+	if(read_value == "N/A") return 1;
 
-		if(uptime_file.good()==false)
-			cout << "Error 001: Not found file \"systeminfo-uptime.txt\"" << endl;
+	value = atoi(read_value.c_str()) / 1000;
 
-		while (getline(uptime_file, uptime_line)) {
-			switch (uptime_nr_line) {
-				case 1: uptime=uptime_line; break;
-			}
-			uptime_nr_line++;
-		}
+	return value;
+}
 
-		uptime_file.close();
+int cpu_frequency_max() {
+	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency_max.txt";
+	const int line = 1;
 
-		cout << "Uptime:			       " << uptime << endl;
+	string read_value;
+	read_value = open_file(input_value, line);
+	int value = atoi(read_value.c_str());
+
+	return value;
+}
+
+int cpu_frequency_min() {
+	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency_min.txt";
+	const int line = 1;
+
+	string read_value;
+	read_value = open_file(input_value, line);
+	int value = atoi(read_value.c_str());
+
+	return value;
+}
+
+string user_file() {
+	const string input_value = "/systeminfo-files/systeminfo-user.txt";
+	const int line = 1;
+
+	string value;
+	value = open_file(input_value, line);
+
+	return value;
+}
+
+string uptime_file() {
+	const string input_value = "/systeminfo-files/systeminfo-uptime.txt";
+	const int line = 1;
+
+	string value;
+	value = open_file(input_value, line);
+
+	return value;
 }

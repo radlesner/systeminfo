@@ -11,11 +11,6 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include <sys/utsname.h>
-#include <sstream>
-#include <math.h>
-#include <stdio.h>
-#include <cstring>
 
 using namespace std;
 

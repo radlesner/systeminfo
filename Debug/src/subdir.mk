@@ -7,6 +7,7 @@ CPP_SRCS += \
 ../src/functions_command.cpp \
 ../src/functions_file.cpp \
 ../src/functions_file_memory.cpp \
+../src/functions_file_operations.cpp \
 ../src/functions_file_swap.cpp \
 ../src/functions_output.cpp \
 ../src/functions_output_memory_swap.cpp \
@@ -16,6 +17,7 @@ OBJS += \
 ./src/functions_command.o \
 ./src/functions_file.o \
 ./src/functions_file_memory.o \
+./src/functions_file_operations.o \
 ./src/functions_file_swap.o \
 ./src/functions_output.o \
 ./src/functions_output_memory_swap.o \
@@ -25,6 +27,7 @@ CPP_DEPS += \
 ./src/functions_command.d \
 ./src/functions_file.d \
 ./src/functions_file_memory.d \
+./src/functions_file_operations.d \
 ./src/functions_file_swap.d \
 ./src/functions_output.d \
 ./src/functions_output_memory_swap.d \

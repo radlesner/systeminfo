@@ -4,94 +4,81 @@
  *  Created on: Nov 25, 2018
  *      Author: krupier
  */
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <sys/utsname.h>
-#include <sstream>
-#include <math.h>
-#include <stdio.h>
-#include <cstring>
-
-#include "functions_output.h"
-#include "functions_file.h"
-#include "functions_output_memory_swap.h"
+#include "functions_file_memory.h"
+#include "functions_file_operations.h"
 
 using namespace std;
 
+int string_confirmed;
+
 void mem_file() {
-	string mem_line;
-	int mem_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-mem.txt";
+	const int line_1 = 1;
+	const int line_2 = 2;
+	const int line_3 = 3;
+	double mem_max, mem_free, mem_available, mem_used;
 
-	double mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used;
-	string mem_max_string, mem_available_string;
+	const string search_file_input = "/proc/meminfo";
+	const string search_file_text = "MemAvailable:";
+	check_file_text(search_file_input, search_file_text);
 
-	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
+	if(string_confirmed == 1) {
+		string value_1 = open_file(input_value, line_1);
+		string value_3 = open_file(input_value, line_3);
 
-	if(mem_file.good()==false)
-		cout << "Error 006: Not found file \"systeminfo-mem.txt\"" << endl;
+		mem_max		= (double)atoi(value_1.c_str()) / 1024 / 1000;
+		mem_available = (double)atoi(value_3.c_str()) / 1024 / 1000;
+		mem_used = mem_max - mem_available;
 
-	while (getline(mem_file, mem_line)) {
-		switch (mem_nr_line) {
-			case 1: mem_max_string=mem_line; break;
-			case 2: mem_available_string=mem_line; break;
+		if(mem_max < 1) mem_megabyte_file();
+		else {
+			cout.precision(3);
+			cout << "RAM Total/Available/Used:	" << mem_max << "/" << mem_available << "/" << mem_used << " GB" << endl;
 		}
-		mem_nr_line++;
 	}
+	else {
+		string value_1 = open_file(input_value, line_1);
+		string value_2 = open_file(input_value, line_2);
 
-	mem_file.close();
+		mem_max		= (double)atoi(value_1.c_str()) / 1024 / 1000;
+		mem_free	= (double)atoi(value_2.c_str()) / 1024 / 1000;
 
-	istringstream memmax(mem_max_string);
-	memmax >> mem_max_conventer;
-
-	mem_max = mem_max_conventer / 1024 / 1024;
-
-
-	istringstream memavailable(mem_available_string);
-	memavailable >> mem_available_conventer;
-
-	mem_available = mem_available_conventer / 1024 / 1024;
-
-	mem_used = mem_max - mem_available;
-
-	cout << "RAM Total/Available/Used:	" << mem_max << " GB/" << mem_available << " GB/" << mem_used << " GB" << endl;
+		if(mem_max < 1)	mem_megabyte_file();
+		else {
+			cout.precision(3);
+			cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << " GB" << endl;
+		}
+	}
 }
 
 void mem_megabyte_file() {
-	string mem_line;
-	int mem_nr_line=1;
+	const string input_value = "/systeminfo-files/systeminfo-mem.txt";
+	const int line_1 = 1;
+	const int line_2 = 2;
+	const int line_3 = 3;
+	int mem_max, mem_free, mem_available, mem_used;
 
-	int mem_max_conventer, mem_max, mem_available_conventer, mem_available, mem_used;
-	string mem_max_string, mem_available_string;
+	const string search_file_input = "/proc/meminfo";
+	const string search_file_text = "MemAvailable:";
+	check_file_text(search_file_input, search_file_text);
 
-	ifstream mem_file("/systeminfo-files/systeminfo-mem.txt");
+	if(string_confirmed == 1) {
+		string value_1 = open_file(input_value, line_1);
+		string value_3 = open_file(input_value, line_3);
 
-	if(mem_file.good()==false)
-		cout << "Error 006: Not found file \"systeminfo-mem.txt\"" << endl;
+		mem_max		= (double)atoi(value_1.c_str()) / 1024;
+		mem_available = (double)atoi(value_3.c_str()) / 1024;
+		mem_used = mem_max - mem_available;
 
-	while (getline(mem_file, mem_line)) {
-		switch (mem_nr_line) {
-			case 1: mem_max_string=mem_line; break;
-			case 2: mem_available_string=mem_line; break;
-		}
-		mem_nr_line++;
+		cout << "RAM Total/Available/Used:	" << mem_max << "/" << mem_available << "/" << mem_used << " MB" << endl;
 	}
+	else {
+		string value_1 = open_file(input_value, line_1);
+		string value_2 = open_file(input_value, line_2);
 
-	mem_file.close();
+		mem_max		= atoi(value_1.c_str()) / 1024;
+		mem_free	= atoi(value_2.c_str()) / 1024;
 
-	istringstream memmax(mem_max_string);
-	memmax >> mem_max_conventer;
-
-	mem_max = mem_max_conventer / 1024;
-
-
-	istringstream memavailable(mem_available_string);
-	memavailable >> mem_available_conventer;
-
-	mem_available = mem_available_conventer / 1024;
-
-	mem_used = mem_max - mem_available;
-
-	cout << "RAM Total/Available/Used:	" << mem_max << " MB/" << mem_available << " MB/" << mem_used << " MB" << endl;
+		cout << "RAM Total/Free:			" << mem_max << "/" << mem_free << " MB" << endl;
+	}
 }
-

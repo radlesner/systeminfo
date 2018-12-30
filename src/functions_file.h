@@ -11,19 +11,20 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include <sys/utsname.h>
-#include <sstream>
-#include <math.h>
-#include <stdio.h>
-#include <cstring>
 
 using namespace std;
 
-	void uptime_file();
-	void distribution_file();
+	string uptime_file();
+	string distribution_file();
+	string release_system();
 	void cpu_file();
-	void shell_file();
+	void freq_check_system(string distro);
+	int cpu_frequency();
+	int cpu_frequency_max();
+	int cpu_frequency_min();
 	void cores_file();
-	void user_file();
+	void shell_file();
+	string user_file();
+	string ssh();
 
 #endif /* FUNCTIONS_FILE_H_ */
