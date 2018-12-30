@@ -17,6 +17,8 @@ parts:
     plugin: autotools
     source-type: git
     source: https://github.com/CasinoRoyaleKrupier/systeminfo.git
+    override-build: |
+      echo $PWD
     build-packages:
       - g++
       - make
