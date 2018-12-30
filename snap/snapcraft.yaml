@@ -1,0 +1,22 @@
+name: systeminfo # you probably want to 'snapcraft register <name>'
+base: core18 # the base snap is the execution environment for this snap
+version: '0.8' # just for humans, typically '1.2+git' or '1.3.2'
+summary: Simple program showing system information in C++ # 79 char long summary
+description: |
+  A program that displays basic information about the system and resources
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+  systeminfo:
+    command: systeminfo
+
+parts:
+  dosbox:
+    plugin: autotools
+    source-type: git
+    source: https://github.com/CasinoRoyaleKrupier/systeminfo.git
+    build-packages:
+      - g++
+      - make
