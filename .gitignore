@@ -1,6 +1,8 @@
 <<<<<<< HEAD
-install.sh
-only-copy-systeminfo.sh
+Debug/systeminfo
+/Debug/
+Binary/systeminfo
+copy-to-usr-bin.sh
 =======
 Debug/systeminfo
 /Debug/
