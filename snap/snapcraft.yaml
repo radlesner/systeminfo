@@ -14,11 +14,11 @@ apps:
 
 parts:
   systeminfo:
-    plugin: autotools
+    plugin: make
     source-type: git
-    source: https://github.com/CasinoRoyaleKrupier/systeminfo.git
+    source: ../src/
     override-build: |
-      echo $PWD
+      cd ../Debug && make clean && make
     build-packages:
       - g++
       - make
