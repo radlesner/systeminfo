@@ -50,11 +50,15 @@ void architecture() {
 	string value;
 	value = open_file(input_value, line);
 
-	if(value == "x86_64" || value == "x64" || value == "amd64")		cout << "System architecture:		" << bit64 << " (" << value << ")" << endl;
-	else if(value == "x86" || value == "x86abi" || value == "i386")	cout << "System architecture:		" << bit32 << " (" << value << ")" << endl;
-	else if(value == "armv7l" || value == "armeabi")				cout << "System architecture:		" << arm32 << " (" << value << ")" << endl;
-	else if(value == "arm64")										cout << "System architecture:		" << arm64 << " (" << value << ")" << endl;
-	else															cout << "System architecture:		" << value << endl;
+	if(value == "x86_64" || value == "x64" || value == "amd64")
+		cout << "System architecture:		" << bit64 << " (" << value << ")" << endl;
+	else if(value == "x86" || value == "x86_32" || value == "x86abi" || value == "i386" || value == "i586")
+		cout << "System architecture:		" << bit32 << " (" << value << ")" << endl;
+	else if(value == "armv7l" || value == "armeabi")
+		cout << "System architecture:		" << arm32 << " (" << value << ")" << endl;
+	else if(value == "arm64")
+		cout << "System architecture:		" << arm64 << " (" << value << ")" << endl;
+	else cout << "System architecture:		" << value << endl;
 }
 
 void shell_file() {
