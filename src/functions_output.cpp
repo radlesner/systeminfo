@@ -27,7 +27,7 @@ void output_all() {
 	cout << "OS Name:			" << buffer.sysname << endl;
 	cout << "Distribution:			" << distribution_file() << " " << release_system() << endl;
 	cout << "Kernel version:			" << buffer.release << endl;
-	cout << "System architecture:		" << buffer.machine << endl;
+	architecture();
 	cpu_file();
 	cores_file();
 	output_memory();

@@ -39,6 +39,24 @@ void cpu_file() {
 	cout << "CPU:				" << value << endl;
 }
 
+void architecture() {
+	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const int line = 3;
+	const string bit32 = "32 Bits";
+	const string bit64 = "64 Bits";
+	const string arm32 = "ARM 32 Bits";
+	const string arm64 = "ARM 64 Bits";
+
+	string value;
+	value = open_file(input_value, line);
+
+	if(value == "x86_64" || value == "x64" || value == "amd64")		cout << "System architecture:		" << bit64 << " (" << value << ")" << endl;
+	else if(value == "x86" || value == "x86abi" || value == "i386")	cout << "System architecture:		" << bit32 << " (" << value << ")" << endl;
+	else if(value == "armv7l" || value == "armeabi")				cout << "System architecture:		" << arm32 << " (" << value << ")" << endl;
+	else if(value == "arm64")										cout << "System architecture:		" << arm64 << " (" << value << ")" << endl;
+	else															cout << "System architecture:		" << value << endl;
+}
+
 void shell_file() {
 	const string input_value = "/systeminfo-files/systeminfo-shell.txt";
 	const int line = 1;
