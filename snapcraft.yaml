@@ -3,10 +3,13 @@ version: 0.8
 summary: Simple program showing system information in C++
 description: |
   A program that displays basic information about the system and resources
+
 parts:
-  hello:
-    plugin: cmake
+  systeminfo:
+    plugin: autotools
     source: src
+    build-packages:
+      - g++
 
 apps:
   systeminfo:

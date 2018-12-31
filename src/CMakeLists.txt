@@ -10,4 +10,13 @@ add_executable(systeminfo functions_output.cpp)
 add_executable(systeminfo functions_output_memory_swap.cpp)
 add_executable(systeminfo systeminfo.cpp)
 
+install(TARGETS systeminfo DESTINATION lib)
+install(FILES functions_command.h                DESTINATION include)
+install(FILES functions_file.h                   DESTINATION include)
+install(FILES functions_file_memory.h            DESTINATION include)
+install(FILES functions_file_operations.h        DESTINATION include)
+install(FILES functions_file_swap.h              DESTINATION include)
+install(FILES functions_output.h                 DESTINATION include)
+install(FILES functions_output_memory_swap.h     DESTINATION include)
+
 install(TARGETS systeminfo RUNTIME DESTINATION bin)
