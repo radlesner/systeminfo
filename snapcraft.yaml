@@ -4,13 +4,16 @@ summary: Simple program showing system information in C++
 description: |
   A program that displays basic information about the system and resources
 
-parts:
-  systeminfo:
-    plugin: autotools
-    source: src
-    build-packages:
-      - g++
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
 
 apps:
   systeminfo:
     command: systeminfo
+
+parts:
+  systeminfo:
+    plugin: make
+    source: src/
+    build-packages:
+     - g++
