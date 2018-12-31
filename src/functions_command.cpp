@@ -42,7 +42,7 @@ void command_activate() {
 	system("cd /systeminfo-files && uptime -p | awk '{for (i=2; i<NF; i++) printf $i \" \"; print $NF}' >> systeminfo-uptime.txt");
 	system("cd /systeminfo-files && lsb_release -i | awk {'print $3'} >> systeminfo-distro.txt");
 	system("cd /systeminfo-files && lsb_release -r | awk {'print $2'} >> systeminfo-distro.txt");
-	system("cd /systeminfo-files && uname -p >> systeminfo-distro.txt");
+	system("cd /systeminfo-files && arch >> systeminfo-distro.txt");
 	system("cd /systeminfo-files && echo $USER >> systeminfo-user.txt");
 	system("cd /systeminfo-files && echo $SHELL >> systeminfo-shell.txt");
 
