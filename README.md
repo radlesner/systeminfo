@@ -6,16 +6,16 @@ A simple program showing system information in C++ language
 ```
 # Compile
 ```sh
-$ ./build.sh
+./build.sh
 ```
 or
 ```sh
-$ make clean
-$ make
+make clean
+make
 ```
 or
 ```sh
-$ g++ src/*.cpp -o systeminfo
+g++ src/*.cpp -o systeminfo
 ```
 # Examples of the program results
 systeminfo
