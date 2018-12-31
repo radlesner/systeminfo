@@ -2,9 +2,7 @@
 printf "Files:\n"
 ls -1 src/*.cpp
 
-mkdir Binary
-
-printf "Command: make clean & make\n"
-cd Debug && make clean && make
+printf "Command: g++ src/*.cpp -o systeminfo\n"
+g++ src/*.cpp -o systeminfo
 
 #g++ src/*.cpp -o Debug/systeminfo
