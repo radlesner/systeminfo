@@ -2,11 +2,11 @@
 A simple program showing system information in C++ language
 # Usage
 ```
-./Debug/systeminfo
+./systeminfo
 ```
 # Compile
 ```
-$ ./build
+$ ./build.sh
 ```
 or
 ```
