@@ -13,4 +13,4 @@ parts:
 
 apps:
   systeminfo:
-    command: hello
+    command: systeminfo
