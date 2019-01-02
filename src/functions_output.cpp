@@ -55,7 +55,7 @@ void output_system() {
 	cout << "System architecture:		" << buffer.machine << endl;
 	cpu_file();
 	cores_file();
-	freq_check_system(distribution_file());
+	cpu_frequency();
 	shell_file();
 }
 
@@ -79,7 +79,7 @@ void output_ssh_info() {
 void output_cpu_only() {
 	cpu_file();
 	cores_file();
-	freq_check_system(distribution_file());
+	cpu_frequency();
 	cout << "Max Frequency:			" << cpu_frequency_max() << " MHz" << endl;
 	cout << "Min Frequency:			" << cpu_frequency_min() << " MHz" << endl;
 }
@@ -105,14 +105,14 @@ void output_monitor(int value_1, char** value_2) {
 			if(!strcmp(value_2[2], "-m")) {
 				cpu_file();
 				cores_file();
-				freq_check_system(distribution_file());
+				cpu_frequency();
 				cout << "Uptime:				" << uptime_file() << endl << endl;
 				output_memory();
 			}
 			else if(!strcmp(value_2[2], "-M")){
 				cpu_file();
 				cores_file();
-				freq_check_system(distribution_file());
+				cpu_frequency();
 				cout << "Uptime:				" << uptime_file() << endl << endl;
 				output_memory_megabyte();
 			}

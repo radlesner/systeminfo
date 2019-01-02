@@ -85,24 +85,18 @@ void cores_file() {
 		cout << "Cores:		  		" << value << " cores" << endl;
 }
 
-void freq_check_system(string distro) {
-	if(distro == "Raspbian" || cpu_frequency() == 1)	cout << "CPU Frequency:			N/A" << endl;
-	else cout << "CPU Frequency:			" << cpu_frequency() << " MHz" << endl;
-}
-
-int cpu_frequency() {
+void cpu_frequency() {
 	const string input_value = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
 	int line = 1;
 
 	string read_value;
 	int value;
 	read_value = open_file(input_value, line);
-
-	if(read_value == "N/A") return 1;
-
 	value = atoi(read_value.c_str()) / 1000;
 
-	return value;
+	if(distribution_file() == "Raspbian" || read_value == "N/A")
+		cout << "CPU Frequency:			N/A" << endl;
+	else cout << "CPU Frequency:			" << value << " MHz" << endl;
 }
 
 int cpu_frequency_max() {
