@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 printf "Files:\n"
 ls -1 src/*.cpp
 
