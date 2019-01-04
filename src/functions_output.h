@@ -18,7 +18,7 @@ using namespace std;
 
 	void output_all();
 	void output_system();
-	void output_ssh_info();
+	void output_network();
 	void output_cpu_only();
 	void output_help();
 	void output_check_files();

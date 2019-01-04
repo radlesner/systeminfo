@@ -59,7 +59,7 @@ void output_system() {
 	shell_file();
 }
 
-void output_ssh_info() {
+void output_network() {
 	string shell;
 	shell = getenv ("SHELL");
 

@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
 			output_logo();
 			output_all();
 		}
-		else if(!strcmp(argv[1], "-h") || !strcmp(argv[1], "--ssh"))				output_ssh_info();
+		else if(!strcmp(argv[1], "-n") || !strcmp(argv[1], "--network"))			output_network();
 		else if(!strcmp(argv[1], "-t") || !strcmp(argv[1], "--monitor"))			output_monitor(argc, argv);
 		else if(!strcmp(argv[1], "--check-files"))									output_check_files();
 		else if(!strcmp(argv[1], "--version"))										output_version();
