@@ -46,13 +46,13 @@ void command_activate() {
 	system("cd /systeminfo-files && getconf LONG_BIT >> systeminfo-distro.txt");
 	system("cd /systeminfo-files && echo $USER >> systeminfo-user.txt");
 	system("cd /systeminfo-files && echo $SHELL >> systeminfo-shell.txt");
-
+	//Memory
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemTotal: \" --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemFree: \" --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"MemAvailable:\" --max-count=1 | awk {'print $2'} >> systeminfo-mem.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapTotal: \" --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-swap.txt");
 	system("cd /systeminfo-files && cat /proc/meminfo | grep -i \"SwapFree: \" --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-swap.txt");
-
+	//CPU
 	system("cd /systeminfo-files && cat /proc/cpuinfo | grep -i \"model name\" --max-count=1 | awk '{for (i=4; i<NF; i++) printf $i \" \"; print $NF}' >> systeminfo-cpu.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"CPU(s):\" --max-count=1 | awk {'print $2'}  >> systeminfo-cores.txt");
 	system("cd /systeminfo-files && lscpu | grep -i \"max\" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_max.txt");
