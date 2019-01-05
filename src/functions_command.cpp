@@ -14,8 +14,8 @@ void command_check_folder_exist() {
 	char check;
 	ifstream mem_file("/systeminfo-files"); //---------------/ systeminfo-files is a directory /---------------
 	if(mem_file.good() == false) {
-		cout << "Not found \"/systeminfo-files\"" << endl;
-		cout << "Create this folder /systeminfo-files? [y/n]... ";
+		cout << "Not found folder \"/systeminfo-files\"" << endl;
+		cout << "Create folder /systeminfo-files? [y/n]... ";
 		cin >> check;
 		switch(check) {
 		case 'y':

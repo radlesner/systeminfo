@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
 		else if(!strcmp(argv[1], "-"))												output_all();
 		else {
 			if(argc > 2)	cout << "Bad option: " << argv[1] << " " << argv[2] << endl;
-			else			cout << "Bad option: " << argv[1]<< endl;
+			else			cout << "Bad option: " << argv[1] << endl;
 			output_help();
 		}
 	}
