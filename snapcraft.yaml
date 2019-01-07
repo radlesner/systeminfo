@@ -1,5 +1,5 @@
 name: systeminfo
-version: 0.8
+version: "0.8"
 summary: Simple program showing system information in C++
 description: |
   A program that displays basic information about the system and resources
