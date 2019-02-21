@@ -7,11 +7,11 @@
 //============================================================================
 #include <iostream>
 #include <cstring>
+#include <gtk/gtk.h>
 
 #include "functions_output.h"
 #include "functions_output_memory_swap.h"
 #include "functions_command.h"
-#include "gui.h"
 
 using namespace std;
 
@@ -37,7 +37,44 @@ int main(int argc, char** argv) {
 		else if(!strcmp(argv[1], "-n") || !strcmp(argv[1], "--network"))			output_network();
 		else if(!strcmp(argv[1], "-t") || !strcmp(argv[1], "--monitor"))			output_monitor(argc, argv);
 		else if(!strcmp(argv[1], "--check-files"))									output_check_files();
-		else if(!strcmp(argv[1], "--gui"))											gui(argc, argv);
+		else if(!strcmp(argv[1], "--gui")) {
+			GtkWidget *okno;
+			GtkWidget *etykieta1;
+			GtkWidget *etykieta2;
+			//GtkWidget *statusbar;
+			GtkWidget *vbox;
+
+			gtk_init(&argc, &argv);
+
+			okno = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+			gtk_window_set_position(GTK_WINDOW(okno), GTK_WIN_POS_CENTER);
+			gtk_window_set_default_size(GTK_WINDOW(okno), 250, 250);
+			gtk_window_set_title(GTK_WINDOW(okno), "systeminfo");
+
+			vbox = gtk_vbox_new(FALSE, 2);
+			gtk_container_add(GTK_CONTAINER(okno), vbox);
+
+			etykieta1 = gtk_label_new("OS Name: Linux\nlll");
+			gtk_label_set_line_wrap(GTK_LABEL(etykieta1), TRUE);
+			gtk_box_pack_start(GTK_BOX(vbox), etykieta1, TRUE, TRUE, 10);
+
+			etykieta2 = gtk_label_new("Distribution: men\nlll");
+			gtk_label_set_line_wrap(GTK_LABEL(etykieta2), TRUE);
+			gtk_box_pack_start(GTK_BOX(vbox), etykieta2, TRUE, TRUE, 10);
+
+			//statusbar = gtk_statusbar_new();
+			//gtk_box_pack_start(GTK_BOX(vbox), statusbar, FALSE, TRUE, 1);
+
+			//gtk_statusbar_push(GTK_STATUSBAR(statusbar), gtk_statusbar_get_context_id(GTK_STATUSBAR(statusbar), "active"), "active");
+
+			g_signal_connect(G_OBJECT(okno), "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+			gtk_widget_show_all(okno);
+
+			gtk_main();
+
+			return 0;
+		}
 		else if(!strcmp(argv[1], "--version"))										output_version();
 		else if(!strcmp(argv[1], "--help"))											output_help();
 		else if(!strcmp(argv[1], "--"))												output_all();

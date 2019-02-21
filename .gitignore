@@ -1,7 +1,9 @@
 <<<<<<< HEAD
 copy-to-usr-bin.sh
 systeminfo
+src/old
 =======
 copy-to-usr-bin.sh
 systeminfo
+src/old
 >>>>>>> master
