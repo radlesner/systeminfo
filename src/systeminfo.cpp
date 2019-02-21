@@ -11,7 +11,6 @@
 #include "functions_output.h"
 #include "functions_output_memory_swap.h"
 #include "functions_command.h"
-#include "gui.h"
 
 using namespace std;
 
@@ -37,7 +36,6 @@ int main(int argc, char** argv) {
 		else if(!strcmp(argv[1], "-n") || !strcmp(argv[1], "--network"))			output_network();
 		else if(!strcmp(argv[1], "-t") || !strcmp(argv[1], "--monitor"))			output_monitor(argc, argv);
 		else if(!strcmp(argv[1], "--check-files"))									output_check_files();
-		else if(!strcmp(argv[1], "--gui"))											gui(argc, argv);
 		else if(!strcmp(argv[1], "--version"))										output_version();
 		else if(!strcmp(argv[1], "--help"))											output_help();
 		else if(!strcmp(argv[1], "--"))												output_all();
