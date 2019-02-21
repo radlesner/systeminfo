@@ -7,11 +7,14 @@
 #include "functions_output.h"
 #include "functions_output_memory_swap.h"
 #include "functions_file.h"
+#include "functions_file_operations.h"
 #include "functions_file_memory.h"
 #include "functions_file_swap.h"
 #include "functions_command.h"
 
 using namespace std;
+
+string version;
 
 void output_all() {
 	string shell;
@@ -132,6 +135,66 @@ void output_monitor(int value_1, char** value_2) {
 		cout << endl << "Exit to: CTRL + C" << endl;
 		sleep(1);
 	}
+}
+
+void output_save_file() {
+	string first_step = "systeminfo log ";
+	time_t actual_time;
+	time(&actual_time);
+
+	string file_name = first_step + ctime(&actual_time);
+
+	string architecture = open_file("/systeminfo-files/systeminfo-distro.txt", 3);
+	string bits = open_file("/systeminfo-files/systeminfo-distro.txt", 4);
+	string cpu = open_file("/systeminfo-files/systeminfo-cpu.txt", 1);
+	string theards = open_file("/systeminfo-files/systeminfo-cores.txt", 1);
+	string shell = open_file("/systeminfo-files/systeminfo-shell.txt", 1);
+
+	struct utsname buffer;
+
+		if (uname(&buffer) != 0) {
+			perror("uname");
+			exit(EXIT_FAILURE);
+		}
+
+	fstream file;
+
+	file.open(file_name, ios::out);
+	file << "         ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ " << endl;
+	file << "        ||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||" << endl;
+	file << "        ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||" << endl;
+	file << "        |/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|" << endl << endl;
+
+	file << "Log generated: " << ctime(&actual_time);
+	file << "Ptrogram name: systeminfo" << endl;
+	file << "Program version: 0.8.2" << endl;
+
+	file << endl;
+
+	file << "------------------------|------------------------------------------------" << endl;
+	file << "          NAME          |                       VALUE"						<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Os name                | " << buffer.sysname								<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Distribution           | " << distribution_file()							<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Release                | " << release_system()							<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Kernel                 | " << buffer.release								<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Architecture           | " << architecture								<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Bits                   | " << bits										<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Cpu                    | " << cpu											<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Theards                | " << theards										<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Shell                  | " << shell										<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Hostname               | " << buffer.nodename								<< endl;
+	file << "------------------------|------------------------------------------------" << endl;
+	file << " Uptime                 | " << uptime_file()								<< endl;
 }
 
 void output_help() {

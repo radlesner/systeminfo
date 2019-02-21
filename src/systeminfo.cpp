@@ -15,8 +15,10 @@
 using namespace std;
 
 void output_version() {
-	cout << "systeminfo 2018, v0.8.2" << endl;
-	cout << "Compiled: " << __DATE__ << " | " << __TIME__ << " | " << __FILE__ << endl;
+	cout << "systeminfo 2018, v0.8.2" << endl; // Program versions also change in the function with logs
+	cout << "Compile date...............: " << __DATE__ << endl;
+	cout << "Compile time...............: " << __TIME__ << endl;
+	cout << "Compile file...............: " << __FILE__ << endl;
 }
 
 int main(int argc, char** argv) {
@@ -38,6 +40,7 @@ int main(int argc, char** argv) {
 		else if(!strcmp(argv[1], "--check-files"))									output_check_files();
 		else if(!strcmp(argv[1], "--version"))										output_version();
 		else if(!strcmp(argv[1], "--help"))											output_help();
+		else if(!strcmp(argv[1], "--log"))											output_save_file();
 		else if(!strcmp(argv[1], "--"))												output_all();
 		else if(!strcmp(argv[1], "-"))												output_all();
 		else {
