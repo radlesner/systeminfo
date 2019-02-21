@@ -36,7 +36,7 @@ void cpu_file() {
 	string value;
 	value = open_file(input_value, line);
 
-	cout << "CPU:				" << value << endl;
+	cout << "CPU........................: " << value << endl;
 }
 
 void architecture() {
@@ -51,9 +51,9 @@ void architecture() {
 	bits = open_file(input_value, 4);
 
 	if(bits.empty() == true)
-		cout << "System architecture:		" << arch << endl;
+		cout << "System architecture........: " << arch << endl;
 	else
-		cout << "System architecture:		" << bits << " Bits (" << arch << ")" << endl;
+		cout << "System architecture........: " << bits << " Bits (" << arch << ")" << endl;
 }
 
 void shell_file() {
@@ -63,13 +63,13 @@ void shell_file() {
 	string value;
 	value = open_file(input_value, line);
 
-		if(value == "/bin/zsh" || value == "/usr/bin/zsh")			cout << "Shell:				Z-Shell (" << value << ")" << endl;
-		else if(value == "/bin/bash" || value == "/usr/bin/bash")	cout << "Shell:				Bash (" << value << ")" << endl;
-		else if(value == "/bin/sh" || value == "/usr/bin/sh")		cout << "Shell:				Sh (" << value << ")" << endl;
-		else if(value == "/bin/dash" || value == "/usr/bin/dash")	cout << "Shell:				Dash (" << value << ")" << endl;
-		else if(value == "/bin/ksh" || value == "/usr/bin/ksh")		cout << "Shell:				Ksh (" << value << ")" << endl;
-		else if(value == "/bin/rsh" || value == "/usr/bin/rsh")		cout << "Shell:				Rsh (" << value << ")" << endl;
-		else							cout << "Shell:				" << value << endl;
+		if(value == "/bin/zsh" || value == "/usr/bin/zsh")			cout << "Shell......................: Z-Shell (" << value << ")" << endl;
+		else if(value == "/bin/bash" || value == "/usr/bin/bash")	cout << "Shell......................: Bash (" << value << ")" << endl;
+		else if(value == "/bin/sh" || value == "/usr/bin/sh")		cout << "Shell......................: Sh (" << value << ")" << endl;
+		else if(value == "/bin/dash" || value == "/usr/bin/dash")	cout << "Shell......................: Dash (" << value << ")" << endl;
+		else if(value == "/bin/ksh" || value == "/usr/bin/ksh")		cout << "Shell......................: Ksh (" << value << ")" << endl;
+		else if(value == "/bin/rsh" || value == "/usr/bin/rsh")		cout << "Shell......................: Rsh (" << value << ")" << endl;
+		else														cout << "Shell......................: " << value << endl;
 }
 
 void cores_file() {
@@ -80,9 +80,9 @@ void cores_file() {
 	value = open_file(input_value, line);
 
 	if(value == "1")
-		cout << "Cores:		  		" << value << " core" << endl;
+		cout << "Cores......................: " << value << " core" << endl;
 	else
-		cout << "Cores:		  		" << value << " cores" << endl;
+		cout << "Cores......................: " << value << " cores" << endl;
 }
 
 void cpu_frequency() {
@@ -95,8 +95,8 @@ void cpu_frequency() {
 	value = atoi(read_value.c_str()) / 1000;
 
 	if(distribution_file() == "Raspbian" || read_value == "N/A")
-		cout << "CPU Frequency:			N/A" << endl;
-	else cout << "CPU Frequency:			" << value << " MHz" << endl;
+		cout << "CPU Frequency..............: N/A" << endl;
+	else cout << "CPU Frequency..............: " << value << " MHz" << endl;
 }
 
 int cpu_frequency_max() {

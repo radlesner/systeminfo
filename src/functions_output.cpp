@@ -24,17 +24,17 @@ void output_all() {
 			exit(EXIT_FAILURE);
 		}
 
-	cout << "OS Name:			" << buffer.sysname << endl;
-	cout << "Distribution:			" << distribution_file() << " " << release_system() << endl;
-	cout << "Kernel version:			" << buffer.release << endl;
+	cout << "OS Name....................: " << buffer.sysname << endl;
+	cout << "Distribution...............: " << distribution_file() << " " << release_system() << endl;
+	cout << "Kernel version.............: " << buffer.release << endl;
 	architecture();
 	cpu_file();
 	cores_file();
 	output_memory();
 	shell_file();
-	cout << "Logged user:			" << user_file() << endl;
-	cout << "Hostname:			" << buffer.nodename << endl;
-	cout << "Uptime:				" << uptime_file() << endl;
+	cout << "Logged user................: " << user_file() << endl;
+	cout << "Hostname...................: " << buffer.nodename << endl;
+	cout << "Uptime.....................: " << uptime_file() << endl;
 }
 
 void output_system() {
@@ -48,11 +48,11 @@ void output_system() {
 			exit(EXIT_FAILURE);
 		}
 
-	cout << "OS Name:			" << buffer.sysname << endl;
-	cout << "Distribution:			" << distribution_file() << endl;
-	cout << "Release:			" << release_system() << endl;
-	cout << "Kernel version:			" << buffer.release << endl;
-	cout << "System architecture:		" << buffer.machine << endl;
+	cout << "OS Name....................: " << buffer.sysname << endl;
+	cout << "Distribution...............: " << distribution_file() << endl;
+	cout << "Release....................: " << release_system() << endl;
+	cout << "Kernel version.............: " << buffer.release << endl;
+	cout << "System architecture........: " << buffer.machine << endl;
 	cpu_file();
 	cores_file();
 	cpu_frequency();
@@ -70,18 +70,18 @@ void output_network() {
 			exit(EXIT_FAILURE);
 		}
 
-	cout << "Hostname:			" << buffer.nodename << endl;
-	cout << "Logged user:			" << user_file() << endl << endl;
+	cout << "Hostname...................: " << buffer.nodename << endl;
+	cout << "Logged user................: " << user_file() << endl << endl;
 
-	cout << "SSH Command:			" << user_file() << "@" << buffer.nodename << ".local" << endl;
+	cout << "SSH Command................: " << user_file() << "@" << buffer.nodename << ".local" << endl;
 }
 
 void output_cpu_only() {
 	cpu_file();
 	cores_file();
 	cpu_frequency();
-	cout << "Max Frequency:			" << cpu_frequency_max() << " MHz" << endl;
-	cout << "Min Frequency:			" << cpu_frequency_min() << " MHz" << endl;
+	cout << "Max Frequency..............: " << cpu_frequency_max() << " MHz" << endl;
+	cout << "Min Frequency..............: " << cpu_frequency_min() << " MHz" << endl;
 }
 
 void output_check_files() {
@@ -106,14 +106,14 @@ void output_monitor(int value_1, char** value_2) {
 				cpu_file();
 				cores_file();
 				cpu_frequency();
-				cout << "Uptime:				" << uptime_file() << endl << endl;
+				cout << "Uptime.....................: " << uptime_file() << endl << endl;
 				output_memory();
 			}
 			else if(!strcmp(value_2[2], "-M")){
 				cpu_file();
 				cores_file();
 				cpu_frequency();
-				cout << "Uptime:				" << uptime_file() << endl << endl;
+				cout << "Uptime.....................: " << uptime_file() << endl << endl;
 				output_memory_megabyte();
 			}
 			else {
@@ -137,17 +137,17 @@ void output_monitor(int value_1, char** value_2) {
 void output_help() {
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;
-	cout << "	-m	--memory		Memory information in gigabyte form" << endl;
-	cout << "	-M	--memory-megabyte	Memory information in megabyte form" << endl;
-	cout << "	-s	--system		System and hardware information" << endl;
-	cout << "	-h	--ssh			SSH information" << endl;
-	cout << "	-c	--cpu			CPU information" << endl;
-	cout << "	-l	--logo			Show the logo" << endl;
-	cout << "	-t	--monitor		real-time monitoring" << endl;
-	cout << "		--check-files		Check integration files" << endl;
-	cout << "		--help			Help panel" << endl;
-	cout << "		--version		Version program and compilation" << endl;
-	cout << "					information" << endl;
+	cout << "   -m  --memory            Memory information in gigabyte form" << endl;
+	cout << "   -M  --memory-megabyte   Memory information in megabyte form" << endl;
+	cout << "   -s  --system            System and hardware information" << endl;
+	cout << "   -h  --ssh               SSH information" << endl;
+	cout << "   -c  --cpu               CPU information" << endl;
+	cout << "   -l  --logo              Show the logo" << endl;
+	cout << "   -t  --monitor           real-time monitoring" << endl;
+	cout << "       --check-files       Check integration files" << endl;
+	cout << "       --help              Help panel" << endl;
+	cout << "       --version           Version program and compilation" << endl;
+	cout << "                           information" << endl;
 	cout << "Example: systeminfo -s -l" << endl;
 }
 
