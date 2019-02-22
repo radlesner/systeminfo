@@ -179,7 +179,7 @@ void output_save_file() {
 
 	file << "Log generated: " << in_file_time << endl;
 	file << "Ptrogram name: systeminfo" << endl;
-	file << "Program version: 0.8.2" << endl;
+	file << "Program version: 0.9" << endl;
 
 	file << endl;
 

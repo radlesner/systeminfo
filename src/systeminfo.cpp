@@ -15,7 +15,7 @@
 using namespace std;
 
 void output_version() {
-	cout << "systeminfo 2018, v0.8.2" << endl; // Program versions also change in the function with logs
+	cout << "systeminfo 2018, v0.9" << endl; // Program versions also change in the function with logs
 	cout << "Compile date...............: " << __DATE__ << endl;
 	cout << "Compile time...............: " << __TIME__ << endl;
 	cout << "Compile file...............: " << __FILE__ << endl;
