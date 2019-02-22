@@ -93,7 +93,7 @@ void output_check_files() {
 		command_check_folder_exist();
 	}
 	else {
-		cout << "All files is integrated ✔" << endl;
+		cout << "All files and folders is integrated ✔" << endl;
 	}
 }
 
@@ -138,11 +138,22 @@ void output_monitor(int value_1, char** value_2) {
 }
 
 void output_save_file() {
-	string first_step = "systeminfo log ";
-	time_t actual_time;
-	time(&actual_time);
+	cout << "Generating log.............: ";
 
-	string file_name = first_step + ctime(&actual_time);
+	string path_filename = "/systeminfo-files/logs/";
+	string first_step = "systeminfo_log_";
+
+	time_t system_time;
+	struct tm* date;
+	char filename_time[80], in_file_time[80];
+
+	time(&system_time);
+	date = localtime(&system_time);
+
+	strftime(filename_time, 80, "%d_%b_%Y_%H_%M_%S", date);
+	strftime(in_file_time, 80, "%d/%m/%Y, %H:%M:%S", date);
+
+	string file_name = path_filename + first_step + filename_time;
 
 	string architecture = open_file("/systeminfo-files/systeminfo-distro.txt", 3);
 	string bits = open_file("/systeminfo-files/systeminfo-distro.txt", 4);
@@ -159,19 +170,18 @@ void output_save_file() {
 
 	fstream file;
 
-	file.open(file_name, ios::out);
-	file << "         ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ " << endl;
-	file << "        ||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||" << endl;
-	file << "        ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||" << endl;
-	file << "        |/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|" << endl << endl;
+	file.open(file_name.c_str(), ios::out);
+	file << "            ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ " << endl;
+	file << "           ||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||" << endl;
+	file << "           ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||" << endl;
+	file << "           |/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|" << endl << endl;
 
-	file << "Log generated: " << ctime(&actual_time);
+	file << "Log generated: " << in_file_time << endl;
 	file << "Ptrogram name: systeminfo" << endl;
 	file << "Program version: 0.8.2" << endl;
 
 	file << endl;
 
-	file << "------------------------|------------------------------------------------" << endl;
 	file << "          NAME          |                       VALUE"						<< endl;
 	file << "------------------------|------------------------------------------------" << endl;
 	file << " Os name                | " << buffer.sysname								<< endl;
@@ -195,6 +205,10 @@ void output_save_file() {
 	file << " Hostname               | " << buffer.nodename								<< endl;
 	file << "------------------------|------------------------------------------------" << endl;
 	file << " Uptime                 | " << uptime_file()								<< endl;
+
+	cout << "Done" << endl;
+	cout << "Logs localization..........: /systeminfo-files/logs" << endl;
+	cout << "Name file..................: " << file_name << endl;
 }
 
 void output_help() {

@@ -21,12 +21,16 @@ void command_check_folder_exist() {
 		case 'y':
 			cout << "------------------------------------------------------------------------" << endl;
 			if (user == "root") {
-				system("mkdir /systeminfo-files"); 			cout << "mkdir /systeminfo-files,.............. done." << endl;
-				system("chmod 777 /systeminfo-files");		cout << "chmod 777 /systeminfo-files,.......... done." << endl;
+				system("mkdir /systeminfo-files"); 					cout << "Creating \"systeminfo-files\" folder,.. done." << endl;
+				system("mkdir /systeminfo-files/logs");				cout << "Creating \"logs\" folder,.............. done" << endl;
+				system("chmod 777 /systeminfo-files");				cout << "Granting access /systeminfo-files,... done." << endl;
+				system("chmod 777 /systeminfo-files/logs");			cout << "Granting access /logs,............... done." << endl;
 			}
 			else {
-				system("sudo mkdir /systeminfo-files"); 	cout << "sudo mkdir /systeminfo-files,.........	done." << endl;
-				system("sudo chmod 777 /systeminfo-files");	cout << "sudo chmod 777 /systeminfo-files,.....	done." << endl;
+				system("sudo mkdir /systeminfo-files"); 			cout << "Creating \"systeminfo-files\" folder,.. done." << endl;
+				system("sudo mkdir /systeminfo-files/logs");		cout << "Creating \"logs\" folder,.............. done" << endl;
+				system("sudo chmod 777 /systeminfo-files");			cout << "Granting access /systeminfo-files,... done." << endl;
+				system("sudo chmod 777 /systeminfo-files/logs");	cout << "Granting access /logs,............... done." << endl;
 			}
 			cout << "------------------------------------------------------------------------" << endl;
 			break;
