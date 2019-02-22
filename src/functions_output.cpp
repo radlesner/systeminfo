@@ -153,7 +153,8 @@ void output_save_file() {
 	strftime(filename_time, 80, "%d_%b_%Y_%H_%M_%S", date);
 	strftime(in_file_time, 80, "%d/%m/%Y, %H:%M:%S", date);
 
-	string file_name = path_filename + first_step + filename_time;
+	string file_name_fstream = path_filename + first_step + filename_time;
+	string file_name = first_step + filename_time;
 
 	string architecture = open_file("/systeminfo-files/systeminfo-distro.txt", 3);
 	string bits = open_file("/systeminfo-files/systeminfo-distro.txt", 4);
@@ -170,7 +171,7 @@ void output_save_file() {
 
 	fstream file;
 
-	file.open(file_name.c_str(), ios::out);
+	file.open(file_name_fstream.c_str(), ios::out);
 	file << "            ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ " << endl;
 	file << "           ||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||" << endl;
 	file << "           ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||" << endl;
@@ -207,6 +208,7 @@ void output_save_file() {
 	file << " Uptime                 | " << uptime_file()								<< endl;
 
 	cout << "Done" << endl;
+	cout << "Generated..................: " << in_file_time << endl;
 	cout << "Logs localization..........: /systeminfo-files/logs" << endl;
 	cout << "Name file..................: " << file_name << endl;
 }
