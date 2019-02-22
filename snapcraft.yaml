@@ -13,7 +13,7 @@ apps:
 
 parts:
   systeminfo:
-    plugin: make
+    plugin: autotools
     source-type: git
     source: https://github.com/CasinoRoyaleKrupier/systeminfo
     build-packages:
