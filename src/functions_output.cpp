@@ -152,10 +152,6 @@ void output_save_file() {
 	fstream log_file;
 
 	log_file.open(file_name_fstream.c_str(), ios::out);
-	log_file << "            ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ " << endl;
-	log_file << "           ||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||" << endl;
-	log_file << "           ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||" << endl;
-	log_file << "           |/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|" << endl << endl;
 
 	log_file << "Log generated..............: " << in_file_time << endl;
 	log_file << "Ptrogram name..............: systeminfo" << endl;
