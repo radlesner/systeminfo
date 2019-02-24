@@ -15,6 +15,7 @@
 #include <cstring>
 #include <fstream>
 #include <time.h>
+#include <ctime>
 
 using namespace std;
 

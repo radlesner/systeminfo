@@ -140,6 +140,8 @@ void output_monitor(int value_1, char** value_2) {
 void output_save_file() {
 	cout << "Generating log.............: ";
 
+	clock_t countdown = clock();
+
 	string path_filename = "/systeminfo-files/logs/";
 	string first_step = "systeminfo_log_";
 
@@ -169,48 +171,51 @@ void output_save_file() {
 			exit(EXIT_FAILURE);
 		}
 
-	fstream file;
+	fstream log_file;
 
-	file.open(file_name_fstream.c_str(), ios::out);
-	file << "            ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ " << endl;
-	file << "           ||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||" << endl;
-	file << "           ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||" << endl;
-	file << "           |/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|" << endl << endl;
+	log_file.open(file_name_fstream.c_str(), ios::out);
+	log_file << "            ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ " << endl;
+	log_file << "           ||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||" << endl;
+	log_file << "           ||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||" << endl;
+	log_file << "           |/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|" << endl << endl;
 
-	file << "Log generated: " << in_file_time << endl;
-	file << "Ptrogram name: systeminfo" << endl;
-	file << "Program version: 0.9" << endl;
+	log_file << "Log generated..............: " << in_file_time << endl;
+	log_file << "Ptrogram name..............: systeminfo" << endl;
+	log_file << "Program version............: 0.9" << endl;
+	log_file << "Compile program date.......: " << __DATE__ << ", " << __TIME__ << endl;
+	log_file << "Log generation time........: " << clock() - countdown << " ms" << endl;
 
-	file << endl;
+	log_file << endl << "..............................SPECIFICATION.............................." << endl << endl;
 
-	file << "          NAME          |                       VALUE"						<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Os name                | " << buffer.sysname								<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Distribution           | " << distribution_file()							<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Release                | " << release_system()							<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Kernel                 | " << buffer.release								<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Architecture           | " << architecture								<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Bits                   | " << bits										<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Cpu                    | " << cpu											<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Theards                | " << theards										<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Shell                  | " << shell										<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Hostname               | " << buffer.nodename								<< endl;
-	file << "------------------------|------------------------------------------------" << endl;
-	file << " Uptime                 | " << uptime_file()								<< endl;
+	log_file << "          NAME          |                       VALUE"						<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Os name                | " << buffer.sysname								<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Distribution           | " << distribution_file()							<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Release                | " << release_system()							<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Kernel                 | " << buffer.release								<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Architecture           | " << architecture								<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Bits                   | " << bits										<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Cpu                    | " << cpu											<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Theards                | " << theards										<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Shell                  | " << shell										<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Hostname               | " << buffer.nodename								<< endl;
+	log_file << "------------------------|------------------------------------------------" << endl;
+	log_file << " Uptime                 | " << uptime_file()								<< endl;
 
 	cout << "Done" << endl;
-	cout << "Generated..................: " << in_file_time << endl;
+	cout << "Generated date.............: " << in_file_time << endl;
 	cout << "Logs localization..........: /systeminfo-files/logs" << endl;
 	cout << "Name file..................: " << file_name << endl;
+	cout << "Log generation time........: " << clock() - countdown << " ms" << endl;
 }
 
 void output_help() {
