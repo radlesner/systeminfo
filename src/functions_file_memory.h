@@ -15,7 +15,7 @@
 
 using namespace std;
 
-	void mem_file(int switch_megabyte = 0);
+	void mem_file(int switch_megabyte);
 	void mem_megabyte_file();
 
 #endif /* FUNCTIONS_FILE_MEMORY_H_ */
