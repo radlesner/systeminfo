@@ -195,17 +195,16 @@ void output_save_file() {
 void output_help() {
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;
-	cout << "   -m  --memory            Memory information in gigabyte form" << endl;
-	cout << "   -M  --memory-megabyte   Memory information in megabyte form" << endl;
+	cout << "   -g  --gigabyte          Memory information in gigabyte form" << endl;
+	cout << "   -m  --megabyte          Memory information in megabyte form" << endl;
 	cout << "   -s  --system            System and hardware information" << endl;
 	cout << "   -h  --ssh               SSH information" << endl;
 	cout << "   -c  --cpu               CPU information" << endl;
-	cout << "   -l  --logo              Show the logo" << endl;
 	cout << "   -t  --monitor           real-time monitoring" << endl;
 	cout << "       --log               Generating logs" << endl;
 	cout << "       --check-files       Check integration files" << endl;
 	cout << "       --help              Help panel" << endl;
 	cout << "       --version           Version program and compilation" << endl;
-	cout << "                           information" << endl;
-	cout << "Example: systeminfo -s -l" << endl;
+	cout << "                           information" << endl << endl;
+	cout << ">>> Example: systeminfo -s" << endl;
 }
