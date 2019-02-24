@@ -16,7 +16,7 @@
 
 using namespace std;
 
-	void swap_file();
+	void swap_file(int switch_megabyte);
 	void swap_megabyte_file();
 
 #endif /* FUNCTIONS_FILE_SWAP_H_ */

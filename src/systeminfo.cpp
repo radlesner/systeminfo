@@ -26,11 +26,11 @@ int main(int argc, char** argv) {
 	command_check_folder_exist();
 	command_activate();
 	if(argc > 1) {
-		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory")) {
+		if(!strcmp(argv[1], "-g") || !strcmp(argv[1], "--gigabyte")) {
 			mem_file(0);
 			swap_file();
 		}
-		else if(!strcmp(argv[1], "-M") || !strcmp(argv[1], "--memory-megabyte")) {
+		else if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--megabyte")) {
 			mem_megabyte_file();
 			swap_megabyte_file();
 		}
