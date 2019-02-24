@@ -97,39 +97,16 @@ void output_check_files() {
 	}
 }
 
-void output_monitor(int value_1, char** value_2) {
+void output_monitor() {
 	for(;;) {
 		command_activate();
 
-		if(value_1 > 2) {
-			system("clear");
-			if(value_1 > 3)
-				if(!strcmp(value_2[3], "-l") || !strcmp(value_2[3], "--logo"))	output_logo();
-			if(!strcmp(value_2[2], "-m")) {
-				cpu_file();
-				cores_file();
-				cpu_frequency();
-				cout << "Uptime.....................: " << uptime_file() << endl << endl;
-				output_memory();
-			}
-			else if(!strcmp(value_2[2], "-M")){
-				cpu_file();
-				cores_file();
-				cpu_frequency();
-				cout << "Uptime.....................: " << uptime_file() << endl << endl;
-				output_memory_megabyte();
-			}
-			else {
-				cout << "systeminfo: Too few arguments" << endl;
-				cout << "Example: systeminfo -t -m" << endl;
-				break;
-			}
-		}
-		else {
-			cout << "systeminfo: Too few arguments, minimum two" << endl;
-			cout << "example: systeminfo -t -m" << endl;
-			break;
-		}
+		system("clear");
+		cpu_file();
+		cores_file();
+		cpu_frequency();
+		cout << "Uptime.....................: " << uptime_file() << endl << endl;
+		output_memory();
 
 		command_remove();
 		cout << endl << "Exit to: CTRL + C" << endl;
@@ -234,13 +211,4 @@ void output_help() {
 	cout << "       --version           Version program and compilation" << endl;
 	cout << "                           information" << endl;
 	cout << "Example: systeminfo -s -l" << endl;
-}
-
-void output_logo() {
-   cout << " ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ " << endl;
-   cout << "||S |||Y |||S |||T |||E |||M |||I |||N |||F |||O ||" << endl;
-   cout << "||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||" << endl;
-   cout << "|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|" << endl;
-
-   cout << endl;
 }

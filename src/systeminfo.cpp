@@ -25,18 +25,12 @@ int main(int argc, char** argv) {
 	command_check_folder_exist();
 	command_activate();
 	if(argc > 1) {
-		if(argc > 2)
-			if(!strcmp(argv[2], "-l") || !strcmp(argv[2], "--logo"))				output_logo();
 		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory"))					output_memory();
 		else if(!strcmp(argv[1], "-M") || !strcmp(argv[1], "--memory-megabyte"))	output_memory_megabyte();
 		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))				output_system();
 		else if(!strcmp(argv[1], "-c") || !strcmp(argv[1], "--cpu"))				output_cpu_only();
-		else if(!strcmp(argv[1], "-l") || !strcmp(argv[1], "--logo")) {
-			output_logo();
-			output_all();
-		}
 		else if(!strcmp(argv[1], "-n") || !strcmp(argv[1], "--network"))			output_network();
-		else if(!strcmp(argv[1], "-t") || !strcmp(argv[1], "--monitor"))			output_monitor(argc, argv);
+		else if(!strcmp(argv[1], "-t") || !strcmp(argv[1], "--monitor"))			output_monitor();
 		else if(!strcmp(argv[1], "--check-files"))									output_check_files();
 		else if(!strcmp(argv[1], "--version"))										output_version();
 		else if(!strcmp(argv[1], "--help"))											output_help();

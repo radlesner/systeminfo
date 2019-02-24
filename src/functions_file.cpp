@@ -80,9 +80,9 @@ void cores_file() {
 	value = open_file(input_value, line);
 
 	if(value == "1")
-		cout << "Cores......................: " << value << " core" << endl;
+		cout << "Cores/Theards..............: " << value << " core" << endl;
 	else
-		cout << "Cores......................: " << value << " cores" << endl;
+		cout << "Cores/Theards..............: " << value << " cores" << endl;
 }
 
 void cpu_frequency() {
