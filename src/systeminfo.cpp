@@ -9,7 +9,8 @@
 #include <cstring>
 
 #include "functions_output.h"
-#include "functions_output_memory_swap.h"
+#include "functions_file_memory.h"
+#include "functions_file_swap.h"
 #include "functions_command.h"
 
 using namespace std;
@@ -25,8 +26,14 @@ int main(int argc, char** argv) {
 	command_check_folder_exist();
 	command_activate();
 	if(argc > 1) {
-		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory"))					output_memory();
-		else if(!strcmp(argv[1], "-M") || !strcmp(argv[1], "--memory-megabyte"))	output_memory_megabyte();
+		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory")) {
+			mem_file(1);
+			swap_file();
+		}
+		else if(!strcmp(argv[1], "-M") || !strcmp(argv[1], "--memory-megabyte")) {
+			mem_megabyte_file();
+			swap_megabyte_file();
+		}
 		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))				output_system();
 		else if(!strcmp(argv[1], "-c") || !strcmp(argv[1], "--cpu"))				output_cpu_only();
 		else if(!strcmp(argv[1], "-n") || !strcmp(argv[1], "--network"))			output_network();

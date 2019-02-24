@@ -5,7 +5,6 @@
  *      Author: krupier
  */
 #include "functions_output.h"
-#include "functions_output_memory_swap.h"
 #include "functions_file.h"
 #include "functions_file_operations.h"
 #include "functions_file_memory.h"
@@ -33,7 +32,8 @@ void output_all() {
 	architecture();
 	cpu_file();
 	cores_file();
-	output_memory();
+	mem_file();
+	swap_file();
 	shell_file();
 	cout << "Logged user................: " << user_file() << endl;
 	cout << "Hostname...................: " << buffer.nodename << endl;
@@ -106,7 +106,8 @@ void output_monitor() {
 		cores_file();
 		cpu_frequency();
 		cout << "Uptime.....................: " << uptime_file() << endl << endl;
-		output_memory();
+		mem_file();
+		swap_file();
 
 		command_remove();
 		cout << endl << "Exit to: CTRL + C" << endl;
