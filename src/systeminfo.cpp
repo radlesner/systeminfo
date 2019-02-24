@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
 	if(argc > 1) {
 		if(!strcmp(argv[1], "-g") || !strcmp(argv[1], "--gigabyte")) {
 			mem_file(0);
-			swap_file();
+			swap_file(0);
 		}
 		else if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--megabyte")) {
 			mem_megabyte_file();

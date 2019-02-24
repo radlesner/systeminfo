@@ -33,7 +33,7 @@ void output_all() {
 	cpu_file();
 	cores_file();
 	mem_file(1);
-	swap_file();
+	swap_file(1);
 	shell_file();
 	cout << "Logged user................: " << user_file() << endl;
 	cout << "Hostname...................: " << buffer.nodename << endl;
@@ -107,7 +107,7 @@ void output_monitor() {
 		cpu_frequency();
 		cout << "Uptime.....................: " << uptime_file() << endl << endl;
 		mem_file(1);
-		swap_file();
+		swap_file(1);
 
 		command_remove();
 		cout << endl << "Exit to: CTRL + C" << endl;
