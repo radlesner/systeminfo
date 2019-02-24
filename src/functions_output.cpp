@@ -32,7 +32,7 @@ void output_all() {
 	architecture();
 	cpu_file();
 	cores_file();
-	mem_file();
+	mem_file(1);
 	swap_file();
 	shell_file();
 	cout << "Logged user................: " << user_file() << endl;
@@ -106,7 +106,7 @@ void output_monitor() {
 		cores_file();
 		cpu_frequency();
 		cout << "Uptime.....................: " << uptime_file() << endl << endl;
-		mem_file();
+		mem_file(1);
 		swap_file();
 
 		command_remove();

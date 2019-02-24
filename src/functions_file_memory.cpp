@@ -11,7 +11,7 @@ using namespace std;
 
 int string_confirmed;
 
-void mem_file(int switch_megabyte = 0) {
+void mem_file(int switch_megabyte) {
 	const string input_value = "/systeminfo-files/systeminfo-mem.txt";
 	const int line_1 = 1;
 	const int line_2 = 2;

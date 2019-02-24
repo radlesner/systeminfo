@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 	command_activate();
 	if(argc > 1) {
 		if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--memory")) {
-			mem_file(1);
+			mem_file(0);
 			swap_file();
 		}
 		else if(!strcmp(argv[1], "-M") || !strcmp(argv[1], "--memory-megabyte")) {
