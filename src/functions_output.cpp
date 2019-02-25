@@ -122,7 +122,7 @@ void output_monitor(int value_argc, char** value_argv) {
 			}
 			else {
 				cout << "Bad arguments, you must use operators: ( -t -m ) or ( -t -g )" << endl;
-				cout << "Use -h or --help operator to display help" << endl;
+				cout << "Use --help operator to display help" << endl;
 				break;
 			}
 		}
@@ -235,5 +235,5 @@ void output_help() {
 	cout << "       --version           Version program and compilation" << endl;
 	cout << "                           information" << endl << endl;
 	cout << ">>> Example use command: systeminfo -s" << endl;
-	cout << ">>>                      systeminfo -t -m" << endl;
+	cout << "                         systeminfo -t -m" << endl;
 }
