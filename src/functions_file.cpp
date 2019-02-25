@@ -128,7 +128,7 @@ int cpu_frequency_max() {
 
 	string read_value;
 	read_value = open_file(input_value, line);
-	int value = stoi(read_value);
+	int value = atoi(read_value.c_str());
 
 	return value;
 }
@@ -139,7 +139,7 @@ int cpu_frequency_min() {
 
 	string read_value;
 	read_value = open_file(input_value, line);
-	int value = stoi(read_value);
+	int value = atoi(read_value.c_str());
 
 	return value;
 }
