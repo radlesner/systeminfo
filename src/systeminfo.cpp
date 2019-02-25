@@ -16,7 +16,7 @@
 using namespace std;
 
 void output_version() {
-	cout << "systeminfo 2018, v0.9" << endl; // Program versions also change in the function with logs
+	cout << "systeminfo 2018, v1.0" << endl; // Program versions also change in the function with logs
 	cout << "Compile date...............: " << __DATE__ << endl;
 	cout << "Compile time...............: " << __TIME__ << endl;
 	cout << "Compile log_file...............: " << __FILE__ << endl;
@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
 		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))				output_system();
 		else if(!strcmp(argv[1], "-c") || !strcmp(argv[1], "--cpu"))				output_cpu_only();
 		else if(!strcmp(argv[1], "-n") || !strcmp(argv[1], "--network"))			output_network();
-		else if(!strcmp(argv[1], "-t") || !strcmp(argv[1], "--monitor"))			output_monitor();
+		else if(!strcmp(argv[1], "-t") || !strcmp(argv[1], "--monitor"))			output_monitor(argc, argv);
 		else if(!strcmp(argv[1], "--check-files"))									output_check_files();
 		else if(!strcmp(argv[1], "--version"))										output_version();
 		else if(!strcmp(argv[1], "--help"))											output_help();

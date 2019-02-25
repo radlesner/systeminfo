@@ -13,8 +13,6 @@
 
 using namespace std;
 
-string version;
-
 void output_all() {
 	string shell;
 	shell = getenv ("SHELL");
@@ -97,17 +95,46 @@ void output_check_files() {
 	}
 }
 
-void output_monitor() {
+void output_monitor(int value_argc, char** value_argv) {
 	for(;;) {
 		command_activate();
 
-		system("clear");
-		cpu_file();
-		cores_file();
-		cpu_frequency();
-		cout << "Uptime.....................: " << uptime_file() << endl << endl;
-		mem_file(1);
-		swap_file(1);
+		if(value_argc > 2) {
+			if(!strcmp(value_argv[2], "-g")) {
+				system("clear");
+				cpu_file();
+				cores_file();
+				cpu_frequency();
+				cout << "Uptime.....................: " << uptime_file() << endl << endl;
+
+				mem_file(0);
+				swap_file(0);
+			}
+			else if(!strcmp(value_argv[2], "-m")) {
+				system("clear");
+				cpu_file();
+				cores_file();
+				cpu_frequency();
+				cout << "Uptime.....................: " << uptime_file() << endl << endl;
+
+				mem_megabyte_file();
+				swap_megabyte_file();
+			}
+			else {
+				cout << "Bad arguments, you must use operators: ( -t -m ) or ( -t -g )" << endl;
+				break;
+			}
+		}
+		else {
+			system("clear");
+			cpu_file();
+			cores_file();
+			cpu_frequency();
+			cout << "Uptime.....................: " << uptime_file() << endl << endl;
+
+			mem_file(1);
+			swap_file(1);
+		}
 
 		command_remove();
 		cout << endl << "Exit to: CTRL + C" << endl;
@@ -155,7 +182,7 @@ void output_save_file() {
 
 	log_file << "Log generated..............: " << in_file_time << endl;
 	log_file << "Ptrogram name..............: systeminfo" << endl;
-	log_file << "Program version............: 0.9" << endl;
+	log_file << "Program version............: 1.0" << endl;
 	log_file << "Compile program date.......: " << __DATE__ << ", " << __TIME__ << endl;
 	log_file << "Log generation time........: " << clock() - countdown << " ms" << endl;
 
