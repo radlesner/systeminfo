@@ -183,7 +183,7 @@ void output_save_file() {
 
 	log_file << "Log generated..............: " << in_file_time << endl;
 	log_file << "Ptrogram name..............: systeminfo" << endl;
-	log_file << "Program version............: 1.0" << endl;
+	log_file << "Program version............: 1.2" << endl;
 	log_file << "Compile program date.......: " << __DATE__ << ", " << __TIME__ << endl;
 	log_file << "Log generation time........: " << clock() - countdown << " ms" << endl << endl;
 

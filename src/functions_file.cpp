@@ -86,17 +86,40 @@ void cores_file() {
 }
 
 void cpu_frequency() {
-	const string input_value = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
+	const string input_value = "/systeminfo-files/systeminfo-cpu-status.txt";
+
+	int cores = stoi( open_file("/systeminfo-files/systeminfo-cores.txt", 1) );
+	int frequency_sum = 0;
 	int line = 1;
 
 	string read_value;
-	int value;
-	read_value = open_file(input_value, line);
-	value = atoi(read_value.c_str()) / 1000;
+	int value[512];
+
+	fstream file;
+
+    file.open(input_value, ios::in);
+		if(file.good() == true) {
+			for(int x = 0; x < cores; x++) {
+				getline(file, read_value);
+				if(read_value == "N/A") break;
+				value[x++] = atoi(read_value.c_str());
+			}
+		}
+		else {
+			cout << "CPU Frequency..............: N/A" << endl;
+		}
+	file.close();
+
+	for(int i = 0; i < cores; i++) {
+		frequency_sum = frequency_sum + value[i];
+	}
+
+	frequency_sum = frequency_sum / cores / 1000;
 
 	if(distribution_file() == "Raspbian" || read_value == "N/A")
 		cout << "CPU Frequency..............: N/A" << endl;
-	else cout << "CPU Frequency..............: " << value << " MHz" << endl;
+	else
+		cout << "CPU Frequency..............: " << frequency_sum << " MHz" << endl;
 }
 
 int cpu_frequency_max() {
@@ -105,7 +128,7 @@ int cpu_frequency_max() {
 
 	string read_value;
 	read_value = open_file(input_value, line);
-	int value = atoi(read_value.c_str());
+	int value = stoi(read_value);
 
 	return value;
 }
@@ -116,7 +139,7 @@ int cpu_frequency_min() {
 
 	string read_value;
 	read_value = open_file(input_value, line);
-	int value = atoi(read_value.c_str());
+	int value = stoi(read_value);
 
 	return value;
 }
