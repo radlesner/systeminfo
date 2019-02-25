@@ -88,7 +88,7 @@ void cores_file() {
 void cpu_frequency() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu-status.txt";
 
-	int cores = stoi( open_file("/systeminfo-files/systeminfo-cores.txt", 1) );
+	int cores = atoi( open_file("/systeminfo-files/systeminfo-cores.txt", 1).c_str() );
 	int frequency_sum = 0;
 	int line = 1;
 
