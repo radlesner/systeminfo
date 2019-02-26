@@ -24,18 +24,18 @@ void output_all() {
 			exit(EXIT_FAILURE);
 		}
 
-	cout << "OS Name....................: " << buffer.sysname << endl;
-	cout << "Distribution...............: " << distribution_file() << " " << release_system() << endl;
-	cout << "Kernel version.............: " << buffer.release << endl;
+	cout << "OS Name                    : " << buffer.sysname << endl;
+	cout << "Distribution               : " << distribution_file() << " " << release_system() << endl;
+	cout << "Kernel version             : " << buffer.release << endl;
 	architecture();
 	cpu_file();
 	cores_file();
 	mem_file(1);
 	swap_file(1);
 	shell_file();
-	cout << "Logged user................: " << user_file() << endl;
-	cout << "Hostname...................: " << buffer.nodename << endl;
-	cout << "Uptime.....................: " << uptime_file() << endl;
+	cout << "Logged user                : " << user_file() << endl;
+	cout << "Hostname                   : " << buffer.nodename << endl;
+	cout << "Uptime                     : " << uptime_file() << endl;
 }
 
 void output_system() {
@@ -49,11 +49,11 @@ void output_system() {
 			exit(EXIT_FAILURE);
 		}
 
-	cout << "OS Name....................: " << buffer.sysname << endl;
-	cout << "Distribution...............: " << distribution_file() << endl;
-	cout << "Release....................: " << release_system() << endl;
-	cout << "Kernel version.............: " << buffer.release << endl;
-	cout << "System architecture........: " << buffer.machine << endl;
+	cout << "OS Name                    : " << buffer.sysname << endl;
+	cout << "Distribution               : " << distribution_file() << endl;
+	cout << "Release                    : " << release_system() << endl;
+	cout << "Kernel version             : " << buffer.release << endl;
+	cout << "System architecture        : " << buffer.machine << endl;
 	cpu_file();
 	cores_file();
 	cpu_frequency();
@@ -71,18 +71,18 @@ void output_network() {
 			exit(EXIT_FAILURE);
 		}
 
-	cout << "Hostname...................: " << buffer.nodename << endl;
-	cout << "Logged user................: " << user_file() << endl << endl;
+	cout << "Hostname                   : " << buffer.nodename << endl;
+	cout << "Logged user                : " << user_file() << endl << endl;
 
-	cout << "SSH Command................: " << user_file() << "@" << buffer.nodename << ".local" << endl;
+	cout << "SSH Command                : " << user_file() << "@" << buffer.nodename << ".local" << endl;
 }
 
 void output_cpu_only() {
 	cpu_file();
 	cores_file();
 	cpu_frequency();
-	cout << "Max Frequency..............: " << cpu_frequency_max() << " MHz" << endl;
-	cout << "Min Frequency..............: " << cpu_frequency_min() << " MHz" << endl;
+	cout << "Max Frequency              : " << cpu_frequency_max() << " MHz" << endl;
+	cout << "Min Frequency              : " << cpu_frequency_min() << " MHz" << endl;
 }
 
 void output_check_files() {
@@ -105,7 +105,7 @@ void output_monitor(int value_argc, char** value_argv) {
 				cpu_file();
 				cores_file();
 				cpu_frequency();
-				cout << "Uptime.....................: " << uptime_file() << endl << endl;
+				cout << "Uptime                     : " << uptime_file() << endl << endl;
 
 				mem_file(0);
 				swap_file(0);
@@ -115,7 +115,7 @@ void output_monitor(int value_argc, char** value_argv) {
 				cpu_file();
 				cores_file();
 				cpu_frequency();
-				cout << "Uptime.....................: " << uptime_file() << endl << endl;
+				cout << "Uptime                     : " << uptime_file() << endl << endl;
 
 				mem_megabyte_file();
 				swap_megabyte_file();
@@ -131,7 +131,7 @@ void output_monitor(int value_argc, char** value_argv) {
 			cpu_file();
 			cores_file();
 			cpu_frequency();
-			cout << "Uptime.....................: " << uptime_file() << endl << endl;
+			cout << "Uptime                     : " << uptime_file() << endl << endl;
 
 			mem_file(1);
 			swap_file(1);
@@ -144,7 +144,7 @@ void output_monitor(int value_argc, char** value_argv) {
 }
 
 void output_save_file() {
-	cout << "Generating log.............: ";
+	cout << "Generating log             : ";
 
 	clock_t countdown = clock();
 
@@ -212,26 +212,25 @@ void output_save_file() {
 	log_file << " Uptime                 | " << uptime_file()								<< endl;
 
 	cout << "Done" << endl;
-	cout << "Generated date.............: " << in_file_time << endl;
-	cout << "Logs localization..........: /systeminfo-files/logs" << endl;
-	cout << "Name file..................: " << file_name << endl;
-	cout << "Log generation time........: " << clock() - countdown << " ms" << endl;
+	cout << "Generated date             : " << in_file_time << endl;
+	cout << "Logs localization          : /systeminfo-files/logs" << endl;
+	cout << "Name file                  : " << file_name << endl;
+	cout << "Log generation time        : " << clock() - countdown << " ms" << endl;
 }
 
 void output_help() {
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;
-	cout << "   -g  --gigabyte          Memory information in gigabyte form" << endl;
-	cout << "   -m  --megabyte          Memory information in megabyte form" << endl;
-	cout << "   -s  --system            System and hardware information" << endl;
-	cout << "   -h  --ssh               SSH information" << endl;
-	cout << "   -c  --cpu               CPU information" << endl;
-	cout << "   -t  --monitor           real-time monitoring" << endl;
-	cout << "       --log               Generating logs" << endl;
-	cout << "       --check-files       Check integration files" << endl;
-	cout << "       --help              Help panel" << endl;
-	cout << "       --version           Version program and compilation" << endl;
-	cout << "                           information" << endl << endl;
+	cout << "   -g  --gigabyte        Memory information in gigabyte form" << endl;
+	cout << "   -m  --megabyte        Memory information in megabyte form" << endl;
+	cout << "   -s  --system          System and hardware information" << endl;
+	cout << "   -c  --cpu             CPU information" << endl;
+	cout << "   -t  --monitor         real-time monitoring" << endl;
+	cout << "       --log             Generating logs" << endl;
+	cout << "       --check-files     Check integration files" << endl;
+	cout << "       --help            Help panel" << endl;
+	cout << "       --version         Version program and compilation" << endl;
+	cout << "                         information" << endl << endl;
 	cout << ">>> Example use command: systeminfo -s" << endl;
 	cout << "                         systeminfo -t -m" << endl;
 }
