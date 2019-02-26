@@ -74,17 +74,16 @@ void shell_file() {
 
 void cores_file() {
 	const string input_value = "/systeminfo-files/systeminfo-cores.txt";
-	const int line = 1;
 
-	string value;
-	value = open_file(input_value, line);
+	string theards = open_file(input_value, 1);
+	string cores = open_file(input_value, 2);
 
-	if(value == "1")
-		cout << "Cores/Theards              : " << value << " core" << endl;
-	else if(value == "N/A")
-		cout << "Cores/Theards              : " << value << endl;
+	if(theards == "1")
+		cout << "Cores/Theards              : " << cores << "/" << theards << endl;
+	else if(theards == "N/A")
+		cout << "Cores/Theards              : " << cores << "/" << theards << endl;
 	else
-		cout << "Cores/Theards              : " << value << " cores" << endl;
+		cout << "Cores/Theards              : " << cores << "/" << theards << endl;
 }
 
 void cpu_frequency() {

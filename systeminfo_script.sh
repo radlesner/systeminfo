@@ -3,6 +3,7 @@ cd /systeminfo-files && lscpu | grep -i "max" --max-count=1 | awk {'print $4'} >
 cd /systeminfo-files && lscpu | grep -i "min" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_min.txt
 cd /systeminfo-files && cat /proc/cpuinfo | grep -i "model name" --max-count=1 | awk '{for (i=4; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-cpu.txt
 cd /systeminfo-files && lscpu | grep -i "CPU(s):" --max-count=1 | awk {'print $2'}  >> systeminfo-cores.txt
+cd /systeminfo-files && cat /proc/cpuinfo | grep -i "cpu cores" --max-count=1 | awk {'print $4'}  >> systeminfo-cores.txt
 
 cd /systeminfo-files && uptime -p | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-uptime.txt
 cd /systeminfo-files && lsb_release -i | awk {'print $3'} >> systeminfo-distro.txt
