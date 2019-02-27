@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "g++ src/*.cpp -o systeminfo",
+            "command": "./build.sh",
             "group": {
                 "kind": "build",
                 "isDefault": true
