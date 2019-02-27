@@ -14,7 +14,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.2";
+	return "1.2.1";
 }
 
 void output_all() {
