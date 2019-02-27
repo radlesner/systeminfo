@@ -13,6 +13,10 @@
 
 using namespace std;
 
+string program_version() {
+	return "1.2";
+}
+
 void output_all() {
 	string shell;
 	shell = getenv ("SHELL");
@@ -143,7 +147,7 @@ void output_monitor(int value_argc, char** value_argv) {
 	}
 }
 
-void output_save_file() {
+void output_log() {
 	cout << "Generating log             : ";
 
 	clock_t countdown = clock();
@@ -183,7 +187,7 @@ void output_save_file() {
 
 	log_file << "Log generated..............: " << in_file_time << endl;
 	log_file << "Ptrogram name..............: systeminfo" << endl;
-	log_file << "Program version............: 1.2" << endl;
+	log_file << "Program version............: " << program_version() << endl;
 	log_file << "Compile program date.......: " << __DATE__ << ", " << __TIME__ << endl;
 	log_file << "Log generation time........: " << clock() - countdown << " ms" << endl << endl;
 
@@ -233,4 +237,10 @@ void output_help() {
 	cout << "                         information" << endl << endl;
 	cout << ">>> Example use command: systeminfo -s" << endl;
 	cout << "                         systeminfo -t -m" << endl;
+}
+
+void output_compile_information() {
+	cout << "Vesrsion program...........: " << program_version() << endl; // Program versions also change in the function with logs
+	cout << "Compile date...............: " << __DATE__ << endl;
+	cout << "Compile time...............: " << __TIME__ << endl;
 }

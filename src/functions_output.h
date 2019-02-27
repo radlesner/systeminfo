@@ -19,6 +19,7 @@
 
 using namespace std;
 
+	string program_version();
 	void output_all();
 	void output_system();
 	void output_network();
@@ -26,6 +27,7 @@ using namespace std;
 	void output_help();
 	void output_check_files();
 	void output_monitor(int value_argc, char** value_argv);
-	void output_save_file();
+	void output_log();
+	void output_compile_information();
 
 #endif /* FUNCTIONS_OUTPUT_H_ */
