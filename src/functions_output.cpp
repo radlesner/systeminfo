@@ -17,6 +17,12 @@ string program_version() {
 	return "1.2.1";
 }
 
+void output_compile_information() {
+	cout << "Vesrsion program...........: " << program_version() << endl;
+	cout << "Compile date...............: " << __DATE__ << endl;
+	cout << "Compile time...............: " << __TIME__ << endl;
+}
+
 void output_all() {
 	string shell;
 	shell = getenv ("SHELL");
@@ -237,10 +243,4 @@ void output_help() {
 	cout << "                         information" << endl << endl;
 	cout << ">>> Example use command: systeminfo -s" << endl;
 	cout << "                         systeminfo -t -m" << endl;
-}
-
-void output_compile_information() {
-	cout << "Vesrsion program...........: " << program_version() << endl; // Program versions also change in the function with logs
-	cout << "Compile date...............: " << __DATE__ << endl;
-	cout << "Compile time...............: " << __TIME__ << endl;
 }
