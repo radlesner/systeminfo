@@ -37,6 +37,7 @@ void output_main_information() {
 
 	cout << "Distribution              : " << distribution_file() << " " << release_system() << endl;
 	cout << "Kernel version            : " << buffer.release << endl;
+	architecture();
 	cpu_frequency();
 	mem_file(1);
 	swap_file(1);
