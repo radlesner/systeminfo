@@ -78,9 +78,7 @@ void cores_file() {
 	string theards = open_file(input_value, 1);
 	string cores = open_file(input_value, 2);
 
-	if(theards == "1")
-		cout << "Cores/Theards              : " << cores << "/" << theards << endl;
-	else if(theards == "N/A")
+	if(theards == "N/A")
 		cout << "Cores/Theards              : " << cores << "/" << theards << endl;
 	else
 		cout << "Cores/Theards              : " << cores << "/" << theards << endl;
