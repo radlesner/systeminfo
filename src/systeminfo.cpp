@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
 		else if(!strcmp(argv[1], "--version"))										output_compile_information();
 		else if(!strcmp(argv[1], "--help"))											output_help();
 		else if(!strcmp(argv[1], "--log"))											output_log();
-		else if(!strcmp(argv[1], "--") || !strcmp(argv[1], "-"))					output_all();
+		else if(!strcmp(argv[1], "--") || !strcmp(argv[1], "-"))					output_main_information();
 		else {
 			if(argc > 3)		cout << "Bad option: " << argv[1] << " " << argv[2] << " " << argv[3] << endl;
 			else if(argc > 2)	cout << "Bad option: " << argv[1] << " " << argv[2] << endl;
@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
 			output_help();
 		}
 	}
-	else 	output_all();
+	else 	output_main_information();
 	command_remove();
 
 	return 0;

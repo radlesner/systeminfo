@@ -21,7 +21,7 @@ using namespace std;
 
 	string program_version();
 	void output_compile_information();
-	void output_all();
+	void output_main_information();
 	void output_system();
 	void output_network();
 	void output_cpu_only();

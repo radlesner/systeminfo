@@ -15,16 +15,16 @@
 using namespace std;
 
 string program_version() {
-	return "1.3.1";
+	return "1.3.2";
 }
 
 void output_compile_information() {
-	cout << "Vesrsion program...........: " << program_version() << endl;
-	cout << "Compile date...............: " << __DATE__ << endl;
-	cout << "Compile time...............: " << __TIME__ << endl;
+	cout << "Vesrsion program.........: " << program_version() << endl;
+	cout << "Compile date.............: " << __DATE__ << endl;
+	cout << "Compile time.............: " << __TIME__ << endl;
 }
 
-void output_all() {
+void output_main_information() {
 	string shell;
 	shell = getenv ("SHELL");
 
@@ -35,18 +35,13 @@ void output_all() {
 			exit(EXIT_FAILURE);
 		}
 
-	cout << "OS Name                    : " << buffer.sysname << endl;
-	cout << "Distribution               : " << distribution_file() << " " << release_system() << endl;
-	cout << "Kernel version             : " << buffer.release << endl;
-	architecture();
-	cpu_file();
-	cores_file();
+	cout << "Distribution              : " << distribution_file() << " " << release_system() << endl;
+	cout << "Kernel version            : " << buffer.release << endl;
+	cpu_frequency();
 	mem_file(1);
 	swap_file(1);
-	shell_file();
-	cout << "Logged user                : " << user_file() << endl;
-	cout << "Hostname                   : " << buffer.nodename << endl;
-	cout << "Uptime                     : " << uptime_file() << endl;
+	get_ip_address(0);
+	cout << "Uptime                    : " << uptime_file() << endl;
 }
 
 void output_system() {
@@ -60,11 +55,11 @@ void output_system() {
 			exit(EXIT_FAILURE);
 		}
 
-	cout << "OS Name                    : " << buffer.sysname << endl;
-	cout << "Distribution               : " << distribution_file() << endl;
-	cout << "Release                    : " << release_system() << endl;
-	cout << "Kernel version             : " << buffer.release << endl;
-	cout << "System architecture        : " << buffer.machine << endl;
+	cout << "OS Name                   : " << buffer.sysname << endl;
+	cout << "Distribution              : " << distribution_file() << endl;
+	cout << "Release                   : " << release_system() << endl;
+	cout << "Kernel version            : " << buffer.release << endl;
+	architecture();
 	cpu_file();
 	cores_file();
 	cpu_frequency();
@@ -82,8 +77,8 @@ void output_network() {
 			exit(EXIT_FAILURE);
 		}
 
-	cout << "Hostname                   : " << buffer.nodename << endl;
-	cout << "Logged user                : " << user_file() << endl;
+	cout << "Hostname                  : " << buffer.nodename << endl;
+	cout << "Logged user               : " << user_file() << endl;
 	get_ip_address(0);
 }
 
@@ -91,8 +86,8 @@ void output_cpu_only() {
 	cpu_file();
 	cores_file();
 	cpu_frequency();
-	cout << "Max Frequency              : " << cpu_frequency_max() << " MHz" << endl;
-	cout << "Min Frequency              : " << cpu_frequency_min() << " MHz" << endl;
+	cout << "Max Frequency             : " << cpu_frequency_max() << " MHz" << endl;
+	cout << "Min Frequency             : " << cpu_frequency_min() << " MHz" << endl;
 }
 
 void output_check_files() {
@@ -115,7 +110,7 @@ void output_monitor(int value_argc, char** value_argv) {
 				cpu_file();
 				cores_file();
 				cpu_frequency();
-				cout << "Uptime                     : " << uptime_file() << endl << endl;
+				cout << "Uptime                    : " << uptime_file() << endl << endl;
 
 				mem_file(0);
 				swap_file(0);
@@ -125,7 +120,7 @@ void output_monitor(int value_argc, char** value_argv) {
 				cpu_file();
 				cores_file();
 				cpu_frequency();
-				cout << "Uptime                     : " << uptime_file() << endl << endl;
+				cout << "Uptime                    : " << uptime_file() << endl << endl;
 
 				mem_megabyte_file();
 				swap_megabyte_file();
@@ -141,7 +136,7 @@ void output_monitor(int value_argc, char** value_argv) {
 			cpu_file();
 			cores_file();
 			cpu_frequency();
-			cout << "Uptime                     : " << uptime_file() << endl << endl;
+			cout << "Uptime                    : " << uptime_file() << endl << endl;
 
 			mem_file(1);
 			swap_file(1);
@@ -154,7 +149,7 @@ void output_monitor(int value_argc, char** value_argv) {
 }
 
 void output_log() {
-	cout << "Generating log             : ";
+	cout << "Generating log            : ";
 
 	clock_t countdown = clock();
 
@@ -222,10 +217,10 @@ void output_log() {
 	log_file << " Uptime                 | " << uptime_file()								<< endl;
 
 	cout << "Done" << endl;
-	cout << "Generated date             : " << in_file_time << endl;
-	cout << "Logs localization          : /systeminfo-files/logs" << endl;
-	cout << "Name file                  : " << file_name << endl;
-	cout << "Log generation time        : " << clock() - countdown << " ms" << endl;
+	cout << "Generated date            : " << in_file_time << endl;
+	cout << "Logs localization         : /systeminfo-files/logs" << endl;
+	cout << "Name file                 : " << file_name << endl;
+	cout << "Log generation time       : " << clock() - countdown << " ms" << endl;
 }
 
 void output_help() {
