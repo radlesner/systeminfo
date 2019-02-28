@@ -79,7 +79,7 @@ void cores_file() {
 	string cores = open_file(input_value, 2);
 
 	if(theards == "N/A")
-		cout << "Cores/Theards              : " << cores << "/" << theards << endl;
+		cout << "Cores/Theards              : N/A" << endl;
 	else
 		cout << "Cores/Theards              : " << cores << "/" << theards << endl;
 }
