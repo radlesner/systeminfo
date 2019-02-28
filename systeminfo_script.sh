@@ -13,7 +13,6 @@ arch >> systeminfo-distro.txt
 getconf LONG_BIT >> systeminfo-distro.txt
 echo $USER >> systeminfo-user.txt
 echo $SHELL >> systeminfo-shell.txt
-cat /proc/net/arp | grep -E "(wlp|wlan|enp|eth|bond)" | awk '{print $6 "\n" $1}' >> systeminfo-net-interfaces.txt
 
 cat /proc/meminfo | grep -i "MemTotal: " --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-mem.txt
 cat /proc/meminfo | grep -i "MemFree: " --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-mem.txt
