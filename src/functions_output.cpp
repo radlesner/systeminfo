@@ -10,6 +10,7 @@
 #include "functions_file_memory.h"
 #include "functions_file_swap.h"
 #include "functions_command.h"
+#include "functions_network.h"
 
 using namespace std;
 
@@ -82,9 +83,8 @@ void output_network() {
 		}
 
 	cout << "Hostname                   : " << buffer.nodename << endl;
-	cout << "Logged user                : " << user_file() << endl << endl;
-
-	cout << "SSH Command                : " << user_file() << "@" << buffer.nodename << ".local" << endl;
+	cout << "Logged user                : " << user_file() << endl;
+	get_ip_address(0);
 }
 
 void output_cpu_only() {
