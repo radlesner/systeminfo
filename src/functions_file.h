@@ -18,6 +18,7 @@ using namespace std;
 	string uptime_file();
 	string distribution_file();
 	string release_system();
+	string cedename_system();
 	void cpu_file();
 	void architecture();
 	void cpu_frequency();

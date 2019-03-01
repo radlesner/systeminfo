@@ -29,6 +29,16 @@ string release_system() {
 	return value;
 }
 
+string cedename_system() {
+	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const int line = 3;
+
+	string value;
+	value = open_file(input_value, line);
+
+	return value;
+}
+
 void cpu_file() {
 	const string input_value = "/systeminfo-files/systeminfo-cpu.txt";
 	const int line = 1;
@@ -40,15 +50,15 @@ void cpu_file() {
 }
 
 void architecture() {
-	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const string input_value = "/systeminfo-files/systeminfo-arch.txt";
 	const string bit32 = "32 Bits";
 	const string bit64 = "64 Bits";
 	const string arm32 = "ARM 32 Bits";
 	const string arm64 = "ARM 64 Bits";
 
 	string arch, bits;
-	arch = open_file(input_value, 3);
-	bits = open_file(input_value, 4);
+	arch = open_file(input_value, 1);
+	bits = open_file(input_value, 2);
 
 	if(bits.empty() == true)
 		cout << "System architecture       : " << arch << endl;

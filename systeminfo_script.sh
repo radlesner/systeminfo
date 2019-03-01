@@ -9,8 +9,9 @@ cat /proc/cpuinfo | grep -i "cpu cores" --max-count=1 | awk {'print $4'}  >> sys
 uptime -p | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-uptime.txt
 lsb_release -i | awk {'print $3'} >> systeminfo-distro.txt
 lsb_release -r | awk {'print $2'} >> systeminfo-distro.txt
-arch >> systeminfo-distro.txt
-getconf LONG_BIT >> systeminfo-distro.txt
+lsb_release -c | awk {'print $2'} >> systeminfo-distro.txt
+arch >> systeminfo-arch.txt
+getconf LONG_BIT >> systeminfo-arch.txt
 echo $USER >> systeminfo-user.txt
 echo $SHELL >> systeminfo-shell.txt
 

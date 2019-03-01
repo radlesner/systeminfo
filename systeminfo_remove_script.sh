@@ -1,6 +1,7 @@
 cd /systeminfo-files
 rm systeminfo-uptime.txt >> systeminfo-errors.txt
 rm systeminfo-distro.txt >> systeminfo-errors.txt
+rm systeminfo-arch.txt >> systeminfo-errors.txt
 rm systeminfo-shell.txt >> systeminfo-errors.txt
 rm systeminfo-user.txt >> systeminfo-errors.txt
 
