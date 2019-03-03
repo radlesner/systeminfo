@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.5.1";
+	return "1.5.2";
 }
 
 void output_compile_information() {
@@ -63,6 +63,7 @@ void output_main_information() {
 
 	separator(" IP ADDRESSES ");
 	get_ip_address(0);
+	separator("");
 }
 
 void output_system() {
@@ -88,6 +89,7 @@ void output_system() {
 	cpu_file();
 	cores_file();
 	cpu_frequency();
+	separator("");
 }
 
 void output_network() {
@@ -110,6 +112,7 @@ void output_network() {
 
 	separator(" GATEWAY ");
 	get_ip_gateway();
+	separator("");
 }
 
 void output_cpu_only() {
@@ -121,6 +124,7 @@ void output_cpu_only() {
 	cpu_frequency();
 	cout << "Max Frequency             : " << cpu_frequency_max() << " MHz" << endl;
 	cout << "Min Frequency             : " << cpu_frequency_min() << " MHz" << endl;
+	separator("");
 }
 
 void output_check_files() {
@@ -152,6 +156,7 @@ void output_monitor(int value_argc, char** value_argv) {
 				separator(" MEMORY INFORMATION ");
 				mem_file(0);
 				swap_file(0);
+				separator("");
 			}
 			else if(!strcmp(value_argv[2], "-m")) {
 				system("clear");
@@ -167,6 +172,7 @@ void output_monitor(int value_argc, char** value_argv) {
 				separator(" MEMORY INFORMATION ");
 				mem_megabyte_file();
 				swap_megabyte_file();
+				separator("");
 			}
 			else {
 				cout << "Bad arguments, you must use operators: ( -t -m ) or ( -t -g )" << endl;
@@ -188,6 +194,7 @@ void output_monitor(int value_argc, char** value_argv) {
 			separator(" MEMORY INFORMATION ");
 			mem_file(1);
 			swap_file(1);
+			separator("");
 		}
 
 		command_remove();
