@@ -1,4 +1,5 @@
 #include "functions_network.h"
+#include "functions_file_operations.h"
 
 using namespace std;
 
@@ -41,28 +42,32 @@ void get_ip_address(int on_ip6) {
     if (ifAddrStruct != NULL) freeifaddrs(ifAddrStruct);
 }
 
-int get_ip_gateway(in_addr_t* addr, char *interface) {
-    long destination, gateway;
-    char iface[IF_NAMESIZE];
-    char buf[4096];
+void get_ip_gateway() {
+    ifstream file;
+    int nr = 0;
+    string interfaces[32];
+    string addresses[32];
+    string text, final_output[32];
 
-    memset(iface, 0, sizeof(iface));
-    memset(buf, 0, sizeof(buf));
-
-    FILE * file;
-    file = fopen("/proc/net/route", "r");
-    if (!file) return -1;
-
-    while(fgets(buf, sizeof(buf), file)) {
-        if (sscanf(buf, "%s %lx %lx", iface, &destination, &gateway) == 3) {
-            if (destination == 0) {
-                *addr = gateway;
-                strcpy(interface, iface);
-                fclose(file);
-                return 0;
-            }
+    file.open("/systeminfo-files/systeminfo-gateway-names.txt");
+    if (file.good() == true) {
+        while(!file.eof()) {
+            getline(file, text);
+            nr++;
         }
     }
-    if (file) fclose(file);
-    return -1;
+    file.close();
+
+    for(int i = 1; i < nr; i++) {
+        interfaces[i] = open_file("/systeminfo-files/systeminfo-gateway-names.txt", i);
+        addresses[i] = open_file("/systeminfo-files/systeminfo-gateway-ip.txt", i);
+
+        final_output[i] = "IP gateway (" + interfaces[i] + ")";
+        int count = 0;
+        count = 26 - final_output[i].length();
+        for(int  x = 0; x < count; x++) {
+            final_output[i] = final_output[i] + " ";
+        }
+        cout << final_output[i] << ": " << addresses[i] << endl;
+    }
 }
