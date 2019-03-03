@@ -19,8 +19,8 @@ void get_ip_address(int on_ip6) {
             tmpAddrPtr =& ((struct sockaddr_in *) ifa->ifa_addr)->sin_addr;
             char address_buffer[INET_ADDRSTRLEN];
             inet_ntop(AF_INET, tmpAddrPtr, address_buffer, INET_ADDRSTRLEN);
-            if (nr < 10)    cout << "IP Address #" << nr++ << "             : " << ifa->ifa_name << " (" << address_buffer << ")" << endl;
-            else            cout << "IP Address #" << nr++ << "            : " << ifa->ifa_name << " (" << address_buffer << ")" << endl;
+            if (nr < 10)    cout << "IP Address           #" << nr++ << "   : " << ifa->ifa_name << " (" << address_buffer << ")" << endl;
+            else            cout << "IP Address           #" << nr++ << "  : " << ifa->ifa_name << " (" << address_buffer << ")" << endl;
         }
         else if (ifa->ifa_addr->sa_family == AF_INET6 && on_ip6 == 1) {
             tmpAddrPtr =& ((struct sockaddr_in6 *) ifa->ifa_addr)->sin6_addr;
