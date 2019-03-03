@@ -24,6 +24,21 @@ void output_compile_information() {
 	cout << "Compile time.............: " << __TIME__ << endl;
 }
 
+void separator(string name) {
+	string separator_1 = "––––––––––––";
+	string total;
+
+	total = separator_1 + name;
+
+	int count = 77 - total.length();
+	for(int i = 0; i < count; i++) {
+		total = total + "–";
+	}
+
+
+	cout << total << ">>>" << endl;
+}
+
 void output_main_information() {
 	string shell;
 	shell = getenv ("SHELL");
@@ -35,14 +50,19 @@ void output_main_information() {
 			exit(EXIT_FAILURE);
 		}
 
+	separator(" SYSTEM INFORMATION ");
 	cout << "Distribution              : " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
 	cout << "Kernel version            : " << buffer.release << endl;
 	architecture();
 	cpu_frequency();
+	cout << "Uptime                    : " << uptime_file() << endl;
+
+	separator(" MEMORY INFORMATION ");
 	mem_file(1);
 	swap_file(1);
+
+	separator(" IP INFORMATION ");
 	get_ip_address(0);
-	cout << "Uptime                    : " << uptime_file() << endl;
 }
 
 void output_system() {
@@ -56,15 +76,18 @@ void output_system() {
 			exit(EXIT_FAILURE);
 		}
 
+	separator(" SYSTEM INFORMATION ");
 	cout << "OS Name                   : " << buffer.sysname << endl;
 	cout << "Distribution              : " << distribution_file() << endl;
 	cout << "Release                   : " << release_system() << endl;
 	cout << "Kernel version            : " << buffer.release << endl;
+	shell_file();
+
+	separator(" CPU INFORMATION ");
 	architecture();
 	cpu_file();
 	cores_file();
 	cpu_frequency();
-	shell_file();
 }
 
 void output_network() {
@@ -78,14 +101,20 @@ void output_network() {
 			exit(EXIT_FAILURE);
 		}
 
+	separator(" NETWORK INFORMATION ");
 	cout << "Hostname                  : " << buffer.nodename << endl;
 	cout << "Logged user               : " << user_file() << endl;
-	get_ip_address(0);
+
+	separator(" IP INFORMATION ");
+	get_ip_address(1);
 }
 
 void output_cpu_only() {
+	separator(" CPU INFORMATION ");
 	cpu_file();
 	cores_file();
+
+	separator(" FREQUENCY INFORMATION ");
 	cpu_frequency();
 	cout << "Max Frequency             : " << cpu_frequency_max() << " MHz" << endl;
 	cout << "Min Frequency             : " << cpu_frequency_min() << " MHz" << endl;
@@ -108,21 +137,31 @@ void output_monitor(int value_argc, char** value_argv) {
 		if(value_argc > 2) {
 			if(!strcmp(value_argv[2], "-g")) {
 				system("clear");
+
+				separator(" CPU INFORMATION ");
 				cpu_file();
 				cores_file();
 				cpu_frequency();
-				cout << "Uptime                    : " << uptime_file() << endl << endl;
 
+				separator(" SYSTEM INFORMATION ");
+				cout << "Uptime                    : " << uptime_file() << endl;
+
+				separator(" MEMORY INFORMATION ");
 				mem_file(0);
 				swap_file(0);
 			}
 			else if(!strcmp(value_argv[2], "-m")) {
 				system("clear");
+
+				separator(" CPU INFORMATION ");
 				cpu_file();
 				cores_file();
 				cpu_frequency();
-				cout << "Uptime                    : " << uptime_file() << endl << endl;
 
+				separator(" SYSTEM INFORMATION ");
+				cout << "Uptime                    : " << uptime_file() << endl;
+
+				separator(" MEMORY INFORMATION ");
 				mem_megabyte_file();
 				swap_megabyte_file();
 			}
@@ -134,11 +173,16 @@ void output_monitor(int value_argc, char** value_argv) {
 		}
 		else {
 			system("clear");
+
+			separator(" CPU INFORMATION ");
 			cpu_file();
 			cores_file();
 			cpu_frequency();
-			cout << "Uptime                    : " << uptime_file() << endl << endl;
 
+			separator(" SYSTEM INFORMATION ");
+			cout << "Uptime                    : " << uptime_file() << endl;
+
+			separator(" MEMORY INFORMATION ");
 			mem_file(1);
 			swap_file(1);
 		}

@@ -9,6 +9,7 @@
 #define FUNCTIONS_OUTPUT_H_
 
 #include <iostream>
+#include <string>
 #include <sys/utsname.h>
 #include <cstdlib>
 #include <unistd.h>
@@ -21,6 +22,7 @@ using namespace std;
 
 	string program_version();
 	void output_compile_information();
+	void separator(string name);
 	void output_main_information();
 	void output_system();
 	void output_network();
