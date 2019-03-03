@@ -15,11 +15,11 @@
 using namespace std;
 
 string program_version() {
-	return "1.3.2";
+	return "1.4";
 }
 
 void output_compile_information() {
-	cout << "Vesrsion program.........: " << program_version() << endl;
+	cout << "Version program..........: " << program_version() << endl;
 	cout << "Compile date.............: " << __DATE__ << endl;
 	cout << "Compile time.............: " << __TIME__ << endl;
 }
