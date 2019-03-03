@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.4.1";
+	return "1.5";
 }
 
 void output_compile_information() {
@@ -61,7 +61,7 @@ void output_main_information() {
 	mem_file(1);
 	swap_file(1);
 
-	separator(" IP INFORMATION ");
+	separator(" IP ADDRESSES ");
 	get_ip_address(0);
 }
 
@@ -105,8 +105,25 @@ void output_network() {
 	cout << "Hostname                  : " << buffer.nodename << endl;
 	cout << "Logged user               : " << user_file() << endl;
 
-	separator(" IP INFORMATION ");
-	get_ip_address(1);
+	separator(" IP ADDRESSES ");
+	get_ip_address(0);
+
+	separator(" GATEWAY ");
+	in_addr_t addr = 0;
+    char iface[IF_NAMESIZE];
+
+	memset(iface, 0, sizeof(iface));
+
+	get_ip_gateway(&addr, iface);
+
+	int count = 0;
+	string total_output = "IP gateway (" + (string)iface + ")";
+	count = 26 - total_output.length();
+	for(int i = 0; i < count; i++) {
+		total_output = total_output + " ";
+	}
+
+	cout << total_output << ": " << inet_ntoa(*(struct in_addr *) &addr) << endl;
 }
 
 void output_cpu_only() {

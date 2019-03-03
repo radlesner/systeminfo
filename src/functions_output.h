@@ -18,6 +18,13 @@
 #include <time.h>
 #include <ctime>
 
+#include <errno.h>
+#include <fcntl.h>
+#include <ctype.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <net/if.h>
+
 using namespace std;
 
 	string program_version();
