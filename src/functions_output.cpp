@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.6.1";
+	return "1.7";
 }
 
 void output_compile_information() {
@@ -107,9 +107,7 @@ void output_network() {
 	cout << "Logged user               : " << user_file() << endl;
 
 	separator("");
-	get_ip_address(0);
-	get_netmask();
-	get_ip_gateway();
+	all_network();
 }
 
 void output_cpu_only() {

@@ -56,9 +56,12 @@ void get_ip_address(int on_ip6) {
     if (ifAddrStruct != NULL) freeifaddrs(ifAddrStruct);
 }
 
-void get_ip_gateway() {
+void all_network() {
+    /*
+        GATEWAY
+    */
     ifstream file;
-    int nr = 0;
+    int nr = 0, i = 0;
     string interfaces[32];
     string addresses[32];
     string text;
@@ -71,38 +74,16 @@ void get_ip_gateway() {
         }
     }
     file.close();
-
-    for(int i = 1; i < nr; i++) {
-        interfaces[i] = open_file("/systeminfo-files/systeminfo-gateway-names.txt", i);
-        addresses[i] = open_file("/systeminfo-files/systeminfo-gateway-ip.txt", i);
-
-        final_output = "Gateway (" + interfaces[i] + ")";
-        int count = 0;
-        count = 26 - final_output.length();
-        for(int  x = 0; x < count; x++) {
-            final_output = final_output + " ";
-        }
-        cout << final_output << ": " << addresses[i] << endl;
-    }
-    if (final_output.length() > 1) separator("");
-}
-
-unsigned int cidrMask(unsigned int n) {
-    unsigned int count = 0;
-    while (n) {
-        count += n & 1;
-        n >>= 1;
-    }
-    return 32-count;
-}
-
-void get_netmask() {
+    /*
+        GATEWAY END
+        ADDRESS AND NETMASK
+    */
     struct ifaddrs * ifAddrStruct=NULL;
     struct ifaddrs * ifa=NULL;
     void * tmpAddrPtr=NULL;
     unsigned int tmpMask;
 
-    string text_output;
+    string netmask_output, address_output;
 
     getifaddrs(&ifAddrStruct);
 
@@ -112,29 +93,52 @@ void get_netmask() {
         }
 
         if (ifa->ifa_addr->sa_family == AF_INET) {
-			char mask_buffer[INET_ADDRSTRLEN];
+			char address_buffer[INET_ADDRSTRLEN];
+            char mask_buffer[INET_ADDRSTRLEN];
 
-			tmpAddrPtr = &((struct sockaddr_in *)(ifa->ifa_netmask))->sin_addr;
-			inet_ntop(AF_INET, tmpAddrPtr, mask_buffer, INET_ADDRSTRLEN);
+            tmpAddrPtr = &((struct sockaddr_in *)(ifa->ifa_addr))->sin_addr;
+            inet_ntop(AF_INET, tmpAddrPtr, address_buffer, INET_ADDRSTRLEN);
 
-			tmpMask = ((struct sockaddr_in *)(ifa->ifa_netmask))->sin_addr.s_addr;
+            tmpAddrPtr = &((struct sockaddr_in *)(ifa->ifa_netmask))->sin_addr;
+            inet_ntop(AF_INET, tmpAddrPtr, mask_buffer, INET_ADDRSTRLEN);
+
+            tmpMask = ((struct sockaddr_in *)(ifa->ifa_netmask))->sin_addr.s_addr;
 
             if ((string)ifa->ifa_name == "lo") {
                 continue;
             }
             else {
                 int count = 0;
-                text_output = "Netmask (" + (string)ifa->ifa_name + ")";
-                count = 26 - text_output.length();
+                address_output = "IPv4    (" + (string)ifa->ifa_name + ")";
+                netmask_output = "Netmask (" + (string)ifa->ifa_name + ")";
+                count = 26 - netmask_output.length();
                 for(int i = 0; i < count; i++) {
-                    text_output = text_output + " ";
+                    address_output = address_output + " ";
+                    netmask_output = netmask_output + " ";
                 }
-
-                cout << text_output << ": " << mask_buffer <<  endl;
+                cout << address_output << ": " << address_buffer << endl;
+                cout << netmask_output << ": " << mask_buffer <<  endl;
 
             }
+            /*
+                GATEWAY OUTPUT
+            */
+            i++;
+            interfaces[i] = open_file("/systeminfo-files/systeminfo-gateway-names.txt", i);
+            addresses[i] = open_file("/systeminfo-files/systeminfo-gateway-ip.txt", i);
+
+            final_output = "Gateway (" + interfaces[i] + ")";
+            int count = 0;
+            count = 26 - final_output.length();
+            for(int  x = 0; x < count; x++) {
+                final_output = final_output + " ";
+            }
+            cout << final_output << ": " << addresses[i] << endl;
+            /*
+                GATEWAY OUTPUT END
+            */
+            separator("");
         }
     }
-    if (text_output.length() > 1) separator("");
     if (ifAddrStruct!=NULL) freeifaddrs(ifAddrStruct);
 }
