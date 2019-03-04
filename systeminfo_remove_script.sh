@@ -15,7 +15,9 @@ rm systeminfo-mem.txt >> systeminfo-errors.txt
 rm systeminfo-swap.txt >> systeminfo-errors.txt
 
 # CPU
+if [ -e /systeminfo-files/systeminfo-cpu-status.txt ] ; then
+    rm systeminfo-cpu-status.txt >> systeminfo-errors.txt
+fi
 rm systeminfo-cpu.txt >> systeminfo-errors.txt
-rm systeminfo-cpu-status.txt >> systeminfo-errors.txt
 rm systeminfo-cores.txt >> systeminfo-errors.txt
 rm systeminfo-cpu-frequency*.txt >> systeminfo-errors.txt
