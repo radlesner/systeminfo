@@ -15,13 +15,13 @@
 using namespace std;
 
 string program_version() {
-	return "1.6";
+	return "1.6.1";
 }
 
 void output_compile_information() {
-	cout << "Version program..........: " << program_version() << endl;
-	cout << "Compile date.............: " << __DATE__ << endl;
-	cout << "Compile time.............: " << __TIME__ << endl;
+	cout << "Version program...........: " << program_version() << endl;
+	cout << "Compile date..............: " << __DATE__ << endl;
+	cout << "Compile time..............: " << __TIME__ << endl;
 }
 
 void separator(string name) {

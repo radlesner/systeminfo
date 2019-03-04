@@ -138,14 +138,3 @@ void get_netmask() {
     if (text_output.length() > 1) separator("");
     if (ifAddrStruct!=NULL) freeifaddrs(ifAddrStruct);
 }
-
-/*
-int count = 0;
-            text_output = "IP address (" + (string)ifa->ifa_name + ")";
-            count = 26 - text_output.length();
-            for(int i = 0; i < count; i++) {
-                text_output = text_output + " ";
-            }
-
-            cout << text_output << ": " << mask_buffer <<  endl;
-*/
