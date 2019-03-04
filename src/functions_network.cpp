@@ -1,5 +1,6 @@
 #include "functions_network.h"
 #include "functions_file_operations.h"
+#include "functions_output.h"
 
 using namespace std;
 
@@ -30,7 +31,6 @@ void get_ip_address(int on_ip6) {
                 for(int i = 0; i < count; i++) {
                     text_output = text_output + " ";
                 }
-
                 cout << text_output << ": " << address_buffer <<  endl;
             }
         }
@@ -48,11 +48,11 @@ void get_ip_address(int on_ip6) {
                 for(int i = 0; i < count; i++) {
                     text_output = text_output + " ";
                 }
-
                 cout << text_output << ": " << address_buffer <<  endl;
             }
         }
     }
+    if (text_output.length() > 1) separator("");
     if (ifAddrStruct != NULL) freeifaddrs(ifAddrStruct);
 }
 
@@ -61,8 +61,8 @@ void get_ip_gateway() {
     int nr = 0;
     string interfaces[32];
     string addresses[32];
-    string text, final_output[32];
-
+    string text;
+    string final_output;
     file.open("/systeminfo-files/systeminfo-gateway-names.txt");
     if (file.good() == true) {
         while(!file.eof()) {
@@ -76,14 +76,15 @@ void get_ip_gateway() {
         interfaces[i] = open_file("/systeminfo-files/systeminfo-gateway-names.txt", i);
         addresses[i] = open_file("/systeminfo-files/systeminfo-gateway-ip.txt", i);
 
-        final_output[i] = "Gateway (" + interfaces[i] + ")";
+        final_output = "Gateway (" + interfaces[i] + ")";
         int count = 0;
-        count = 26 - final_output[i].length();
+        count = 26 - final_output.length();
         for(int  x = 0; x < count; x++) {
-            final_output[i] = final_output[i] + " ";
+            final_output = final_output + " ";
         }
-        cout << final_output[i] << ": " << addresses[i] << endl;
+        cout << final_output << ": " << addresses[i] << endl;
     }
+    if (final_output.length() > 1) separator("");
 }
 
 unsigned int cidrMask(unsigned int n) {
@@ -130,9 +131,11 @@ void get_netmask() {
                 }
 
                 cout << text_output << ": " << mask_buffer <<  endl;
+
             }
         }
     }
+    if (text_output.length() > 1) separator("");
     if (ifAddrStruct!=NULL) freeifaddrs(ifAddrStruct);
 }
 

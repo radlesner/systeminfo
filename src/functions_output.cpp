@@ -63,7 +63,6 @@ void output_main_information() {
 
 	separator("");
 	get_ip_address(0);
-	separator("");
 }
 
 void output_system() {
@@ -109,13 +108,8 @@ void output_network() {
 
 	separator("");
 	get_ip_address(0);
-
-	separator("");
 	get_netmask();
-
-	separator("");
 	get_ip_gateway();
-	separator("");
 }
 
 void output_cpu_only() {
