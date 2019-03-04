@@ -233,7 +233,6 @@ void output_log() {
 		}
 
 	fstream log_file;
-
 	log_file.open(file_name_fstream.c_str(), ios::out);
 
 	log_file << "Log generated..............: " << in_file_time << endl;

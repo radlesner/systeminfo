@@ -86,7 +86,10 @@ void all_network() {
     string netmask_output, address_output;
 
     getifaddrs(&ifAddrStruct);
-
+    /*
+        ADDRESS AND NETMASK
+        ADDRESS AND NETMASK OUTPUT
+    */
     for (ifa = ifAddrStruct; ifa != NULL; ifa = ifa->ifa_next) {
         if (!ifa->ifa_addr) {
             continue;
@@ -121,6 +124,7 @@ void all_network() {
 
             }
             /*
+                ADDRESS AND NETMASK OUTPUT END
                 GATEWAY OUTPUT
             */
             i++;
@@ -137,7 +141,7 @@ void all_network() {
             /*
                 GATEWAY OUTPUT END
             */
-            separator("");
+            if (address_output.length() > 1) separator("");
         }
     }
     if (ifAddrStruct!=NULL) freeifaddrs(ifAddrStruct);
