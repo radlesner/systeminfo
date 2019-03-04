@@ -127,21 +127,26 @@ void all_network() {
                 ADDRESS AND NETMASK OUTPUT END
                 GATEWAY OUTPUT
             */
-            i++;
-            interfaces[i] = open_file("/systeminfo-files/systeminfo-gateway-names.txt", i);
-            addresses[i] = open_file("/systeminfo-files/systeminfo-gateway-ip.txt", i);
-
-            final_output = "Gateway (" + interfaces[i] + ")";
-            int count = 0;
-            count = 26 - final_output.length();
-            for(int  x = 0; x < count; x++) {
-                final_output = final_output + " ";
+            if ((string)ifa->ifa_name == "lo") {
+                continue;
             }
-            cout << final_output << ": " << addresses[i] << endl;
-            /*
-                GATEWAY OUTPUT END
-            */
-            if (address_output.length() > 1) separator("");
+            else {
+                i++;
+                interfaces[i] = open_file("/systeminfo-files/systeminfo-gateway-names.txt", i);
+                addresses[i] = open_file("/systeminfo-files/systeminfo-gateway-ip.txt", i);
+
+                final_output = "Gateway (" + interfaces[i] + ")";
+                int count = 0;
+                count = 26 - final_output.length();
+                for(int  x = 0; x < count; x++) {
+                    final_output = final_output + " ";
+                }
+                cout << final_output << ": " << addresses[i] << endl;
+                /*
+                    GATEWAY OUTPUT END
+                */
+                if (address_output.length() > 1) separator("");
+            }
         }
     }
     if (ifAddrStruct!=NULL) freeifaddrs(ifAddrStruct);
