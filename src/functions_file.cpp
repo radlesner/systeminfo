@@ -113,22 +113,21 @@ void cpu_frequency() {
 				if(read_value == "N/A") break;
 				value[x++] = atoi(read_value.c_str());
 			}
+            for(int i = 0; i < cores; i++) {
+                frequency_sum = frequency_sum + value[i];
+            }
+
+            frequency_sum = frequency_sum / cores / 1000;
+
+            if(distribution_file() == "Raspbian" || read_value == "N/A")
+                cout << "CPU Frequency             : N/A" << endl;
+            else
+                cout << "CPU Frequency             : " << frequency_sum << " MHz" << endl;
 		}
 		else {
 			cout << "CPU Frequency             : N/A" << endl;
 		}
 	file.close();
-
-	for(int i = 0; i < cores; i++) {
-		frequency_sum = frequency_sum + value[i];
-	}
-
-	frequency_sum = frequency_sum / cores / 1000;
-
-	if(distribution_file() == "Raspbian" || read_value == "N/A")
-		cout << "CPU Frequency             : N/A" << endl;
-	else
-		cout << "CPU Frequency             : " << frequency_sum << " MHz" << endl;
 }
 
 int cpu_frequency_max() {
