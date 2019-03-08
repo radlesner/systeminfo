@@ -85,10 +85,13 @@ void shell_file() {
 void cores_file() {
 	const string input_value = "/systeminfo-files/systeminfo-cores.txt";
 
-	string theards = open_file(input_value, 1);
-	string cores = open_file(input_value, 2);
+	string theards_value = open_file(input_value, 1);
+	string cores_value = open_file(input_value, 2);
 
-	if(theards == "N/A")
+	int theards = stoi(theards_value);
+	int cores = theards / stoi(cores_value);
+
+	if(theards_value == "N/A")
 		cout << "Cores/Theards             : N/A" << endl;
 	else
 		cout << "Cores/Theards             : " << cores << "/" << theards << endl;
