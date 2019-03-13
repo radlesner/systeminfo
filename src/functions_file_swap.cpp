@@ -18,8 +18,8 @@ void swap_file(int switch_megabyte) {
 	string value_1 = open_file(input_value, line_1);
 	string value_2 = open_file(input_value, line_2);
 
-	swap_total	= (double)atoi(value_1.c_str())	/ 1024 / 1000;
-	swap_free	= (double)atoi(value_2.c_str())	/ 1024 / 1000;
+	swap_total	= static_cast<double>( atoi(value_1.c_str()) )	/ 1024 / 1000;
+	swap_free	= static_cast<double>( atoi(value_2.c_str()) )	/ 1024 / 1000;
 	swap_used	= swap_total - swap_free;
 
 	if( (swap_used < 1) && (switch_megabyte == 1) ) swap_megabyte_file();

@@ -26,8 +26,8 @@ void mem_file(int switch_megabyte) {
 		string value_1 = open_file(input_value, line_1);
 		string value_3 = open_file(input_value, line_3);
 
-		mem_max	= (double)atoi(value_1.c_str()) / 1024 / 1000;
-		mem_available = (double)atoi(value_3.c_str()) / 1024 / 1000;
+		mem_max			= static_cast<double>( atoi(value_1.c_str()) ) / 1024 / 1000;
+		mem_available	= static_cast<double>( atoi(value_3.c_str()) ) / 1024 / 1000;
 		mem_used = mem_max - mem_available;
 
 		if( (mem_used < 1) && (switch_megabyte == 1) ) mem_megabyte_file();
@@ -40,8 +40,8 @@ void mem_file(int switch_megabyte) {
 		string value_1 = open_file(input_value, line_1);
 		string value_2 = open_file(input_value, line_2);
 
-		mem_max		= (double)atoi(value_1.c_str()) / 1024 / 1000;
-		mem_free	= (double)atoi(value_2.c_str()) / 1024 / 1000;
+		mem_max		= static_cast<double>( atoi(value_1.c_str()) ) / 1024 / 1000;
+		mem_free	= static_cast<double>( atoi(value_2.c_str()) ) / 1024 / 1000;
 
 		if( (mem_max < 1) && (switch_megabyte == 1) ) mem_megabyte_file();
 		else {
@@ -66,8 +66,8 @@ void mem_megabyte_file() {
 		string value_1 = open_file(input_value, line_1);
 		string value_3 = open_file(input_value, line_3);
 
-		mem_max		= (double)atoi(value_1.c_str()) / 1024;
-		mem_available = (double)atoi(value_3.c_str()) / 1024;
+		mem_max			= static_cast<double>( atoi(value_1.c_str()) ) / 1024;
+		mem_available	= static_cast<double>( atoi(value_3.c_str()) ) / 1024;
 		mem_used = mem_max - mem_available;
 
 		cout << "RAM Total/Available/Used  : " << mem_max << "/" << mem_available << "/" << mem_used << " MB" << endl;
