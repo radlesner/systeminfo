@@ -87,7 +87,7 @@ void all_network() {
 
     getifaddrs(&ifAddrStruct);
     /*
-        ADDRESS AND NETMASK
+        ADDRESS AND NETMASK END
         ADDRESS AND NETMASK OUTPUT
     */
     for (ifa = ifAddrStruct; ifa != NULL; ifa = ifa->ifa_next) {
@@ -112,8 +112,8 @@ void all_network() {
             }
             else {
                 int count = 0;
-                address_output = "IPv4    (" + (string)ifa->ifa_name + ")";
-                netmask_output = "Netmask (" + (string)ifa->ifa_name + ")";
+                address_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
+                netmask_output = "Netmask (" + static_cast<string>(ifa->ifa_name) + ")";
                 count = 26 - netmask_output.length();
                 for(int i = 0; i < count; i++) {
                     address_output = address_output + " ";

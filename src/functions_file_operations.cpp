@@ -19,8 +19,12 @@ string open_file(string path_file, int nr_line) {
 		if(file.good() == false)
 			return "N/A";
 
-		for(int i = 0; i < nr_line; i++)
+		for(int i = 0; i < nr_line; i++) {
 			getline(file, line);
+			if(line == "") {
+				return "N/A";
+			}
+		}
 
 	file.close();
 
@@ -45,22 +49,33 @@ void check_file_text(string input, string search_text) {
 
 	for(int i = 1; i <= number; i++) {
 		find_text(read_line[i], search_text);
+
+			size_t position = read_line[i].find(search_text);
+			if(position == string::npos) {
+				string_confirmed = 0;
+				return;
+			}
+
+			do {
+				string_confirmed = 1;
+				position = read_line[i].find(search_text, position + search_text.size());
+			} while(position != string::npos);
+
 		if(string_confirmed == 1) {
 			break;
 		}
 	}
 }
 
-void find_text( string & text, string find_string )
+bool find_text( string & text, string find_string )
 {
     size_t position = text.find(find_string);
     if(position == string::npos) {
-        string_confirmed = 0;
-        return;
+        return false;
     }
 
     do {
-        string_confirmed = 1;
+        return true;
         position = text.find(find_string, position + find_string.size());
     } while(position != string::npos);
 }
