@@ -48,23 +48,26 @@ void check_file_text(string input, string search_text) {
 	file.close();
 
 	for(int i = 1; i <= number; i++) {
-		find_text(read_line[i], search_text);
-
-			size_t position = read_line[i].find(search_text);
-			if(position == string::npos) {
-				string_confirmed = 0;
-				return;
-			}
-
-			do {
-				string_confirmed = 1;
-				position = read_line[i].find(search_text, position + search_text.size());
-			} while(position != string::npos);
+		check_file_text_find_text(read_line[i], search_text);
 
 		if(string_confirmed == 1) {
 			break;
 		}
 	}
+}
+
+void check_file_text_find_text( string & text, string find_string )
+{
+    size_t position = text.find(find_string);
+    if(position == string::npos) {
+        string_confirmed = 0;
+        return;
+    }
+
+    do {
+        string_confirmed = 1;
+        position = text.find(find_string, position + find_string.size());
+    } while(position != string::npos);
 }
 
 bool find_text( string & text, string find_string )
