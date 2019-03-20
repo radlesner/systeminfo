@@ -21,27 +21,18 @@ void get_ip_address(int on_ip6) {
             char address_buffer[INET_ADDRSTRLEN];
             inet_ntop(AF_INET, tmpAddrPtr, address_buffer, INET_ADDRSTRLEN);
 
-            if ((string)ifa->ifa_name == "lo") {
-                continue;
-            }
-            else {
                 int count = 0;
-                text_output = "IPv4    (" + (string)ifa->ifa_name + ")";
+                text_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
                 count = 26 - text_output.length();
                 for(int i = 0; i < count; i++) {
                     text_output = text_output + " ";
                 }
                 cout << text_output << ": " << address_buffer <<  endl;
-            }
         }
         else if (ifa->ifa_addr->sa_family == AF_INET6 && on_ip6 == 1) {
             tmpAddrPtr =& ((struct sockaddr_in6 *) ifa->ifa_addr)->sin6_addr;
             char address_buffer[INET6_ADDRSTRLEN];
             inet_ntop(AF_INET6, tmpAddrPtr, address_buffer, INET6_ADDRSTRLEN);
-            if ((string)ifa->ifa_name == "lo") {
-            continue;
-            }
-            else {
                 int count = 0;
                 text_output = "IPv6    (" + (string)ifa->ifa_name + ")";
                 count = 26 - text_output.length();
@@ -49,7 +40,6 @@ void get_ip_address(int on_ip6) {
                     text_output = text_output + " ";
                 }
                 cout << text_output << ": " << address_buffer <<  endl;
-            }
         }
     }
     if (text_output.length() > 1) separator("");
@@ -78,9 +68,9 @@ void all_network() {
         GATEWAY END
         ADDRESS AND NETMASK
     */
-    struct ifaddrs * ifAddrStruct=NULL;
-    struct ifaddrs * ifa=NULL;
-    void * tmpAddrPtr=NULL;
+    struct ifaddrs* ifAddrStruct = NULL;
+    struct ifaddrs* ifa = NULL;
+    void* tmpAddrPtr = NULL;
     unsigned int tmpMask;
 
     string netmask_output, address_output;
@@ -90,13 +80,10 @@ void all_network() {
         ADDRESS AND NETMASK END
         ADDRESS AND NETMASK OUTPUT
     */
-    for (ifa = ifAddrStruct; ifa != NULL; ifa = ifa->ifa_next) {
-        if (!ifa->ifa_addr) {
-            continue;
-        }
-
+    for(ifa = ifAddrStruct;  ifa != NULL; ifa = ifa->ifa_next) {
+        if (!ifa->ifa_addr) continue;
         if (ifa->ifa_addr->sa_family == AF_INET) {
-			char address_buffer[INET_ADDRSTRLEN];
+            char address_buffer[INET_ADDRSTRLEN];
             char mask_buffer[INET_ADDRSTRLEN];
 
             tmpAddrPtr = &((struct sockaddr_in *)(ifa->ifa_addr))->sin_addr;
@@ -107,27 +94,22 @@ void all_network() {
 
             tmpMask = ((struct sockaddr_in *)(ifa->ifa_netmask))->sin_addr.s_addr;
 
-            if ((string)ifa->ifa_name == "lo") {
-                continue;
+            address_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
+            netmask_output = "Netmask (" + static_cast<string>(ifa->ifa_name) + ")";
+            int count = 0;
+            count = 26 - netmask_output.length();
+            for(int i = 0; i < count; i++) {
+                address_output = address_output + " ";
+                netmask_output = netmask_output + " ";
             }
-            else {
-                int count = 0;
-                address_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
-                netmask_output = "Netmask (" + static_cast<string>(ifa->ifa_name) + ")";
-                count = 26 - netmask_output.length();
-                for(int i = 0; i < count; i++) {
-                    address_output = address_output + " ";
-                    netmask_output = netmask_output + " ";
-                }
-                cout << address_output << ": " << address_buffer << endl;
-                cout << netmask_output << ": " << mask_buffer <<  endl;
-
-            }
+            cout << address_output << ": " << address_buffer << endl;
+            cout << netmask_output << ": " << mask_buffer <<  endl;
             /*
                 ADDRESS AND NETMASK OUTPUT END
                 GATEWAY OUTPUT
             */
-            if ((string)ifa->ifa_name == "lo") {
+            if (static_cast<string>(ifa->ifa_name) == "lo") {
+                if (address_output.length() > 1) separator("");
                 continue;
             }
             else {
@@ -136,7 +118,6 @@ void all_network() {
                 addresses[i] = open_file("/systeminfo-files/systeminfo-gateway-ip.txt", i);
 
                 final_output = "Gateway (" + interfaces[i] + ")";
-                int count = 0;
                 count = 26 - final_output.length();
                 for(int  x = 0; x < count; x++) {
                     final_output = final_output + " ";
@@ -149,5 +130,5 @@ void all_network() {
             }
         }
     }
-    if (ifAddrStruct!=NULL) freeifaddrs(ifAddrStruct);
+    if (ifAddrStruct != NULL) freeifaddrs(ifAddrStruct);
 }
