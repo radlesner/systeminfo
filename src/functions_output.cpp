@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.7.7";
+	return "1.7.8";
 }
 
 void output_compile_information() {
@@ -171,6 +171,11 @@ void output_monitor(int value_argc, char** value_argv) {
 				swap_megabyte_file();
 				separator("");
 
+				all_network();
+			}
+			else if(!strcmp(value_argv[2], "-n")) {
+				system("clear");
+				separator("");
 				all_network();
 			}
 			else {
