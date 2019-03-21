@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.7.6";
+	return "1.7.7";
 }
 
 void output_compile_information() {
@@ -152,6 +152,8 @@ void output_monitor(int value_argc, char** value_argv) {
 				mem_file(0);
 				swap_file(0);
 				separator("");
+
+				all_network();
 			}
 			else if(!strcmp(value_argv[2], "-m")) {
 				system("clear");
@@ -168,6 +170,8 @@ void output_monitor(int value_argc, char** value_argv) {
 				mem_megabyte_file();
 				swap_megabyte_file();
 				separator("");
+
+				all_network();
 			}
 			else {
 				cout << "Bad arguments, you must use operators: ( -t -m ) or ( -t -g )" << endl;
@@ -190,6 +194,8 @@ void output_monitor(int value_argc, char** value_argv) {
 			mem_file(1);
 			swap_file(1);
 			separator("");
+
+			all_network();
 		}
 
 		command_remove();
