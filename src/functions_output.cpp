@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.7.8";
+	return "1.7.9";
 }
 
 void output_compile_information() {
@@ -179,7 +179,9 @@ void output_monitor(int value_argc, char** value_argv) {
 				all_network();
 			}
 			else {
-				cout << "Bad arguments, you must use operators: ( -t -m ) or ( -t -g )" << endl;
+				cout << "Bad arguments, you must use operators: -t -m" << endl;
+				cout << "                                       -t -g" << endl;
+				cout << "                                       -t -n" << endl;
 				cout << "Use --help operator to display help" << endl;
 				break;
 			}
