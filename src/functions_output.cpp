@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.7.9";
+	return "1.8";
 }
 
 void output_compile_information() {
@@ -123,7 +123,8 @@ void output_cpu_only() {
 }
 
 void output_check_files() {
-	ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
+	//ifstream mem_file("/systeminfo-files");							// systeminfo-files is a directory
+	ifstream mem_file("/home/"+user_file()+"/.systeminfo-files");
 	if(mem_file.good() == false) {
 		command_check_folder_exist();
 	}
@@ -216,7 +217,7 @@ void output_log() {
 
 	clock_t countdown = clock();
 
-	string path_filename = "/systeminfo-files/logs/";
+	string path_filename = "/home/"+user_file()+"/.systeminfo-files/logs/";
 	string first_step = "systeminfo_log_";
 
 	time_t system_time;
@@ -249,7 +250,7 @@ void output_log() {
 	log_file.open(file_name_fstream.c_str(), ios::out);
 
 	log_file << "Log generated..............: " << in_file_time << endl;
-	log_file << "Ptrogram name..............: systeminfo" << endl;
+	log_file << "Program name...............: systeminfo" << endl;
 	log_file << "Program version............: " << program_version() << endl;
 	log_file << "Compile program date.......: " << __DATE__ << ", " << __TIME__ << endl;
 	log_file << "Log generation time........: " << clock() - countdown << " ms" << endl << endl;

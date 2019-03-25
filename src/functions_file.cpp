@@ -10,7 +10,7 @@
 using namespace std;
 
 string distribution_file() {
-	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-distro.txt";
 	const int line = 1;
 
 	string value;
@@ -20,7 +20,7 @@ string distribution_file() {
 }
 
 string release_system() {
-	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-distro.txt";
 	const int line = 2;
 
 	string value;
@@ -30,7 +30,7 @@ string release_system() {
 }
 
 string cedename_system() {
-	const string input_value = "/systeminfo-files/systeminfo-distro.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-distro.txt";
 	const int line = 3;
 
 	string value;
@@ -40,7 +40,7 @@ string cedename_system() {
 }
 
 void cpu_file() {
-	const string input_value = "/systeminfo-files/systeminfo-cpu.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-cpu.txt";
 	const int line = 1;
 
 	string value;
@@ -50,7 +50,7 @@ void cpu_file() {
 }
 
 void architecture() {
-	const string input_value = "/systeminfo-files/systeminfo-arch.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-arch.txt";
 	const string bit32 = "32 Bits";
 	const string bit64 = "64 Bits";
 	const string arm32 = "ARM 32 Bits";
@@ -67,7 +67,7 @@ void architecture() {
 }
 
 void shell_file() {
-	const string input_value = "/systeminfo-files/systeminfo-shell.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-shell.txt";
 	const int line = 1;
 
 	string value;
@@ -83,7 +83,7 @@ void shell_file() {
 }
 
 void cores_file() {
-	const string input_value = "/systeminfo-files/systeminfo-cores.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-cores.txt";
 
 	string theards_value = open_file(input_value, 1);
 	string cores_value = open_file(input_value, 2);
@@ -98,9 +98,9 @@ void cores_file() {
 }
 
 void cpu_frequency() {
-	const string input_value = "/systeminfo-files/systeminfo-cpu-status.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-cpu-status.txt";
 
-	int cores = atoi( open_file("/systeminfo-files/systeminfo-cores.txt", 1).c_str() );
+	int cores = atoi( open_file("/home/"+user_file()+"/.systeminfo-files/systeminfo-cores.txt", 1).c_str() );
 	int frequency_sum = 0;
 	int line = 1;
 
@@ -134,7 +134,7 @@ void cpu_frequency() {
 }
 
 int cpu_frequency_max() {
-	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency_max.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-cpu-frequency_max.txt";
 	const int line = 1;
 
 	string read_value;
@@ -145,7 +145,7 @@ int cpu_frequency_max() {
 }
 
 int cpu_frequency_min() {
-	const string input_value = "/systeminfo-files/systeminfo-cpu-frequency_min.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-cpu-frequency_min.txt";
 	const int line = 1;
 
 	string read_value;
@@ -156,17 +156,19 @@ int cpu_frequency_min() {
 }
 
 string user_file() {
-	const string input_value = "/systeminfo-files/systeminfo-user.txt";
-	const int line = 1;
+	// const string input_value = "/systeminfo-files/systeminfo-user.txt";
+	// const int line = 1;
 
-	string value;
-	value = open_file(input_value, line);
+	// string value;
+	// value = open_file(input_value, line);
 
-	return value;
+	string user = getenv("USER");
+
+	return user;
 }
 
 string uptime_file() {
-	const string input_value = "/systeminfo-files/systeminfo-uptime.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-uptime.txt";
 	const int line = 1;
 
 	string value;

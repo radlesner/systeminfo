@@ -1,6 +1,7 @@
 #include "functions_network.h"
 #include "functions_file_operations.h"
 #include "functions_output.h"
+#include "functions_file.h"
 
 using namespace std;
 
@@ -56,7 +57,7 @@ void all_network() {
     string addresses[32];
     string text;
     string final_output;
-    file.open("/systeminfo-files/systeminfo-gateway-names.txt");
+    file.open("/home/"+user_file()+"/.systeminfo-files/systeminfo-gateway-names.txt");
     if (file.good() == true) {
         while(!file.eof()) {
             getline(file, text);
@@ -114,8 +115,8 @@ void all_network() {
             }
             else {
                 i++;
-                interfaces[i] = open_file("/systeminfo-files/systeminfo-gateway-names.txt", i);
-                addresses[i] = open_file("/systeminfo-files/systeminfo-gateway-ip.txt", i);
+                interfaces[i] = open_file("/home/"+user_file()+"/.systeminfo-files/systeminfo-gateway-names.txt", i);
+                addresses[i] = open_file("/home/"+user_file()+"/.systeminfo-files/systeminfo-gateway-ip.txt", i);
 
                 final_output = "Gateway (" + interfaces[i] + ")";
                 count = 26 - final_output.length();

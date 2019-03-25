@@ -6,11 +6,12 @@
  */
 #include "functions_file_swap.h"
 #include "functions_file_operations.h"
+#include "functions_file.h"
 
 using namespace std;
 
 void swap_file(int switch_megabyte) {
-	const string input_value = "/systeminfo-files/systeminfo-swap.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-swap.txt";
 	const int line_1 = 1;
 	const int line_2 = 2;
 	double swap_total, swap_free, swap_used;
@@ -30,7 +31,7 @@ void swap_file(int switch_megabyte) {
 }
 
 void swap_megabyte_file() {
-	const string input_value = "/systeminfo-files/systeminfo-swap.txt";
+	const string input_value = "/home/"+user_file()+"/.systeminfo-files/systeminfo-swap.txt";
 	const int line_1 = 1;
 	const int line_2 = 2;
 	int swap_total, swap_free, swap_used;

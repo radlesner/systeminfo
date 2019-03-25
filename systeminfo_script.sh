@@ -1,4 +1,4 @@
-cd /systeminfo-files
+cd /home/$USER/.systeminfo-files
 
 # CPU
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq ] ; then
