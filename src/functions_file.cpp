@@ -156,14 +156,7 @@ int cpu_frequency_min() {
 }
 
 string user_file() {
-	// const string input_value = "/systeminfo-files/systeminfo-user.txt";
-	// const int line = 1;
-
-	// string value;
-	// value = open_file(input_value, line);
-
 	string user = getenv("USER");
-
 	return user;
 }
 

@@ -11,8 +11,4 @@
 using namespace std;
 
 void get_ip_address(int on_ip6);
-void get_ip_gateway();
-unsigned int cidrMask(unsigned int n);
-void get_netmask();
-
 void all_network();
