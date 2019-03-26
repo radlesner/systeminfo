@@ -1,4 +1,4 @@
-cd /home/$USER/.systeminfo-files
+cd /$HOME/.systeminfo-files
 # SYSTEM
 rm systeminfo-uptime.txt >> systeminfo-errors.txt
 rm systeminfo-distro.txt >> systeminfo-errors.txt

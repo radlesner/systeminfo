@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.8";
+	return "1.8.5";
 }
 
 void output_compile_information() {
@@ -217,7 +217,7 @@ void output_log() {
 
 	clock_t countdown = clock();
 
-	string path_filename = "/home/"+user_file()+"/.systeminfo-files/logs/";
+	string path_filename = home_path() + "/.systeminfo-files/logs/";
 	string first_step = "systeminfo_log_";
 
 	time_t system_time;
@@ -233,11 +233,11 @@ void output_log() {
 	string file_name_fstream = path_filename + first_step + filename_time;
 	string file_name = first_step + filename_time;
 
-	string architecture = open_file("/systeminfo-files/systeminfo-distro.txt", 3);
-	string bits = open_file("/systeminfo-files/systeminfo-distro.txt", 4);
-	string cpu = open_file("/systeminfo-files/systeminfo-cpu.txt", 1);
-	string theards = open_file("/systeminfo-files/systeminfo-cores.txt", 1);
-	string shell = open_file("/systeminfo-files/systeminfo-shell.txt", 1);
+	string architecture =	open_file(home_path()+"systeminfo-distro.txt", 3);
+	string bits =			open_file(home_path()+"systeminfo-distro.txt", 4);
+	string cpu =			open_file(home_path()+"systeminfo-cpu.txt", 1);
+	string theards =		open_file(home_path()+"systeminfo-cores.txt", 1);
+	string shell =			open_file(home_path()+"systeminfo-shell.txt", 1);
 
 	struct utsname buffer;
 
@@ -281,7 +281,7 @@ void output_log() {
 
 	cout << "Done" << endl;
 	cout << "Generated date            : " << in_file_time << endl;
-	cout << "Logs localization         : /systeminfo-files/logs" << endl;
+	cout << "Logs localization         : " << home_path() << "/systeminfo-files/logs" << endl;
 	cout << "Name file                 : " << file_name << endl;
 	cout << "Log generation time       : " << clock() - countdown << " ms" << endl;
 }

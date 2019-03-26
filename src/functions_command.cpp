@@ -10,19 +10,19 @@
 using namespace std;
 
 void command_check_folder_exist() {
-	string user = getenv("USER");
+	string home_path = getenv("HOME");
 	char check;
-	string path_file = "/home/"+user+"/.systeminfo-files/";
+	string path_file = home_path + "/.systeminfo-files/";
 	ifstream mem_file(path_file); //---------------/ systeminfo-files is a directory /---------------
 	if(mem_file.good() == false) {
-		cout << "Not found folder \"/home/" << user << "/.systeminfo-files\"" << endl;
+		cout << "Not found folder \"/home/" << home_path << "/.systeminfo-files\"" << endl;
 		cout << "Create folder \"systeminfo-files\"? [y/n]... ";
 		cin >> check;
 		switch(check) {
 		case 'y':
 			cout << "------------------------------------------------------------------------" << endl;
-			system("mkdir /home/$USER/.systeminfo-files"); 					cout << "Creating \"systeminfo-files\" folder,.. done." << endl;
-			system("mkdir /home/$USER/.systeminfo-files/logs");				cout << "Creating \"logs\" folder,.............. done" << endl;
+			system("mkdir /$HOME/.systeminfo-files"); 					cout << "Creating \"systeminfo-files\" folder,.. done." << endl;
+			system("mkdir /$HOME/.systeminfo-files/logs");				cout << "Creating \"logs\" folder,.............. done" << endl;
 			cout << "------------------------------------------------------------------------" << endl;
 			break;
 		case 'n':
