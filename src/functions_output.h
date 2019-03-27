@@ -18,13 +18,6 @@
 #include <time.h>
 #include <ctime>
 
-#include <errno.h>
-#include <fcntl.h>
-#include <ctype.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <net/if.h>
-
 using namespace std;
 
 	string program_version();
@@ -37,6 +30,5 @@ using namespace std;
 	void output_help();
 	void output_check_files();
 	void output_monitor(int value_argc, char** value_argv);
-	void output_log();
 
 #endif /* FUNCTIONS_OUTPUT_H_ */

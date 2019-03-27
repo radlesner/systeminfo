@@ -12,6 +12,7 @@
 #include "functions_file_memory.h"
 #include "functions_file_swap.h"
 #include "functions_command.h"
+#include "function_output_log.h"
 
 using namespace std;
 
