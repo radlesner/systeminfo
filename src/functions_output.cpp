@@ -206,7 +206,8 @@ void output_monitor(int value_argc, char** value_argv) {
 		}
 
 		command_remove();
-		cout << endl << "Exit to: CTRL + C" << endl;
+		cout << endl << "Exit: CTRL + C" << endl;
+
 		sleep(1);
 	}
 }

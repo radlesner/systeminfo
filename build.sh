@@ -3,8 +3,10 @@ printf "Files:\n"
 ls -1 src/*.cpp
 
 printf "Command:\n"
-printf "@ make clean\n"
-make clean
+if [ -e systeminfo ] ; then
+    printf "@ make clean\n"
+    make clean
+fi
 printf "@ make\n"
 make
 
