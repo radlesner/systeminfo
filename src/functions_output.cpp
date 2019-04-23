@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "1.9.1";
+	return "1.9.2";
 }
 
 void output_compile_information() {
@@ -133,6 +133,12 @@ void output_check_files() {
 }
 
 void output_monitor(int value_argc, char** value_argv) {
+	int count = 0;
+	string table[3];
+	table[0] = "/";
+	table[1] = "-";
+	table[2] = "\\";
+
 	for(;;) {
 		command_activate();
 
@@ -206,7 +212,13 @@ void output_monitor(int value_argc, char** value_argv) {
 		}
 
 		command_remove();
-		cout << endl << "Exit: CTRL + C" << endl;
+		cout << endl << "Exit: CTRL + C ";
+
+		for (int i = 0; i < 1; i++)	{
+			cout << table[count] << endl;
+			count++;
+			if (count == 3)	count = 0;
+		}
 
 		sleep(1);
 	}
