@@ -123,7 +123,7 @@ void all_network() {
                 for(int  x = 0; x < count; x++) {
                     final_output = final_output + " ";
                 }
-                cout << final_output << ": " << addresses[i] << endl;
+                if (interfaces[i] != "N/A") cout << final_output << ": " << addresses[i] << endl;
                 /*
                     GATEWAY OUTPUT END
                 */
