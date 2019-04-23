@@ -217,6 +217,7 @@ void output_monitor(int value_argc, char** value_argv) {
 		for (int i = 0; i < 1; i++)	{
 			cout << table[count] << endl;
 			count++;
+
 			if (count == 3)	count = 0;
 		}
 
