@@ -18,6 +18,12 @@ rm systeminfo-swap.txt >> systeminfo-errors.txt
 if [ -e /home/$USER/.systeminfo-files/systeminfo-cpu-status.txt ] ; then
     rm systeminfo-cpu-status.txt >> systeminfo-errors.txt
 fi
+if [ -e /home/$USER/.systeminfo-files/systeminfo-cpu-frequency_max.txt ] ; then
+    rm systeminfo-cpu-frequency_max.txt >> systeminfo-errors.txt
+fi
+if [ -e /home/$USER/.systeminfo-files/systeminfo-cpu-frequency_min.txt ] ; then
+    rm systeminfo-cpu-frequency_min.txt >> systeminfo-errors.txt
+fi
 rm systeminfo-cpu.txt >> systeminfo-errors.txt
 rm systeminfo-cores.txt >> systeminfo-errors.txt
 rm systeminfo-cpu-frequency*.txt >> systeminfo-errors.txt
