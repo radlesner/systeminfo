@@ -24,6 +24,7 @@ using namespace std;
 	void cpu_frequency();
 	void cpu_freq_max_min();
 	void cores_file();
+	int low_level_cores_file();
 	void shell_file();
 	string user_file();
 	string home_path();

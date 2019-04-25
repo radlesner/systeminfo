@@ -84,23 +84,53 @@ void shell_file() {
 
 void cores_file() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cores.txt";
+	string read_value;
+	int theards, nr_line = 0;
 
-	string theards_value = open_file(input_value, 1);
-	string cores_value = open_file(input_value, 2);
+	fstream file;
 
-	float theards = atoi(theards_value.c_str());
-	float cores = theards / atoi(cores_value.c_str());
+    file.open(input_value, ios::in);
+		if(file.good() == true) {
+			while( !file.eof() )
+			{
+				nr_line++;
+    			getline( file, read_value );
+			}
 
-	if(theards_value == "N/A")
-		cout << "Cores/Theards             : N/A" << endl;
-	else
-		cout << "Cores/Theards             : " << cores << "/" << theards << endl;
+			theards = atoi(open_file(input_value, nr_line - 1).c_str());
+			theards = theards + 1;
+			cout << "Theards                   : " << theards << endl;
+		}
+		else cout << "Theards                   : N/A" << endl;
+	file.close();
+}
+
+int low_level_cores_file() {
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cores.txt";
+	string read_value;
+	int theards, nr_line = 0;
+
+	fstream file;
+
+    file.open(input_value, ios::in);
+		if(file.good() == true) {
+			while( !file.eof() )
+			{
+				nr_line++;
+    			getline( file, read_value );
+			}
+
+			theards = atoi(open_file(input_value, nr_line - 1).c_str());
+			theards = theards + 1;
+		}
+	file.close();
+	return theards;
 }
 
 void cpu_frequency() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-status.txt";
 
-	int cores = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1).c_str() );
+	int cores = low_level_cores_file();
 	int frequency_sum = 0;
 	int line = 1;
 
