@@ -138,14 +138,9 @@ void cpu_frequency() {
 void cpu_freq_max_min() {
 	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1) == "N/A") {
 		cout << "Max Frequency             : N/A" << endl;
-		return;
-	}
-
-	if (open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt", 1) == "N/A") {
 		cout << "Min Frequency             : N/A" << endl;
 		return;
 	}
-
 
 	int freq_max = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1).c_str() );
 	int freq_min = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt", 1).c_str() );
