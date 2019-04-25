@@ -142,14 +142,20 @@ int cpu_frequency_max() {
 	int freq[cores + 1];
 	int freq_sum;
 
-	for (int i = 1; i <= cores; i++) {
-		read_value = open_file(input_value, i);
-		if(read_value == "N/A") break;
-		freq[i] = atoi(read_value.c_str());
-		freq_sum = freq_sum + freq[i];
-	}
+	fstream file;
 
-	freq_sum = freq_sum / cores / 1000;
+    file.open(input_value, ios::in);
+		if(file.good() == true) {
+			for (int i = 1; i <= cores; i++) {
+				read_value = open_file(input_value, i);
+				if(read_value == "N/A") break;
+				freq[i] = atoi(read_value.c_str());
+				freq_sum = freq_sum + freq[i];
+			}
+
+			freq_sum = freq_sum / cores / 1000;
+		}
+		else return 0;
 
 	return freq_sum;
 }
@@ -161,12 +167,18 @@ int cpu_frequency_min() {
 	int freq[cores + 1];
 	int freq_sum;
 
-	for (int i = 1; i <= cores; i++) {
-		read_value = open_file(input_value, i);
-		if(read_value == "N/A") break;
-		freq[i] = atoi(read_value.c_str());
-		freq_sum = freq_sum + freq[i];
-	}
+	fstream file;
+
+    file.open(input_value, ios::in);
+		if(file.good() == true) {
+			for (int i = 1; i <= cores; i++) {
+				read_value = open_file(input_value, i);
+				if(read_value == "N/A") break;
+				freq[i] = atoi(read_value.c_str());
+				freq_sum = freq_sum + freq[i];
+			}
+		}
+		else return 0;
 
 	freq_sum = freq_sum / cores / 1000;
 
