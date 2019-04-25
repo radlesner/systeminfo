@@ -171,19 +171,6 @@ int cpu_frequency_min() {
 	freq_sum = freq_sum / cores / 1000;
 
 	return freq_sum;
-
-
-
-
-
-	// const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt";
-	// const int line = 1;
-
-	// string read_value;
-	// read_value = open_file(input_value, line);
-	// int value = atoi(read_value.c_str());
-
-	// return value;
 }
 
 string user_file() {

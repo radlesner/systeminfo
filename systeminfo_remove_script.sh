@@ -1,29 +1,23 @@
 cd /$HOME/.systeminfo-files
 # SYSTEM
-rm systeminfo-uptime.txt >> systeminfo-errors.txt
-rm systeminfo-distro.txt >> systeminfo-errors.txt
-rm systeminfo-arch.txt >> systeminfo-errors.txt
-rm systeminfo-shell.txt >> systeminfo-errors.txt
-rm systeminfo-user.txt >> systeminfo-errors.txt
+rm -f systeminfo-uptime.txt >> systeminfo-errors.txt
+rm -f systeminfo-distro.txt >> systeminfo-errors.txt
+rm -f systeminfo-arch.txt >> systeminfo-errors.txt
+rm -f systeminfo-shell.txt >> systeminfo-errors.txt
+rm -f systeminfo-user.txt >> systeminfo-errors.txt
 
 # NETWORK
-rm systeminfo-gateway-names.txt >> systeminfo-errors.txt
-rm systeminfo-gateway-ip.txt >> systeminfo-errors.txt
+rm -f systeminfo-gateway-names.txt >> systeminfo-errors.txt
+rm -f systeminfo-gateway-ip.txt >> systeminfo-errors.txt
 
 # MEMOWY
-rm systeminfo-mem.txt >> systeminfo-errors.txt
-rm systeminfo-swap.txt >> systeminfo-errors.txt
+rm -f systeminfo-mem.txt >> systeminfo-errors.txt
+rm -f systeminfo-swap.txt >> systeminfo-errors.txt
 
 # CPU
-if [ -e /home/$USER/.systeminfo-files/systeminfo-cpu-status.txt ] ; then
-    rm systeminfo-cpu-status.txt >> systeminfo-errors.txt
-fi
-if [ -e /home/$USER/.systeminfo-files/systeminfo-cpu-frequency_max.txt ] ; then
-    rm systeminfo-cpu-frequency_max.txt >> systeminfo-errors.txt
-fi
-if [ -e /home/$USER/.systeminfo-files/systeminfo-cpu-frequency_min.txt ] ; then
-    rm systeminfo-cpu-frequency_min.txt >> systeminfo-errors.txt
-fi
-rm systeminfo-cpu.txt >> systeminfo-errors.txt
-rm systeminfo-cores.txt >> systeminfo-errors.txt
-rm systeminfo-cpu-frequency*.txt >> systeminfo-errors.txt
+rm -f systeminfo-cpu-status.txt >> systeminfo-errors.txt
+rm -f systeminfo-cpu-frequency_max.txt >> systeminfo-errors.txt
+rm -f systeminfo-cpu-frequency_min.txt >> systeminfo-errors.txt
+rm -f systeminfo-cpu.txt >> systeminfo-errors.txt
+rm -f systeminfo-cores.txt >> systeminfo-errors.txt
+rm -f systeminfo-cpu-frequency*.txt >> systeminfo-errors.txt
