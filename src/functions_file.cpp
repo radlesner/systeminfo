@@ -88,8 +88,8 @@ void cores_file() {
 	string theards_value = open_file(input_value, 1);
 	string cores_value = open_file(input_value, 2);
 
-	int theards = stoi(theards_value);
-	int cores = theards / stoi(cores_value);
+	int theards = atoi(theards_value.c_str());
+	int cores = theards / atoi(cores_value.c_str());
 
 	if(theards_value == "N/A")
 		cout << "Cores/Theards             : N/A" << endl;
@@ -137,7 +137,7 @@ void cpu_frequency() {
 
 int cpu_frequency_max() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt";
-	int cores = stoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1) );
+	int cores = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1).c_str() );
 	string read_value;
 	int freq[cores + 1];
 	int freq_sum;
@@ -156,7 +156,7 @@ int cpu_frequency_max() {
 
 int cpu_frequency_min() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt";
-	int cores = stoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1) );
+	int cores = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1).c_str() );
 	string read_value;
 	int freq[cores + 1];
 	int freq_sum;
