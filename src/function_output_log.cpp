@@ -104,8 +104,8 @@ void output_log() {
 	/*
 		FREQUENCY END ---------------------------------------------------------------------------------------------------->
 	*/
-	log_file << "Max Frequency              : " << cpu_frequency_max() << " MHz" << endl;
-	log_file << "Min Frequency              : " << cpu_frequency_min() << " MHz" << endl << endl;
+	cpu_frequency_max();
+	cpu_frequency_min();
 
 	log_file << "------------------- NETWORK --------------------" << endl;
 	log_file << "Hostname                   : " << buffer.nodename << endl;

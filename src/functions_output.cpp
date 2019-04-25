@@ -117,8 +117,8 @@ void output_cpu_only() {
 
 	separator("");
 	cpu_frequency();
-	cout << "Max Frequency             : " << cpu_frequency_max() << " MHz" << endl;
-	cout << "Min Frequency             : " << cpu_frequency_min() << " MHz" << endl;
+	cpu_frequency_max();
+	cpu_frequency_min();
 	separator("");
 }
 

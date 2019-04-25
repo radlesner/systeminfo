@@ -88,8 +88,8 @@ void cores_file() {
 	string theards_value = open_file(input_value, 1);
 	string cores_value = open_file(input_value, 2);
 
-	int theards = atoi(theards_value.c_str());
-	int cores = theards / atoi(cores_value.c_str());
+	float theards = atoi(theards_value.c_str());
+	float cores = theards / atoi(cores_value.c_str());
 
 	if(theards_value == "N/A")
 		cout << "Cores/Theards             : N/A" << endl;
@@ -135,54 +135,58 @@ void cpu_frequency() {
 	file.close();
 }
 
-int cpu_frequency_max() {
+void cpu_frequency_max() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt";
 	int cores = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1).c_str() );
 	string read_value;
 	int freq[cores + 1];
-	int freq_sum;
+	int freq_sum, i = 1;
 
 	fstream file;
 
     file.open(input_value, ios::in);
-		if(file.good() == true) {
-			for (int i = 1; i <= cores; i++) {
-				read_value = open_file(input_value, i);
-				if(read_value == "N/A") break;
+		if(file.good() == false) {
+			cout << "Max Frequency             : N/A" << endl;
+			return;
+		}
+		else {
+			while( !file.eof() ) {
+				getline( file, read_value );
 				freq[i] = atoi(read_value.c_str());
 				freq_sum = freq_sum + freq[i];
+				i++;
 			}
 
 			freq_sum = freq_sum / cores / 1000;
+			cout << "Max Frequency             : " << freq_sum << " MHz" << endl;
 		}
-		else return 0;
-
-	return freq_sum;
 }
 
-int cpu_frequency_min() {
+void cpu_frequency_min() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt";
 	int cores = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1).c_str() );
 	string read_value;
 	int freq[cores + 1];
-	int freq_sum;
+	int freq_sum, i = 1;
 
 	fstream file;
 
     file.open(input_value, ios::in);
-		if(file.good() == true) {
-			for (int i = 1; i <= cores; i++) {
-				read_value = open_file(input_value, i);
-				if(read_value == "N/A") break;
+		if(file.good() == false) {
+			cout << "Min Frequency             : N/A" << endl;
+			return;
+		}
+		else {
+			while( !file.eof() ) {
+				getline( file, read_value );
 				freq[i] = atoi(read_value.c_str());
 				freq_sum = freq_sum + freq[i];
+				i++;
 			}
+
+			freq_sum = freq_sum / cores / 1000;
+			cout << "Min Frequency             : " << freq_sum << " MHz" << endl;
 		}
-		else return 0;
-
-	freq_sum = freq_sum / cores / 1000;
-
-	return freq_sum;
 }
 
 string user_file() {
