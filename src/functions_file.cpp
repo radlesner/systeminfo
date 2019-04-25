@@ -115,6 +115,8 @@ void cpu_frequency() {
 				getline(file, read_value);
 				if(read_value == "N/A") break;
 				value[x++] = atoi(read_value.c_str());
+
+				frequency_sum = frequency_sum + value[x];
 			}
             for(int i = 0; i < cores; i++) {
                 frequency_sum = frequency_sum + value[i];
@@ -135,24 +137,53 @@ void cpu_frequency() {
 
 int cpu_frequency_max() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt";
-	const int line = 1;
-
+	int cores = stoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1) );
 	string read_value;
-	read_value = open_file(input_value, line);
-	int value = atoi(read_value.c_str());
+	int freq[cores + 1];
+	int freq_sum;
 
-	return value;
+	for (int i = 1; i <= cores; i++) {
+		read_value = open_file(input_value, i);
+		if(read_value == "N/A") break;
+		freq[i] = atoi(read_value.c_str());
+		freq_sum = freq_sum + freq[i];
+	}
+
+	freq_sum = freq_sum / cores / 1000;
+
+	return freq_sum;
 }
 
 int cpu_frequency_min() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt";
-	const int line = 1;
-
+	int cores = stoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1) );
 	string read_value;
-	read_value = open_file(input_value, line);
-	int value = atoi(read_value.c_str());
+	int freq[cores + 1];
+	int freq_sum;
 
-	return value;
+	for (int i = 1; i <= cores; i++) {
+		read_value = open_file(input_value, i);
+		if(read_value == "N/A") break;
+		freq[i] = atoi(read_value.c_str());
+		freq_sum = freq_sum + freq[i];
+	}
+
+	freq_sum = freq_sum / cores / 1000;
+
+	return freq_sum;
+
+
+
+
+
+	// const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt";
+	// const int line = 1;
+
+	// string read_value;
+	// read_value = open_file(input_value, line);
+	// int value = atoi(read_value.c_str());
+
+	// return value;
 }
 
 string user_file() {

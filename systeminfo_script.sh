@@ -4,8 +4,14 @@ cd /$HOME/.systeminfo-files
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq ] ; then
    cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq >> systeminfo-cpu-status.txt
 fi
-lscpu | grep -i "max" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_max.txt
-lscpu | grep -i "min" --max-count=1 | awk {'print $4'} >> systeminfo-cpu-frequency_min.txt
+
+if [ -e /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq ] ; then
+    cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq >> systeminfo-cpu-frequency_max.txt
+fi
+
+if [ -e /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq ] ; then
+    cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_min_freq >> systeminfo-cpu-frequency_min.txt
+fi
 cat /proc/cpuinfo | grep -i "model name" --max-count=1 | awk '{for (i=4; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-cpu.txt
 lscpu | grep -i "CPU(s):" --max-count=1 | awk {'print $2'}  >> systeminfo-cores.txt
 cat /proc/cpuinfo | grep -i "cpu cores" --max-count=1 | awk {'print $4'}  >> systeminfo-cores.txt
