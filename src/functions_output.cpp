@@ -117,8 +117,7 @@ void output_cpu_only() {
 
 	separator("");
 	cpu_frequency();
-	cpu_frequency_max();
-	cpu_frequency_min();
+	cpu_freq_max_min();
 	separator("");
 }
 

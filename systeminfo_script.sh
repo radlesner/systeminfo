@@ -6,11 +6,11 @@ if [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq ] ; then
 fi
 
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq ] ; then
-    cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq >> systeminfo-cpu-frequency_max.txt
+    cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq >> systeminfo-cpu-frequency_max.txt
 fi
 
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq ] ; then
-    cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_min_freq >> systeminfo-cpu-frequency_min.txt
+    cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq >> systeminfo-cpu-frequency_min.txt
 fi
 cat /proc/cpuinfo | grep -i "model name" --max-count=1 | awk '{for (i=4; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-cpu.txt
 lscpu | grep -i "CPU(s):" --max-count=1 | awk {'print $2'}  >> systeminfo-cores.txt

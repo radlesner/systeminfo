@@ -135,58 +135,26 @@ void cpu_frequency() {
 	file.close();
 }
 
-void cpu_frequency_max() {
-	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt";
-	int cores = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1).c_str() );
-	string read_value;
-	int freq[cores + 1];
-	int freq_sum, i = 1;
+void cpu_freq_max_min() {
+	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1) == "N/A") {
+		cout << "Max Frequency             : N/A" << endl;
+		return;
+	}
 
-	fstream file;
+	if (open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt", 1) == "N/A") {
+		cout << "Min Frequency             : N/A" << endl;
+		return;
+	}
 
-    file.open(input_value, ios::in);
-		if(file.good() == false) {
-			cout << "Max Frequency             : N/A" << endl;
-			return;
-		}
-		else {
-			while( !file.eof() ) {
-				getline( file, read_value );
-				freq[i] = atoi(read_value.c_str());
-				freq_sum = freq_sum + freq[i];
-				i++;
-			}
 
-			freq_sum = freq_sum / cores / 1000;
-			cout << "Max Frequency             : " << freq_sum << " MHz" << endl;
-		}
-}
+	int freq_max = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1).c_str() );
+	int freq_min = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt", 1).c_str() );
 
-void cpu_frequency_min() {
-	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt";
-	int cores = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1).c_str() );
-	string read_value;
-	int freq[cores + 1];
-	int freq_sum, i = 1;
+	freq_max = freq_max / 1000;
+	freq_min = freq_min / 1000;
 
-	fstream file;
-
-    file.open(input_value, ios::in);
-		if(file.good() == false) {
-			cout << "Min Frequency             : N/A" << endl;
-			return;
-		}
-		else {
-			while( !file.eof() ) {
-				getline( file, read_value );
-				freq[i] = atoi(read_value.c_str());
-				freq_sum = freq_sum + freq[i];
-				i++;
-			}
-
-			freq_sum = freq_sum / cores / 1000;
-			cout << "Min Frequency             : " << freq_sum << " MHz" << endl;
-		}
+	cout << "Max Frequency             : " << freq_max << " MHz" << endl;
+	cout << "Min Frequency             : " << freq_min << " MHz" << endl;
 }
 
 string user_file() {
