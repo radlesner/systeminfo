@@ -82,30 +82,7 @@ void shell_file() {
 		else														cout << "Shell                     : " << value << endl;
 }
 
-void cores_file() {
-	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cores.txt";
-	string read_value;
-	int theards, nr_line = 0;
-
-	fstream file;
-
-    file.open(input_value, ios::in);
-		if(file.good() == true) {
-			while( !file.eof() )
-			{
-				nr_line++;
-    			getline( file, read_value );
-			}
-
-			theards = atoi(open_file(input_value, nr_line - 1).c_str());
-			theards = theards + 1;
-			cout << "Theards                   : " << theards << endl;
-		}
-		else cout << "Theards                   : N/A" << endl;
-	file.close();
-}
-
-int low_level_cores_file() {
+int theards_file() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cores.txt";
 	string read_value;
 	int theards, nr_line = 0;
@@ -130,7 +107,7 @@ int low_level_cores_file() {
 void cpu_frequency() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-status.txt";
 
-	int cores = low_level_cores_file();
+	int cores = theards_file();
 	int frequency_sum = 0;
 	int line = 1;
 

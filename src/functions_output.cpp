@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "2.1.1";
+	return "2.1.2";
 }
 
 void output_compile_information() {
@@ -86,7 +86,7 @@ void output_system() {
 	separator("");
 	architecture();
 	cpu_file();
-	cores_file();
+	cout << "Theards                   : " << theards_file() << endl;
 	cpu_frequency();
 	separator("");
 }
@@ -113,7 +113,7 @@ void output_network() {
 void output_cpu_only() {
 	separator("");
 	cpu_file();
-	cores_file();
+	cout << "Theards                   : " << theards_file() << endl;
 
 	separator("");
 	cpu_frequency();
@@ -147,7 +147,7 @@ void output_monitor(int value_argc, char** value_argv) {
 
 				separator("");
 				cpu_file();
-				cores_file();
+				cout << "Theards                   : " << theards_file() << endl;
 				cpu_frequency();
 
 				separator("");
@@ -165,7 +165,7 @@ void output_monitor(int value_argc, char** value_argv) {
 
 				separator("");
 				cpu_file();
-				cores_file();
+				cout << "Theards                   : " << theards_file() << endl;
 				cpu_frequency();
 
 				separator("");
@@ -196,7 +196,7 @@ void output_monitor(int value_argc, char** value_argv) {
 
 			separator("");
 			cpu_file();
-			cores_file();
+			cout << "Theards                   : " << theards_file() << endl;
 			cpu_frequency();
 
 			separator("");
