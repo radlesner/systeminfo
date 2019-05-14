@@ -11,7 +11,7 @@ using namespace std;
 void output_log() {
 	cout << "Generating log            : ";
 
-	clock_t countdown = clock();
+ 	clock_t countdown = clock();
 
 	string path_filename = home_path() + "/.systeminfo-files/logs/";
 	string first_step = "systeminfo_log_";
@@ -66,46 +66,59 @@ void output_log() {
 	/*
 		FREQUENCY -------------------------------------------------------------------------------------------------------->
 	*/
-	{
-		const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-status.txt";
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-status.txt";
 
-		int cores = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cores.txt", 1).c_str() );
-		int frequency_sum = 0;
-		int line = 1;
+	int cores = theards_file();
+	int frequency_sum = 0;
+	int line = 1;
 
-		string read_value;
-		int value[512];
+	string read_value;
+	int value[512];
 
-		fstream file;
+	fstream file;
 
-		file.open(input_value, ios::in);
-			if(file.good() == true) {
-				for(int x = 0; x < cores; x++) {
-					getline(file, read_value);
-					if(read_value == "N/A") break;
-					value[x++] = atoi(read_value.c_str());
-				}
-				for(int i = 0; i < cores; i++) {
-					frequency_sum = frequency_sum + value[i];
-				}
+    file.open(input_value, ios::in);
+		if(file.good() == true) {
+			for(int x = 0; x < cores; x++) {
+				getline(file, read_value);
+				if(read_value == "N/A") break;
+				value[x++] = atoi(read_value.c_str());
 
-				frequency_sum = frequency_sum / cores / 1000;
-
-				if(distribution_file() == "Raspbian" || read_value == "N/A")
-					log_file << "CPU Frequency              : N/A" << endl;
-				else
-					log_file << "CPU Frequency              : " << frequency_sum << " MHz" << endl;
+				frequency_sum = frequency_sum + value[x];
 			}
-			else {
-				log_file << "CPU Frequency              : N/A" << endl;
-			}
-		file.close();
+            for(int i = 0; i < cores; i++) {
+                frequency_sum = frequency_sum + value[i];
+            }
+
+            frequency_sum = frequency_sum / cores / 1000;
+
+            if(distribution_file() == "Raspbian" || read_value == "N/A")
+                log_file << "CPU Frequency             : N/A" << endl;
+            else
+                log_file << "CPU Frequency             : " << frequency_sum << " MHz" << endl;
+		}
+		else {
+			log_file << "CPU Frequency             : N/A" << endl;
+		}
+	file.close();
+
+	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1) == "N/A") {
+		log_file << "Max Frequency             : N/A" << endl;
+		log_file << "Min Frequency             : N/A" << endl;
+		return;
 	}
+
+	int freq_max = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1).c_str() );
+	int freq_min = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt", 1).c_str() );
+
+	freq_max = freq_max / 1000;
+	freq_min = freq_min / 1000;
+
+	log_file << "Max Frequency             : " << freq_max << " MHz" << endl;
+	log_file << "Min Frequency             : " << freq_min << " MHz" << endl;
 	/*
 		FREQUENCY END ---------------------------------------------------------------------------------------------------->
 	*/
-	cpu_freq_max_min();
-
 	log_file << "------------------- NETWORK --------------------" << endl;
 	log_file << "Hostname                   : " << buffer.nodename << endl;
 
