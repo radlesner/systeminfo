@@ -7,6 +7,7 @@
 #include <string.h>
 #include <arpa/inet.h>
 #include <fstream>
+#include <regex>
 
 using namespace std;
 

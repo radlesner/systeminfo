@@ -20,8 +20,12 @@ cat /proc/cpuinfo | grep "processor" | awk {'print $3'} >> systeminfo-cores.txt
 #cat /proc/cpuinfo | grep -i "cpu cores" --max-count=1 | awk {'print $4'}  >> systeminfo-cores.txt
 
 # NETWORK
-ip r | grep default | awk '/enp/ {print $5}''/wlp/ {print $5}''/eth/ {print $5}''/wlan/ {print $5}''/bond/ {print $5}' >> systeminfo-gateway-names.txt
-ip r | grep default | awk '/enp/ {print $3}''/wlp/ {print $3}''/eth/ {print $3}''/wlan/ {print $3}''/bond/ {print $3}' >> systeminfo-gateway-ip.txt
+# ip r | grep default | awk '/enp/ {print $5}''/wlp/ {print $5}''/eth/ {print $5}''/wlan/ {print $5}''/bond/ {print $5}' >> systeminfo-gateway-names.txt
+# ip r | grep default | awk '/enp/ {print $3}''/wlp/ {print $3}''/eth/ {print $3}''/wlan/ {print $3}''/bond/ {print $3}' >> systeminfo-gateway-ip.txt
+
+route -n | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
+route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
+route -n | grep 'UG[ \t]' | awk '{print $8 " " $2}' >> systeminfo-gateway.txt
 
 # SYSTEM
 uptime -p | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-uptime.txt
@@ -33,7 +37,7 @@ getconf LONG_BIT >> systeminfo-arch.txt
 echo $USER >> systeminfo-user.txt
 echo $SHELL >> systeminfo-shell.txt
 
-# MENORY
+# MEMORY
 cat /proc/meminfo | grep -i "MemTotal: " --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-mem.txt
 cat /proc/meminfo | grep -i "MemFree: " --max-count=1 | awk {'print $2'} | tr -d 'kB' >> systeminfo-mem.txt
 cat /proc/meminfo | grep -i "MemAvailable:" --max-count=1 | awk {'print $2'} >> systeminfo-mem.txt

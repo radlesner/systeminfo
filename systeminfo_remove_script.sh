@@ -9,6 +9,7 @@ rm -f systeminfo-user.txt
 # NETWORK
 rm -f systeminfo-gateway-names.txt
 rm -f systeminfo-gateway-ip.txt
+rm -f systeminfo-gateway.txt
 
 # MEMOWY
 rm -f systeminfo-mem.txt

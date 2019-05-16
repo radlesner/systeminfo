@@ -114,16 +114,29 @@ void all_network() {
                 continue;
             }
             else {
-                i++;
-                interfaces[i] = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway-names.txt", i);
-                addresses[i] = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway-ip.txt", i);
+                string text;
+                fstream file;
+                regex example(static_cast<string>(ifa->ifa_name));
 
-                final_output = "Gateway (" + interfaces[i] + ")";
-                count = 26 - final_output.length();
-                for(int  x = 0; x < count; x++) {
-                    final_output = final_output + " ";
+                file.open(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", ios::in);
+                if(file.good() == true) {
+                    while(!file.eof()) {
+                        getline(file, text);
+                        smatch result;
+
+                        if(regex_search( text, result, example ) == true) {
+                            final_output = "Gateway (" + static_cast<string>(result[0]) + ")";
+                            count = 26 - final_output.length();
+                            for(int  x = 0; x < count; x++) {
+                                final_output = final_output + " ";
+                            }
+                            int if_size = static_cast<string>(result[0]).length() + 1;
+                            text.erase(0, if_size);
+                            cout << final_output << ": " << text << endl;
+                        }
+                    }
                 }
-                if (interfaces[i] != "N/A") cout << final_output << ": " << addresses[i] << endl;
+                file.close();
                 /*
                     GATEWAY OUTPUT END
                 */
