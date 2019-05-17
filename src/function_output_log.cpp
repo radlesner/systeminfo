@@ -11,6 +11,9 @@ using namespace std;
 void output_log() {
 	cout << "Generating log            : ";
 
+	ifstream check_folder(home_path() + "/.systeminfo-files/logs/"); //---------------/ is a directory /---------------
+	if(check_folder.good() == false) system("cd $HOME/.systeminfo-files/ && mkdir logs/");
+
  	clock_t countdown = clock();
 
 	string path_filename = home_path() + "/.systeminfo-files/logs/";
@@ -115,7 +118,7 @@ void output_log() {
 	freq_min = freq_min / 1000;
 
 	log_file << "Max Frequency             : " << freq_max << " MHz" << endl;
-	log_file << "Min Frequency             : " << freq_min << " MHz" << endl;
+	log_file << "Min Frequency             : " << freq_min << " MHz" << endl << endl;
 	/*
 		FREQUENCY END ---------------------------------------------------------------------------------------------------->
 	*/
