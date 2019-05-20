@@ -11,7 +11,7 @@ using namespace std;
 void output_log() {
 	cout << "Generating log            : ";
 
-	ifstream check_folder(home_path() + "/.systeminfo-files/logs/"); //---------------/ is a directory /---------------
+	fstream check_folder(home_path() + "/.systeminfo-files/logs/", ios::in); //---------------/ is a directory /---------------
 	if(check_folder.good() == false) system("cd $HOME/.systeminfo-files/ && mkdir logs/");
 
  	clock_t countdown = clock();
