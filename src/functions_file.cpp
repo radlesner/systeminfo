@@ -66,6 +66,60 @@ void architecture() {
 		cout << "System architecture       : " << bits << " Bits (" << arch << ")" << endl;
 }
 
+string model() {
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-model.txt";
+
+	string value;
+	value = open_file(input_value, 1);
+
+	return value;
+}
+
+string motherboard() {
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-motherboard.txt";
+
+	string value;
+	value = open_file(input_value, 1);
+
+	return value;
+}
+
+string motherboard_manufacturer() {
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-motherboard-manufact.txt";
+
+	string value;
+	value = open_file(input_value, 1);
+
+	return value;
+}
+
+string bios_manufacturer() {
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-bios-manufact.txt";
+
+	string value;
+	value = open_file(input_value, 1);
+
+	return value;
+}
+
+string bios_version() {
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-bios-version.txt";
+
+	string value;
+	value = open_file(input_value, 1);
+
+	return value;
+}
+
+string bios_date() {
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-bios-date.txt";
+
+	string value;
+	value = open_file(input_value, 1);
+
+	return value;
+}
+
 void shell_file() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-shell.txt";
 	const int line = 1;

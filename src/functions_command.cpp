@@ -40,7 +40,5 @@ void command_activate() {
 }
 
 void command_remove() {
-	ifstream mem_file("systeminfo_remove_script.sh");
-	if(mem_file.good() == true)	system("./systeminfo_remove_script.sh");
-	else						system("cd /usr/bin/ && ./systeminfo_remove_script.sh");
+	system("cd /$HOME/.systeminfo-files && rm -f *.*");
 }

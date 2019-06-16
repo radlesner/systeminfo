@@ -21,6 +21,14 @@ using namespace std;
 	string cedename_system();
 	void cpu_file();
 	void architecture();
+
+	string model();
+	string motherboard();
+	string motherboard_manufacturer();
+	string bios_manufacturer();
+	string bios_version();
+	string bios_date();
+
 	void cpu_frequency();
 	void cpu_freq_max_min();
 	int theards_file();

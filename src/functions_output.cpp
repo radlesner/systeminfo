@@ -15,7 +15,7 @@
 using namespace std;
 
 string program_version() {
-	return "2.1.5";
+	return "2.2";
 }
 
 void output_compile_information() {
@@ -51,6 +51,7 @@ void output_main_information() {
 		}
 
 	separator("");
+	cout << "Model name                : " << model() << endl;
 	cout << "Distribution              : " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
 	cout << "Kernel version            : " << buffer.release << endl;
 	architecture();
@@ -75,7 +76,13 @@ void output_system() {
 			perror("uname");
 			exit(EXIT_FAILURE);
 		}
-
+	separator("");
+	cout << "Model name                : " << model() << endl;
+	cout << "Motherboard name          : " << motherboard() << endl;
+	cout << "Motherboard manufacturer  : " << motherboard_manufacturer() << endl;
+	cout << "BIOS manufacturer         : " << bios_manufacturer() << endl;
+	cout << "BIOS version              : " << bios_version() << endl;
+	cout << "BIOS date                 : " << bios_date() << endl;
 	separator("");
 	cout << "OS Name                   : " << buffer.sysname << endl;
 	cout << "Distribution              : " << distribution_file() << endl;

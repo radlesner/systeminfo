@@ -43,7 +43,8 @@
         "cinttypes": "cpp",
         "tuple": "cpp",
         "typeindex": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "optional": "cpp"
     },
     "trailing-spaces.trimOnSave": true,
     "terminal.integrated.fontFamily": "DejaVu Sans Mono",

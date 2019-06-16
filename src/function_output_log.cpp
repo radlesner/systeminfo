@@ -53,6 +53,14 @@ void output_log() {
 	log_file << "Program version............: " << program_version() << endl;
 	log_file << "Compile program date.......: " << __DATE__ << ", " << __TIME__ << endl << endl;
 
+	log_file << "------------- HARDWARE INFORMATION -------------" << endl;
+	log_file << "Model name                 : " << model() << endl;
+	log_file << "Motherboard name           : " << motherboard() << endl;
+	log_file << "Motherboard manufacturer   : " << motherboard_manufacturer() << endl;
+	log_file << "BIOS manufacturer          : " << bios_manufacturer() << endl;
+	log_file << "BIOS version               : " << bios_version() << endl;
+	log_file << "BIOS date                  : " << bios_date() << endl << endl;
+
 	log_file << "-------------- SYSTEM INFORMATION --------------" << endl;
 	log_file << "OS name                    : " << buffer.sysname << endl;
 	log_file << "Distribution               : " << distribution_file() << endl;
@@ -96,18 +104,18 @@ void output_log() {
             frequency_sum = frequency_sum / cores / 1000;
 
             if(distribution_file() == "Raspbian" || read_value == "N/A")
-                log_file << "CPU Frequency             : N/A" << endl;
+                log_file << "CPU Frequency              : N/A" << endl;
             else
-                log_file << "CPU Frequency             : " << frequency_sum << " MHz" << endl;
+                log_file << "CPU Frequency              : " << frequency_sum << " MHz" << endl;
 		}
 		else {
-			log_file << "CPU Frequency             : N/A" << endl;
+			log_file << "CPU Frequency              : N/A" << endl;
 		}
 	file.close();
 
 	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1) == "N/A") {
-		log_file << "Max Frequency             : N/A" << endl;
-		log_file << "Min Frequency             : N/A" << endl;
+		log_file << "Max Frequency              : N/A" << endl;
+		log_file << "Min Frequency              : N/A" << endl;
 		return;
 	}
 
@@ -117,8 +125,8 @@ void output_log() {
 	freq_max = freq_max / 1000;
 	freq_min = freq_min / 1000;
 
-	log_file << "Max Frequency             : " << freq_max << " MHz" << endl;
-	log_file << "Min Frequency             : " << freq_min << " MHz" << endl << endl;
+	log_file << "Max Frequency              : " << freq_max << " MHz" << endl;
+	log_file << "Min Frequency              : " << freq_min << " MHz" << endl << endl;
 	/*
 		FREQUENCY END ---------------------------------------------------------------------------------------------------->
 	*/
