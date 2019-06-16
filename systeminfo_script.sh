@@ -22,12 +22,24 @@ route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
 route -n | grep 'UG[ \t]' | awk '{print $8 " " $2}' >> systeminfo-gateway.txt
 
 # HARDWARE
-cat /sys/devices/virtual/dmi/id/product_version >> systeminfo-model.txt
-cat /sys/devices/virtual/dmi/id/board_name >> systeminfo-motherboard.txt
-cat /sys/devices/virtual/dmi/id/board_vendor >> systeminfo-motherboard-manufact.txt
-cat /sys/devices/virtual/dmi/id/bios_vendor >> systeminfo-bios-manufact.txt
-cat /sys/devices/virtual/dmi/id/bios_version >> systeminfo-bios-version.txt
-cat /sys/devices/virtual/dmi/id/bios_date >> systeminfo-bios-date.txt
+if [ -e /sys/devices/virtual/dmi/id/product_version ] ; then
+    cat /sys/devices/virtual/dmi/id/product_version >> systeminfo-model.txt
+fi
+if [ -e /sys/devices/virtual/dmi/id/board_name ] ; then
+    cat /sys/devices/virtual/dmi/id/board_name >> systeminfo-motherboard.txt
+fi
+if [ -e /sys/devices/virtual/dmi/id/board_vendor ] ; then
+    cat /sys/devices/virtual/dmi/id/board_vendor >> systeminfo-motherboard-manufact.txt
+fi
+if [ -e /sys/devices/virtual/dmi/id/bios_vendor ] ; then
+    cat /sys/devices/virtual/dmi/id/bios_vendor >> systeminfo-bios-manufact.txt
+fi
+if [ -e /sys/devices/virtual/dmi/id/bios_version ] ; then
+    cat /sys/devices/virtual/dmi/id/bios_version >> systeminfo-bios-version.txt
+fi
+if [ -e /sys/devices/virtual/dmi/id/bios_date ] ; then
+    cat /sys/devices/virtual/dmi/id/bios_date >> systeminfo-bios-date.txt
+fi
 
 # SYSTEM
 uptime -p | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-uptime.txt
