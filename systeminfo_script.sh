@@ -22,8 +22,8 @@ route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
 route -n | grep 'UG[ \t]' | awk '{print $8 " " $2}' >> systeminfo-gateway.txt
 
 # HARDWARE
-if [ -e /sys/devices/virtual/dmi/id/product_version ] ; then
-    cat /sys/devices/virtual/dmi/id/product_version >> systeminfo-model.txt
+if [ -e /sys/devices/virtual/dmi/id/product_family ] ; then
+    cat /sys/devices/virtual/dmi/id/product_family >> systeminfo-model.txt
 fi
 if [ -e /sys/devices/virtual/dmi/id/board_name ] ; then
     cat /sys/devices/virtual/dmi/id/board_name >> systeminfo-motherboard.txt
