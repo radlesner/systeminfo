@@ -16,10 +16,11 @@ cat /proc/cpuinfo | grep -i "model name" --max-count=1 | awk '{for (i=4; i<NF; i
 cat /proc/cpuinfo | grep "processor" | awk {'print $3'} >> systeminfo-cores.txt
 
 # NETWORK
-
-route -n | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
-route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
-route -n | grep 'UG[ \t]' | awk '{print $8 " " $2}' >> systeminfo-gateway.txt
+if [ -e /usr/bin/route ] ; then
+    route -n | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
+    route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
+    route -n | grep 'UG[ \t]' | awk '{print $8 " " $2}' >> systeminfo-gateway.txt
+fi
 
 # HARDWARE
 if [ -e /sys/devices/virtual/dmi/id/product_family ] ; then
