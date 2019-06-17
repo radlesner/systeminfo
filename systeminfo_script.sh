@@ -67,25 +67,25 @@ df -m | grep -i "/dev/sd" | sort -n | awk '{print $1}' >> systeminfo-disks-name.
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $1}' >> systeminfo-disks-name.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $1}' >> systeminfo-disks-name.txt
 df -m | grep -i "/dev/mmcblk" | sort -n | awk '{print $1}' >> systeminfo-disks-name.txt
-df -m | grep -i "/dev/root" | sort -n | awk '{print $1}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/ro" | sort -n | awk '{print $1}' >> systeminfo-disks-name.txt
 
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
 df -m | grep -i "/dev/mmcblk" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
-df -m | grep -i "/dev/root" | sort -n | awk '{print $3}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/ro" | sort -n | awk '{print $3}' >> systeminfo-disks-name.txt
 
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $4}' >> systeminfo-disks-avail.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $4}' >> systeminfo-disks-avail.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $4}' >> systeminfo-disks-avail.txt
 df -m | grep -i "/dev/mmcblk" | sort -n | awk '{print $4}' >> systeminfo-disks-avail.txt
-df -m | grep -i "/dev/root" | sort -n | awk '{print $4}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/ro" | sort -n | awk '{print $4}' >> systeminfo-disks-name.txt
 
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $5}' >> systeminfo-disks-procent-usage.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $5}' >> systeminfo-disks-procent-usage.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $5}' >> systeminfo-disks-procent-usage.txt
 df -m | grep -i "/dev/mmcblk" | sort -n | awk '{print $5}' >> systeminfo-disks-procent-usage.txt
-df -m | grep -i "/dev/root" | sort -n | awk '{print $5}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/ro" | sort -n | awk '{print $5}' >> systeminfo-disks-name.txt
 
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount.txt
