@@ -91,4 +91,4 @@ df -m | grep -i "/dev/sd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount.txt
 df -m | grep -i "/dev/mmcblk" | sort -n | awk '{print $6}' >> systeminfo-disks-mount.txt
-df -m | grep -i "/dev/root" | sort -n | awk '{print $6}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/ro" | sort -n | awk '{print $6}' >> systeminfo-disks-name.txt
