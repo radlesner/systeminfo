@@ -7,6 +7,7 @@
 #include "functions_file_memory.h"
 #include "functions_file_operations.h"
 #include "functions_file.h"
+#include "functions_output.h"
 
 using namespace std;
 
@@ -81,5 +82,103 @@ void mem_megabyte_file() {
 		mem_free	= atoi(value_2.c_str()) / 1024;
 
 		cout << "RAM  Total/Free           : " << mem_max << "/" << mem_free << " MB" << endl;
+	}
+}
+
+void disk_usage(int swith_units) {
+	ifstream disk_name;
+	ifstream disk_used;
+	ifstream disk_procent_usage;
+	ifstream disk_available;
+	ifstream disk_mount;
+
+	string table_disk_name[512];
+	string table_disk_used[512];
+	string table_procent_usage[512];
+	string table_disk_available[512];
+	string table_disk_mount[512];
+	string output[4];
+
+	int nr_line = 1;
+	int count = 0;
+
+	disk_name.open(home_path() + "/.systeminfo-files/systeminfo-disks-name.txt");
+	if (disk_name.good() == true) {
+		while(!disk_name.eof()){
+			getline(disk_name, table_disk_name[nr_line]);
+			nr_line++;
+		}
+	}
+
+	disk_procent_usage.open(home_path() + "/.systeminfo-files/systeminfo-disks-procent-usage.txt");
+	if (disk_procent_usage.good() == true) {
+		nr_line = 1;
+		while(!disk_procent_usage.eof()){
+			getline(disk_procent_usage, table_procent_usage[nr_line]);
+			nr_line++;
+		}
+	}
+
+	disk_used.open(home_path() + "/.systeminfo-files/systeminfo-disks-used.txt");
+	if (disk_used.good() == true) {
+		nr_line = 1;
+		while(!disk_used.eof()){
+			getline(disk_used, table_disk_used[nr_line]);
+			nr_line++;
+		}
+	}
+
+	disk_available.open(home_path() + "/.systeminfo-files/systeminfo-disks-avail.txt");
+	if (disk_available.good() == true) {
+		nr_line = 1;
+		while(!disk_available.eof()){
+			getline(disk_available, table_disk_available[nr_line]);
+			nr_line++;
+		}
+	}
+
+	disk_mount.open(home_path() + "/.systeminfo-files/systeminfo-disks-mount.txt");
+	if (disk_mount.good() == true) {
+		nr_line = 1;
+		while(!disk_mount.eof()){
+			getline(disk_mount, table_disk_mount[nr_line]);
+			nr_line++;
+		}
+	}
+
+	for (int i = 1; i < nr_line - 1; i++) {
+		output[0]= "Usage       " + table_disk_name[i];
+		output[1]= "Used        " + table_disk_name[i];
+		output[2]= "Available   " + table_disk_name[i];
+		output[3]= "Mount point " + table_disk_name[i];
+
+		count = 26 - output[0].length();
+		for (int x = 0; x < count; x++) {
+			output[0] = output[0] + " ";
+		}
+		count = 26 - output[1].length();
+		for (int x = 0; x < count; x++) {
+			output[1] = output[1] + " ";
+		}
+		count = 26 - output[2].length();
+		for (int x = 0; x < count; x++) {
+			output[2] = output[2] + " ";
+		}
+		count = 26 - output[3].length();
+		for (int x = 0; x < count; x++) {
+			output[3] = output[3] + " ";
+		}
+
+		cout << output[0] << ": " << table_procent_usage[i] << endl;
+		if (swith_units == 1) {
+			cout << output[1] << ": " << atoi(table_disk_used[i].c_str()) / 1024 << " GB" << endl;
+			cout << output[2] << ": " << atoi(table_disk_available[i].c_str()) / 1024 << " GB" << endl;
+		}
+		else {
+			cout << output[1] << ": " << table_disk_used[i] << " MB" << endl;
+			cout << output[2] << ": " << table_disk_available[i] << " MB" << endl;
+		}
+		cout << output[3] << ": " << table_disk_mount[i] << endl;
+		separator("");
 	}
 }

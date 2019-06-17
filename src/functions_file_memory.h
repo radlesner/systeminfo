@@ -17,5 +17,6 @@ using namespace std;
 
 	void mem_file(int switch_megabyte);
 	void mem_megabyte_file();
+	void disk_usage(int swith_units);
 
 #endif /* FUNCTIONS_FILE_MEMORY_H_ */
