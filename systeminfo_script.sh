@@ -12,8 +12,12 @@ fi
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq ] ; then
     cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq >> systeminfo-cpu-frequency_min.txt
 fi
+if [ -e /sys/class/hwmon/hwmon*/fan1_input ] ; then
+    cat /sys/class/hwmon/hwmon*/fan1_input >> systeminfo-cpu-fan-speed.txt
+fi
 cat /proc/cpuinfo | grep -i "model name" --max-count=1 | awk '{for (i=4; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-cpu.txt
-cat /proc/cpuinfo | grep "processor" | awk {'print $3'} >> systeminfo-cores.txt
+cat /proc/cpuinfo | grep -c "^processor" >> systeminfo-theards.txt
+awk '/^core id/&&!a[$0]++{++i} END {print i}' /proc/cpuinfo >> systeminfo-cores.txt
 
 # NETWORK
 if [ -e /usr/bin/route ] ; then

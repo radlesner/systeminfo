@@ -137,25 +137,21 @@ void shell_file() {
 }
 
 int theards_file() {
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-theards.txt";
+
+	string value;
+	value = open_file(input_value, 1);
+
+	return atoi(value.c_str());
+}
+
+int cores_file() {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cores.txt";
-	string read_value;
-	int theards, nr_line = 0;
 
-	fstream file;
+	string value;
+	value = open_file(input_value, 1);
 
-    file.open(input_value, ios::in);
-		if(file.good() == true) {
-			while( !file.eof() )
-			{
-				nr_line++;
-    			getline( file, read_value );
-			}
-
-			theards = atoi(open_file(input_value, nr_line - 1).c_str());
-			theards = theards + 1;
-		}
-	file.close();
-	return theards;
+	return atoi(value.c_str());
 }
 
 void cpu_frequency() {
@@ -231,4 +227,18 @@ string uptime_file() {
 string home_path() {
 	string home_path = getenv("HOME");
 	return home_path;
+}
+
+string fan_speed() {
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-fan-speed.txt";
+
+	string value;
+	value = open_file(input_value, 1);
+
+	if (value == "N/A") {
+		return "N/A";
+	}
+	else{
+		return value + " RPM";
+	}
 }

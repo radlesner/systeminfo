@@ -32,8 +32,11 @@ using namespace std;
 	void cpu_frequency();
 	void cpu_freq_max_min();
 	int theards_file();
+	int cores_file();
 	void shell_file();
 	string user_file();
 	string home_path();
+
+	string fan_speed();
 
 #endif /* FUNCTIONS_FILE_H_ */
