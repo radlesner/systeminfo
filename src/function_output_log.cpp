@@ -8,11 +8,13 @@
 
 using namespace std;
 
-void output_log() {
+void output_log()
+{
 	cout << "Generating log            : ";
 
 	fstream check_folder(home_path() + "/.systeminfo-files/logs/", ios::in); //---------------/ is a directory /---------------
-	if(check_folder.good() == false) system("cd $HOME/.systeminfo-files/ && mkdir logs/");
+	if(check_folder.good() == false)
+		system("cd $HOME/.systeminfo-files/ && mkdir logs/");
 
  	clock_t countdown = clock();
 
@@ -40,7 +42,8 @@ void output_log() {
 
 	struct utsname buffer;
 
-		if (uname(&buffer) != 0) {
+		if (uname(&buffer) != 0)
+		{
 			perror("uname");
 			exit(EXIT_FAILURE);
 		}
@@ -90,14 +93,16 @@ void output_log() {
 
     file.open(input_value, ios::in);
 		if(file.good() == true) {
-			for(int x = 0; x < cores; x++) {
+			for(int x = 0; x < cores; x++)
+			{
 				getline(file, read_value);
 				if(read_value == "N/A") break;
 				value[x++] = atoi(read_value.c_str());
 
 				frequency_sum = frequency_sum + value[x];
 			}
-            for(int i = 0; i < cores; i++) {
+            for(int i = 0; i < cores; i++)
+			{
                 frequency_sum = frequency_sum + value[i];
             }
 
@@ -108,12 +113,14 @@ void output_log() {
             else
                 log_file << "CPU Frequency              : " << frequency_sum << " MHz" << endl;
 		}
-		else {
+		else
+		{
 			log_file << "CPU Frequency              : N/A" << endl;
 		}
 	file.close();
 
-	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1) == "N/A") {
+	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1) == "N/A")
+	{
 		log_file << "Max Frequency              : N/A" << endl;
 		log_file << "Min Frequency              : N/A" << endl;
 		return;
@@ -145,7 +152,8 @@ void output_log() {
 		string text;
 		string final_output;
 		file.open(home_path()+"/.systeminfo-files/systeminfo-gateway-names.txt");
-		if (file.good() == true) {
+		if (file.good() == true)
+		{
 			while(!file.eof()) {
 				getline(file, text);
 				nr++;
@@ -168,9 +176,11 @@ void output_log() {
 			ADDRESS AND NETMASK END
 			ADDRESS AND NETMASK OUTPUT
 		*/
-		for(ifa = ifAddrStruct;  ifa != NULL; ifa = ifa->ifa_next) {
+		for(ifa = ifAddrStruct;  ifa != NULL; ifa = ifa->ifa_next)
+		{
 			if (!ifa->ifa_addr) continue;
-			if (ifa->ifa_addr->sa_family == AF_INET) {
+			if (ifa->ifa_addr->sa_family == AF_INET)
+			{
 				char address_buffer[INET_ADDRSTRLEN];
 				char mask_buffer[INET_ADDRSTRLEN];
 
@@ -186,7 +196,8 @@ void output_log() {
 				netmask_output = "Netmask (" + static_cast<string>(ifa->ifa_name) + ")";
 				int count = 0;
 				count = 27 - netmask_output.length();
-				for(int i = 0; i < count; i++) {
+				for(int i = 0; i < count; i++)
+				{
 					address_output = address_output + " ";
 					netmask_output = netmask_output + " ";
 				}
@@ -204,7 +215,8 @@ void output_log() {
 
 					final_output = "Gateway (" + interfaces[i] + ")";
 					count = 27 - final_output.length();
-					for(int  x = 0; x < count; x++) {
+					for(int  x = 0; x < count; x++)
+					{
 						final_output = final_output + " ";
 					}
 					log_file << final_output << ": " << addresses[i] << endl;

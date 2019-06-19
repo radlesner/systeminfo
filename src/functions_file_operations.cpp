@@ -10,7 +10,8 @@ using namespace std;
 
 extern int string_confirmed; /*--------------------/ Global Variable /--------------------*/
 
-string open_file(string path_file, int nr_line) {
+string open_file(string path_file, int nr_line)
+{
 	string line;
 	ifstream file;
 
@@ -19,9 +20,11 @@ string open_file(string path_file, int nr_line) {
 		if(file.good() == false)
 			return "N/A";
 
-		for(int i = 0; i < nr_line; i++) {
+		for(int i = 0; i < nr_line; i++)
+		{
 			getline(file, line);
-			if(line == "") {
+			if(line == "")
+			{
 				return "N/A";
 			}
 		}
@@ -31,7 +34,8 @@ string open_file(string path_file, int nr_line) {
 	return line;
 }
 
-void check_file_text(string input, string search_text) {
+void check_file_text(string input, string search_text)
+{
 	int number=0;
 	string read_line[100];
 	ifstream file;
@@ -41,16 +45,19 @@ void check_file_text(string input, string search_text) {
 		if(file.good() == false)
 			string_confirmed = 0;
 
-		while(!file.eof()) {
+		while(!file.eof())
+		{
 			getline(file, read_line[number++]);
 		}
 
 	file.close();
 
-	for(int i = 1; i <= number; i++) {
+	for(int i = 1; i <= number; i++)
+	{
 		check_file_text_find_text(read_line[i], search_text);
 
-		if(string_confirmed == 1) {
+		if(string_confirmed == 1)
+		{
 			break;
 		}
 	}
@@ -59,12 +66,14 @@ void check_file_text(string input, string search_text) {
 void check_file_text_find_text( string & text, string find_string )
 {
     size_t position = text.find(find_string);
-    if(position == string::npos) {
+    if(position == string::npos)
+	{
         string_confirmed = 0;
         return;
     }
 
-    do {
+    do
+	{
         string_confirmed = 1;
         position = text.find(find_string, position + find_string.size());
     } while(position != string::npos);
@@ -73,11 +82,13 @@ void check_file_text_find_text( string & text, string find_string )
 bool find_text( string & text, string find_string )
 {
     size_t position = text.find(find_string);
-    if(position == string::npos) {
+    if(position == string::npos)
+	{
         return false;
     }
 
-    do {
+    do
+	{
         return true;
         position = text.find(find_string, position + find_string.size());
     } while(position != string::npos);

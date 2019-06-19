@@ -5,7 +5,8 @@
 
 using namespace std;
 
-void get_ip_address(int on_ip6) {
+void get_ip_address(int on_ip6)
+{
     struct ifaddrs* ifAddrStruct = NULL;
     struct ifaddrs* ifa = NULL;
     void* tmpAddrPtr = NULL;
@@ -15,9 +16,11 @@ void get_ip_address(int on_ip6) {
 
     getifaddrs(&ifAddrStruct);
 
-    for(ifa = ifAddrStruct;  ifa != NULL; ifa = ifa->ifa_next) {
+    for(ifa = ifAddrStruct;  ifa != NULL; ifa = ifa->ifa_next)
+    {
         if (!ifa->ifa_addr) continue;
-        if (ifa->ifa_addr->sa_family == AF_INET) {
+        if (ifa->ifa_addr->sa_family == AF_INET)
+        {
             tmpAddrPtr =& ((struct sockaddr_in *) ifa->ifa_addr)->sin_addr;
             char address_buffer[INET_ADDRSTRLEN];
             inet_ntop(AF_INET, tmpAddrPtr, address_buffer, INET_ADDRSTRLEN);
@@ -25,19 +28,22 @@ void get_ip_address(int on_ip6) {
                 int count = 0;
                 text_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
                 count = 26 - text_output.length();
-                for(int i = 0; i < count; i++) {
+                for(int i = 0; i < count; i++)
+                {
                     text_output = text_output + " ";
                 }
                 cout << text_output << ": " << address_buffer <<  endl;
         }
-        else if (ifa->ifa_addr->sa_family == AF_INET6 && on_ip6 == 1) {
+        else if (ifa->ifa_addr->sa_family == AF_INET6 && on_ip6 == 1)
+        {
             tmpAddrPtr =& ((struct sockaddr_in6 *) ifa->ifa_addr)->sin6_addr;
             char address_buffer[INET6_ADDRSTRLEN];
             inet_ntop(AF_INET6, tmpAddrPtr, address_buffer, INET6_ADDRSTRLEN);
                 int count = 0;
                 text_output = "IPv6    (" + (string)ifa->ifa_name + ")";
                 count = 26 - text_output.length();
-                for(int i = 0; i < count; i++) {
+                for(int i = 0; i < count; i++)
+                {
                     text_output = text_output + " ";
                 }
                 cout << text_output << ": " << address_buffer <<  endl;
@@ -47,7 +53,8 @@ void get_ip_address(int on_ip6) {
     if (ifAddrStruct != NULL) freeifaddrs(ifAddrStruct);
 }
 
-void all_network() {
+void all_network()
+{
     /*
         GATEWAY
     */
@@ -58,8 +65,10 @@ void all_network() {
     string text;
     string final_output;
     file.open(home_path()+"/.systeminfo-files/systeminfo-gateway-names.txt");
-    if (file.good() == true) {
-        while(!file.eof()) {
+    if (file.good() == true)
+    {
+        while(!file.eof())
+        {
             getline(file, text);
             nr++;
         }
@@ -81,9 +90,11 @@ void all_network() {
         ADDRESS AND NETMASK END
         ADDRESS AND NETMASK OUTPUT
     */
-    for(ifa = ifAddrStruct;  ifa != NULL; ifa = ifa->ifa_next) {
+    for(ifa = ifAddrStruct;  ifa != NULL; ifa = ifa->ifa_next)
+    {
         if (!ifa->ifa_addr) continue;
-        if (ifa->ifa_addr->sa_family == AF_INET) {
+        if (ifa->ifa_addr->sa_family == AF_INET)
+        {
             char address_buffer[INET_ADDRSTRLEN];
             char mask_buffer[INET_ADDRSTRLEN];
 
@@ -99,7 +110,8 @@ void all_network() {
             netmask_output = "Netmask (" + static_cast<string>(ifa->ifa_name) + ")";
             int count = 0;
             count = 26 - netmask_output.length();
-            for(int i = 0; i < count; i++) {
+            for(int i = 0; i < count; i++)
+            {
                 address_output = address_output + " ";
                 netmask_output = netmask_output + " ";
             }
@@ -109,11 +121,13 @@ void all_network() {
                 ADDRESS AND NETMASK OUTPUT END
                 GATEWAY OUTPUT
             */
-            if (static_cast<string>(ifa->ifa_name) == "lo") {
+            if (static_cast<string>(ifa->ifa_name) == "lo")
+            {
                 if (address_output.length() > 1) separator("");
                 continue;
             }
-            else {
+            else
+            {
                 string text;
                 fstream file;
                 regex example(static_cast<string>(ifa->ifa_name));

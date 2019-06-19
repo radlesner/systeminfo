@@ -15,17 +15,20 @@
 
 using namespace std;
 
-string program_version() {
+string program_version()
+{
 	return "2.3.6";
 }
 
-void output_compile_information() {
+void output_compile_information()
+{
 	cout << "Version program...........: " << program_version() << endl;
 	cout << "Compile date..............: " << __DATE__ << endl;
 	cout << "Compile time..............: " << __TIME__ << endl;
 }
 
-void separator(string name) {
+void separator(string name)
+{
 	string separator_1 = "────────────";
 	string total;
 
@@ -40,13 +43,15 @@ void separator(string name) {
 	cout << total << ">>>" << endl;
 }
 
-void output_main_information() {
+void output_main_information()
+{
 	string shell;
 	shell = getenv ("SHELL");
 
 	struct utsname buffer;
 
-		if (uname(&buffer) != 0) {
+		if (uname(&buffer) != 0)
+		{
 			perror("uname");
 			exit(EXIT_FAILURE);
 		}
@@ -67,13 +72,15 @@ void output_main_information() {
 	get_ip_address(0);
 }
 
-void output_system() {
+void output_system()
+{
 	string shell;
 	shell = getenv ("SHELL");
 
 	struct utsname buffer;
 
-		if (uname(&buffer) != 0) {
+		if (uname(&buffer) != 0)
+		{
 			perror("uname");
 			exit(EXIT_FAILURE);
 		}
@@ -99,13 +106,15 @@ void output_system() {
 	separator("");
 }
 
-void output_network() {
+void output_network()
+{
 	string shell;
 	shell = getenv ("SHELL");
 
 	struct utsname buffer;
 
-		if (uname(&buffer) != 0) {
+		if (uname(&buffer) != 0)
+		{
 			perror("uname");
 			exit(EXIT_FAILURE);
 		}
@@ -118,7 +127,8 @@ void output_network() {
 	all_network();
 }
 
-void output_cpu_only() {
+void output_cpu_only()
+{
 	separator("");
 	cpu_file();
 	cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
@@ -130,17 +140,21 @@ void output_cpu_only() {
 	separator("");
 }
 
-void output_check_files() {
+void output_check_files()
+{
 	ifstream mem_file("/home/"+user_file()+"/.systeminfo-files");	// systeminfo-files is a directory
-	if(mem_file.good() == false) {
+	if(mem_file.good() == false)
+	{
 		command_check_folder_exist();
 	}
-	else {
+	else
+	{
 		cout << "All files and folders is integrated ✔" << endl;
 	}
 }
 
-void output_monitor(int value_argc, char** value_argv) {
+void output_monitor(int value_argc, char** value_argv)
+{
 	int count = 0;
 	string table[3];
 	table[0] = "/";
@@ -151,7 +165,8 @@ void output_monitor(int value_argc, char** value_argv) {
 		command_activate();
 
 		if(value_argc > 2) {
-			if(!strcmp(value_argv[2], "-g")) {
+			if(!strcmp(value_argv[2], "-g"))
+			{
 				system("clear");
 
 				separator("");
@@ -169,7 +184,8 @@ void output_monitor(int value_argc, char** value_argv) {
 
 				all_network();
 			}
-			else if(!strcmp(value_argv[2], "-m")) {
+			else if(!strcmp(value_argv[2], "-m"))
+			{
 				system("clear");
 
 				separator("");
@@ -187,12 +203,14 @@ void output_monitor(int value_argc, char** value_argv) {
 
 				all_network();
 			}
-			else if(!strcmp(value_argv[2], "-n")) {
+			else if(!strcmp(value_argv[2], "-n"))
+			{
 				system("clear");
 				separator("");
 				all_network();
 			}
-			else {
+			else
+			{
 				cout << "Bad arguments, you must use operators: -t -m" << endl;
 				cout << "                                       -t -g" << endl;
 				cout << "                                       -t -n" << endl;
@@ -200,7 +218,8 @@ void output_monitor(int value_argc, char** value_argv) {
 				break;
 			}
 		}
-		else {
+		else
+		{
 			system("clear");
 
 			separator("");
@@ -222,7 +241,8 @@ void output_monitor(int value_argc, char** value_argv) {
 		command_remove();
 		cout << endl << "Exit: CTRL + C ";
 
-		for (int i = 0; i < 1; i++)	{
+		for (int i = 0; i < 1; i++)
+		{
 			cout << table[count] << endl;
 			count++;
 
@@ -233,7 +253,8 @@ void output_monitor(int value_argc, char** value_argv) {
 	}
 }
 
-void output_help() {
+void output_help()
+{
 	cout << "Usage: system [optional_option]" << endl;
 	cout << "Options:" << endl;
 	cout << "   -g  --gigabyte        Memory information in gigabyte form" << endl;

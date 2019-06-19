@@ -9,7 +9,8 @@
 
 using namespace std;
 
-string distribution_file() {
+string distribution_file()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-distro.txt";
 	const int line = 1;
 
@@ -19,7 +20,8 @@ string distribution_file() {
 	return value;
 }
 
-string release_system() {
+string release_system()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-distro.txt";
 	const int line = 2;
 
@@ -29,7 +31,8 @@ string release_system() {
 	return value;
 }
 
-string cedename_system() {
+string cedename_system()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-distro.txt";
 	const int line = 3;
 
@@ -39,7 +42,8 @@ string cedename_system() {
 	return value;
 }
 
-void cpu_file() {
+void cpu_file()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu.txt";
 	const int line = 1;
 
@@ -49,7 +53,8 @@ void cpu_file() {
 	cout << "CPU                       : " << value << endl;
 }
 
-void architecture() {
+void architecture()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-arch.txt";
 	const string bit32 = "32 Bits";
 	const string bit64 = "64 Bits";
@@ -66,7 +71,8 @@ void architecture() {
 		cout << "System architecture       : " << bits << " Bits (" << arch << ")" << endl;
 }
 
-string model() {
+string model()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-model.txt";
 
 	string value;
@@ -75,7 +81,8 @@ string model() {
 	return value;
 }
 
-string motherboard() {
+string motherboard()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-motherboard.txt";
 
 	string value;
@@ -84,7 +91,8 @@ string motherboard() {
 	return value;
 }
 
-string motherboard_manufacturer() {
+string motherboard_manufacturer()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-motherboard-manufact.txt";
 
 	string value;
@@ -93,7 +101,8 @@ string motherboard_manufacturer() {
 	return value;
 }
 
-string bios_manufacturer() {
+string bios_manufacturer()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-bios-manufact.txt";
 
 	string value;
@@ -102,7 +111,8 @@ string bios_manufacturer() {
 	return value;
 }
 
-string bios_version() {
+string bios_version()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-bios-version.txt";
 
 	string value;
@@ -111,7 +121,8 @@ string bios_version() {
 	return value;
 }
 
-string bios_date() {
+string bios_date()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-bios-date.txt";
 
 	string value;
@@ -120,7 +131,8 @@ string bios_date() {
 	return value;
 }
 
-void shell_file() {
+void shell_file()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-shell.txt";
 	const int line = 1;
 
@@ -136,7 +148,8 @@ void shell_file() {
 		else														cout << "Shell                     : " << value << endl;
 }
 
-int theards_file() {
+int theards_file()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-theards.txt";
 
 	string value;
@@ -145,7 +158,8 @@ int theards_file() {
 	return atoi(value.c_str());
 }
 
-int cores_file() {
+int cores_file()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cores.txt";
 
 	string value;
@@ -154,7 +168,8 @@ int cores_file() {
 	return atoi(value.c_str());
 }
 
-void cpu_frequency() {
+void cpu_frequency()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-status.txt";
 
 	int cores = theards_file();
@@ -168,14 +183,16 @@ void cpu_frequency() {
 
     file.open(input_value, ios::in);
 		if(file.good() == true) {
-			for(int x = 0; x < cores; x++) {
+			for(int x = 0; x < cores; x++)
+			{
 				getline(file, read_value);
 				if(read_value == "N/A") break;
 				value[x++] = atoi(read_value.c_str());
 
 				frequency_sum = frequency_sum + value[x];
 			}
-            for(int i = 0; i < cores; i++) {
+            for(int i = 0; i < cores; i++)
+			{
                 frequency_sum = frequency_sum + value[i];
             }
 
@@ -186,13 +203,15 @@ void cpu_frequency() {
             else
                 cout << "CPU Frequency             : " << frequency_sum << " MHz" << endl;
 		}
-		else {
+		else
+		{
 			cout << "CPU Frequency             : N/A" << endl;
 		}
 	file.close();
 }
 
-void cpu_freq_max_min() {
+void cpu_freq_max_min()
+{
 	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1) == "N/A") {
 		cout << "Max Frequency             : N/A" << endl;
 		cout << "Min Frequency             : N/A" << endl;
@@ -209,12 +228,14 @@ void cpu_freq_max_min() {
 	cout << "Min Frequency             : " << freq_min << " MHz" << endl;
 }
 
-string user_file() {
+string user_file()
+{
 	string user = getenv("USER");
 	return user;
 }
 
-string uptime_file() {
+string uptime_file()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-uptime.txt";
 	const int line = 1;
 
@@ -224,21 +245,25 @@ string uptime_file() {
 	return value;
 }
 
-string home_path() {
+string home_path()
+{
 	string home_path = getenv("HOME");
 	return home_path;
 }
 
-string fan_speed() {
+string fan_speed()
+{
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-fan-speed.txt";
 
 	string value;
 	value = open_file(input_value, 1);
 
-	if (value == "N/A") {
+	if (value == "N/A")
+	{
 		return "N/A";
 	}
-	else{
+	else
+	{
 		return value + " RPM";
 	}
 }

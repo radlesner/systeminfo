@@ -16,18 +16,22 @@
 
 using namespace std;
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
 	command_check_folder_exist();
 	command_activate();
-	if(argc > 1) {
-		if(!strcmp(argv[1], "-g") || !strcmp(argv[1], "--gigabyte")) {
+	if(argc > 1)
+	{
+		if(!strcmp(argv[1], "-g") || !strcmp(argv[1], "--gigabyte"))
+		{
 			separator("");
 			mem_file(0);
 			swap_file(0);
 			separator("");
 			disk_usage(1);
 		}
-		else if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--megabyte")) {
+		else if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--megabyte"))
+		{
 			separator("");
 			mem_megabyte_file();
 			swap_megabyte_file();
@@ -43,7 +47,8 @@ int main(int argc, char** argv) {
 		else if(!strcmp(argv[1], "--help"))											output_help();
 		else if(!strcmp(argv[1], "--log"))											output_log();
 		else if(!strcmp(argv[1], "--") || !strcmp(argv[1], "-"))					output_main_information();
-		else {
+		else
+		{
 			if(argc > 3)		cout << "Bad option: " << argv[1] << " " << argv[2] << " " << argv[3] << endl;
 			else if(argc > 2)	cout << "Bad option: " << argv[1] << " " << argv[2] << endl;
 			else				cout << "Bad option: " << argv[1] << endl;
