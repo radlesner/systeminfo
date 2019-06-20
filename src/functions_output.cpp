@@ -11,13 +11,12 @@
 #include "functions_file_swap.h"
 #include "functions_command.h"
 #include "functions_network.h"
-#include "functions_strings_operations.h"
 
 using namespace std;
 
 string program_version()
 {
-	return "2.4.1";
+	return "2.4.2";
 }
 
 void output_compile_information()
@@ -57,7 +56,7 @@ void output_main_information()
 		}
 
 	separator("");
-	cout << "Model name                : " << switch_words(motherboard_manufacturer()) << " " << model() << endl;
+	cout << "Model name                : " << motherboard_manufacturer() << " " << model() << endl;
 	cout << "Distribution              : " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
 	cout << "Kernel version            : " << buffer.release << endl;
 	architecture();

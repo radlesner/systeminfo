@@ -7,6 +7,7 @@
 #include "functions_file.h"
 #include "functions_file_operations.h"
 #include "functions_output.h"
+#include "functions_strings_operations.h"
 
 using namespace std;
 
@@ -57,10 +58,6 @@ void cpu_file()
 void architecture()
 {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-arch.txt";
-	const string bit32 = "32 Bits";
-	const string bit64 = "64 Bits";
-	const string arm32 = "ARM 32 Bits";
-	const string arm64 = "ARM 64 Bits";
 
 	string arch, bits;
 	arch = open_file(input_value, 1);
@@ -79,6 +76,9 @@ string model()
 	string value;
 	value = open_file(input_value, 1);
 
+	if (value == "LENOVO" || value == "DELL" || value == "HEWLETT PACKARD" || value == "ASUS")
+		value = switch_words(value);
+
 	return value;
 }
 
@@ -88,6 +88,9 @@ string motherboard()
 
 	string value;
 	value = open_file(input_value, 1);
+
+	if (value == "LENOVO" || value == "DELL" || value == "HEWLETT PACKARD" || value == "ASUS")
+		value = switch_words(value);
 
 	return value;
 }
@@ -99,6 +102,9 @@ string motherboard_manufacturer()
 	string value;
 	value = open_file(input_value, 1);
 
+	if (value == "LENOVO" || value == "DELL" || value == "HEWLETT PACKARD" || value == "ASUS")
+		value = switch_words(value);
+
 	return value;
 }
 
@@ -108,6 +114,9 @@ string bios_manufacturer()
 
 	string value;
 	value = open_file(input_value, 1);
+
+	if (value == "LENOVO" || value == "DELL" || value == "HEWLETT PACKARD" || value == "ASUS")
+		value = switch_words(value);
 
 	return value;
 }
