@@ -31,7 +31,9 @@ fi
 
 # HARDWARE
 if [ -e /sys/devices/virtual/dmi/id/product_version ] ; then
-    cat /sys/devices/virtual/dmi/id/product_version >> systeminfo-model.txt
+    model="$(cat /sys/devices/virtual/dmi/id/product_name)"
+    model+=" $(cat /sys/devices/virtual/dmi/id/product_version)"
+    echo $model >> systeminfo-model.txt
 fi
 if [ -e /sys/devices/virtual/dmi/id/board_name ] ; then
     cat /sys/devices/virtual/dmi/id/board_name >> systeminfo-motherboard.txt
