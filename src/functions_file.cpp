@@ -6,6 +6,7 @@
  */
 #include "functions_file.h"
 #include "functions_file_operations.h"
+#include "functions_output.h"
 
 using namespace std;
 
@@ -139,13 +140,13 @@ void shell_file()
 	string value;
 	value = open_file(input_value, line);
 
-		if(value == "/bin/zsh" || value == "/usr/bin/zsh")				cout << "Shell                     : Z-Shell (" << value << ")" << endl;
-		else if(value == "/bin/bash" || value == "/usr/bin/bash")	cout << "Shell                     : Bash (" << value << ")" << endl;
-		else if(value == "/bin/sh" || value == "/usr/bin/sh")			cout << "Shell                     : Sh (" << value << ")" << endl;
-		else if(value == "/bin/dash" || value == "/usr/bin/dash")	cout << "Shell                     : Dash (" << value << ")" << endl;
-		else if(value == "/bin/ksh" || value == "/usr/bin/ksh")		cout << "Shell                     : Ksh (" << value << ")" << endl;
-		else if(value == "/bin/rsh" || value == "/usr/bin/rsh")		cout << "Shell                     : Rsh (" << value << ")" << endl;
-		else														cout << "Shell                     : " << value << endl;
+		if(value == "/bin/zsh" || value == "/usr/bin/zsh")          cout << "Shell                     : Z-Shell (" << value << ")" << endl;
+		else if(value == "/bin/bash" || value == "/usr/bin/bash")   cout << "Shell                     : Bash (" << value << ")" << endl;
+		else if(value == "/bin/sh" || value == "/usr/bin/sh")       cout << "Shell                     : Sh (" << value << ")" << endl;
+		else if(value == "/bin/dash" || value == "/usr/bin/dash")   cout << "Shell                     : Dash (" << value << ")" << endl;
+		else if(value == "/bin/ksh" || value == "/usr/bin/ksh")     cout << "Shell                     : Ksh (" << value << ")" << endl;
+		else if(value == "/bin/rsh" || value == "/usr/bin/rsh")     cout << "Shell                     : Rsh (" << value << ")" << endl;
+		else                                                        cout << "Shell                     : " << value << endl;
 }
 
 int theards_file()
@@ -288,6 +289,7 @@ void temperatures()
 				name_temperature[i] = name_temperature[i] + " ";
             }
 			cout << name_temperature[i] << ": " << temperature[i] << " \u00B0C" << endl;
+			separator("");
 		}
 	}
 }
