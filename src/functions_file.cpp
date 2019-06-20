@@ -192,7 +192,8 @@ void cpu_frequency()
 	fstream file;
 
     file.open(input_value, ios::in);
-		if(file.good() == true) {
+		if(file.good() == true)
+		{
 			for(int x = 0; x < cores; x++)
 			{
 				getline(file, read_value);
@@ -298,9 +299,9 @@ void temperatures()
 				name_temperature[i] = name_temperature[i] + " ";
             }
 			cout << name_temperature[i] << ": " << temperature[i] << " \u00B0C" << endl;
-			separator("");
 		}
 	}
+	separator("");
 }
 
 string fan_speed()
