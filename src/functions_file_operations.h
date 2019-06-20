@@ -17,6 +17,7 @@
 using namespace std;
 
 	string open_file(string path_file, int nr_line);
+	bool check_file_folder_exist(string path_file);
 	void check_file_text(string input, string search_text);
 	void check_file_text_find_text( string & text, string find_string );
 	bool find_text( string & text, string find_string );

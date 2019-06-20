@@ -251,6 +251,48 @@ string home_path()
 	return home_path;
 }
 
+void temperatures()
+{
+	string input_value = home_path() + "/.systeminfo-files/systeminfo-hwmon-exist.txt";
+	int nr_line = 1;
+	int count_folders = atoi(open_file(input_value, nr_line).c_str());
+	string hwmon_path[count_folders];
+	string string_numbers[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+	int temperature[10];
+	string name_temperature[10];
+
+	for (int i = 0; i < count_folders; i++)
+	{
+		hwmon_path[i] = "/sys/class/hwmon/hwmon" + string_numbers[i] + "/";
+	}
+
+	for (int i = 0; i < count_folders; i++)
+	{
+		if (check_file_folder_exist(hwmon_path[i] + "temp1_input") == true)
+		{
+			name_temperature[i] = open_file(hwmon_path[i] + "name", nr_line);
+			temperature[i] = atoi( open_file(hwmon_path[i] + "temp1_input", nr_line).c_str() );
+			temperature[i] = temperature[i] / 1000;
+
+			if (name_temperature[i] == "acpitz")
+			{
+				name_temperature[i] = "Socket sensor";
+			}
+			else if (name_temperature[i] == "coretemp")
+			{
+				name_temperature[i] = "CPU sensor";
+			}
+
+			int count = 26 - name_temperature[i].length();
+			for(int x = 0; x < count; x++)
+            {
+				name_temperature[i] = name_temperature[i] + " ";
+            }
+			cout << name_temperature[i] << ": " << temperature[i] << " \u00B0C" << endl;
+		}
+	}
+}
+
 string fan_speed()
 {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-fan-speed.txt";

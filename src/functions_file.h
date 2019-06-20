@@ -37,6 +37,7 @@ using namespace std;
 	string user_file();
 	string home_path();
 
+	void temperatures();
 	string fan_speed();
 
 #endif /* FUNCTIONS_FILE_H_ */

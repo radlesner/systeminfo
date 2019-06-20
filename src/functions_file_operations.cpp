@@ -34,6 +34,21 @@ string open_file(string path_file, int nr_line)
 	return line;
 }
 
+bool check_file_folder_exist(string path_file)
+{
+	ifstream file;
+
+	file.open( path_file.c_str() );
+	if (file.good() == true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void check_file_text(string input, string search_text)
 {
 	int number=0;
