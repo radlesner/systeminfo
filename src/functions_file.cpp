@@ -300,8 +300,8 @@ void temperatures()
             }
 			cout << name_temperature[i] << ": " << temperature[i] << " \u00B0C" << endl;
 		}
+		separator("");
 	}
-	separator("");
 }
 
 string fan_speed()
