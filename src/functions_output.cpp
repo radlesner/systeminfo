@@ -17,7 +17,7 @@ using namespace std;
 
 string program_version()
 {
-	return "2.4";
+	return "2.4.1";
 }
 
 void output_compile_information()
@@ -139,7 +139,6 @@ void output_cpu_only()
 	cpu_freq_max_min();
 	separator("");
 	temperatures();
-	separator("");
 }
 
 void output_check_files()
