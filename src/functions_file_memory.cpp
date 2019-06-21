@@ -177,16 +177,19 @@ void disk_usage(int swith_units)
 		{
 			output[0] = output[0] + " ";
 		}
+
 		count = 26 - output[1].length();
 		for (int x = 0; x < count; x++)
 		{
 			output[1] = output[1] + " ";
 		}
+
 		count = 26 - output[2].length();
 		for (int x = 0; x < count; x++)
 		{
 			output[2] = output[2] + " ";
 		}
+
 		count = 26 - output[3].length();
 		for (int x = 0; x < count; x++)
 		{
@@ -196,8 +199,9 @@ void disk_usage(int swith_units)
 		cout << output[0] << ": " << table_procent_usage[i] << endl;
 		if (swith_units == 1)
 		{
-			cout << output[1] << ": " << atoi(table_disk_used[i].c_str()) / 1024 << " GB" << endl;
-			cout << output[2] << ": " << atoi(table_disk_available[i].c_str()) / 1024 << " GB" << endl;
+			cout.precision(3);
+			cout << output[1] << ": " << static_cast<float>( atoi(table_disk_used[i].c_str()) ) / 1024 << " GB" << endl;
+			cout << output[2] << ": " << static_cast<float>( atoi(table_disk_available[i].c_str()) ) / 1024 << " GB" << endl;
 		}
 		else
 		{
