@@ -95,10 +95,9 @@ void output_system()
 	cout << "Distribution              : " << distribution_file() << endl;
 	cout << "Release                   : " << release_system() << endl;
 	cout << "Kernel version            : " << buffer.release << endl;
-	shell_file();
-
-	separator("");
 	architecture();
+	shell_file();
+	separator("");
 	cpu_file();
 	cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
 	cpu_frequency();
