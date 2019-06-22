@@ -18,7 +18,8 @@ fi
 if [ -e /sys/class/hwmon/ ] ; then
 ls -l /sys/class/hwmon/ | grep -c "hwmon" >> systeminfo-hwmon-exist.txt
 fi
-cat /proc/cpuinfo | grep -i "model name" --max-count=1 | awk '{for (i=4; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-cpu.txt
+
+awk -F ': | @' '/model name|Processor|^cpu model|chip type|^cpu type/ {printf $2; exit}' /proc/cpuinfo >> systeminfo-cpu.txt
 cat /proc/cpuinfo | grep -c "^processor" >> systeminfo-theards.txt
 awk '/^core id/&&!a[$0]++{++i} END {print i}' /proc/cpuinfo >> systeminfo-cores.txt
 

@@ -209,10 +209,7 @@ void cpu_frequency()
 
             frequency_sum = frequency_sum / cores / 1000;
 
-            // if(distribution_file() == "Raspbian" || read_value == "N/A")
-            //     cout << "CPU Frequency             : N/A" << endl;
-            // else
-                cout << "CPU Frequency             : " << frequency_sum << " MHz" << endl;
+			cout << "CPU Frequency             : " << frequency_sum << " MHz" << endl;
 		}
 		else
 		{
