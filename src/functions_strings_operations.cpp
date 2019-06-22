@@ -11,3 +11,13 @@ string switch_words(string value)
 
     return value;
 }
+
+string bold_text_start()
+{
+    return "\e[1m";
+}
+
+string bold_text_end()
+{
+    return "\e[0m";
+}

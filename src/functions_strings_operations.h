@@ -8,4 +8,6 @@
 
 using namespace std;
 
-    string switch_words(string znak);
+    string switch_words(string value);
+    string bold_text_start();
+    string bold_text_end();
