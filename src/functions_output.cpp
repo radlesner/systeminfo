@@ -16,7 +16,7 @@ using namespace std;
 
 string program_version()
 {
-	return "2.4.3";
+	return "2.5";
 }
 
 void output_compile_information()
@@ -202,6 +202,21 @@ void output_monitor(int value_argc, char** value_argv)
 				separator("");
 
 				all_network();
+			}
+			else if(!strcmp(value_argv[2], "-c"))
+			{
+				system("clear");
+
+				separator("");
+				cpu_file();
+				cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
+				cout << "Fan speed                 : " << fan_speed() << endl;
+
+				separator("");
+				cpu_frequency();
+				cpu_freq_max_min();
+				separator("");
+				temperatures();
 			}
 			else if(!strcmp(value_argv[2], "-n"))
 			{
