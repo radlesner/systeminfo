@@ -34,10 +34,10 @@ void separator(string name)
 	total = separator_1 + name;
 
 	int count = 77 - total.length();
-	for(int i = 0; i < count; i++) {
+	for(int i = 0; i < count; i++)
+	{
 		total = total + "─";
 	}
-
 
 	cout << total << ">>>" << endl;
 }
