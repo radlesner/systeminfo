@@ -59,7 +59,7 @@ void output_main_information()
 	cout << "Model name                : " << motherboard_manufacturer() << " " << model() << endl;
 	cout << "Distribution              : " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
 	cout << "Kernel version            : " << buffer.release << endl;
-	architecture();
+	cout << "System architecture       : " << architecture() << endl;
 	cpu_frequency();
 	cout << "Uptime                    : " << uptime_file() << endl;
 
@@ -95,8 +95,8 @@ void output_system()
 	cout << "Distribution              : " << distribution_file() << endl;
 	cout << "Release                   : " << release_system() << endl;
 	cout << "Kernel version            : " << buffer.release << endl;
-	architecture();
-	shell_file();
+	cout << "System architecture       : " << architecture() << endl;
+	cout << "Shell                     : " << shell_file() << endl;
 	separator("");
 	cpu_file();
 	cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
@@ -228,6 +228,7 @@ void output_monitor(int value_argc, char** value_argv)
 				cout << "Bad arguments, you must use operators: -t -m" << endl;
 				cout << "                                       -t -g" << endl;
 				cout << "                                       -t -n" << endl;
+				cout << "                                       -t -c" << endl;
 				cout << "Use --help operator to display help" << endl;
 				break;
 			}

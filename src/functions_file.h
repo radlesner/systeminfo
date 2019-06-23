@@ -20,7 +20,7 @@ using namespace std;
 	string release_system();
 	string cedename_system();
 	void cpu_file();
-	void architecture();
+	string architecture();
 
 	string model();
 	string motherboard();
@@ -33,7 +33,7 @@ using namespace std;
 	void cpu_freq_max_min();
 	int theards_file();
 	int cores_file();
-	void shell_file();
+	string shell_file();
 	string user_file();
 	string home_path();
 

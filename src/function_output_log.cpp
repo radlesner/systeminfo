@@ -34,7 +34,6 @@ void output_log()
 	string file_name_fstream = path_filename + first_step + filename_time;
 	string file_name = first_step + filename_time;
 
-	string architecture = open_file(home_path()+"/.systeminfo-files/systeminfo-distro.txt", 3);
 	string bits = open_file(home_path()+"/.systeminfo-files/systeminfo-arch.txt", 1);
 	string cpu = open_file(home_path()+"/.systeminfo-files/systeminfo-cpu.txt", 1);
 	string theards = open_file(home_path()+"/.systeminfo-files/systeminfo-cores.txt", 1);
@@ -69,7 +68,7 @@ void output_log()
 	log_file << "Distribution               : " << distribution_file() << endl;
 	log_file << "Release                    : " << release_system() << endl;
 	log_file << "Kernel                     : " << buffer.release << endl;
-	log_file << "Architecture               : " << architecture << endl;
+	log_file << "System architecture        : " << architecture() << endl;
 	log_file << "Bits                       : " << bits << endl;
 	log_file << "Shell                      : " << shell << endl;
 	log_file << "Uptime                     : " << uptime_file() << endl << endl;
