@@ -19,7 +19,7 @@ using namespace std;
 	string distribution_file();
 	string release_system();
 	string cedename_system();
-	void cpu_file();
+	string cpu_file();
 	string architecture();
 
 	string model();
@@ -29,10 +29,12 @@ using namespace std;
 	string bios_version();
 	string bios_date();
 
-	void cpu_frequency();
-	void cpu_freq_max_min();
+	int cpu_frequency();
+	int cpu_freq_max();
+	int cpu_freq_min();
 	int theards_file();
 	int cores_file();
+
 	string shell_file();
 	string user_file();
 	string home_path();

@@ -16,7 +16,7 @@ using namespace std;
 
 string program_version()
 {
-	return "2.5.5";
+	return "2.6";
 }
 
 void output_compile_information()
@@ -60,7 +60,7 @@ void output_main_information()
 	cout << "Distribution              : " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
 	cout << "Kernel version            : " << buffer.release << endl;
 	cout << "System architecture       : " << architecture() << endl;
-	cpu_frequency();
+	cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
 	cout << "Uptime                    : " << uptime_file() << endl;
 
 	separator("");
@@ -98,9 +98,9 @@ void output_system()
 	cout << "System architecture       : " << architecture() << endl;
 	cout << "Shell                     : " << shell_file() << endl;
 	separator("");
-	cpu_file();
+	cout << "CPU                       : " << cpu_file() << endl;
 	cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
-	cpu_frequency();
+	cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
 	separator("");
 }
 
@@ -128,13 +128,14 @@ void output_network()
 void output_cpu_only()
 {
 	separator("");
-	cpu_file();
+	cout << "CPU                       : " << cpu_file() << endl;
 	cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
 	cout << "Fan speed                 : " << fan_speed() << endl;
 
 	separator("");
-	cpu_frequency();
-	cpu_freq_max_min();
+	cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
+	cout << "Max Frequency             : " << cpu_freq_max() << " MHz" << endl;
+	cout << "Min Frequency             : " << cpu_freq_min() << " MHz" << endl;
 	separator("");
 	temperatures();
 }
@@ -169,9 +170,9 @@ void output_monitor(int value_argc, char** value_argv)
 				system("clear");
 
 				separator("");
-				cpu_file();
+				cout << "CPU                       : " << cpu_file() << endl;
 				cout << "Theards                   : " << theards_file() << endl;
-				cpu_frequency();
+				cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
 
 				separator("");
 				cout << "Uptime                    : " << uptime_file() << endl;
@@ -188,9 +189,9 @@ void output_monitor(int value_argc, char** value_argv)
 				system("clear");
 
 				separator("");
-				cpu_file();
+				cout << "CPU                       : " << cpu_file() << endl;
 				cout << "Theards                   : " << theards_file() << endl;
-				cpu_frequency();
+				cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
 
 				separator("");
 				cout << "Uptime                    : " << uptime_file() << endl;
@@ -207,13 +208,14 @@ void output_monitor(int value_argc, char** value_argv)
 				system("clear");
 
 				separator("");
-				cpu_file();
+				cout << "CPU                       : " << cpu_file() << endl;
 				cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
 				cout << "Fan speed                 : " << fan_speed() << endl;
 
 				separator("");
-				cpu_frequency();
-				cpu_freq_max_min();
+				cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
+				cout << "Max Frequency             : " << cpu_freq_max() << " MHz" << endl;
+				cout << "Min Frequency             : " << cpu_freq_min() << " MHz" << endl;
 				separator("");
 				temperatures();
 			}
@@ -235,22 +237,12 @@ void output_monitor(int value_argc, char** value_argv)
 		}
 		else
 		{
-			system("clear");
-
-			separator("");
-			cpu_file();
-			cout << "Theards                   : " << theards_file() << endl;
-			cpu_frequency();
-
-			separator("");
-			cout << "Uptime                    : " << uptime_file() << endl;
-
-			separator("");
-			mem_file(1);
-			swap_file(1);
-			separator("");
-
-			all_network();
+			cout << "Bad arguments, you must use operators: -t -m" << endl;
+			cout << "                                       -t -g" << endl;
+			cout << "                                       -t -n" << endl;
+			cout << "                                       -t -c" << endl;
+			cout << "Use --help operator to display help" << endl;
+			break;
 		}
 
 		command_remove();
@@ -282,6 +274,7 @@ void output_help()
 	cout << "       --help            Help panel" << endl;
 	cout << "       --version         Version program and compilation" << endl;
 	cout << "                         information" << endl << endl;
+
 	cout << ">>> Example use command: systeminfo -s" << endl;
 	cout << "                         systeminfo -t -m" << endl;
 }

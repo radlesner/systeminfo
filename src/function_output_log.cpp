@@ -35,7 +35,6 @@ void output_log()
 	string file_name = first_step + filename_time;
 
 	string bits = open_file(home_path()+"/.systeminfo-files/systeminfo-arch.txt", 1);
-	string cpu = open_file(home_path()+"/.systeminfo-files/systeminfo-cpu.txt", 1);
 	string theards = open_file(home_path()+"/.systeminfo-files/systeminfo-cores.txt", 1);
 	string shell = open_file(home_path()+"/.systeminfo-files/systeminfo-shell.txt", 1);
 
@@ -70,72 +69,17 @@ void output_log()
 	log_file << "Kernel                     : " << buffer.release << endl;
 	log_file << "System architecture        : " << architecture() << endl;
 	log_file << "Bits                       : " << bits << endl;
-	log_file << "Shell                      : " << shell << endl;
+	log_file << "Shell                      : " << shell_file() << endl;
 	log_file << "Uptime                     : " << uptime_file() << endl << endl;
 
 	log_file << "---------------------- CPU ---------------------" << endl;
-	log_file << "Cpu                        : " << cpu << endl;
-	log_file << "Theards                    : " << theards << endl;
-	/*
-		FREQUENCY -------------------------------------------------------------------------------------------------------->
-	*/
-	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-status.txt";
+	log_file << "CPU                        : " << cpu_file() << endl;
+	log_file << "Cores                      : " << cores_file() << endl;
+	log_file << "Theards                    : " << theards_file() << endl;
+	log_file << "CPU Frequency              : " << cpu_frequency() << " MHz" << endl;
+	log_file << "Max Frequency              : " << cpu_freq_max() << " MHz" << endl;
+	log_file << "Min Frequency              : " << cpu_freq_min() << " MHz" << endl << endl;
 
-	int cores = theards_file();
-	int frequency_sum = 0;
-	int line = 1;
-
-	string read_value;
-	int value[512];
-
-	fstream file;
-
-    file.open(input_value, ios::in);
-		if(file.good() == true) {
-			for(int x = 0; x < cores; x++)
-			{
-				getline(file, read_value);
-				if(read_value == "N/A") break;
-				value[x++] = atoi(read_value.c_str());
-
-				frequency_sum = frequency_sum + value[x];
-			}
-            for(int i = 0; i < cores; i++)
-			{
-                frequency_sum = frequency_sum + value[i];
-            }
-
-            frequency_sum = frequency_sum / cores / 1000;
-
-            if(distribution_file() == "Raspbian" || read_value == "N/A")
-                log_file << "CPU Frequency              : N/A" << endl;
-            else
-                log_file << "CPU Frequency              : " << frequency_sum << " MHz" << endl;
-		}
-		else
-		{
-			log_file << "CPU Frequency              : N/A" << endl;
-		}
-	file.close();
-
-	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1) == "N/A")
-	{
-		log_file << "Max Frequency              : N/A" << endl;
-		log_file << "Min Frequency              : N/A" << endl;
-		return;
-	}
-
-	int freq_max = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1).c_str() );
-	int freq_min = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt", 1).c_str() );
-
-	freq_max = freq_max / 1000;
-	freq_min = freq_min / 1000;
-
-	log_file << "Max Frequency              : " << freq_max << " MHz" << endl;
-	log_file << "Min Frequency              : " << freq_min << " MHz" << endl << endl;
-	/*
-		FREQUENCY END ---------------------------------------------------------------------------------------------------->
-	*/
 	log_file << "------------------- NETWORK --------------------" << endl;
 	log_file << "Hostname                   : " << buffer.nodename << endl;
 

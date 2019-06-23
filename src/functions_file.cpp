@@ -44,7 +44,7 @@ string cedename_system()
 	return value;
 }
 
-void cpu_file()
+string cpu_file()
 {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu.txt";
 	const int line = 1;
@@ -52,7 +52,7 @@ void cpu_file()
 	string value;
 	value = open_file(input_value, line);
 
-	cout << "CPU                       : " << value << endl;
+	return value;
 }
 
 string architecture()
@@ -182,7 +182,7 @@ int cores_file()
 	return atoi(value.c_str());
 }
 
-void cpu_frequency()
+int cpu_frequency()
 {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-status.txt";
 
@@ -213,31 +213,40 @@ void cpu_frequency()
 
             frequency_sum = frequency_sum / cores / 1000;
 
-			cout << "CPU Frequency             : " << frequency_sum << " MHz" << endl;
+			return frequency_sum;
+
 		}
 		else
 		{
-			cout << "CPU Frequency             : N/A" << endl;
+			return 0;
 		}
 	file.close();
+
+	return 0;
 }
 
-void cpu_freq_max_min()
+int cpu_freq_max()
 {
 	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1) == "N/A") {
-		cout << "Max Frequency             : N/A" << endl;
-		cout << "Min Frequency             : N/A" << endl;
-		return;
+		return 0;
 	}
 
 	int freq_max = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_max.txt", 1).c_str() );
-	int freq_min = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt", 1).c_str() );
-
 	freq_max = freq_max / 1000;
+
+	return freq_max;
+}
+
+int cpu_freq_min()
+{
+	if(open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt", 1) == "N/A") {
+		return 0;
+	}
+
+	int freq_min = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-cpu-frequency_min.txt", 1).c_str() );
 	freq_min = freq_min / 1000;
 
-	cout << "Max Frequency             : " << freq_max << " MHz" << endl;
-	cout << "Min Frequency             : " << freq_min << " MHz" << endl;
+	return freq_min;
 }
 
 string user_file()
