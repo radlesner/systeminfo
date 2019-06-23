@@ -2,6 +2,7 @@
 #include "functions_file_operations.h"
 #include "functions_output.h"
 #include "functions_file.h"
+#include "functions_strings_operations.h"
 
 using namespace std;
 
@@ -32,7 +33,7 @@ void get_ip_address(int on_ip6)
                 {
                     text_output = text_output + " ";
                 }
-                cout << text_output << ": " << address_buffer <<  endl;
+                cout << bold_text_start() << text_output << ": " << bold_text_end() << address_buffer <<  endl;
         }
         else if (ifa->ifa_addr->sa_family == AF_INET6 && on_ip6 == 1)
         {
@@ -46,7 +47,7 @@ void get_ip_address(int on_ip6)
                 {
                     text_output = text_output + " ";
                 }
-                cout << text_output << ": " << address_buffer <<  endl;
+                cout << bold_text_start() << text_output << ": " << bold_text_end() << address_buffer <<  endl;
         }
     }
     if (text_output.length() > 1) separator("");
@@ -115,8 +116,8 @@ void all_network()
                 address_output = address_output + " ";
                 netmask_output = netmask_output + " ";
             }
-            cout << address_output << ": " << address_buffer << endl;
-            cout << netmask_output << ": " << mask_buffer <<  endl;
+            cout << bold_text_start() << address_output << ": " << bold_text_end() << address_buffer << endl;
+            cout << bold_text_start() << netmask_output << ": " << bold_text_end() << mask_buffer <<  endl;
             /*
                 ADDRESS AND NETMASK OUTPUT END
                 GATEWAY OUTPUT
@@ -133,20 +134,23 @@ void all_network()
                 regex example(static_cast<string>(ifa->ifa_name));
 
                 file.open(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", ios::in);
-                if(file.good() == true) {
-                    while(!file.eof()) {
+                if(file.good() == true)
+                {
+                    while(!file.eof())
+                    {
                         getline(file, text);
                         smatch result;
 
                         if(regex_search( text, result, example ) == true) {
                             final_output = "Gateway (" + static_cast<string>(result[0]) + ")";
                             count = 26 - final_output.length();
-                            for(int  x = 0; x < count; x++) {
+                            for(int  x = 0; x < count; x++)
+                            {
                                 final_output = final_output + " ";
                             }
                             int if_size = static_cast<string>(result[0]).length() + 1;
                             text.erase(0, if_size);
-                            cout << final_output << ": " << text << endl;
+                            cout << bold_text_start() << final_output << ": " << bold_text_end() << text << endl;
                         }
                     }
                 }

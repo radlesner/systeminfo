@@ -8,6 +8,7 @@
 #include "functions_file_operations.h"
 #include "functions_file.h"
 #include "functions_output.h"
+#include "functions_strings_operations.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ void mem_file(int switch_megabyte)
 		else
 		{
 			cout.precision(3);
-			cout << "RAM  Total/Available/Used : " << mem_max << "/" << mem_available << "/" << mem_used << " GB" << endl;
+			cout << bold_text_start() << "RAM  Total/Available/Used : " << bold_text_end() << mem_max << "/" << mem_available << "/" << mem_used << " GB" << endl;
 		}
 	}
 	else
@@ -53,7 +54,7 @@ void mem_file(int switch_megabyte)
 		else
 		{
 			cout.precision(3);
-			cout << "RAM  Total/Free           : " << mem_max << "/" << mem_free << " GB" << endl;
+			cout << bold_text_start() << "RAM  Total/Free           : " << bold_text_end() << mem_max << "/" << mem_free << " GB" << endl;
 		}
 	}
 }
@@ -79,7 +80,7 @@ void mem_megabyte_file()
 		mem_available	= static_cast<double>( atoi(value_3.c_str()) ) / 1024;
 		mem_used = mem_max - mem_available;
 
-		cout << "RAM  Total/Available/Used : " << mem_max << "/" << mem_available << "/" << mem_used << " MB" << endl;
+		cout << bold_text_start() << "RAM  Total/Available/Used : " << bold_text_end() << mem_max << "/" << mem_available << "/" << mem_used << " MB" << endl;
 	}
 	else
 	{
@@ -89,7 +90,7 @@ void mem_megabyte_file()
 		mem_max		= atoi(value_1.c_str()) / 1024;
 		mem_free	= atoi(value_2.c_str()) / 1024;
 
-		cout << "RAM  Total/Free           : " << mem_max << "/" << mem_free << " MB" << endl;
+		cout << bold_text_start() << "RAM  Total/Free           : " << bold_text_end() << mem_max << "/" << mem_free << " MB" << endl;
 	}
 }
 
@@ -196,19 +197,19 @@ void disk_usage(int swith_units)
 			output[3] = output[3] + " ";
 		}
 
-		cout << output[0] << ": " << table_procent_usage[i] << endl;
+		cout << bold_text_start() << output[0] << ": " << bold_text_end() << table_procent_usage[i] << endl;
 		if (swith_units == 1)
 		{
 			cout.precision(3);
-			cout << output[1] << ": " << static_cast<float>( atoi(table_disk_used[i].c_str()) ) / 1024 << " GB" << endl;
-			cout << output[2] << ": " << static_cast<float>( atoi(table_disk_available[i].c_str()) ) / 1024 << " GB" << endl;
+			cout << bold_text_start() << output[1] << ": " << bold_text_end() << static_cast<float>( atoi(table_disk_used[i].c_str()) ) / 1024 << " GB" << endl;
+			cout << bold_text_start() << output[2] << ": " << bold_text_end() << static_cast<float>( atoi(table_disk_available[i].c_str()) ) / 1024 << " GB" << endl;
 		}
 		else
 		{
-			cout << output[1] << ": " << table_disk_used[i] << " MB" << endl;
-			cout << output[2] << ": " << table_disk_available[i] << " MB" << endl;
+			cout << bold_text_start() << output[1] << ": " << bold_text_end() << table_disk_used[i] << " MB" << endl;
+			cout << bold_text_start() << output[2] << ": " << bold_text_end() << table_disk_available[i] << " MB" << endl;
 		}
-		cout << output[3] << ": " << table_disk_mount[i] << endl;
+		cout << bold_text_start() << output[3] << ": " << bold_text_end() << table_disk_mount[i] << endl;
 		separator("");
 	}
 }

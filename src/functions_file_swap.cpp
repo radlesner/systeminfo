@@ -7,6 +7,7 @@
 #include "functions_file_swap.h"
 #include "functions_file_operations.h"
 #include "functions_file.h"
+#include "functions_strings_operations.h"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ void swap_file(int switch_megabyte)
 	else
 	{
 		cout.precision(3);
-		cout << "Swap Total/Free/Used      : " << swap_total << "/" << swap_free << "/" << swap_used << " GB" << endl;
+		cout << bold_text_start() << "Swap Total/Free/Used      : " << bold_text_end() << swap_total << "/" << swap_free << "/" << swap_used << " GB" << endl;
 	}
 }
 
@@ -47,5 +48,5 @@ void swap_megabyte_file()
 	swap_used	= swap_total - swap_free;
 
 
-	cout << "Swap Total/Free/Used      : " << swap_total << "/" << swap_free << "/" << swap_used << " MB" << endl;
+	cout << bold_text_start() << "Swap Total/Free/Used      : " << bold_text_end() << swap_total << "/" << swap_free << "/" << swap_used << " MB" << endl;
 }

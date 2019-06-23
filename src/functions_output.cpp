@@ -11,6 +11,7 @@
 #include "functions_file_swap.h"
 #include "functions_command.h"
 #include "functions_network.h"
+#include "functions_strings_operations.h"
 
 using namespace std;
 
@@ -56,12 +57,12 @@ void output_main_information()
 		}
 
 	separator("");
-	cout << "Model name                : " << motherboard_manufacturer() << " " << model() << endl;
-	cout << "Distribution              : " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
-	cout << "Kernel version            : " << buffer.release << endl;
-	cout << "System architecture       : " << architecture() << endl;
-	cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
-	cout << "Uptime                    : " << uptime_file() << endl;
+	cout << bold_text_start() << "Model name                : " << bold_text_end() << motherboard_manufacturer() << " " << model() << endl;
+	cout << bold_text_start() << "Distribution              : " << bold_text_end() << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+	cout << bold_text_start() << "Kernel version            : " << bold_text_end() << buffer.release << endl;
+	cout << bold_text_start() << "System architecture       : " << bold_text_end() << architecture() << endl;
+	cout << bold_text_start() << "CPU Frequency             : " << bold_text_end() << cpu_frequency() << " MHz" << endl;
+	cout << bold_text_start() << "Uptime                    : " << bold_text_end() << uptime_file() << endl;
 
 	separator("");
 	mem_file(1);
@@ -84,23 +85,23 @@ void output_system()
 			exit(EXIT_FAILURE);
 		}
 	separator("");
-	cout << "Model name                : " << model() << endl;
-	cout << "Motherboard name          : " << motherboard() << endl;
-	cout << "Motherboard manufacturer  : " << motherboard_manufacturer() << endl;
-	cout << "BIOS manufacturer         : " << bios_manufacturer() << endl;
-	cout << "BIOS version              : " << bios_version() << endl;
-	cout << "BIOS date                 : " << bios_date() << endl;
+	cout << bold_text_start() << "Model name                : " << bold_text_end() << model() << endl;
+	cout << bold_text_start() << "Motherboard name          : " << bold_text_end() << motherboard() << endl;
+	cout << bold_text_start() << "Motherboard manufacturer  : " << bold_text_end() << motherboard_manufacturer() << endl;
+	cout << bold_text_start() << "BIOS manufacturer         : " << bold_text_end() << bios_manufacturer() << endl;
+	cout << bold_text_start() << "BIOS version              : " << bold_text_end() << bios_version() << endl;
+	cout << bold_text_start() << "BIOS date                 : " << bold_text_end() << bios_date() << endl;
 	separator("");
-	cout << "OS Name                   : " << buffer.sysname << endl;
-	cout << "Distribution              : " << distribution_file() << endl;
-	cout << "Release                   : " << release_system() << endl;
-	cout << "Kernel version            : " << buffer.release << endl;
-	cout << "System architecture       : " << architecture() << endl;
-	cout << "Shell                     : " << shell_file() << endl;
+	cout << bold_text_start() << "OS Name                   : " << bold_text_end() << buffer.sysname << endl;
+	cout << bold_text_start() << "Distribution              : " << bold_text_end() << distribution_file() << endl;
+	cout << bold_text_start() << "Release                   : " << bold_text_end() << release_system() << endl;
+	cout << bold_text_start() << "Kernel version            : " << bold_text_end() << buffer.release << endl;
+	cout << bold_text_start() << "System architecture       : " << bold_text_end() << architecture() << endl;
+	cout << bold_text_start() << "Shell                     : " << bold_text_end() << shell_file() << endl;
 	separator("");
-	cout << "CPU                       : " << cpu_file() << endl;
-	cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
-	cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
+	cout << bold_text_start() << "CPU                       : " << bold_text_end() << cpu_file() << endl;
+	cout << bold_text_start() << "Cores/theards             : " << bold_text_end() << cores_file() << "/" << theards_file() << endl;
+	cout << bold_text_start() << "CPU Frequency             : " << bold_text_end() << cpu_frequency() << " MHz" << endl;
 	separator("");
 }
 
@@ -118,8 +119,8 @@ void output_network()
 		}
 
 	separator("");
-	cout << "Hostname                  : " << buffer.nodename << endl;
-	cout << "Logged user               : " << user_file() << endl;
+	cout << bold_text_start() << "Hostname                  : " << bold_text_end() << buffer.nodename << endl;
+	cout << bold_text_start() << "Logged user               : " << bold_text_end() << user_file() << endl;
 
 	separator("");
 	all_network();
@@ -128,14 +129,14 @@ void output_network()
 void output_cpu_only()
 {
 	separator("");
-	cout << "CPU                       : " << cpu_file() << endl;
-	cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
-	cout << "Fan speed                 : " << fan_speed() << endl;
+	cout << bold_text_start() << "CPU                       : " << bold_text_end() << cpu_file() << endl;
+	cout << bold_text_start() << "Cores/theards             : " << bold_text_end() << cores_file() << "/" << theards_file() << endl;
+	cout << bold_text_start() << "Fan speed                 : " << bold_text_end() << fan_speed() << endl;
 
 	separator("");
-	cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
-	cout << "Max Frequency             : " << cpu_freq_max() << " MHz" << endl;
-	cout << "Min Frequency             : " << cpu_freq_min() << " MHz" << endl;
+	cout << bold_text_start() << "CPU Frequency             : " << bold_text_end() << cpu_frequency() << " MHz" << endl;
+	cout << bold_text_start() << "Max Frequency             : " << bold_text_end() << cpu_freq_max() << " MHz" << endl;
+	cout << bold_text_start() << "Min Frequency             : " << bold_text_end() << cpu_freq_min() << " MHz" << endl;
 	separator("");
 	temperatures();
 }
@@ -170,12 +171,12 @@ void output_monitor(int value_argc, char** value_argv)
 				system("clear");
 
 				separator("");
-				cout << "CPU                       : " << cpu_file() << endl;
-				cout << "Theards                   : " << theards_file() << endl;
-				cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
+				cout << bold_text_start() << "CPU                       : " << bold_text_end() << cpu_file() << endl;
+				cout << bold_text_start() << "Theards                   : " << bold_text_end() << theards_file() << endl;
+				cout << bold_text_start() << "CPU Frequency             : " << bold_text_end() << cpu_frequency() << " MHz" << endl;
 
 				separator("");
-				cout << "Uptime                    : " << uptime_file() << endl;
+				cout << bold_text_start() << "Uptime                    : " << bold_text_end() << uptime_file() << endl;
 
 				separator("");
 				mem_file(0);
@@ -189,12 +190,12 @@ void output_monitor(int value_argc, char** value_argv)
 				system("clear");
 
 				separator("");
-				cout << "CPU                       : " << cpu_file() << endl;
-				cout << "Theards                   : " << theards_file() << endl;
-				cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
+				cout << bold_text_start() << "CPU                       : " << bold_text_end() << cpu_file() << endl;
+				cout << bold_text_start() << "Theards                   : " << bold_text_end() << theards_file() << endl;
+				cout << bold_text_start() << "CPU Frequency             : " << bold_text_end() << cpu_frequency() << " MHz" << endl;
 
 				separator("");
-				cout << "Uptime                    : " << uptime_file() << endl;
+				cout << bold_text_start() << "Uptime                    : " << bold_text_end() << uptime_file() << endl;
 
 				separator("");
 				mem_megabyte_file();
@@ -208,14 +209,14 @@ void output_monitor(int value_argc, char** value_argv)
 				system("clear");
 
 				separator("");
-				cout << "CPU                       : " << cpu_file() << endl;
-				cout << "Cores/theards             : " << cores_file() << "/" << theards_file() << endl;
-				cout << "Fan speed                 : " << fan_speed() << endl;
+				cout << bold_text_start() << "CPU                       : " << bold_text_end() << cpu_file() << endl;
+				cout << bold_text_start() << "Cores/theards             : " << bold_text_end() << cores_file() << "/" << theards_file() << endl;
+				cout << bold_text_start() << "Fan speed                 : " << bold_text_end() << fan_speed() << endl;
 
 				separator("");
-				cout << "CPU Frequency             : " << cpu_frequency() << " MHz" << endl;
-				cout << "Max Frequency             : " << cpu_freq_max() << " MHz" << endl;
-				cout << "Min Frequency             : " << cpu_freq_min() << " MHz" << endl;
+				cout << bold_text_start() << "CPU Frequency             : " << bold_text_end() << cpu_frequency() << " MHz" << endl;
+				cout << bold_text_start() << "Max Frequency             : " << bold_text_end() << cpu_freq_max() << " MHz" << endl;
+				cout << bold_text_start() << "Min Frequency             : " << bold_text_end() << cpu_freq_min() << " MHz" << endl;
 				separator("");
 				temperatures();
 			}
