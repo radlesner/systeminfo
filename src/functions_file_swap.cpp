@@ -24,7 +24,7 @@ void swap_file(int switch_megabyte)
 	swap_free	= static_cast<double>( atoi(value_2.c_str()) )	/ 1024 / 1000;
 	swap_used	= swap_total - swap_free;
 
-	if( (swap_used < 1) && (switch_megabyte == 1) ) swap_megabyte_file();
+	if( (swap_used > 0) && (swap_used < 1) && (switch_megabyte == 1) ) swap_megabyte_file();
 	else
 	{
 		cout.precision(3);
