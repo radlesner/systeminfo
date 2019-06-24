@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd /$HOME/.systeminfo-files
 
 # CPU
@@ -16,7 +18,7 @@ if [ -e /sys/class/hwmon/hwmon*/fan1_input ] ; then
     cat /sys/class/hwmon/hwmon*/fan1_input >> systeminfo-cpu-fan-speed.txt
 fi
 if [ -e /sys/class/hwmon/ ] ; then
-ls -l /sys/class/hwmon/ | grep -c "hwmon" >> systeminfo-hwmon-exist.txt
+    ls -l /sys/class/hwmon/ | grep -c "hwmon" >> systeminfo-hwmon-exist.txt
 fi
 
 awk -F ': | @' '/model name|Processor|^cpu model|chip type|^cpu type/ {printf $2; printf "\n"; exit}' /proc/cpuinfo >> systeminfo-cpu.txt
