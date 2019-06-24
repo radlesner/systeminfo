@@ -29,7 +29,7 @@ void swap_file(int switch_megabyte)
 	else
 	{
 		cout.precision(3);
-		cout << bold() << "Swap Total/Free/Used      " << bold_end() << ": " << swap_total << "/" << swap_free << "/" << swap_used << " GB" << endl;
+		cout << bold() << "Swap Total/Free/Used" << bold_end() << ": " << swap_total << "/" << swap_free << "/" << swap_used << " GB" << endl;
 	}
 }
 
@@ -48,5 +48,5 @@ void swap_megabyte_file()
 	swap_used	= swap_total - swap_free;
 
 
-	cout << bold() << "Swap Total/Free/Used      " << bold_end() << ": " << swap_total << "/" << swap_free << "/" << swap_used << " MB" << endl;
+	cout << bold() << "Swap Total/Free/Used" << bold_end() << ": " << swap_total << "/" << swap_free << "/" << swap_used << " MB" << endl;
 }

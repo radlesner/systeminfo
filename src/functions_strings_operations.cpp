@@ -44,10 +44,4 @@ string bold_end()
     {
         return "\033[0m";
     }
-
-
-
-
-
-    return "\e[0m";
 }

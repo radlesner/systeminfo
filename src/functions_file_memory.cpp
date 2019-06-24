@@ -39,7 +39,7 @@ void mem_file(int switch_megabyte)
 		else
 		{
 			cout.precision(3);
-			cout << bold() << "RAM  Total/Available/Used " << bold_end() << ": " << mem_max << "/" << mem_available << "/" << mem_used << " GB" << endl;
+			cout << bold() << "RAM  Total/Free/Used" << bold_end() << ": " << mem_max << "/" << mem_available << "/" << mem_used << " GB" << endl;
 		}
 	}
 	else
@@ -54,7 +54,7 @@ void mem_file(int switch_megabyte)
 		else
 		{
 			cout.precision(3);
-			cout << bold() << "RAM  Total/Free           " << bold_end() << ": " << mem_max << "/" << mem_free << " GB" << endl;
+			cout << bold() << "RAM  Total/Free" << bold_end() << ": " << mem_max << "/" << mem_free << " GB" << endl;
 		}
 	}
 }
@@ -80,7 +80,7 @@ void mem_megabyte_file()
 		mem_available	= static_cast<double>( atoi(value_3.c_str()) ) / 1024;
 		mem_used = mem_max - mem_available;
 
-		cout << bold() << "RAM  Total/Available/Used " << bold_end() << ": " << mem_max << "/" << mem_available << "/" << mem_used << " MB" << endl;
+		cout << bold() << "RAM  Total/Free/Used" << bold_end() << ": " << mem_max << "/" << mem_available << "/" << mem_used << " MB" << endl;
 	}
 	else
 	{
@@ -90,7 +90,7 @@ void mem_megabyte_file()
 		mem_max		= atoi(value_1.c_str()) / 1024;
 		mem_free	= atoi(value_2.c_str()) / 1024;
 
-		cout << bold() << "RAM  Total/Free           " << bold_end() << ": " << mem_max << "/" << mem_free << " MB" << endl;
+		cout << bold() << "RAM  Total/Free" << bold_end() << ": " << mem_max << "/" << mem_free << " MB" << endl;
 	}
 }
 
@@ -172,30 +172,6 @@ void disk_usage(int swith_units)
 		output[1]= "Used        " + table_disk_name[i];
 		output[2]= "Available   " + table_disk_name[i];
 		output[3]= "Mount point " + table_disk_name[i];
-
-		count = 26 - output[0].length();
-		for (int x = 0; x < count; x++)
-		{
-			output[0] = output[0] + " ";
-		}
-
-		count = 26 - output[1].length();
-		for (int x = 0; x < count; x++)
-		{
-			output[1] = output[1] + " ";
-		}
-
-		count = 26 - output[2].length();
-		for (int x = 0; x < count; x++)
-		{
-			output[2] = output[2] + " ";
-		}
-
-		count = 26 - output[3].length();
-		for (int x = 0; x < count; x++)
-		{
-			output[3] = output[3] + " ";
-		}
 
 		cout << bold() << output[0] << bold_end() << ": " << table_procent_usage[i] << endl;
 		if (swith_units == 1)

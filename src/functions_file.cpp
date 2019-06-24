@@ -303,11 +303,6 @@ void temperatures()
 				name_temperature[i] = "CPU sensor";
 			}
 
-			int count = 26 - name_temperature[i].length();
-			for(int x = 0; x < count; x++)
-            {
-				name_temperature[i] = name_temperature[i] + " ";
-            }
 			cout << bold() << name_temperature[i] << bold_end() << ": " << temperature[i] << " \u00B0C" << endl;
 
 			if (count_folders - i == 1)

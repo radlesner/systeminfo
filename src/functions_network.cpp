@@ -26,28 +26,21 @@ void get_ip_address(int on_ip6)
             char address_buffer[INET_ADDRSTRLEN];
             inet_ntop(AF_INET, tmpAddrPtr, address_buffer, INET_ADDRSTRLEN);
 
-                int count = 0;
-                text_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
-                count = 26 - text_output.length();
-                for(int i = 0; i < count; i++)
-                {
-                    text_output = text_output + " ";
-                }
-                cout << bold() << text_output << bold_end() << ": " << address_buffer <<  endl;
+            int count = 0;
+            text_output = "IPv4 (" + static_cast<string>(ifa->ifa_name) + ")";
+
+            cout << bold() << text_output << bold_end() << ": " << address_buffer <<  endl;
         }
         else if (ifa->ifa_addr->sa_family == AF_INET6 && on_ip6 == 1)
         {
             tmpAddrPtr =& ((struct sockaddr_in6 *) ifa->ifa_addr)->sin6_addr;
             char address_buffer[INET6_ADDRSTRLEN];
             inet_ntop(AF_INET6, tmpAddrPtr, address_buffer, INET6_ADDRSTRLEN);
-                int count = 0;
-                text_output = "IPv6    (" + (string)ifa->ifa_name + ")";
-                count = 26 - text_output.length();
-                for(int i = 0; i < count; i++)
-                {
-                    text_output = text_output + " ";
-                }
-                cout << bold() << text_output << bold_end() << ": " << address_buffer <<  endl;
+
+            int count = 0;
+            text_output = "IPv6 (" + (string)ifa->ifa_name + ")";
+
+            cout << bold() << text_output << bold_end() << ": " << address_buffer <<  endl;
         }
     }
     if (text_output.length() > 1) separator("");
@@ -110,12 +103,7 @@ void all_network()
             address_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
             netmask_output = "Netmask (" + static_cast<string>(ifa->ifa_name) + ")";
             int count = 0;
-            count = 26 - netmask_output.length();
-            for(int i = 0; i < count; i++)
-            {
-                address_output = address_output + " ";
-                netmask_output = netmask_output + " ";
-            }
+
             cout << bold() << address_output << bold_end() << ": " << address_buffer << endl;
             cout << bold() << netmask_output << bold_end() << ": " << mask_buffer <<  endl;
             /*
@@ -143,11 +131,7 @@ void all_network()
 
                         if(regex_search( text, result, example ) == true) {
                             final_output = "Gateway (" + static_cast<string>(result[0]) + ")";
-                            count = 26 - final_output.length();
-                            for(int  x = 0; x < count; x++)
-                            {
-                                final_output = final_output + " ";
-                            }
+
                             int if_size = static_cast<string>(result[0]).length() + 1;
                             text.erase(0, if_size);
                             cout << bold() << final_output << bold_end() << ": " << text << endl;
