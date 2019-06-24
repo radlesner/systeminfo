@@ -33,7 +33,7 @@ void get_ip_address(int on_ip6)
                 {
                     text_output = text_output + " ";
                 }
-                cout << bold_text_start() << text_output << ": " << bold_text_end() << address_buffer <<  endl;
+                cout << bold() << text_output << bold_end() << ": " << address_buffer <<  endl;
         }
         else if (ifa->ifa_addr->sa_family == AF_INET6 && on_ip6 == 1)
         {
@@ -47,7 +47,7 @@ void get_ip_address(int on_ip6)
                 {
                     text_output = text_output + " ";
                 }
-                cout << bold_text_start() << text_output << ": " << bold_text_end() << address_buffer <<  endl;
+                cout << bold() << text_output << bold_end() << ": " << address_buffer <<  endl;
         }
     }
     if (text_output.length() > 1) separator("");
@@ -116,8 +116,8 @@ void all_network()
                 address_output = address_output + " ";
                 netmask_output = netmask_output + " ";
             }
-            cout << bold_text_start() << address_output << ": " << bold_text_end() << address_buffer << endl;
-            cout << bold_text_start() << netmask_output << ": " << bold_text_end() << mask_buffer <<  endl;
+            cout << bold() << address_output << bold_end() << ": " << address_buffer << endl;
+            cout << bold() << netmask_output << bold_end() << ": " << mask_buffer <<  endl;
             /*
                 ADDRESS AND NETMASK OUTPUT END
                 GATEWAY OUTPUT
@@ -150,7 +150,7 @@ void all_network()
                             }
                             int if_size = static_cast<string>(result[0]).length() + 1;
                             text.erase(0, if_size);
-                            cout << bold_text_start() << final_output << ": " << bold_text_end() << text << endl;
+                            cout << bold() << final_output << bold_end() << ": " << text << endl;
                         }
                     }
                 }

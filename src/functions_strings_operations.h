@@ -9,5 +9,5 @@
 using namespace std;
 
     string switch_words(string value);
-    string bold_text_start();
-    string bold_text_end();
+    string bold();
+    string bold_end();

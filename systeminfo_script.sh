@@ -61,6 +61,9 @@ if [ -e /etc/lsb-release ] ; then
 else
     cat /etc/os-release | grep PRETTY_NAME | tr -d '"' | cut -c 13-56 >> systeminfo-distro.txt
 fi
+if [ -e /etc/os-release ] ; then
+    awk -F '=' -F '"' '/COLOR/ {printf $2 "\n"}' /etc/os-release >> systeminfo-color.txt
+fi
 uname -m >> systeminfo-arch.txt
 getconf LONG_BIT >> systeminfo-arch.txt
 echo $USER >> systeminfo-user.txt

@@ -308,7 +308,7 @@ void temperatures()
             {
 				name_temperature[i] = name_temperature[i] + " ";
             }
-			cout << bold_text_start() << name_temperature[i] << ": " << bold_text_end() << temperature[i] << " \u00B0C" << endl;
+			cout << bold() << name_temperature[i] << bold_end() << ": " << temperature[i] << " \u00B0C" << endl;
 
 			if (count_folders - i == 1)
 				separator("");
