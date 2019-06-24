@@ -26,8 +26,16 @@ string bold()
     }
     else
     {
+        if (distribution_file() == "Raspbian")
+        {
+            output = "\033[1;31m";
+            return output;
+        }
+        else
+        {
         output = "\033[" + color + "m";
         return output;
+        }
     }
 }
 

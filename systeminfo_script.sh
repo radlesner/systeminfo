@@ -59,7 +59,7 @@ if [ -e /etc/lsb-release ] ; then
     lsb_release -r | awk {'print $2'} >> systeminfo-distro.txt
     lsb_release -c | awk {'print $2'} >> systeminfo-distro.txt
 else
-    cat /etc/os-release | grep PRETTY_NAME | tr -d '"' | cut -c 13-56 >> systeminfo-distro.txt
+    cat /etc/os-release | grep PRETTY_NAME | tr -d '"' | cut -c 13-56 | awk '{print $1}' >> systeminfo-distro.txt
 fi
 if [ -e /etc/os-release ] ; then
     awk -F '=' -F '"' '/COLOR/ {printf $2 "\n"}' /etc/os-release >> systeminfo-color.txt
