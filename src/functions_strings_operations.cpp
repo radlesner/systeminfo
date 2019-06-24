@@ -22,10 +22,6 @@ string bold()
 
     if (color == "N/A")
     {
-        return "\e[1m";
-    }
-    else
-    {
         if (distribution_file() == "Raspbian")
         {
             output = "\033[1;31m";
@@ -33,9 +29,13 @@ string bold()
         }
         else
         {
+            return "\e[1m";
+        }
+    }
+    else
+    {
         output = "\033[" + color + "m";
         return output;
-        }
     }
 }
 
@@ -46,7 +46,14 @@ string bold_end()
 
     if (color == "N/A")
     {
-        return "\e[0m";
+        if (distribution_file() == "Raspbian")
+        {
+            return "\033[0m";
+        }
+        else
+        {
+            return "\e[0m";
+        }
     }
     else
     {
