@@ -117,24 +117,23 @@ void all_network()
             }
             else
             {
-                string text;
+                string interface;
+                string ip_name;
                 fstream file;
-                regex example(static_cast<string>(ifa->ifa_name));
+                int nr = 0;
 
                 file.open(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", ios::in);
                 if(file.good() == true)
                 {
                     while(!file.eof())
                     {
-                        getline(file, text);
-                        smatch result;
+                        nr++;
+                        getline(file, interface);
 
-                        if(regex_search( text, result, example ) == true) {
-                            final_output = "Gateway (" + static_cast<string>(result[0]) + ")";
-
-                            int if_size = static_cast<string>(result[0]).length() + 1;
-                            text.erase(0, if_size);
-                            cout << bold() << final_output << bold_end() << ": " << text << endl;
+                        if (interface == static_cast<string>(ifa->ifa_name))
+                        {
+                            ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1);
+                            cout << bold() << "Gateway (" + interface + ")" << bold_end() << ": " << ip_name << endl;
                         }
                     }
                 }
