@@ -97,20 +97,25 @@ void mem_megabyte_file()
 void disk_usage(int swith_units)
 {
 	ifstream disk_name;
+	ifstream disk_size;
 	ifstream disk_used;
 	ifstream disk_procent_usage;
 	ifstream disk_available;
 	ifstream disk_mount;
 
 	string table_disk_name[512];
+	string table_disk_size[512];
 	string table_disk_used[512];
 	string table_procent_usage[512];
 	string table_disk_available[512];
 	string table_disk_mount[512];
-	string output[4];
 
 	int nr_line = 1;
 	int count = 0;
+
+	float size[512];
+	float used[512];
+	float avail[512];
 
 	disk_name.open(home_path() + "/.systeminfo-files/systeminfo-disks-name.txt");
 	if (disk_name.good() == true)
@@ -118,6 +123,17 @@ void disk_usage(int swith_units)
 		while(!disk_name.eof())
 		{
 			getline(disk_name, table_disk_name[nr_line]);
+			nr_line++;
+		}
+	}
+
+	disk_size.open(home_path() + "/.systeminfo-files/systeminfo-disks-size.txt");
+	if (disk_size.good() == true)
+	{
+		nr_line = 1;
+		while(!disk_size.eof())
+		{
+			getline(disk_size, table_disk_size[nr_line]);
 			nr_line++;
 		}
 	}
@@ -168,24 +184,35 @@ void disk_usage(int swith_units)
 
 	for (int i = 1; i < nr_line - 1; i++)
 	{
-		output[0]= "Usage       " + table_disk_name[i];
-		output[1]= "Used        " + table_disk_name[i];
-		output[2]= "Available   " + table_disk_name[i];
-		output[3]= "Mount point " + table_disk_name[i];
+		size[i] = atoi( table_disk_size[i].c_str() );
+		used[i] = atoi( table_disk_used[i].c_str() );
+		avail[i] = atoi( table_disk_available[i].c_str() );
 
-		cout << bold() << output[0] << bold_end() << ": " << table_procent_usage[i] << endl;
+		cout << bold() << "Disk        " << bold_end() << ": " << table_disk_name[i] << endl;
+		cout << bold() << "Usage       " << bold_end() << ": " << table_procent_usage[i] << endl;
 		if (swith_units == 1)
 		{
-			cout.precision(3);
-			cout << bold() << output[1] << bold_end() << ": " << static_cast<float>( atoi(table_disk_used[i].c_str()) ) / 1024 << " GB" << endl;
-			cout << bold() << output[2] << bold_end() << ": " << static_cast<float>( atoi(table_disk_available[i].c_str()) ) / 1024 << " GB" << endl;
+			if (size[i] / 1024 < 1)
+			{
+				cout << bold() << "Size        " << bold_end() << ": " << size[i] << " MB" << endl;
+				cout << bold() << "Used        " << bold_end() << ": " << used[i] << " MB" << endl;
+				cout << bold() << "Available   " << bold_end() << ": " << avail[i] << " MB" << endl;
+			}
+			else
+			{
+				cout.precision(3);
+				cout << bold() << "Size        " << bold_end() << ": " << size[i] / 1024 << " GB" << endl;
+				cout << bold() << "Used        " << bold_end() << ": " << used[i] / 1024 << " GB" << endl;
+				cout << bold() << "Available   " << bold_end() << ": " << avail[i] / 1024 << " GB" << endl;
+			}
 		}
 		else
 		{
-			cout << bold() << output[1] << bold_end() << ": " << table_disk_used[i] << " MB" << endl;
-			cout << bold() << output[2] << bold_end() << ": " << table_disk_available[i] << " MB" << endl;
+			cout << bold() << "Size        " << bold_end() << ": " << size[i] << " MB" << endl;
+			cout << bold() << "Used        " << bold_end() << ": " << used[i] << " MB" << endl;
+			cout << bold() << "Available   " << bold_end() << ": " << avail[i] << " MB" << endl;
 		}
-		cout << bold() << output[3] << bold_end() << ": " << table_disk_mount[i] << endl;
+		cout << bold() << "Mount point " << bold_end() << ": " << table_disk_mount[i] << endl;
 		separator("");
 	}
 }

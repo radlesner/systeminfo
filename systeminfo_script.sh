@@ -85,6 +85,12 @@ df -m | grep -i "/dev/fd" | sort -n | awk '{print $1}' >> systeminfo-disks-name.
 df -m | grep -i "/dev/mmcblk" | awk '{print $1}' >> systeminfo-disks-name.txt
 df -m | grep -i "/dev/ro" | awk '{print $1}' >> systeminfo-disks-name.txt
 
+df -m | grep -i "/dev/sd" | sort -n | awk '{print $2}' >> systeminfo-disks-size.txt
+df -m | grep -i "/dev/hd" | sort -n | awk '{print $2}' >> systeminfo-disks-size.txt
+df -m | grep -i "/dev/fd" | sort -n | awk '{print $2}' >> systeminfo-disks-size.txt
+df -m | grep -i "/dev/mmcblk" | awk '{print $2}' >> systeminfo-disks-size.txt
+df -m | grep -i "/dev/ro" | awk '{print $2}' >> systeminfo-disks-size.txt
+
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
