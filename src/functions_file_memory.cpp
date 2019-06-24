@@ -186,7 +186,7 @@ void disk_usage(int swith_units)
 	{
 		size[i] = atoi( table_disk_size[i].c_str() );
 		used[i] = atoi( table_disk_used[i].c_str() );
-		avail[i] = atoi( table_disk_available[i].c_str() );
+		avail[i] = size[i] - used[i];
 
 		cout << bold() << "Disk        " << bold_end() << ": " << table_disk_name[i] << endl;
 		cout << bold() << "Usage       " << bold_end() << ": " << table_procent_usage[i] << endl;
