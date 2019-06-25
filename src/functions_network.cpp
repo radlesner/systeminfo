@@ -65,7 +65,7 @@ void all_network()
         {
             getline(file, gateway_interface[i]);
 
-            gateway_address[i] = open_file(home_path()+"/.systeminfo-files/systeminfo-distro.txt", i);
+            gateway_address[i] = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway-ip.txt", i);
             gateway_output[i] = bold() + "Gateway (" + gateway_interface[i] + ")" + bold_end() + ": " + gateway_address[i];
 
             i++;
