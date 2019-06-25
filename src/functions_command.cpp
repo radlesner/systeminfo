@@ -45,5 +45,5 @@ void command_activate()
 
 void command_remove()
 {
-	//system("cd /$HOME/.systeminfo-files && rm -f *.*");
+	system("cd /$HOME/.systeminfo-files && rm -f *.*");
 }
