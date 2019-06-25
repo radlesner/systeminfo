@@ -117,6 +117,7 @@ void all_network()
 
             cout << bold() << address_output << bold_end() << ": " << address_buffer << endl;
             cout << bold() << netmask_output << bold_end() << ": " << mask_buffer <<  endl;
+
             if (static_cast<string>(ifa->ifa_name) == "lo")
             {
                 if (address_output.length() > 1) separator("");
@@ -124,9 +125,28 @@ void all_network()
             }
             else
             {
-                cout << gateway_output[nr] << endl;
+                string interface;
+                string ip_name;
+                fstream file;
+                int nr = 0;
+
+                file.open(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", ios::in);
+                if(file.good() == true)
+                {
+                    while(!file.eof())
+                    {
+                        nr++;
+                        getline(file, interface);
+
+                        if (interface == static_cast<string>(ifa->ifa_name))
+                        {
+                            ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1);
+                            cout << bold() << "Gateway (" + interface + ")" << bold_end() << ": " << ip_name << endl;
+                        }
+                    }
+                }
+                file.close();
             }
-            nr++;
 
             /*
                 OUTPUT END
