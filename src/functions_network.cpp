@@ -141,7 +141,6 @@ void all_network()
                         if (interface == static_cast<string>(ifa->ifa_name))
                         {
                             ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1);
-                            cout << open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1) << endl;
                             cout << bold() << "Gateway (" + interface + ")" << bold_end() << ": " << ip_name << endl;
                         }
                     }
