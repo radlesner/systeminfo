@@ -130,7 +130,7 @@ void all_network()
                 fstream file;
                 int nr = 0;
 
-                file.open(home_path()+"/.systeminfo-files/systeminfo-distro.txt", ios::in);
+                file.open(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", ios::in);
                 if(file.good() == true)
                 {
                     while(!file.eof())
