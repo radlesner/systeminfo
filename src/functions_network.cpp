@@ -52,26 +52,32 @@ void all_network()
     /*
         GATEWAY
     */
+
     ifstream file;
-    int nr = 0, i = 0;
-    string interfaces[32];
-    string addresses[32];
-    string text;
-    string final_output;
+    int nr = 1, i = 1;
+    string gateway_interface[64];
+    string gateway_address[64];
+    string gateway_output[64];
     file.open(home_path()+"/.systeminfo-files/systeminfo-gateway-names.txt");
     if (file.good() == true)
     {
         while(!file.eof())
         {
-            getline(file, text);
-            nr++;
+            getline(file, gateway_interface[i]);
+
+            gateway_address[i] = open_file(home_path()+"/.systeminfo-files/systeminfo-distro.txt", i);
+            gateway_output[i] = bold() + "Gateway (" + gateway_interface[i] + ")" + bold_end() + ": " + gateway_address[i];
+
+            i++;
         }
     }
     file.close();
+
     /*
         GATEWAY END
         ADDRESS AND NETMASK
     */
+
     struct ifaddrs* ifAddrStruct = NULL;
     struct ifaddrs* ifa = NULL;
     void* tmpAddrPtr = NULL;
@@ -80,10 +86,12 @@ void all_network()
     string netmask_output, address_output;
 
     getifaddrs(&ifAddrStruct);
+
     /*
         ADDRESS AND NETMASK END
         ADDRESS AND NETMASK OUTPUT
     */
+
     for(ifa = ifAddrStruct;  ifa != NULL; ifa = ifa->ifa_next)
     {
         if (!ifa->ifa_addr) continue;
@@ -102,38 +110,28 @@ void all_network()
 
             address_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
             netmask_output = "Netmask (" + static_cast<string>(ifa->ifa_name) + ")";
-            int count = 0;
+
+            /*
+                OUTPUT
+            */
 
             cout << bold() << address_output << bold_end() << ": " << address_buffer << endl;
             cout << bold() << netmask_output << bold_end() << ": " << mask_buffer <<  endl;
-            /*
-                ADDRESS AND NETMASK OUTPUT END
-                GATEWAY OUTPUT
-            */
-            string interface;
-            string ip_name;
-            fstream file;
-            int nr = 0;
-
-            file.open(home_path()+"/.systeminfo-files/systeminfo-gateway-names.txt", ios::in);
-            if(file.good() == true)
+            if (static_cast<string>(ifa->ifa_name) == "lo")
             {
-                while(!file.eof())
-                {
-                    nr++;
-                    getline(file, interface);
-
-                    if (interface == static_cast<string>(ifa->ifa_name))
-                    {
-                        ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway-ip.txt", nr);
-                        cout << bold() << "Gateway (" + interface + ")" << bold_end() << ": " << ip_name << endl;
-                    }
-                }
+                if (address_output.length() > 1) separator("");
+                continue;
             }
-            file.close();
+            else
+            {
+                cout << gateway_output[nr] << endl;
+            }
+            nr++;
+
             /*
-                GATEWAY OUTPUT END
+                OUTPUT END
             */
+
             if (address_output.length() > 1) separator("");
         }
     }
