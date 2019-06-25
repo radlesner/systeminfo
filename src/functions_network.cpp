@@ -115,7 +115,7 @@ void all_network()
             fstream file;
             int nr = 0;
 
-            file.open(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", ios::in);
+            file.open(home_path()+"/.systeminfo-files/systeminfo-gateway-names.txt", ios::in);
             if(file.good() == true)
             {
                 while(!file.eof())
@@ -125,7 +125,7 @@ void all_network()
 
                     if (interface == static_cast<string>(ifa->ifa_name))
                     {
-                        ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1);
+                        ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway-ip.txt", nr);
                         cout << bold() << "Gateway (" + interface + ")" << bold_end() << ": " << ip_name << endl;
                     }
                 }
