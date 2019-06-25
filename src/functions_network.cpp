@@ -110,39 +110,31 @@ void all_network()
                 ADDRESS AND NETMASK OUTPUT END
                 GATEWAY OUTPUT
             */
-            if (static_cast<string>(ifa->ifa_name) == "lo")
-            {
-                if (address_output.length() > 1) separator("");
-                continue;
-            }
-            else
-            {
-                string interface;
-                string ip_name;
-                fstream file;
-                int nr = 0;
+            string interface;
+            string ip_name;
+            fstream file;
+            int nr = 0;
 
-                file.open(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", ios::in);
-                if(file.good() == true)
+            file.open(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", ios::in);
+            if(file.good() == true)
+            {
+                while(!file.eof())
                 {
-                    while(!file.eof())
-                    {
-                        nr++;
-                        getline(file, interface);
+                    nr++;
+                    getline(file, interface);
 
-                        if (interface == static_cast<string>(ifa->ifa_name))
-                        {
-                            ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1);
-                            cout << bold() << "Gateway (" + interface + ")" << bold_end() << ": " << ip_name << endl;
-                        }
+                    if (interface == static_cast<string>(ifa->ifa_name))
+                    {
+                        ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1);
+                        cout << bold() << "Gateway (" + interface + ")" << bold_end() << ": " << ip_name << endl;
                     }
                 }
-                file.close();
-                /*
-                    GATEWAY OUTPUT END
-                */
-                if (address_output.length() > 1) separator("");
             }
+            file.close();
+            /*
+                GATEWAY OUTPUT END
+            */
+            if (address_output.length() > 1) separator("");
         }
     }
     if (ifAddrStruct != NULL) freeifaddrs(ifAddrStruct);
