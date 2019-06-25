@@ -25,13 +25,6 @@ awk -F ': | @' '/model name|Processor|^cpu model|chip type|^cpu type/ {printf $2
 cat /proc/cpuinfo | grep -c "^processor" >> systeminfo-theards.txt
 awk '/^core id/&&!a[$0]++{++i} END {print i}' /proc/cpuinfo >> systeminfo-cores.txt
 
-# NETWORK
-if [ -e /usr/bin/route ] ; then
-    route -n | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
-    route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
-    route -n | grep 'UG[ \t]' | awk '{print $8 "\n" $2}' >> systeminfo-gateway.txt
-fi
-
 # HARDWARE
 if [ -e /sys/devices/virtual/dmi/id/product_version ] ; then
     model="$(cat /sys/devices/virtual/dmi/id/product_name)"
@@ -116,3 +109,10 @@ df -m | grep -i "/dev/hd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount.txt
 df -m | grep -i "/dev/mmcblk" | awk '{print $6}' >> systeminfo-disks-mount.txt
 df -m | grep -i "/dev/ro" | awk '{print $6}' >> systeminfo-disks-name.txt
+
+# NETWORK
+if [ -e /usr/bin/route ] ; then
+    route -n | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
+    route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
+    route -n | grep 'UG[ \t]' | awk '{print $8 "\n" $2}' >> systeminfo-gateway.txt
+fi
