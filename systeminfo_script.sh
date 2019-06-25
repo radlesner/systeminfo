@@ -114,5 +114,5 @@ df -m | grep -i "/dev/ro" | awk '{print $6}' >> systeminfo-disks-name.txt
 if [ -e /usr/bin/route ] ; then
     route -n | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
     route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
-    route -n | grep 'UG[ \t]' | awk '{print $8 "\n" $2}' >> systeminfo-gateway.txt
+    route -n | grep 'UG[ \t]' | awk '{print $8 "\n" $2}' >> systeminfo-distro.txt
 fi
