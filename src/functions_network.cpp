@@ -50,17 +50,6 @@ void get_ip_address(int on_ip6)
 void all_network()
 {
     /*
-        GATEWAY
-    */
-
-    ifstream file;
-    int nr = 1;
-    string gateway_interface[64];
-    string gateway_address[64];
-    string gateway_output[64];
-
-    /*
-        GATEWAY END
         ADDRESS AND NETMASK
     */
 
