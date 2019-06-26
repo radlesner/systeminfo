@@ -115,7 +115,7 @@ if [ -e /usr/bin/route ] ; then
     route -n | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
     route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
     route -n | grep 'UG[ \t]' | awk '{print $8 "\n" $2}' >> systeminfo-gateway.txt
-elif ! [ -x "$(netstat)" ]; then
+elif ! [ -x netstat ]; then
     netstat -rn | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
     netstat -rn | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
     netstat -rn | grep 'UG[ \t]' | awk '{print $8 "\n" $2}' >> systeminfo-gateway.txt
