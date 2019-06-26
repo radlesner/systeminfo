@@ -145,6 +145,11 @@ void all_network()
                         }
                     }
                 }
+                else
+                {
+                    cout << bold() << "Gateway (" + static_cast<string>(ifa->ifa_name) + ")" << bold_end() << ": N/A" << endl;
+                }
+
                 file.close();
             }
 
