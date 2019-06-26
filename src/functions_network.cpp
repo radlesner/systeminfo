@@ -54,24 +54,10 @@ void all_network()
     */
 
     ifstream file;
-    int nr = 1, i = 1;
+    int nr = 1;
     string gateway_interface[64];
     string gateway_address[64];
     string gateway_output[64];
-    file.open(home_path()+"/.systeminfo-files/systeminfo-gateway-names.txt");
-    if (file.good() == true)
-    {
-        while(!file.eof())
-        {
-            getline(file, gateway_interface[i]);
-
-            gateway_address[i] = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway-ip.txt", i);
-            gateway_output[i] = bold() + "Gateway (" + gateway_interface[i] + ")" + bold_end() + ": " + gateway_address[i];
-
-            i++;
-        }
-    }
-    file.close();
 
     /*
         GATEWAY END
@@ -125,32 +111,8 @@ void all_network()
             }
             else
             {
-                string interface;
-                string ip_name;
-                fstream file;
-                int nr = 0;
-
-                file.open(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", ios::in);
-                if(file.good() == true)
-                {
-                    while(!file.eof())
-                    {
-                        nr++;
-                        getline(file, interface);
-
-                        if (interface == static_cast<string>(ifa->ifa_name))
-                        {
-                            ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1);
-                            cout << bold() << "Gateway (" + interface + ")" << bold_end() << ": " << ip_name << endl;
-                        }
-                    }
-                }
-                else
-                {
-                    cout << bold() << "Gateway (" + static_cast<string>(ifa->ifa_name) + ")" << bold_end() << ": N/A" << endl;
-                }
-
-                file.close();
+                string ip_name = get_gateway( static_cast<string>(ifa->ifa_name) );
+                cout << bold() << "Gateway (" + static_cast<string>(ifa->ifa_name) + ")" << bold_end() << ": " << ip_name << endl;
             }
 
             /*
@@ -161,4 +123,31 @@ void all_network()
         }
     }
     if (ifAddrStruct != NULL) freeifaddrs(ifAddrStruct);
+}
+
+string get_gateway(string input_value)
+{
+    string interface;
+    string ip_name;
+    fstream file;
+    int nr = 0;
+
+    file.open( home_path() + "/.systeminfo-files/systeminfo-gateway.txt", ios::in );
+    if (file.good() == true)
+    {
+        while (!file.eof())
+        {
+            nr++;
+            getline(file, interface);
+
+            if (interface == input_value)
+            {
+                ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1);
+                return ip_name;
+            }
+        }
+    }
+    file.close();
+
+    return "N/A";
 }
