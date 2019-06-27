@@ -22,7 +22,7 @@ string bold()
 
     if (color == "N/A")
     {
-        if (distribution_file() == "Raspbian")
+        if (distribution_file() == "Raspbian GNU/Linux")
         {
             output = "\033[1;31m";
             return output;

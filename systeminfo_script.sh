@@ -14,9 +14,11 @@ fi
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq ] ; then
     cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq >> systeminfo-cpu-frequency_min.txt
 fi
+
 if [ -e /sys/class/hwmon/hwmon*/fan1_input ] ; then
     cat /sys/class/hwmon/hwmon*/fan1_input >> systeminfo-cpu-fan-speed.txt
 fi
+
 if [ -e /sys/class/hwmon/ ] ; then
     ls -l /sys/class/hwmon/ | grep -c "hwmon" >> systeminfo-hwmon-exist.txt
 fi
@@ -31,21 +33,27 @@ if [ -e /sys/devices/virtual/dmi/id/product_version ] ; then
     model+=" $(cat /sys/devices/virtual/dmi/id/product_version)"
     echo $model >> systeminfo-model.txt
 fi
+
 if [ -e /sys/devices/virtual/dmi/id/board_name ] ; then
     cat /sys/devices/virtual/dmi/id/board_name >> systeminfo-motherboard.txt
 fi
+
 if [ -e /sys/devices/virtual/dmi/id/board_vendor ] ; then
     cat /sys/devices/virtual/dmi/id/board_vendor >> systeminfo-motherboard-manufact.txt
 fi
+
 if [ -e /sys/devices/virtual/dmi/id/bios_vendor ] ; then
     cat /sys/devices/virtual/dmi/id/bios_vendor >> systeminfo-bios-manufact.txt
 fi
+
 if [ -e /sys/devices/virtual/dmi/id/bios_version ] ; then
     cat /sys/devices/virtual/dmi/id/bios_version >> systeminfo-bios-version.txt
 fi
+
 if [ -e /sys/devices/virtual/dmi/id/bios_date ] ; then
     cat /sys/devices/virtual/dmi/id/bios_date >> systeminfo-bios-date.txt
 fi
+
 
 # SYSTEM
 uptime -p | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-uptime.txt
@@ -54,11 +62,13 @@ if [ -x lsb_release ] ; then
     lsb_release -r | awk {'print $2'} >> systeminfo-distro.txt
     lsb_release -c | awk {'print $2'} >> systeminfo-distro.txt
 else
-    awk -F '=' -F '"' '/NAME/ {printf $2 "\n"}' /etc/os-release >> systeminfo-distro.txt
+    awk -F '=' -F '"' '/NAME/ {printf $2 "\n"}' /etc/os-release | sort -n >> systeminfo-distro.txt
 fi
+
 if [ -e /etc/os-release ] ; then
     awk -F '=' -F '"' '/COLOR/ {printf $2 "\n"}' /etc/os-release >> systeminfo-color.txt
 fi
+
 uname -m >> systeminfo-arch.txt
 getconf LONG_BIT >> systeminfo-arch.txt
 echo $USER >> systeminfo-user.txt
