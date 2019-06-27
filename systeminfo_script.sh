@@ -49,7 +49,7 @@ fi
 
 # SYSTEM
 uptime -p | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-uptime.txt
-if [ -e /etc/lsb-release ] ; then
+if [ -x lsb_release ] ; then
     lsb_release -i | awk {'print $3'} >> systeminfo-distro.txt
     lsb_release -r | awk {'print $2'} >> systeminfo-distro.txt
     lsb_release -c | awk {'print $2'} >> systeminfo-distro.txt
