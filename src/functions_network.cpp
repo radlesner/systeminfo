@@ -116,9 +116,17 @@ void all_network()
 
 string get_gateway(string input_value)
 {
+    fstream file;
+
     string interface;
     string ip_name;
-    fstream file;
+    string ip_name_buf;
+    string ip_name_buf2;
+    string ipv4_octet[4];
+    string ip_output[4];
+
+
+    int ip_converted[4];
     int nr = 0;
 
     file.open( home_path() + "/.systeminfo-files/systeminfo-gateway.txt", ios::in );
@@ -132,11 +140,45 @@ string get_gateway(string input_value)
             if (interface == input_value)
             {
                 ip_name = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway.txt", nr + 1);
-                return ip_name;
+
+                if (ip_name.length() == 8)
+                {
+                    ip_name_buf = ip_name;                         //
+                    ipv4_octet[0] = ip_name_buf.erase( 0, 6 );     // first octed
+                    ip_converted[0] = hex2dec(ipv4_octet[0]);      //
+                    ip_output[0] = int_to_str(ip_converted[0]);    //
+
+                    ip_name_buf = ip_name;                         //
+                    ipv4_octet[1] = ip_name_buf.erase( 0, 4 );     //
+                    ipv4_octet[1] = ipv4_octet[1].erase( 2, 4 );   // second octed
+                    ip_converted[1] = hex2dec(ipv4_octet[1]);      //
+                    ip_output[1] = int_to_str(ip_converted[1]);    //
+
+                    ip_name_buf = ip_name;                         //
+                    ipv4_octet[2] = ip_name_buf.erase( 0, 2 );     //
+                    ipv4_octet[2] = ipv4_octet[2].erase( 2, 6 );   // third octed
+                    ip_converted[2] = hex2dec(ipv4_octet[2]);      //
+                    ip_output[2] = int_to_str(ip_converted[2]);    //
+
+                    ip_name_buf = ip_name;                         //
+                    ipv4_octet[3] = ip_name_buf.erase( 2, 7 );     // fourth octed
+                    ip_converted[3] = hex2dec(ipv4_octet[3]);      //
+                    ip_output[3] = int_to_str(ip_converted[3]);    //
+
+                    return ip_output[0] + "." + ip_output[1] + "." + ip_output[2] + "." + ip_output[3];
+                }
+
             }
         }
     }
     file.close();
 
     return "N/A";
+}
+
+int hex2dec (string hexadecimal)
+{
+    int decimal = strtol(hexadecimal.c_str(), NULL, 16);
+
+    return decimal;
 }

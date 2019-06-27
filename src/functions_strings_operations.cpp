@@ -60,3 +60,20 @@ string bold_end()
         return "\033[0m";
     }
 }
+
+string int_to_str(int n)
+{
+     string tmp, ret;
+     if(n < 0) {
+      ret = "-";
+      n = -n;
+     }
+     do {
+      tmp += n % 10 + 48;
+      n -= n % 10;
+     }
+     while(n /= 10);
+     for(int i = tmp.size()-1; i >= 0; i--)
+      ret += tmp[i];
+     return ret;
+}

@@ -111,12 +111,6 @@ df -m | grep -i "/dev/mmcblk" | awk '{print $6}' >> systeminfo-disks-mount.txt
 df -m | grep -i "/dev/ro" | awk '{print $6}' >> systeminfo-disks-name.txt
 
 # NETWORK
-if ! [ -x route ]; then
-    route -n | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
-    route -n | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
-    route -n | grep 'UG[ \t]' | awk '{print $8 "\n" $2}' >> systeminfo-gateway.txt
-elif ! [ -x netstat ]; then
-    netstat -rn | grep 'UG[ \t]' | awk '{print $2}' >> systeminfo-gateway-ip.txt
-    netstat -rn | grep 'UG[ \t]' | awk '{print $8}' >> systeminfo-gateway-names.txt
-    netstat -rn | grep 'UG[ \t]' | awk '{print $8 "\n" $2}' >> systeminfo-gateway.txt
+if [ -e /proc/net/route ] ; then
+    cat /proc/net/route  | grep '0003' | awk '{print $1 "\n" $3}' >> systeminfo-gateway.txt
 fi
