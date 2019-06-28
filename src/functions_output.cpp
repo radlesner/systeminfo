@@ -71,8 +71,6 @@ void output_main_information()
 
 	separator("");
 	get_ip_address(0);
-
-	get_logo();
 }
 
 void output_system()
@@ -165,10 +163,12 @@ void output_monitor(int value_argc, char** value_argv)
 	table[1] = "-";
 	table[2] = "\\";
 
-	for(;;) {
+	for(;;)
+	{
 		command_activate();
 
-		if(value_argc > 2) {
+		if(value_argc > 2)
+		{
 			if(!strcmp(value_argv[2], "-g"))
 			{
 				system("clear");
@@ -274,6 +274,7 @@ void output_help()
 	cout << "   -c  --cpu             CPU information" << endl;
 	cout << "   -t  --monitor         real-time monitoring" << endl;
 	cout << "       --log             Generating logs" << endl;
+	cout << "       --no-logo         No display logo" << endl;
 	cout << "       --check-files     Check integration files" << endl;
 	cout << "       --help            Help panel" << endl;
 	cout << "       --version         Version program and compilation" << endl;

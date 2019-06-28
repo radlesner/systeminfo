@@ -2,4 +2,4 @@
 
 using namespace std;
 
-    void get_logo();
+    void get_logo_output();

@@ -87,3 +87,21 @@ string int_to_str(int n)
       ret += tmp[i];
      return ret;
 }
+
+string float_to_str(float n)
+{
+    std::ostringstream ss;
+    ss << n;
+    string output(ss.str());
+
+    return output;
+}
+
+string double_to_str(double n)
+{
+    std::ostringstream ss;
+    ss << n;
+    string output(ss.str());
+
+    return output;
+}

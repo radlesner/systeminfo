@@ -13,6 +13,7 @@
 #include "functions_file_swap.h"
 #include "functions_command.h"
 #include "function_output_log.h"
+#include "function_output_logo.h"
 
 using namespace std;
 
@@ -42,11 +43,12 @@ int main(int argc, char** argv)
 		else if(!strcmp(argv[1], "-c") || !strcmp(argv[1], "--cpu"))				output_cpu_only();
 		else if(!strcmp(argv[1], "-n") || !strcmp(argv[1], "--network"))			output_network();
 		else if(!strcmp(argv[1], "-t") || !strcmp(argv[1], "--monitor"))			output_monitor(argc, argv);
+		else if(!strcmp(argv[1], "--no-logo"))										output_main_information();
 		else if(!strcmp(argv[1], "--check-files"))									output_check_files();
 		else if(!strcmp(argv[1], "--version"))										output_compile_information();
 		else if(!strcmp(argv[1], "--help"))											output_help();
 		else if(!strcmp(argv[1], "--log"))											output_log();
-		else if(!strcmp(argv[1], "--") || !strcmp(argv[1], "-"))					output_main_information();
+		else if(!strcmp(argv[1], "--") || !strcmp(argv[1], "-"))					get_logo_output();
 		else
 		{
 			if(argc > 3)		cout << "Bad option: " << argv[1] << " " << argv[2] << " " << argv[3] << endl;
@@ -55,7 +57,7 @@ int main(int argc, char** argv)
 			output_help();
 		}
 	}
-	else 	output_main_information();
+	else 	get_logo_output();
 	command_remove();
 
 	return 0;

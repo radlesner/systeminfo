@@ -11,6 +11,8 @@ using namespace std;
     string switch_words(string value);
     string bold();
     string bold_end();
-    string int_to_str(int n);
     string get_color(string color_input);
-    
+    string int_to_str(int n);
+    string float_to_str(float n);
+    string double_to_str(double n);
+
