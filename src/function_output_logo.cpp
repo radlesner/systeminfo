@@ -149,12 +149,12 @@ void get_logo_output()
             exit(EXIT_FAILURE);
         }
 
-        cout << get_color("green") << "  `.::///+:/-.        --///+//-:``  Model name" << get_color("reset") << ": " << motherboard_manufacturer() << " " << model() << endl;
-        cout << get_color("green") << " `+oooooooooooo:   `+oooooooooooo:  Distribution" << get_color("reset") << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
-        cout << get_color("green") << "  /oooo++//ooooo:  ooooo+//+ooooo.  Kernel version" << get_color("reset") << ": " << buffer.release << endl;
-        cout << get_color("green") << "  `+ooooooo:-:oo-  +o+::/ooooooo:   System architecture" << get_color("reset") << ": " << architecture() << endl;
-        cout << get_color("green") << "   `:oooooooo+``    `.oooooooo+-    Uptime" << get_color("reset") << ": " << uptime_file() << endl;
-        cout << get_color("green") << "     `:++ooo/.        :+ooo+/.`     Shell" << get_color("reset") << ": " << architecture() << endl;
+        cout << get_color("green") << "  `.::///+:/-.        --///+//-:``  " << get_color("reset") << bold() << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << get_color("green") << " `+oooooooooooo:   `+oooooooooooo:  " << get_color("reset") << bold() << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << get_color("green") << "  /oooo++//ooooo:  ooooo+//+ooooo.  " << get_color("reset") << bold() << "Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << get_color("green") << "  `+ooooooo:-:oo-  +o+::/ooooooo:   " << get_color("reset") << bold() << "System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("green") << "   `:oooooooo+``    `.oooooooo+-    " << get_color("reset") << bold() << "Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << get_color("green") << "     `:++ooo/.        :+ooo+/.`     " << get_color("reset") << bold() << "Shell" << bold_end() << ": " << architecture() << endl;
         cout << get_color("green") << "        ...`  `.----.` ``..         " << get_color("reset");
         mem_file(1);
         cout << bold() << "     .::::-``:::::::::.`-:::-`      " << bold_end();
