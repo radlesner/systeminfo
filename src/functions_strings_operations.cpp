@@ -146,7 +146,7 @@ void get_logo()
         cout << space << bold() << " `++:.                           `-/+/ " << bold_end() << endl;
         cout << space << bold() << " .`                                 `/ " << bold_end() << endl;
     }
-    if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
+    if (distribution_file() == "KaliLinux" || distribution_file() == "Kali Linux" || distribution_file() == "Kali")
     {
         int ter_width = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-ter-size.txt", 2).c_str() );
         string space;
