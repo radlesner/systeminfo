@@ -12,6 +12,7 @@
 #include "functions_command.h"
 #include "functions_network.h"
 #include "functions_strings_operations.h"
+#include "function_output_logo.h"
 
 using namespace std;
 
