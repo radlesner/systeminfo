@@ -202,4 +202,39 @@ void get_logo()
         cout << space << bold() << "         `-..-(   )    " << bold_end() << endl;
         cout << space << bold() << "               `-`     " << bold_end() << endl;
     }
+    if (distribution_file() == "Raspbian GNU/Linux" || distribution_file() == "Raspbian")
+    {
+        int ter_width = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-ter-size.txt", 2).c_str() );
+        string space;
+
+        int count = (ter_width / 2) - (36 / 2);
+        for (int i = 0; i < count; i++)
+        {
+            space += " ";
+        }
+
+        cout << space << bold() << "  `.::///+:/-.        --///+//-:`` " << bold_end() << endl;
+        cout << space << bold() << " `+oooooooooooo:   `+oooooooooooo: " << bold_end() << endl;
+        cout << space << bold() << "  /oooo++//ooooo:  ooooo+//+ooooo. " << bold_end() << endl;
+        cout << space << bold() << "  `+ooooooo:-:oo-  +o+::/ooooooo:  " << bold_end() << endl;
+        cout << space << bold() << "   `:oooooooo+``    `.oooooooo+-   " << bold_end() << endl;
+        cout << space << bold() << "     `:++ooo/.        :+ooo+/.`    " << bold_end() << endl;
+        cout << space << bold() << "        ${c2}...`  `.----.` ``..   " << bold_end() << endl;
+        cout << space << bold() << "     .::::-``:::::::::.`-:::-`     " << bold_end() << endl;
+        cout << space << bold() << "    -:::-`   .:::::::-`  `-:::-    " << bold_end() << endl;
+        cout << space << bold() << "   `::.  `.--.`  `` `.---.``.::`   " << bold_end() << endl;
+        cout << space << bold() << "       .::::::::`  -::::::::` `    " << bold_end() << endl;
+        cout << space << bold() << " .::` .:::::::::- `::::::::::``::. " << bold_end() << endl;
+        cout << space << bold() << "-:::` ::::::::::.  ::::::::::.`:::-" << bold_end() << endl;
+        cout << space << bold() << "::::  -::::::::.   `-::::::::  ::::" << bold_end() << endl;
+        cout << space << bold() << "-::-   .-:::-.``....``.-::-.   -::-" << bold_end() << endl;
+        cout << space << bold() << " .. ``       .::::::::.     `..`.. " << bold_end() << endl;
+        cout << space << bold() << "   -:::-`   -::::::::::`  .:::::`  " << bold_end() << endl;
+        cout << space << bold() << "   :::::::` -::::::::::` :::::::.  " << bold_end() << endl;
+        cout << space << bold() << "   .:::::::  -::::::::. ::::::::   " << bold_end() << endl;
+        cout << space << bold() << "    `-:::::`   ..--.`   ::::::.    " << bold_end() << endl;
+        cout << space << bold() << "      `...`  `...--..`  `...`      " << bold_end() << endl;
+        cout << space << bold() << "            .::::::::::            " << bold_end() << endl;
+        cout << space << bold() << "             `.-::::-`             " << bold_end() << endl;
+    }
 }
