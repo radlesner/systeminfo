@@ -23,11 +23,11 @@ string bold()
     if (color == "N/A")
     {
         if (distribution_file() == "Raspbian GNU/Linux" || distribution_file() == "Raspbian")
-            return get_color("red");
+            return get_color("light_red");
         if (distribution_file() == "Ubuntu")
             return get_color("yellow");
         else
-            return "\033[1m";
+            return "\e[1m";
     }
     else
     {
@@ -43,7 +43,12 @@ string bold_end()
 
     if (color == "N/A")
     {
-        return "\033[0m";
+        if (distribution_file() == "Raspbian GNU/Linux" || distribution_file() == "Raspbian")
+            return "\033[0m";
+        if (distribution_file() == "Ubuntu")
+            return "\033[0m";
+        else
+            return "\e[0m";
     }
     else
     {
