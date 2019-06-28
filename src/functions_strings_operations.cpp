@@ -23,7 +23,7 @@ string bold()
     if (color == "N/A")
     {
         if (distribution_file() == "Raspbian GNU/Linux" || distribution_file() == "Raspbian")
-            return get_color("light_red");
+            return get_color("red");
         if (distribution_file() == "Ubuntu")
             return get_color("yellow");
         else
