@@ -66,6 +66,7 @@ string get_color(string color_input)
     else if (color_input == "white")       color = "\033[0m\033[1;37m";
     else if (color_input == "grey")        color = "\033[0m\033[37m";
     else if (color_input == "rosa_blue")   color = "\033[01;38;05;25m";
+    else if (color_input == "reset")       color = "\033[0m";
     else                                   color = "\033[0m\033[1;30m";
 
     return color;
