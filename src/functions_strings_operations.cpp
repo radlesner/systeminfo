@@ -127,23 +127,23 @@ void get_logo()
             space += " ";
         }
 
-        cout << "                  .o+`                 " << endl;
-        cout << "                 `ooo/                 " << endl;
-        cout << "                `+oooo:                " << endl;
-        cout << "               `+oooooo:               " << endl;
-        cout << "               -+oooooo+:              " << endl;
-        cout << "             `/:-:++oooo+:             " << endl;
-        cout << "            `/++++/+++++++:            " << endl;
-        cout << "           `/++++++++++++++:           " << endl;
-        cout << "          `/+++ooooooooooooo/`         " << endl;
-        cout << "         ./$ooosssso++osssssso+`       " << endl;
-        cout << "        .oossssso-````/ossssss+`       " << endl;
-        cout << "       -osssssso.      :ssssssso.      " << endl;
-        cout << "      :osssssss/        osssso+++.     " << endl;
-        cout << "     /ossssssss/        +ssssooo/-     " << endl;
-        cout << "   `/ossssso+/:-        -:/+osssso+-   " << endl;
-        cout << "  `+sso+:-`                 `.-/+oso:  " << endl;
-        cout << " `++:.                           `-/+/ " << endl;
-        cout << " .`                                 `/ " << endl;
+        cout << space << bold() << "                  .o+`                 " << bold_end() << endl;
+        cout << space << bold() << "                 `ooo/                 " << bold_end() << endl;
+        cout << space << bold() << "                `+oooo:                " << bold_end() << endl;
+        cout << space << bold() << "               `+oooooo:               " << bold_end() << endl;
+        cout << space << bold() << "               -+oooooo+:              " << bold_end() << endl;
+        cout << space << bold() << "             `/:-:++oooo+:             " << bold_end() << endl;
+        cout << space << bold() << "            `/++++/+++++++:            " << bold_end() << endl;
+        cout << space << bold() << "           `/++++++++++++++:           " << bold_end() << endl;
+        cout << space << bold() << "          `/+++ooooooooooooo/`         " << bold_end() << endl;
+        cout << space << bold() << "         ./$ooosssso++osssssso+`       " << bold_end() << endl;
+        cout << space << bold() << "        .oossssso-````/ossssss+`       " << bold_end() << endl;
+        cout << space << bold() << "       -osssssso.      :ssssssso.      " << bold_end() << endl;
+        cout << space << bold() << "      :osssssss/        osssso+++.     " << bold_end() << endl;
+        cout << space << bold() << "     /ossssssss/        +ssssooo/-     " << bold_end() << endl;
+        cout << space << bold() << "   `/ossssso+/:-        -:/+osssso+-   " << bold_end() << endl;
+        cout << space << bold() << "  `+sso+:-`                 `.-/+oso:  " << bold_end() << endl;
+        cout << space << bold() << " `++:.                           `-/+/ " << bold_end() << endl;
+        cout << space << bold() << " .`                                 `/ " << bold_end() << endl;
     }
 }
