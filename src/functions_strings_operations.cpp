@@ -24,7 +24,7 @@ string bold()
     {
         if (distribution_file() == "Raspbian GNU/Linux")
         {
-            return get_color("red");
+            return "\e[1m" + get_color("red");
         }
         else
         {
