@@ -186,6 +186,9 @@ int cpu_frequency()
 {
 	const string input_value = home_path() + "/.systeminfo-files/systeminfo-cpu-status.txt";
 
+	if (distribution_file() == "Raspbian GNU/Linux" || distribution_file() == "Raspbian")
+		return 0;
+
 	int cores = theards_file();
 	int frequency_sum = 0;
 	int line = 1;
