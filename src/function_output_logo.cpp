@@ -149,13 +149,13 @@ void get_logo_output()
             exit(EXIT_FAILURE);
         }
 
-        cout << bold() << "  `.::///+:/-.        --///+//-:``  Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
-        cout << bold() << " `+oooooooooooo:   `+oooooooooooo:  Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
-        cout << bold() << "  /oooo++//ooooo:  ooooo+//+ooooo.  Kernel version" << bold_end() << ": " << buffer.release << endl;
-        cout << bold() << "  `+ooooooo:-:oo-  +o+::/ooooooo:   System architecture" << bold_end() << ": " << architecture() << endl;
-        cout << bold() << "   `:oooooooo+``    `.oooooooo+-    Uptime" << bold_end() << ": " << uptime_file() << endl;
-        cout << bold() << "     `:++ooo/.        :+ooo+/.`     Shell" << bold_end() << ": " << architecture() << endl;
-        cout << bold() << "        ...`  `.----.` ``..         " << bold_end();
+        cout << get_color("green") << "  `.::///+:/-.        --///+//-:``  Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << get_color("green") << " `+oooooooooooo:   `+oooooooooooo:  Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << get_color("green") << "  /oooo++//ooooo:  ooooo+//+ooooo.  Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << get_color("green") << "  `+ooooooo:-:oo-  +o+::/ooooooo:   System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("green") << "   `:oooooooo+``    `.oooooooo+-    Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << get_color("green") << "     `:++ooo/.        :+ooo+/.`     Shell" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("green") << "        ...`  `.----.` ``..         " << bold_end();
         mem_file(1);
         cout << bold() << "     .::::-``:::::::::.`-:::-`      " << bold_end();
         swap_file(1);
