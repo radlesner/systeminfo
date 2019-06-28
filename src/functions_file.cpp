@@ -24,8 +24,8 @@ string distribution_file()
 
 string release_system()
 {
-	const string input_value = home_path() + "/.systeminfo-files/systeminfo-distro.txt";
-	const int line = 2;
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-release.txt";
+	const int line = 1;
 
 	string value;
 	value = open_file(input_value, line);
@@ -35,8 +35,8 @@ string release_system()
 
 string cedename_system()
 {
-	const string input_value = home_path() + "/.systeminfo-files/systeminfo-distro.txt";
-	const int line = 3;
+	const string input_value = home_path() + "/.systeminfo-files/systeminfo-codename.txt";
+	const int line = 1;
 
 	string value;
 	value = open_file(input_value, line);
