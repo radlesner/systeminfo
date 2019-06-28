@@ -179,4 +179,27 @@ void get_logo()
         cout << space << bold() << "                                            .'  " << bold_end() << endl;
         cout << space << bold() << "                                             .  " << bold_end() << endl;
     }
+    if (distribution_file() == "Ubuntu")
+    {
+        int ter_width = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-ter-size.txt", 2).c_str() );
+        string space;
+
+        int count = (ter_width / 2) - (24 / 2);
+        for (int i = 0; i < count; i++)
+        {
+            space += " ";
+        }
+
+        cout << space << bold() << "               .-.     " << bold_end() << endl;
+        cout << space << bold() << "         .-'``(   )    " << bold_end() << endl;
+        cout << space << bold() << "      ,`\\ \\    `-`.    " << bold_end() << endl;
+        cout << space << bold() << "     /   \\ '``-.   `   " << bold_end() << endl;
+        cout << space << bold() << "   .-.  ,       `___:  " << bold_end() << endl;
+        cout << space << bold() << "  (   ) :        ___   " << bold_end() << endl;
+        cout << space << bold() << "   `-`  `       ,   :  " << bold_end() << endl;
+        cout << space << bold() << "     \\   / ,..-`   ,   " << bold_end() << endl;
+        cout << space << bold() << "      `./ /    .-.`    " << bold_end() << endl;
+        cout << space << bold() << "         `-..-(   )    " << bold_end() << endl;
+        cout << space << bold() << "               `-`     " << bold_end() << endl;
+    }
 }
