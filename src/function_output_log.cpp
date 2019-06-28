@@ -144,29 +144,32 @@ void output_log()
 					address_output = address_output + " ";
 					netmask_output = netmask_output + " ";
 				}
+				/*
+					OUTPUT
+				*/
+
 				log_file << address_output << ": " << address_buffer << endl;
 				log_file << netmask_output << ": " << mask_buffer <<  endl;
-				/*
-					ADDRESS AND NETMASK OUTPUT END
-					GATEWAY OUTPUT
-				*/
-				if (static_cast<string>(ifa->ifa_name) == "lo") continue;
-				else {
-					i++;
-					interfaces[i] = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway-names.txt", i);
-					addresses[i] = open_file(home_path()+"/.systeminfo-files/systeminfo-gateway-ip.txt", i);
 
-					final_output = "Gateway (" + interfaces[i] + ")";
-					count = 27 - final_output.length();
-					for(int  x = 0; x < count; x++)
+				if (static_cast<string>(ifa->ifa_name) == "lo")
+					log_file << endl;
+				else
+				{
+					string ip_addr = get_gateway( static_cast<string>(ifa->ifa_name) );
+					string gateway_output = "Gateway (" + static_cast<string>(ifa->ifa_name) + ")";
+
+					count = 27 - gateway_output.length();
+					for(int i = 0; i < count; i++)
 					{
-						final_output = final_output + " ";
+						gateway_output += " ";
 					}
-					log_file << final_output << ": " << addresses[i] << endl;
-					/*
-						GATEWAY OUTPUT END
-					*/
+
+					log_file << gateway_output << ": " << ip_addr << endl << endl;
 				}
+
+				/*
+					OUTPUT END
+				*/
 			}
 		}
 		if (ifAddrStruct != NULL) freeifaddrs(ifAddrStruct);
@@ -176,7 +179,7 @@ void output_log()
     */
 
 	int time_gen = clock() - countdown;
-	log_file << endl << "Log generation time........: " << time_gen << " ms" << endl;
+	log_file << "Log generation time........: " << time_gen << " ms" << endl;
 
 	cout << "Done" << endl;
 	cout << "Generated date            : " << in_file_time << endl;
