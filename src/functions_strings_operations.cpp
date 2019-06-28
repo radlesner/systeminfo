@@ -146,4 +146,37 @@ void get_logo()
         cout << space << bold() << " `++:.                           `-/+/ " << bold_end() << endl;
         cout << space << bold() << " .`                                 `/ " << bold_end() << endl;
     }
+    if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
+    {
+        int ter_width = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-ter-size.txt", 2).c_str() );
+        string space;
+
+        int count = (ter_width / 2) - (49 / 2);
+        for (int i = 0; i < count; i++)
+        {
+            space += " ";
+        }
+
+        cout << space << bold() << "..............                                  " << bold_end() << endl;
+        cout << space << bold() << "            ..,;:ccc,.                          " << bold_end() << endl;
+        cout << space << bold() << "          ......''';lxO.                        " << bold_end() << endl;
+        cout << space << bold() << ".....''''..........,:ld;                        " << bold_end() << endl;
+        cout << space << bold() << "           .';;;:::;,,.x,                       " << bold_end() << endl;
+        cout << space << bold() << "      ..'''.            0Xxoc:,.  ...           " << bold_end() << endl;
+        cout << space << bold() << "  ....                ,ONkc;,;cokOdc',.         " << bold_end() << endl;
+        cout << space << bold() << " .                   OMo           ':ddo.       " << bold_end() << endl;
+        cout << space << bold() << "                    dMc               :OO;      " << bold_end() << endl;
+        cout << space << bold() << "                    0M.                 .:o.    " << bold_end() << endl;
+        cout << space << bold() << "                    ;Wd                         " << bold_end() << endl;
+        cout << space << bold() << "                     ;XO,                       " << bold_end() << endl;
+        cout << space << bold() << "                       ,d0Odlc;,..              " << bold_end() << endl;
+        cout << space << bold() << "                           ..',;:cdOOd::,.      " << bold_end() << endl;
+        cout << space << bold() << "                                    .:d;.':;.   " << bold_end() << endl;
+        cout << space << bold() << "                                       'd,  .'  " << bold_end() << endl;
+        cout << space << bold() << "                                         ;l   .." << bold_end() << endl;
+        cout << space << bold() << "                                          .o    " << bold_end() << endl;
+        cout << space << bold() << "                                            c   " << bold_end() << endl;
+        cout << space << bold() << "                                            .'  " << bold_end() << endl;
+        cout << space << bold() << "                                             .  " << bold_end() << endl;
+    }
 }
