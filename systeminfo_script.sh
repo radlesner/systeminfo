@@ -73,6 +73,7 @@ uname -m >> systeminfo-arch.txt
 getconf LONG_BIT >> systeminfo-arch.txt
 echo $USER >> systeminfo-user.txt
 echo $SHELL >> systeminfo-shell.txt
+stty size | awk '{printf $1"\n"$2"\n"}' >> systeminfo-ter-size.txt
 
 # MEMORY
 if [ -e /proc/meminfo ] ; then

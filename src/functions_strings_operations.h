@@ -13,3 +13,4 @@ using namespace std;
     string bold_end();
     string int_to_str(int n);
     string get_color(string color_input);
+    void get_logo();

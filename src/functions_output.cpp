@@ -70,6 +70,8 @@ void output_main_information()
 
 	separator("");
 	get_ip_address(0);
+
+	get_logo();
 }
 
 void output_system()

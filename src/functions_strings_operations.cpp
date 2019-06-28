@@ -87,3 +87,63 @@ string int_to_str(int n)
       ret += tmp[i];
      return ret;
 }
+
+void get_logo()
+{
+    if (distribution_file() == "ManjaroLinux" || distribution_file() == "Manjaro Linux" || distribution_file() == "Manjaro")
+    {
+        int ter_width = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-ter-size.txt", 2).c_str() );
+        string space;
+
+        int count = (ter_width / 2) - (28 / 2);
+        for (int i = 0; i < count; i++)
+        {
+            space += " ";
+        }
+
+        cout << space << bold() << "██████████████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "██████████████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "██████████████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "██████████████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "████████            ████████" << bold_end() << endl;
+        cout << space << bold() << "████████  ████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "████████  ████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "████████  ████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "████████  ████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "████████  ████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "████████  ████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "████████  ████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "████████  ████████  ████████" << bold_end() << endl;
+        cout << space << bold() << "████████  ████████  ████████" << bold_end() << endl;
+    }
+    if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
+    {
+        int ter_width = atoi( open_file(home_path() + "/.systeminfo-files/systeminfo-ter-size.txt", 2).c_str() );
+        string space;
+
+        int count = (ter_width / 2) - (40 / 2);
+        for (int i = 0; i < count; i++)
+        {
+            space += " ";
+        }
+
+        cout << "                  .o+`                 " << endl;
+        cout << "                 `ooo/                 " << endl;
+        cout << "                `+oooo:                " << endl;
+        cout << "               `+oooooo:               " << endl;
+        cout << "               -+oooooo+:              " << endl;
+        cout << "             `/:-:++oooo+:             " << endl;
+        cout << "            `/++++/+++++++:            " << endl;
+        cout << "           `/++++++++++++++:           " << endl;
+        cout << "          `/+++ooooooooooooo/`         " << endl;
+        cout << "         ./$ooosssso++osssssso+`       " << endl;
+        cout << "        .oossssso-````/ossssss+`       " << endl;
+        cout << "       -osssssso.      :ssssssso.      " << endl;
+        cout << "      :osssssss/        osssso+++.     " << endl;
+        cout << "     /ossssssss/        +ssssooo/-     " << endl;
+        cout << "   `/ossssso+/:-        -:/+osssso+-   " << endl;
+        cout << "  `+sso+:-`                 `.-/+oso:  " << endl;
+        cout << " `++:.                           `-/+/ " << endl;
+        cout << " .`                                 `/ " << endl;
+    }
+}
