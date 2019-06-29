@@ -20,30 +20,30 @@ string bold()
     string output;
     string color = open_file(home_path() + "/.systeminfo-files/systeminfo-color.txt", nr_line);
 
-    if (color == "N/A")
-    {
-        if (distribution_file() == "Raspbian GNU/Linux" || distribution_file() == "Raspbian")
-            return get_color("red");
-        else if (distribution_file() == "Debian GNU/Linux" || distribution_file() == "Debian")
-            return get_color("red");
-        else if (distribution_file() == "ManjaroLinux" || distribution_file() == "Manjaro Linux" || distribution_file() == "Manjaro")
-            return get_color("green");
-        else if (distribution_file() == "KaliLinux" || distribution_file() == "Kali Linux" || distribution_file() == "Kali")
-            return get_color("red");
-        else if (distribution_file() == "Ubuntu")
-            return get_color("yellow");
-        else if (distribution_file() == "Gentoo")
-            return get_color("purple");
-        else if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
-            return get_color("yellow");
-        else
-            return "\033[1m";
-    }
+    if (distribution_file() == "Raspbian GNU/Linux" || distribution_file() == "Raspbian")
+        return get_color("red");
+    else if (distribution_file() == "Debian GNU/Linux" || distribution_file() == "Debian")
+        return get_color("red");
+    else if (distribution_file() == "ManjaroLinux" || distribution_file() == "Manjaro Linux" || distribution_file() == "Manjaro")
+        return get_color("green");
+    else if (distribution_file() == "KaliLinux" || distribution_file() == "Kali Linux" || distribution_file() == "Kali")
+        return get_color("red");
+    else if (distribution_file() == "Ubuntu")
+        return get_color("yellow");
+    else if (distribution_file() == "Gentoo")
+        return get_color("purple");
+    else if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
+        return get_color("cyan");
     else
+        return "\033[1m";
+
+    if (color == "N/A")
     {
         output = "\033[" + color + "m";
         return output;
     }
+
+    return "\033[1m";
 }
 
 string bold_end()
