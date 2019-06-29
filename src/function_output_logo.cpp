@@ -208,6 +208,40 @@ void get_logo_output()
         cout << bold() << "          `\"Y$b._           " << bold_end() << endl;
         cout << bold() << "              `\"\"\"          " << bold_end() << endl;
     }
+    else if (distribution_file() == "Gentoo")
+    {
+        string shell;
+        shell = getenv ("SHELL");
+
+        struct utsname buffer;
+
+        if (uname(&buffer) != 0)
+        {
+            perror("uname");
+            exit(EXIT_FAILURE);
+        }
+
+        cout << get_color("purple") << "         -/oyddmdhs+:.              Model name" << get_color("reset") << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << get_color("purple") << "     -o" << get_color("white") << "dNMMMMMMMMNNmhy+" << get_color("purple") << "-`           Distribution" << get_color("reset") << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << get_color("purple") << "   -y" << get_color("white") << "NMMMMMMMMMMMNNNmmdhy" << get_color("purple") << "+-         Kernel version" << get_color("reset") << ": " << buffer.release << endl;
+        cout << get_color("purple") << " `o" << get_color("white") << "mMMMMMMMMMMMMNmdmmmmddhhy" << get_color("purple") << "/`      System architecture" << get_color("reset") << ": " << architecture() << endl;
+        cout << get_color("purple") << " om" << get_color("white") << "MMMMMMMMMMMN" << get_color("purple") << "hhyyyo" << get_color("white") << "hmdddhhhd" << get_color("purple") << "o`    Uptime" << get_color("reset") << ": " << uptime_file() << endl;
+        cout << get_color("purple") << ".y" << get_color("white") << "dMMMMMMMMMMd" << get_color("purple") << "hs++so/s" << get_color("white") << "mdddhhhhdm" << get_color("purple") << "+`  Shell" << get_color("reset") << ": " << architecture() << endl;
+        cout << get_color("purple") << " oy" << get_color("white") << "hdmNMMMMMMMN" << get_color("purple") << "dyooy" << get_color("white") << "dmddddhhhhyhN" << get_color("purple") << "d. " << get_color("reset");
+        mem_file(1);
+        cout << get_color("purple") << "  :o" << get_color("white") << "yhhdNNMMMMMMMNNNmmdddhhhhhyym" << get_color("purple") << "Mh " << get_color("reset");
+        swap_file(1);
+        cout << get_color("purple") << "    .:" << get_color("white") << "+sydNMMMMMNNNmmmdddhhhhhhmM" << get_color("purple") << "my CPU" << get_color("reset") << ": " << cpu_file() << endl;
+        cout << get_color("purple") << "       /m" << get_color("white") << "MMMMMMNNNmmmdddhhhhhmMNh" << get_color("purple") << "s: Cores/theards" << get_color("reset") << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << get_color("purple") << "    `o" << get_color("white") << "NMMMMMMMNNNmmmddddhhdmMNhs" << get_color("purple") << "+`  CPU Frequency" << get_color("reset") << ": " << cpu_frequency() << " MHz" << endl;
+        cout << get_color("purple") << "  `s" << get_color("white") << "NMMMMMMMMNNNmmmdddddmNMmhs" << get_color("purple") << "/.    Max Frequency" << get_color("reset") << ": " << cpu_freq_max() << " MHz" << endl;
+        cout << get_color("purple") << " /N" << get_color("white") << "MMMMMMMMNNNNmmmdddmNMNdso" << get_color("purple") << ":`      Min Frequency" << get_color("reset") << ": " << cpu_freq_min() << " MHz" << endl;
+        cout << get_color("purple") << "+M" << get_color("white") << "MMMMMMNNNNNmmmmdmNMNdso" << get_color("purple") << "/-         Fan speed" << get_color("reset") << ": " << fan_speed() << endl;
+        cout << get_color("purple") << "yM" << get_color("white") << "MNNNNNNNmmmmmNNMmhs+/" << get_color("purple") << "-`           " << endl;
+        cout << get_color("purple") << "/h" << get_color("white") << "MMNNNNNNNNMNdhs++/" << get_color("purple") << "-`              " << endl;
+        cout << get_color("purple") << "`/" << get_color("white") << "ohdmmddhys+++/:" << get_color("purple") << ".`                 " << endl;
+        cout << get_color("purple") << "  `-//////:--.                                                                               " << endl;
+    }
     else
     {
         cout << ">>> No logo for this distribution" << endl;
