@@ -30,20 +30,17 @@ string bold()
         return get_color("red");
     else if (distribution_file() == "Ubuntu")
         return get_color("yellow");
-    else if (distribution_file() == "Gentoo")
+    else if (distribution_file() == "Gentoo" || distribution_file() == "Gentoo/Linux")
         return get_color("purple");
     else if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
         return get_color("cyan");
-    else
-        return "\033[1m";
-
-    if (color == "N/A")
+    else if (color == "N/A")
     {
         output = "\033[" + color + "m";
         return output;
     }
-
-    return "\033[1m";
+    else
+        return "\033[1m";
 }
 
 string bold_end()

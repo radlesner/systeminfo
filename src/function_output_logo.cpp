@@ -208,7 +208,7 @@ void get_logo_output()
         cout << bold() << "          `\"Y$b._           " << bold_end() << endl;
         cout << bold() << "              `\"\"\"          " << bold_end() << endl;
     }
-    else if (distribution_file() == "Gentoo")
+    else if (distribution_file() == "Gentoo" || distribution_file() == "Gentoo/Linux")
     {
         string shell;
         shell = getenv ("SHELL");
