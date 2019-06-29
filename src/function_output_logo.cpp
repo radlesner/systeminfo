@@ -68,7 +68,7 @@ void get_logo_output()
         cout << bold() << "        ./$ooosssso++osssssso+`       Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
         cout << bold() << "       .oossssso-````/ossssss+`       CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
         cout << bold() << "      -osssssso.      :ssssssso.      Max Frequency" << bold_end() << ": " << cpu_freq_max() << " MHz" << endl;
-        cout << bold() << "      :osssssss/        osssso+++.    Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
+        cout << bold() << "      :osssssss/       osssso+++.     Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
         cout << bold() << "    /ossssssss/        +ssssooo/-     Fan speed" << bold_end() << ": " << fan_speed() << endl;
         cout << bold() << "  `/ossssso+/:-        -:/+osssso+-   " << bold_end() << endl;
         cout << bold() << " `+sso+:-`                 `.-/+oso:  " << bold_end() << endl;
