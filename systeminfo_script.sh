@@ -62,7 +62,7 @@ if [ -e /etc/lsb-release ] ; then
     lsb_release -r | awk {'print $2'} >> systeminfo-release.txt
     lsb_release -c | awk {'print $2'} >> systeminfo-codename.txt
 else
-    awk -F '=' -F '"' '/NAME/ {printf $2 "\n"}' /etc/os-release | sort -n >> systeminfo-distro.txt
+    cat /etc/os-release | grep "NAME" | sort -n | awk -F '=' -F '"' '{print $2}'
 fi
 
 if [ -e /etc/os-release ] ; then
