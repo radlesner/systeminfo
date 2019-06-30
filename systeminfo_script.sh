@@ -183,7 +183,7 @@ if [ -e /etc/lsb-release ] ; then
 fi
 
 if [ -e /etc/os-release ] ; then
-    awk -F '=' -F '"' '/COLOR/ {printf $2 "\n"}' /etc/os-release >> systeminfo-color.txt
+    cat /etc/os-release | grep "COLOR" | tr -d '"' | awk -F '=' '{print $2}' >> systeminfo-color.txt
 fi
 
 uname -m >> systeminfo-arch.txt
