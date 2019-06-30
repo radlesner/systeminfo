@@ -34,6 +34,8 @@ string bold()
         return get_color("purple");
     else if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
         return get_color("cyan");
+    else if (distribution_file() == "Fedora")
+        return get_color("blue");
     else if (color == "N/A")
     {
         output = "\033[" + color + "m";

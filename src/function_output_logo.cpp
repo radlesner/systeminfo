@@ -11,8 +11,6 @@ using namespace std;
 
 void get_logo_output()
 {
-    if (distribution_file() == "ManjaroLinux" || distribution_file() == "Manjaro Linux" || distribution_file() == "Manjaro")
-    {
         string shell;
         shell = getenv ("SHELL");
 
@@ -24,6 +22,8 @@ void get_logo_output()
             exit(EXIT_FAILURE);
         }
 
+    if (distribution_file() == "ManjaroLinux" || distribution_file() == "Manjaro Linux" || distribution_file() == "Manjaro")
+    {
         cout << bold() << "██████████████████  ████████  Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
         cout << bold() << "██████████████████  ████████  Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
         cout << bold() << "██████████████████  ████████  Kernel version" << bold_end() << ": " << buffer.release << endl;
@@ -43,17 +43,6 @@ void get_logo_output()
     }
     else if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
     {
-        string shell;
-        shell = getenv ("SHELL");
-
-        struct utsname buffer;
-
-        if (uname(&buffer) != 0)
-        {
-            perror("uname");
-            exit(EXIT_FAILURE);
-        }
-
         cout << bold() << "                 .o+`                 Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
         cout << bold() << "                `ooo/                 Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
         cout << bold() << "               `+oooo:                Kernel version" << bold_end() << ": " << buffer.release << endl;
@@ -77,17 +66,6 @@ void get_logo_output()
     }
     else if (distribution_file() == "KaliLinux" || distribution_file() == "Kali Linux" || distribution_file() == "Kali")
     {
-        string shell;
-        shell = getenv ("SHELL");
-
-        struct utsname buffer;
-
-        if (uname(&buffer) != 0)
-        {
-            perror("uname");
-            exit(EXIT_FAILURE);
-        }
-
         cout << bold() << "                  /                     Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
         cout << bold() << "              %.,&                      Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
         cout << bold() << "            (&.&%  %&,&&                Kernel version" << bold_end() << ": " << buffer.release << endl;
@@ -113,17 +91,6 @@ void get_logo_output()
     }
     else if (distribution_file() == "Ubuntu")
     {
-        string shell;
-        shell = getenv ("SHELL");
-
-        struct utsname buffer;
-
-        if (uname(&buffer) != 0)
-        {
-            perror("uname");
-            exit(EXIT_FAILURE);
-        }
-
         cout << bold() << "               .-.     " << bold_end() << endl;
         cout << bold() << "         .-'``(   )    " << bold_end() << endl;
         cout << bold() << "      ,`\\ \\    `-`.    " << bold_end() << endl;
@@ -138,17 +105,6 @@ void get_logo_output()
     }
     else if (distribution_file() == "Raspbian GNU/Linux" || distribution_file() == "Raspbian")
     {
-        string shell;
-        shell = getenv ("SHELL");
-
-        struct utsname buffer;
-
-        if (uname(&buffer) != 0)
-        {
-            perror("uname");
-            exit(EXIT_FAILURE);
-        }
-
         cout << get_color("green") << "  `.::///+:/-.        --///+//-:``  " << get_color("reset") << bold() << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
         cout << get_color("green") << " `+oooooooooooo:   `+oooooooooooo:  " << get_color("reset") << bold() << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
         cout << get_color("green") << "  /oooo++//ooooo:  ooooo+//+ooooo.  " << get_color("reset") << bold() << "Kernel version" << bold_end() << ": " << buffer.release << endl;
@@ -177,17 +133,6 @@ void get_logo_output()
     }
     else if (distribution_file() == "Debian GNU/Linux" || distribution_file() == "Debian")
     {
-        string shell;
-        shell = getenv ("SHELL");
-
-        struct utsname buffer;
-
-        if (uname(&buffer) != 0)
-        {
-            perror("uname");
-            exit(EXIT_FAILURE);
-        }
-
         cout << bold() << "       _,met$$$$$gg.        Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
         cout << bold() << "    ,g$$$$$$$$$$$$$$$P.     Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
         cout << bold() << "  ,g$$P\"     \"\"\"Y$$.\".      Kernel version" << bold_end() << ": " << buffer.release << endl;
@@ -210,17 +155,6 @@ void get_logo_output()
     }
     else if (distribution_file() == "Gentoo" || distribution_file() == "Gentoo/Linux")
     {
-        string shell;
-        shell = getenv ("SHELL");
-
-        struct utsname buffer;
-
-        if (uname(&buffer) != 0)
-        {
-            perror("uname");
-            exit(EXIT_FAILURE);
-        }
-
         cout << get_color("purple") << "         -/oyddmdhs+:.              Model name" << get_color("reset") << ": " << motherboard_manufacturer() << " " << model() << endl;
         cout << get_color("purple") << "     -o" << get_color("white") << "dNMMMMMMMMNNmhy+" << get_color("purple") << "-`           Distribution" << get_color("reset") << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
         cout << get_color("purple") << "   -y" << get_color("white") << "NMMMMMMMMMMMNNNmmdhy" << get_color("purple") << "+-         Kernel version" << get_color("reset") << ": " << buffer.release << endl;
@@ -237,10 +171,32 @@ void get_logo_output()
         cout << get_color("purple") << "  `s" << get_color("white") << "NMMMMMMMMNNNmmmdddddmNMmhs" << get_color("purple") << "/.    Max Frequency" << get_color("reset") << ": " << cpu_freq_max() << " MHz" << endl;
         cout << get_color("purple") << " /N" << get_color("white") << "MMMMMMMMNNNNmmmdddmNMNdso" << get_color("purple") << ":`      Min Frequency" << get_color("reset") << ": " << cpu_freq_min() << " MHz" << endl;
         cout << get_color("purple") << "+M" << get_color("white") << "MMMMMMNNNNNmmmmdmNMNdso" << get_color("purple") << "/-         Fan speed" << get_color("reset") << ": " << fan_speed() << endl;
-        cout << get_color("purple") << "yM" << get_color("white") << "MNNNNNNNmmmmmNNMmhs+/" << get_color("purple") << "-`           " << endl;
-        cout << get_color("purple") << "/h" << get_color("white") << "MMNNNNNNNNMNdhs++/" << get_color("purple") << "-`              " << endl;
-        cout << get_color("purple") << "`/" << get_color("white") << "ohdmmddhys+++/:" << get_color("purple") << ".`                 " << endl;
-        cout << get_color("purple") << "  `-//////:--.                                                                               " << endl;
+        cout << get_color("purple") << "yM" << get_color("white") << "MNNNNNNNmmmmmNNMmhs+/" << get_color("purple") << "-`" << endl;
+        cout << get_color("purple") << "/h" << get_color("white") << "MMNNNNNNNNMNdhs++/" << get_color("purple") << "-`" << endl;
+        cout << get_color("purple") << "`/" << get_color("white") << "ohdmmddhys+++/:" << get_color("purple") << ".`" << endl;
+        cout << get_color("purple") << "  `-//////:--." << endl;
+    }
+    else if (distribution_file() == "Gentoo" || distribution_file() == "Gentoo/Linux")
+    {
+        cout << get_color("blue") << "          /:-------------:\\        Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << get_color("blue") << "       :-------------------::      Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << get_color("blue") << "     :-----------" << get_color("white") << "/shhOHbmp" << get_color("blue") << "---:\\    Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << get_color("blue") << "   /-----------" << get_color("white") << "omMMMNNNMMD  " << get_color("blue") << "---:   System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("blue") << "  :-----------" << get_color("white") << "sMMMMNMNMP" << get_color("blue") << ".    ---:  Shell" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("blue") << " :-----------" << get_color("white") << ":MMMdP" << get_color("blue") << "-------    ---\\ Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << get_color("blue") << ",------------" << get_color("white") << ":MMMd" << get_color("blue") << "--------    ---: " << bold_end();
+        mem_file(1);
+        cout << get_color("blue") << ":------------" << get_color("white") << ":MMMd" << get_color("blue") << "-------    .---: " << bold_end();
+        swap_file(1);
+        cout << get_color("blue") << ":----    " << get_color("white") << "oNMMMMMMMMMNho" << get_color("blue") << "     .----: CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << get_color("blue") << ":--     ." << get_color("white") << "+shhhMMMmhhy++" << get_color("blue") << "   .------/ Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << get_color("blue") << ":-    -------" << get_color("white") << ":MMMd" << get_color("blue") << "--------------:  CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
+        cout << get_color("blue") << ":-   --------" << get_color("white") << "/MMMd" << get_color("blue") << "-------------;   Max Frequency" << bold_end() << ": " << cpu_freq_max() << " MHz" << endl;
+        cout << get_color("blue") << ":-    ------" << get_color("white") << "/hMMMy" << get_color("blue") << "------------:    Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
+        cout << get_color("blue") << ":--" << get_color("white") << " :dMNdhhdNMMNo" << get_color("blue") << "------------;     Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << get_color("blue") << ":---" << get_color("white") << ":sdNMMMMNds:" << get_color("blue") << "------------:      " << get_color("reset") << endl;
+        cout << get_color("blue") << ":------" << get_color("white") << ":://:" << get_color("blue") << "-------------::        " << get_color("reset") << endl;
+        cout << get_color("blue") << ":---------------------://                    " << get_color("reset") << endl;
     }
     else
     {
