@@ -37,9 +37,9 @@ void get_logo_output()
         cout << bold() << "████████  ████████  ████████  CPU" << bold_end() << ": " << cpu_file() << endl;
         cout << bold() << "████████  ████████  ████████  Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
         cout << bold() << "████████  ████████  ████████  CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << bold() << "████████  ████████  ████████  Max Frequency" << bold_end() << ": " << cpu_freq_max() << " MHz" << endl;
-        cout << bold() << "████████  ████████  ████████  Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
         cout << bold() << "████████  ████████  ████████  Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << "████████  ████████  ████████  " << bold_end() << endl;
+        cout << bold() << "████████  ████████  ████████  " << bold_end() << endl;
     }
     else if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
     {
@@ -56,9 +56,9 @@ void get_logo_output()
         cout << bold() << "         `/+++ooooooooooooo/`         CPU" << bold_end() << ": " << cpu_file() << endl;
         cout << bold() << "        ./ooosssso++osssssso+`        Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
         cout << bold() << "       .oossssso-````/ossssss+`       CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << bold() << "      -osssssso.      :ssssssso.      Max Frequency" << bold_end() << ": " << cpu_freq_max() << " MHz" << endl;
-        cout << bold() << "      :osssssss/       osssso+++.     Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
-        cout << bold() << "    /ossssssss/        +ssssooo/-     Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << "      -osssssso.      :ssssssso.      Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << "      :osssssss/       osssso+++.     " << bold_end() << endl;
+        cout << bold() << "    /ossssssss/        +ssssooo/-     " << bold_end() << endl;
         cout << bold() << "  `/ossssso+/:-        -:/+osssso+-   " << bold_end() << endl;
         cout << bold() << " `+sso+:-`                 `.-/+oso:  " << bold_end() << endl;
         cout << bold() << "`++:.                           `-/+/ " << bold_end() << endl;
@@ -80,8 +80,8 @@ void get_logo_output()
         cout << bold() << ".&&&                  .&&&&%******,,.   Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
         cout << bold() << " (&&%                 %&&&%******,,,,,  Fan speed" << bold_end() << ": " << fan_speed() << endl;
         cout << bold() << "    ,            .%&&&&*******,,,,,,,.  CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << bold() << "              #&&&%********,,,,,,,,,,   Max Frequency" << bold_end() << ": " << cpu_freq_max() << " MHz" << endl;
-        cout << bold() << "           ,&&(**********,,,,,,,,,,,    Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
+        cout << bold() << "              #&&&%********,,,,,,,,,,   Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << "           ,&&(**********,,,,,,,,,,,    " << bold_end() << endl;
         cout << bold() << "          &&**********,,,,,,,,,,,,,     " << bold_end() << endl;
         cout << bold() << "         (/********,,,,,,,,,,,,,,.      " << bold_end() << endl;
         cout << bold() << "         #******,,,,,,,,,,,,,,,.        " << bold_end() << endl;
@@ -118,9 +118,9 @@ void get_logo_output()
         cout << bold() << "    -:::-`   .:::::::-`  `-:::-     CPU" << bold_end() << ": " << cpu_file() << endl;
         cout << bold() << "   `::.  `.--.`  `` `.---.``.::`    Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
         cout << bold() << "       .::::::::`  -::::::::` `     CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << bold() << " .::` .:::::::::- `::::::::::``::.  Max Frequency" << bold_end() << ": " << cpu_freq_max() << " MHz" << endl;
-        cout << bold() << "-:::` ::::::::::.  ::::::::::.`:::- Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
-        cout << bold() << "::::  -::::::::.   `-::::::::  :::: Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << " .::` .:::::::::- `::::::::::``::.  Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << "-:::` ::::::::::.  ::::::::::.`:::- " << bold_end() << endl;
+        cout << bold() << "::::  -::::::::.   `-::::::::  :::: " << bold_end() << endl;
         cout << bold() << "-::-   .-:::-.``....``.-::-.   -::- " << bold_end() << endl;
         cout << bold() << " .. ``       .::::::::.     `..`..  " << bold_end() << endl;
         cout << bold() << "   -:::-`   -::::::::::`  .:::::`   " << bold_end() << endl;
@@ -146,9 +146,9 @@ void get_logo_output()
         cout << bold() << " $$;      Y$b._   _,d$P'    CPU" << bold_end() << ": " << cpu_file() << endl;
         cout << bold() << " Y$$.    `.`\"Y$$$$P\"'       Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
         cout << bold() << " `$$b      \"-.__            CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << bold() << "  `Y$$                      Max Frequency" << bold_end() << ": " << cpu_freq_max() << " MHz" << endl;
-        cout << bold() << "   `Y$$.                    Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
-        cout << bold() << "     `$$b.                  Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << "  `Y$$                      Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << "   `Y$$.                    " << bold_end() << endl;
+        cout << bold() << "     `$$b.                  " << bold_end() << endl;
         cout << bold() << "       `Y$$b.               " << bold_end() << endl;
         cout << bold() << "          `\"Y$b._           " << bold_end() << endl;
         cout << bold() << "              `\"\"\"          " << bold_end() << endl;
@@ -168,9 +168,9 @@ void get_logo_output()
         cout << get_color("purple") << "    .:" << get_color("white") << "+sydNMMMMMNNNmmmdddhhhhhhmM" << get_color("purple") << "my CPU" << get_color("reset") << ": " << cpu_file() << endl;
         cout << get_color("purple") << "       /m" << get_color("white") << "MMMMMMNNNmmmdddhhhhhmMNh" << get_color("purple") << "s: Cores/theards" << get_color("reset") << ": " << cores_file() << "/" << theards_file() << endl;
         cout << get_color("purple") << "    `o" << get_color("white") << "NMMMMMMMNNNmmmddddhhdmMNhs" << get_color("purple") << "+`  CPU Frequency" << get_color("reset") << ": " << cpu_frequency() << " MHz" << endl;
-        cout << get_color("purple") << "  `s" << get_color("white") << "NMMMMMMMMNNNmmmdddddmNMmhs" << get_color("purple") << "/.    Max Frequency" << get_color("reset") << ": " << cpu_freq_max() << " MHz" << endl;
-        cout << get_color("purple") << " /N" << get_color("white") << "MMMMMMMMNNNNmmmdddmNMNdso" << get_color("purple") << ":`      Min Frequency" << get_color("reset") << ": " << cpu_freq_min() << " MHz" << endl;
-        cout << get_color("purple") << "+M" << get_color("white") << "MMMMMMNNNNNmmmmdmNMNdso" << get_color("purple") << "/-         Fan speed" << get_color("reset") << ": " << fan_speed() << endl;
+        cout << get_color("purple") << "  `s" << get_color("white") << "NMMMMMMMMNNNmmmdddddmNMmhs" << get_color("purple") << "/.    Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << get_color("purple") << " /N" << get_color("white") << "MMMMMMMMNNNNmmmdddmNMNdso" << get_color("purple") << ":`" << endl;
+        cout << get_color("purple") << "+M" << get_color("white") << "MMMMMMNNNNNmmmmdmNMNdso" << get_color("purple") << "/-" << endl;
         cout << get_color("purple") << "yM" << get_color("white") << "MNNNNNNNmmmmmNNMmhs+/" << get_color("purple") << "-`" << endl;
         cout << get_color("purple") << "/h" << get_color("white") << "MMNNNNNNNNMNdhs++/" << get_color("purple") << "-`" << endl;
         cout << get_color("purple") << "`/" << get_color("white") << "ohdmmddhys+++/:" << get_color("purple") << ".`" << endl;
@@ -191,9 +191,9 @@ void get_logo_output()
         cout << get_color("blue") << ":----    " << get_color("white") << "oNMMMMMMMMMNho" << get_color("blue") << "     .----: CPU" << bold_end() << ": " << cpu_file() << endl;
         cout << get_color("blue") << ":--     ." << get_color("white") << "+shhhMMMmhhy++" << get_color("blue") << "   .------/ Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
         cout << get_color("blue") << ":-    -------" << get_color("white") << ":MMMd" << get_color("blue") << "--------------:  CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << get_color("blue") << ":-   --------" << get_color("white") << "/MMMd" << get_color("blue") << "-------------;   Max Frequency" << bold_end() << ": " << cpu_freq_max() << " MHz" << endl;
-        cout << get_color("blue") << ":-    ------" << get_color("white") << "/hMMMy" << get_color("blue") << "------------:    Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
-        cout << get_color("blue") << ":--" << get_color("white") << " :dMNdhhdNMMNo" << get_color("blue") << "------------;     Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << get_color("blue") << ":-   --------" << get_color("white") << "/MMMd" << get_color("blue") << "-------------;   Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << get_color("blue") << ":-    ------" << get_color("white") << "/hMMMy" << get_color("blue") << "------------:    " << get_color("reset") << endl;
+        cout << get_color("blue") << ":--" << get_color("white") << " :dMNdhhdNMMNo" << get_color("blue") << "------------;     " << get_color("reset") << endl;
         cout << get_color("blue") << ":---" << get_color("white") << ":sdNMMMMNds:" << get_color("blue") << "------------:      " << get_color("reset") << endl;
         cout << get_color("blue") << ":------" << get_color("white") << ":://:" << get_color("blue") << "-------------::        " << get_color("reset") << endl;
         cout << get_color("blue") << ":---------------------://                    " << get_color("reset") << endl;
