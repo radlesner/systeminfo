@@ -176,7 +176,7 @@ void get_logo_output()
         cout << get_color("purple") << "`/" << get_color("white") << "ohdmmddhys+++/:" << get_color("purple") << ".`" << endl;
         cout << get_color("purple") << "  `-//////:--." << endl;
     }
-    else if (distribution_file() == "Gentoo" || distribution_file() == "Gentoo/Linux")
+    else if (distribution_file() == "Fedora")
     {
         cout << get_color("blue") << "          /:-------------:\\        Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
         cout << get_color("blue") << "       :-------------------::      Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
