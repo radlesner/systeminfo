@@ -28,8 +28,8 @@ void get_logo_output()
         cout << bold() << "██████████████████  ████████  Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
         cout << bold() << "██████████████████  ████████  Kernel version" << bold_end() << ": " << buffer.release << endl;
         cout << bold() << "██████████████████  ████████  System architecture" << bold_end() << ": " << architecture() << endl;
-        cout << bold() << "████████            ████████  Uptime" << bold_end() << ": " << uptime_file() << endl;
-        cout << bold() << "████████  ████████  ████████  Shell" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << "████████            ████████  Shell" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << "████████  ████████  ████████  Uptime" << bold_end() << ": " << uptime_file() << endl;
         cout << bold() << "████████  ████████  ████████  " << bold_end();
         mem_file(1);
         cout << bold() << "████████  ████████  ████████  " << bold_end();
@@ -198,9 +198,50 @@ void get_logo_output()
         cout << get_color("blue") << ":------" << get_color("white") << ":://:" << get_color("blue") << "-------------::        " << get_color("reset") << endl;
         cout << get_color("blue") << ":---------------------://                    " << get_color("reset") << endl;
     }
+    else if (distribution_file() == "Android")
+    {
+        cout << get_color("green") << "     ╲ ▁▂▂▂▁ ╱      " << get_color("reset") << bold() << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << get_color("green") << "     ▄███████▄      " << get_color("reset") << bold() << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << get_color("green") << "    ▄██ ███ ██▄     " << get_color("reset") << bold() << "Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << get_color("green") << "   ▄███████████▄    " << get_color("reset") << bold() << "System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("green") << "▄█ ▄▄▄▄▄▄▄▄▄▄▄▄▄ █▄ " << get_color("reset") << bold() << "Shell" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("green") << "██ █████████████ ██ " << get_color("reset") << bold() << "Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << get_color("green") << "██ █████████████ ██ " << get_color("reset");
+        mem_file(1);
+        cout << get_color("green") << "██ █████████████ ██ " << get_color("reset");
+        swap_file(1);
+        cout << get_color("green") << "██ █████████████ ██ " << get_color("reset") << bold() << "CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << get_color("green") << "   █████████████    " << get_color("reset") << bold() << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << get_color("green") << "    ███████████     " << get_color("reset") << bold() << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
+        cout << get_color("green") << "     ██     ██      " << get_color("reset") << bold() << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << get_color("green") << "     ██     ██      " << get_color("reset") << endl;
+    }
     else
     {
-        cout << ">>> No logo for this distribution" << endl;
+        cout << bold() << "      ???????      Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << bold() << "    ??:::::::??    Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << bold() << "  ??:::::::::::?   Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << bold() << " ?:::::????:::::?  System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << " ?::::?    ?::::?  Shell" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << " ?::::?     ?::::? Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << bold() << " ??????     ?::::? " << bold_end();
+        mem_file(1);
+        cout << bold() << "           ?::::?  " << bold_end();
+        swap_file(1);
+        cout << bold() << "          ?::::?   CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << bold() << "         ?::::?    Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << bold() << "        ?::::?     CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
+        cout << bold() << "       ?::::?      Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << "       ?::::?      " << bold_end() << endl;
+        cout << bold() << "       ??::??      " << bold_end() << endl;
+        cout << bold() << "        ????       " << bold_end() << endl;
+        cout << bold() << "                   " << bold_end() << endl;
+        cout << bold() << "        ???        " << bold_end() << endl;
+        cout << bold() << "       ??:??       " << bold_end() << endl;
+        cout << bold() << "        ???        " << bold_end() << endl;
+        cout << bold() << "                   " << bold_end() << endl;
+        cout << bold() << "    No logo for    " << bold_end() << endl;
+        cout << bold() << " this distribution " << bold_end() << endl;
     }
 
 }
