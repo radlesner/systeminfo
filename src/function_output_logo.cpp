@@ -79,8 +79,6 @@ void get_logo_output()
         logo_output[16] = "`++:.                           `-/+/ ";
         logo_output[17] = ".`                                 `/ ";
 
-
-
         cout << bold() << logo_output[0] << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
         cout << bold() << logo_output[1] << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
         cout << bold() << logo_output[2] << "Kernel version" << bold_end() << ": " << buffer.release << endl;
@@ -278,20 +276,33 @@ void get_logo_output()
     }
     else if (distribution_file() == "Linux" || distribution_file() == "linux")
     {
-        cout << get_color("dark_grey") << "        #####         Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
-        cout << get_color("dark_grey") << "       #######        Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
-        cout << get_color("dark_grey") << "       ##" << get_color("white") << "O" << get_color("dark_grey") << "#" << get_color("white") << "O" << get_color("dark_grey") << "##        Kernel version" << bold_end() << ": " << buffer.release << endl;
-        cout << get_color("dark_grey") << "       #" << get_color("yellow") << "#####" << get_color("dark_grey") << "#        System architecture" << bold_end() << ": " << architecture() << endl;
-        cout << get_color("dark_grey") << "     ##" << get_color("white") << "##" << get_color("yellow") << "###" << get_color("white") << "##" << get_color("dark_grey") << "##      Shell" << bold_end() << ": " << architecture() << endl;
-        cout << get_color("dark_grey") << "    #" << get_color("white") << "##########" << get_color("dark_grey") << "##     Uptime" << bold_end() << ": " << uptime_file() << endl;
-        cout << get_color("dark_grey") << "   #" << get_color("white") << "############" << get_color("dark_grey") << "##    " << get_color("reset");
+        logo_output[0] = get_color("dark_grey") + "        #####          ";
+        logo_output[1] = get_color("dark_grey") + "       #######         ";
+        logo_output[2] = get_color("dark_grey") + "       ##" + get_color("white") + "O" + get_color("dark_grey") + "#" + get_color("white") + "O" + get_color("dark_grey") + "##         ";
+        logo_output[3] = get_color("dark_grey") + "       #" + get_color("yellow") + "#####" + get_color("dark_grey") + "#         ";
+        logo_output[4] = get_color("dark_grey") + "     ##" + get_color("white") + "##" + get_color("yellow") + "###" + get_color("white") + "##" + get_color("dark_grey") + "##       ";
+        logo_output[5] = get_color("dark_grey") + "    #" + get_color("white") + "##########" + get_color("dark_grey") + "##      ";
+        logo_output[6] = get_color("dark_grey") + "   #" + get_color("white") + "############" + get_color("dark_grey") + "##     ";
+        logo_output[7] = get_color("dark_grey") + "   #" + get_color("white") + "############" + get_color("dark_grey") + "###    ";
+        logo_output[8] = get_color("yellow") + "  ##" + get_color("dark_grey") + "#" + get_color("white") + "###########" + get_color("dark_grey") + "##" + get_color("yellow") + "#    ";
+        logo_output[9] = get_color("yellow") + "######" + get_color("dark_grey") + "#" + get_color("white") + "#######" + get_color("dark_grey") + "#" + get_color("yellow") + "######  ";
+        logo_output[10] = get_color("yellow") + "#######" + get_color("dark_grey") + "#" + get_color("white") + "#####" + get_color("dark_grey") + "#" + get_color("yellow") + "#######  ";
+        logo_output[11] = get_color("yellow") + "  #####" + get_color("dark_grey") + "#######" + get_color("yellow") + "#####";
+
+        cout << logo_output[0]  << bold() << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << logo_output[1]  << bold() << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << logo_output[2]  << bold() << "Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << logo_output[3]  << bold() << "System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << logo_output[4]  << bold() << "Shell" << bold_end() << ": " << architecture() << endl;
+        cout << logo_output[5]  << bold() << "Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << logo_output[6]  << get_color("reset");
         mem_file(1);
-        cout << get_color("dark_grey") << "   #" << get_color("white") << "############" << get_color("dark_grey") << "###   " << get_color("reset");
+        cout << logo_output[7]  << get_color("reset");
         swap_file(1);
-        cout << get_color("yellow") << "  ##" << get_color("dark_grey") << "#" << get_color("white") << "###########" << get_color("dark_grey") << "##" << get_color("yellow") << "#   " << get_color("dark_grey") << "CPU" << bold_end() << ": " << cpu_file() << endl;
-        cout << get_color("yellow") << "######" << get_color("dark_grey") << "#" << get_color("white") << "#######" << get_color("dark_grey") << "#" << get_color("yellow") << "###### " << get_color("dark_grey") << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
-        cout << get_color("yellow") << "#######" << get_color("dark_grey") << "#" << get_color("white") << "#####" << get_color("dark_grey") << "#" << get_color("yellow") << "####### " << get_color("dark_grey") << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << get_color("yellow") << "  #####" << get_color("dark_grey") << "#######" << get_color("yellow") << "#####   "                                                             << get_color("dark_grey") << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << logo_output[8]  << bold() << "CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << logo_output[9]  << bold() << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << logo_output[10] << bold() << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << logo_output[11] << get_color("reset") << endl;
     }
     else
     {
