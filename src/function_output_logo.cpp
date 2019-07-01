@@ -11,58 +11,96 @@ using namespace std;
 
 void get_logo_output()
 {
-        string shell;
-        shell = getenv ("SHELL");
+    string logo_output[32];
+    string shell;
+    shell = getenv ("SHELL");
 
-        struct utsname buffer;
+    struct utsname buffer;
 
-        if (uname(&buffer) != 0)
-        {
-            perror("uname");
-            exit(EXIT_FAILURE);
-        }
+    if (uname(&buffer) != 0)
+    {
+        perror("uname");
+        exit(EXIT_FAILURE);
+    }
 
     if (distribution_file() == "ManjaroLinux" || distribution_file() == "Manjaro Linux" || distribution_file() == "Manjaro")
     {
-        cout << bold() << "██████████████████  ████████  Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
-        cout << bold() << "██████████████████  ████████  Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
-        cout << bold() << "██████████████████  ████████  Kernel version" << bold_end() << ": " << buffer.release << endl;
-        cout << bold() << "██████████████████  ████████  System architecture" << bold_end() << ": " << architecture() << endl;
-        cout << bold() << "████████            ████████  Shell" << bold_end() << ": " << architecture() << endl;
-        cout << bold() << "████████  ████████  ████████  Uptime" << bold_end() << ": " << uptime_file() << endl;
-        cout << bold() << "████████  ████████  ████████  " << bold_end();
+        logo_output[0]  = "██████████████████  ████████";
+        logo_output[1]  = "██████████████████  ████████";
+        logo_output[2]  = "██████████████████  ████████";
+        logo_output[3]  = "██████████████████  ████████";
+        logo_output[4]  = "████████            ████████";
+        logo_output[5]  = "████████  ████████  ████████";
+        logo_output[6]  = "████████  ████████  ████████";
+        logo_output[7]  = "████████  ████████  ████████";
+        logo_output[8]  = "████████  ████████  ████████";
+        logo_output[9]  = "████████  ████████  ████████";
+        logo_output[10] = "████████  ████████  ████████";
+        logo_output[11] = "████████  ████████  ████████";
+        logo_output[12] = "████████  ████████  ████████";
+        logo_output[13] = "████████  ████████  ████████";
+
+
+        cout << bold() << logo_output[0] << "  Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << bold() << logo_output[1] << "  Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << bold() << logo_output[2] << "  Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << bold() << logo_output[3] << "  System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << logo_output[4] << "  Shell" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << logo_output[5] << "  Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << bold() << logo_output[6] << "  " << bold_end();
         mem_file(1);
-        cout << bold() << "████████  ████████  ████████  " << bold_end();
+        cout << bold() << logo_output[7] << "  " << bold_end();
         swap_file(1);
-        cout << bold() << "████████  ████████  ████████  CPU" << bold_end() << ": " << cpu_file() << endl;
-        cout << bold() << "████████  ████████  ████████  Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
-        cout << bold() << "████████  ████████  ████████  CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << bold() << "████████  ████████  ████████  Fan speed" << bold_end() << ": " << fan_speed() << endl;
-        cout << bold() << "████████  ████████  ████████  " << bold_end() << endl;
-        cout << bold() << "████████  ████████  ████████  " << bold_end() << endl;
+        cout << bold() << logo_output[8] << "  CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << bold() << logo_output[9] << "  Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << bold() << logo_output[10] << "  CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
+        cout << bold() << logo_output[11] << "  Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << logo_output[12] << "  " << bold_end() << endl;
+        cout << bold() << logo_output[13] << "  " << bold_end() << endl;
     }
     else if (distribution_file() == "ArchLinux" || distribution_file() == "Arch Linux" || distribution_file() == "Arch")
     {
-        cout << bold() << "                 .o+`                 Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
-        cout << bold() << "                `ooo/                 Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
-        cout << bold() << "               `+oooo:                Kernel version" << bold_end() << ": " << buffer.release << endl;
-        cout << bold() << "              `+oooooo:               System architecture" << bold_end() << ": " << architecture() << endl;
-        cout << bold() << "              -+oooooo+:              Uptime" << bold_end() << ": " << uptime_file() << endl;
-        cout << bold() << "            `/:-:++oooo+:             Shell" << bold_end() << ": " << architecture() << endl;
-        cout << bold() << "           `/++++/+++++++:            " << bold_end();
+        logo_output[0]  = "                 .o+`                 ";
+        logo_output[1]  = "                `ooo/                 ";
+        logo_output[2]  = "               `+oooo:                ";
+        logo_output[3]  = "              `+oooooo:               ";
+        logo_output[4]  = "              -+oooooo+:              ";
+        logo_output[5]  = "            `/:-:++oooo+:             ";
+        logo_output[6]  = "           `/++++/+++++++:            ";
+        logo_output[7]  = "          `/++++++++++++++:           ";
+        logo_output[8]  = "         `/+++ooooooooooooo/`         ";
+        logo_output[9]  = "        ./ooosssso++osssssso+`        ";
+        logo_output[10] = "       .oossssso-````/ossssss+`       ";
+        logo_output[11] = "      -osssssso.      :ssssssso.      ";
+        logo_output[12] = "      :osssssss/       osssso+++.     ";
+        logo_output[13] = "    /ossssssss/        +ssssooo/-     ";
+        logo_output[14] = "  `/ossssso+/:-        -:/+osssso+-   ";
+        logo_output[15] = " `+sso+:-`                 `.-/+oso:  ";
+        logo_output[16] = "`++:.                           `-/+/ ";
+        logo_output[17] = ".`                                 `/ ";
+
+
+
+        cout << bold() << logo_output[0] << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << bold() << logo_output[1] << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << bold() << logo_output[2] << "Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << bold() << logo_output[3] << "System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << logo_output[4] << "Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << bold() << logo_output[5] << "Shell" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << logo_output[6] << "" << bold_end();
         mem_file(1);
-        cout << bold() << "          `/++++++++++++++:           " << bold_end();
+        cout << bold() << logo_output[7] << "" << bold_end();
         swap_file(1);
-        cout << bold() << "         `/+++ooooooooooooo/`         CPU" << bold_end() << ": " << cpu_file() << endl;
-        cout << bold() << "        ./ooosssso++osssssso+`        Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
-        cout << bold() << "       .oossssso-````/ossssss+`       CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << bold() << "      -osssssso.      :ssssssso.      Fan speed" << bold_end() << ": " << fan_speed() << endl;
-        cout << bold() << "      :osssssss/       osssso+++.     " << bold_end() << endl;
-        cout << bold() << "    /ossssssss/        +ssssooo/-     " << bold_end() << endl;
-        cout << bold() << "  `/ossssso+/:-        -:/+osssso+-   " << bold_end() << endl;
-        cout << bold() << " `+sso+:-`                 `.-/+oso:  " << bold_end() << endl;
-        cout << bold() << "`++:.                           `-/+/ " << bold_end() << endl;
-        cout << bold() << ".`                                 `/ " << bold_end() << endl;
+        cout << bold() << logo_output[8] << "CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << bold() << logo_output[9] << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << bold() << logo_output[10] << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
+        cout << bold() << logo_output[11] << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << logo_output[12] << "" << bold_end() << endl;
+        cout << bold() << logo_output[13] << "" << bold_end() << endl;
+        cout << bold() << logo_output[14] << "" << bold_end() << endl;
+        cout << bold() << logo_output[15] << "" << bold_end() << endl;
+        cout << bold() << logo_output[16] << "" << bold_end() << endl;
+        cout << bold() << logo_output[17] << "" << bold_end() << endl;
     }
     else if (distribution_file() == "KaliLinux" || distribution_file() == "Kali Linux" || distribution_file() == "Kali")
     {
@@ -215,6 +253,45 @@ void get_logo_output()
         cout << get_color("green") << "    ███████████     " << get_color("reset") << bold() << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
         cout << get_color("green") << "     ██     ██      " << get_color("reset") << bold() << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
         cout << get_color("green") << "     ██     ██      " << get_color("reset") << endl;
+    }
+    else if (distribution_file() == "elementary" || distribution_file() == "Elementary")
+    {
+        cout << get_color("white") << "         eeeeeeeeeeeeeeeee          " << bold() << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << get_color("white") << "      eeeeeeeeeeeeeeeeeeeeeee       " << bold() << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << get_color("white") << "    eeeee  eeeeeeeeeeee   eeeee     " << bold() << "Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << get_color("white") << "  eeee   eeeee       eee     eeee   " << bold() << "System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("white") << " eeee   eeee          eee     eeee  " << bold() << "Shell" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("white") << "eee    eee            eee       eee " << bold() << "Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << get_color("white") << "eee   eee            eee        eee " << get_color("reset");
+        mem_file(1);
+        cout << get_color("white") << "ee    eee           eeee       eeee " << get_color("reset");
+        swap_file(1);
+        cout << get_color("white") << "ee    eee         eeeee      eeeeee " << bold() << "CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << get_color("white") << "ee    eee       eeeee      eeeee ee " << bold() << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << get_color("white") << "eee   eeee   eeeeee      eeeee  eee " << bold() << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
+        cout << get_color("white") << "eee    eeeeeeeeee     eeeeee    eee " << bold() << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << get_color("white") << " eeeeeeeeeeeeeeeeeeeeeeee    eeeee  " << get_color("reset") << endl;
+        cout << get_color("white") << "  eeeeeeee eeeeeeeeeeee      eeee   " << get_color("reset") << endl;
+        cout << get_color("white") << "    eeeee                 eeeee     " << get_color("reset") << endl;
+        cout << get_color("white") << "      eeeeeee         eeeeeee       " << get_color("reset") << endl;
+        cout << get_color("white") << "         eeeeeeeeeeeeeeeee          " << get_color("reset") << endl;
+    }
+    else if (distribution_file() == "Linux" || distribution_file() == "linux")
+    {
+        cout << get_color("dark_grey") << "        #####         Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << get_color("dark_grey") << "       #######        Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << get_color("dark_grey") << "       ##" << get_color("white") << "O" << get_color("dark_grey") << "#" << get_color("white") << "O" << get_color("dark_grey") << "##        Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << get_color("dark_grey") << "       #" << get_color("yellow") << "#####" << get_color("dark_grey") << "#        System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("dark_grey") << "     ##" << get_color("white") << "##" << get_color("yellow") << "###" << get_color("white") << "##" << get_color("dark_grey") << "##      Shell" << bold_end() << ": " << architecture() << endl;
+        cout << get_color("dark_grey") << "    #" << get_color("white") << "##########" << get_color("dark_grey") << "##     Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << get_color("dark_grey") << "   #" << get_color("white") << "############" << get_color("dark_grey") << "##    " << get_color("reset");
+        mem_file(1);
+        cout << get_color("dark_grey") << "   #" << get_color("white") << "############" << get_color("dark_grey") << "###   " << get_color("reset");
+        swap_file(1);
+        cout << get_color("yellow") << "  ##" << get_color("dark_grey") << "#" << get_color("white") << "###########" << get_color("dark_grey") << "##" << get_color("yellow") << "#   " << get_color("dark_grey") << "CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << get_color("yellow") << "######" << get_color("dark_grey") << "#" << get_color("white") << "#######" << get_color("dark_grey") << "#" << get_color("yellow") << "###### " << get_color("dark_grey") << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << get_color("yellow") << "#######" << get_color("dark_grey") << "#" << get_color("white") << "#####" << get_color("dark_grey") << "#" << get_color("yellow") << "####### " << get_color("dark_grey") << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
+        cout << get_color("yellow") << "  #####" << get_color("dark_grey") << "#######" << get_color("yellow") << "#####   "                                                             << get_color("dark_grey") << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
     }
     else
     {
