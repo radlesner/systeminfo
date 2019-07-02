@@ -274,21 +274,36 @@ void get_logo_output()
     }
     else if (distribution_file() == "Android")
     {
-        cout << get_color("green") << "     ╲ ▁▂▂▂▁ ╱      " << get_color("reset") << bold() << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
-        cout << get_color("green") << "     ▄███████▄      " << get_color("reset") << bold() << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
-        cout << get_color("green") << "    ▄██ ███ ██▄     " << get_color("reset") << bold() << "Kernel version" << bold_end() << ": " << buffer.release << endl;
-        cout << get_color("green") << "   ▄███████████▄    " << get_color("reset") << bold() << "System architecture" << bold_end() << ": " << architecture() << endl;
-        cout << get_color("green") << "▄█ ▄▄▄▄▄▄▄▄▄▄▄▄▄ █▄ " << get_color("reset") << bold() << "Shell" << bold_end() << ": " << architecture() << endl;
-        cout << get_color("green") << "██ █████████████ ██ " << get_color("reset") << bold() << "Uptime" << bold_end() << ": " << uptime_file() << endl;
-        cout << get_color("green") << "██ █████████████ ██ " << get_color("reset");
+
+        logo_output[0]  = "     ╲ ▁▂▂▂▁ ╱      ";
+        logo_output[1]  = "     ▄███████▄      ";
+        logo_output[2]  = "    ▄██ ███ ██▄     ";
+        logo_output[3]  = "   ▄███████████▄    ";
+        logo_output[4]  = "▄█ ▄▄▄▄▄▄▄▄▄▄▄▄▄ █▄ ";
+        logo_output[5]  = "██ █████████████ ██ ";
+        logo_output[6]  = "██ █████████████ ██ ";
+        logo_output[7]  = "██ █████████████ ██ ";
+        logo_output[8]  = "██ █████████████ ██ ";
+        logo_output[9]  = "   █████████████    ";
+        logo_output[10] = "    ███████████     ";
+        logo_output[11] = "     ██     ██      ";
+        logo_output[12] = "     ██     ██      ";
+
+        cout << bold() << logo_output[0] << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << bold() << logo_output[1] << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << bold() << logo_output[2] << "Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << bold() << logo_output[3] << "System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << logo_output[4] << "Shell" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << logo_output[5] << "Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << bold() << logo_output[6];
         mem_file(1);
-        cout << get_color("green") << "██ █████████████ ██ " << get_color("reset");
+        cout << bold() << logo_output[7];
         swap_file(1);
-        cout << get_color("green") << "██ █████████████ ██ " << get_color("reset") << bold() << "CPU" << bold_end() << ": " << cpu_file() << endl;
-        cout << get_color("green") << "   █████████████    " << get_color("reset") << bold() << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
-        cout << get_color("green") << "    ███████████     " << get_color("reset") << bold() << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << get_color("green") << "     ██     ██      " << get_color("reset") << bold() << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
-        cout << get_color("green") << "     ██     ██      " << get_color("reset") << endl;
+        cout << bold() << logo_output[8] << "CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << bold() << logo_output[9] << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << bold() << logo_output[10] << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
+        cout << bold() << logo_output[11] << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << logo_output[12] << endl;
     }
     else if (distribution_file() == "elementary" || distribution_file() == "Elementary")
     {
