@@ -1,7 +1,7 @@
 all: systeminfo
 
 systeminfo:
-	@g++ src/*.cpp -o systeminfo
+	@g++ src/*.cpp -Wall -Wextra -pedantic -o systeminfo
 
 install:
 	@cp systeminfo /usr/bin/

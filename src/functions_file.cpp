@@ -280,7 +280,7 @@ void temperatures()
 	int count_folders = atoi(open_file(home_path() + "/.systeminfo-files/systeminfo-hwmon-exist.txt", nr_line).c_str());
 	int temperature[10];
 	string name_temperature[10];
-	string hwmon_path[count_folders];
+	string hwmon_path[24];
 	string string_numbers[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 
 	for (int i = 0; i < count_folders; i++)
