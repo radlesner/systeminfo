@@ -97,7 +97,8 @@ void output_log()
 		file.open(home_path()+"/.systeminfo-files/systeminfo-gateway-names.txt");
 		if (file.good() == true)
 		{
-			while(!file.eof()) {
+			while(!file.eof())
+			{
 				getline(file, text);
 				nr++;
 			}
@@ -110,7 +111,6 @@ void output_log()
 		struct ifaddrs* ifAddrStruct = NULL;
 		struct ifaddrs* ifa = NULL;
 		void* tmpAddrPtr = NULL;
-		unsigned int tmpMask;
 
 		string netmask_output, address_output;
 
@@ -132,8 +132,6 @@ void output_log()
 
 				tmpAddrPtr = &((struct sockaddr_in *)(ifa->ifa_netmask))->sin_addr;
 				inet_ntop(AF_INET, tmpAddrPtr, mask_buffer, INET_ADDRSTRLEN);
-
-				tmpMask = ((struct sockaddr_in *)(ifa->ifa_netmask))->sin_addr.s_addr;
 
 				address_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
 				netmask_output = "Netmask (" + static_cast<string>(ifa->ifa_name) + ")";
