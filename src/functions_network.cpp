@@ -13,7 +13,6 @@ void get_ip_address(int on_ip6)
     void* tmpAddrPtr = NULL;
 
     string text_output;
-    int nr = 1;
 
     getifaddrs(&ifAddrStruct);
 
@@ -26,7 +25,6 @@ void get_ip_address(int on_ip6)
             char address_buffer[INET_ADDRSTRLEN];
             inet_ntop(AF_INET, tmpAddrPtr, address_buffer, INET_ADDRSTRLEN);
 
-            int count = 0;
             text_output = "IPv4 (" + static_cast<string>(ifa->ifa_name) + ")";
 
             cout << bold() << text_output << bold_end() << ": " << address_buffer <<  endl;
@@ -37,7 +35,6 @@ void get_ip_address(int on_ip6)
             char address_buffer[INET6_ADDRSTRLEN];
             inet_ntop(AF_INET6, tmpAddrPtr, address_buffer, INET6_ADDRSTRLEN);
 
-            int count = 0;
             text_output = "IPv6 (" + (string)ifa->ifa_name + ")";
 
             cout << bold() << text_output << bold_end() << ": " << address_buffer <<  endl;

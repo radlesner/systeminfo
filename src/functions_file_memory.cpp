@@ -111,7 +111,6 @@ void disk_usage(int swith_units)
 	string table_disk_mount[512];
 
 	int nr_line = 1;
-	int count = 0;
 
 	float size[512];
 	float used[512];

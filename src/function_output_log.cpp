@@ -89,7 +89,7 @@ void output_log()
     */
    {
 		ifstream file;
-		int nr = 0, i = 0;
+		int nr = 0;
 		string interfaces[32];
 		string addresses[32];
 		string text;

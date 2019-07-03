@@ -6,7 +6,7 @@ using namespace std;
 
 string switch_words(string value)
 {
-    for (int i = 1; i < value.length(); i++)
+    for (unsigned int i = 1; i < value.length(); i++)
     {
         value[i] = tolower(value[i]);
     }

@@ -191,7 +191,6 @@ int cpu_frequency()
 
 	int cores = theards_file();
 	int frequency_sum = 0;
-	int line = 1;
 
 	string read_value;
 	int value[512];
