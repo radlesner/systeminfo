@@ -102,28 +102,49 @@ void get_logo_output()
     }
     else if (distribution_file() == "KaliLinux" || distribution_file() == "Kali Linux" || distribution_file() == "Kali")
     {
-        cout << bold() << "                  /                     Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
-        cout << bold() << "              %.,&                      Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
-        cout << bold() << "            (&.&%  %&,&&                Kernel version" << bold_end() << ": " << buffer.release << endl;
-        cout << bold() << "          #&&&&&&&&&&&&&&&&(,           System architecture" << bold_end() << ": " << architecture() << endl;
-        cout << bold() << "        %&&&&&&&&&&(//(%&&&&/,          Uptime" << bold_end() << ": " << uptime_file() << endl;
-        cout << bold() << "      #&&&&&&&&           %&&&*.        Shell" << bold_end() << ": " << architecture() << endl;
-        cout << bold() << "     &&(&&&&(              #&&&%***.    " << bold_end();
+        logo_output[0]  = "                  /                     ";
+        logo_output[1]  = "              %.,&                      ";
+        logo_output[2]  = "            (&.&%  %&,&&                ";
+        logo_output[3]  = "          #&&&&&&&&&&&&&&&&(,           ";
+        logo_output[4]  = "        %&&&&&&&&&&(//(%&&&&/,          ";
+        logo_output[5]  = "      #&&&&&&&&           %&&&*.        ";
+        logo_output[6]  = "     &&(&&&&(              #&&&%***.    ";
+        logo_output[7]  = "   ,&&&&&&&                #&&&*****,   ";
+        logo_output[8]  = "   #&&&&.                 #&&&&/******. ";
+        logo_output[9]  = ".&&&                    .&&&&%******,,. ";
+        logo_output[10] = " (&&%                 %&&&%******,,,,,. ";
+        logo_output[11] = "    ,            .%&&&&*******,,,,,,,.  ";
+        logo_output[12] = "              #&&&%********,,,,,,,,,,   ";
+        logo_output[13] = "           ,&&(**********,,,,,,,,,,,    ";
+        logo_output[14] = "          &&**********,,,,,,,,,,,,,     ";
+        logo_output[15] = "         (/********,,,,,,,,,,,,,,.      ";
+        logo_output[16] = "         #******,,,,,,,,,,,,,,,.        ";
+        logo_output[17] = "          ****,,,,,,,,,,,,,,,.          ";
+        logo_output[18] = "            ,,,,,,,,,,,,,,              ";
+        logo_output[19] = "             .,,,,,,,.                  ";
+
+        cout << bold() << logo_output[0] << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
+        cout << bold() << logo_output[1] << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
+        cout << bold() << logo_output[2] << "Kernel version" << bold_end() << ": " << buffer.release << endl;
+        cout << bold() << logo_output[3] << "System architecture" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << logo_output[4] << "Uptime" << bold_end() << ": " << uptime_file() << endl;
+        cout << bold() << logo_output[5] << "Shell" << bold_end() << ": " << architecture() << endl;
+        cout << bold() << logo_output[6] << "" << bold_end();
         mem_file(1);
-        cout << bold() << "   ,&&&&&&&                #&&&*****,   " << bold_end();
+        cout << bold() << logo_output[7] << "" << bold_end();
         swap_file(1);
-        cout << bold() << "   #&&&&.                 #&&&&/******. CPU" << bold_end() << ": " << cpu_file() << endl;
-        cout << bold() << ".&&&                  .&&&&%******,,.   Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
-        cout << bold() << " (&&%                 %&&&%******,,,,,  Fan speed" << bold_end() << ": " << fan_speed() << endl;
-        cout << bold() << "    ,            .%&&&&*******,,,,,,,.  CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
-        cout << bold() << "              #&&&%********,,,,,,,,,,   Fan speed" << bold_end() << ": " << fan_speed() << endl;
-        cout << bold() << "           ,&&(**********,,,,,,,,,,,    " << bold_end() << endl;
-        cout << bold() << "          &&**********,,,,,,,,,,,,,     " << bold_end() << endl;
-        cout << bold() << "         (/********,,,,,,,,,,,,,,.      " << bold_end() << endl;
-        cout << bold() << "         #******,,,,,,,,,,,,,,,.        " << bold_end() << endl;
-        cout << bold() << "          ****,,,,,,,,,,,,,,,.          " << bold_end() << endl;
-        cout << bold() << "            ,,,,,,,,,,,,,,              " << bold_end() << endl;
-        cout << bold() << "             .,,,,,,,.                  " << bold_end() << endl;
+        cout << bold() << logo_output[8] << "CPU" << bold_end() << ": " << cpu_file() << endl;
+        cout << bold() << logo_output[9] << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
+        cout << bold() << logo_output[10] << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << logo_output[11] << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
+        cout << bold() << logo_output[12] << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
+        cout << bold() << logo_output[13] << bold_end() << endl;
+        cout << bold() << logo_output[14] << bold_end() << endl;
+        cout << bold() << logo_output[15] << bold_end() << endl;
+        cout << bold() << logo_output[16] << bold_end() << endl;
+        cout << bold() << logo_output[17] << bold_end() << endl;
+        cout << bold() << logo_output[18] << bold_end() << endl;
+        cout << bold() << logo_output[19] << bold_end() << endl;
     }
     else if (distribution_file() == "Ubuntu")
     {
