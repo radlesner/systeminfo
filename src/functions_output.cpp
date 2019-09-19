@@ -61,11 +61,10 @@ void output_main_information()
 	cout << bold() << "Model name" << bold_end() << ": " << motherboard_manufacturer() << " " << model() << endl;
 	cout << bold() << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
 	cout << bold() << "Kernel version" << bold_end() << ": " << buffer.release << endl;
-	separator("");
+	cout << bold() << "Uptime" << bold_end() << ": " << uptime_file() << endl;
 	cout << bold() << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
 	cout << bold() << "CPU fan speed" << bold_end() << ": " << fan_speed() << endl;
 	temperatures();
-	cout << bold() << "Uptime" << bold_end() << ": " << uptime_file() << endl;
 
 	mem_file(1);
 	swap_file(1);
