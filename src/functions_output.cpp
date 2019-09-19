@@ -65,6 +65,7 @@ void output_main_information()
 	cout << bold() << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
 	cout << bold() << "CPU fan speed" << bold_end() << ": " << fan_speed() << endl;
 	temperatures();
+	separator("");
 
 	mem_file(1);
 	swap_file(1);
@@ -133,13 +134,13 @@ void output_cpu_only()
 	cout << bold() << "CPU" << bold_end() << ": " << cpu_file() << endl;
 	cout << bold() << "Cores/theards" << bold_end() << ": " << cores_file() << "/" << theards_file() << endl;
 	cout << bold() << "Fan speed" << bold_end() << ": " << fan_speed() << endl;
+	temperatures();
 
 	separator("");
 	cout << bold() << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
 	cout << bold() << "Max Frequency" << bold_end() << ": " << cpu_freq_max() << " MHz" << endl;
 	cout << bold() << "Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
 	separator("");
-	temperatures();
 }
 
 void output_check_files()
