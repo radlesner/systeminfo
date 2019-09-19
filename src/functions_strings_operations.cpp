@@ -32,7 +32,7 @@ string bold()
         return get_color("red");
 
     else if (distribution_file() == "Ubuntu")
-        return get_color("yellow");
+        return get_color("red");
 
     else if (distribution_file() == "Gentoo" || distribution_file() == "Gentoo/Linux")
         return get_color("purple");
