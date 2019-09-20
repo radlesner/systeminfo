@@ -18,7 +18,7 @@ using namespace std;
 
 string program_version()
 {
-	return "3.9.3";
+	return "4.0";
 }
 
 void output_compile_information()
