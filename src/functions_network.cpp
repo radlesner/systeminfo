@@ -77,8 +77,8 @@ void all_network()
             tmpAddrPtr = &((struct sockaddr_in *)(ifa->ifa_netmask))->sin_addr;
             inet_ntop(AF_INET, tmpAddrPtr, mask_buffer, INET_ADDRSTRLEN);
 
-            address_output = "IPv4    (" + static_cast<string>(ifa->ifa_name) + ")";
-            netmask_output = "Netmask (" + static_cast<string>(ifa->ifa_name) + ")";
+            address_output = "IPv4        (" + static_cast<string>(ifa->ifa_name) + ")";
+            netmask_output = "Netmask     (" + static_cast<string>(ifa->ifa_name) + ")";
 
             /*
                 OUTPUT
@@ -89,13 +89,15 @@ void all_network()
 
             if (static_cast<string>(ifa->ifa_name) == "lo")
             {
+                get_mac_address( static_cast<string>(ifa->ifa_name) );
                 if (address_output.length() > 1) separator("");
                 continue;
             }
             else
             {
                 string ip_name = get_gateway( static_cast<string>(ifa->ifa_name) );
-                cout << bold() << "Gateway (" + static_cast<string>(ifa->ifa_name) + ")" << bold_end() << ": " << ip_name << endl;
+                cout << bold() << "Gateway     (" + static_cast<string>(ifa->ifa_name) + ")" << bold_end() << ": " << ip_name << endl;
+                get_mac_address( static_cast<string>(ifa->ifa_name) );
             }
 
             /*
@@ -170,9 +172,41 @@ string get_gateway(string input_value)
     return "N/A";
 }
 
+void get_mac_address(string input_interface_name)
+{
+    struct ifaddrs *ifaddr=NULL;
+    struct ifaddrs *ifa = NULL;
+    int i = 0;
+
+    if (getifaddrs(&ifaddr) == -1)
+    {
+         perror("getifaddrs");
+    }
+    else
+    {
+         for ( ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next)
+         {
+             if ( static_cast<string>(ifa->ifa_name) == input_interface_name)
+             {
+                if ( (ifa->ifa_addr) && (ifa->ifa_addr->sa_family == AF_PACKET) )
+                {
+                    struct sockaddr_ll *s = (struct sockaddr_ll*)ifa->ifa_addr;
+                    cout << bold() << "Mac address (" + static_cast<string>(ifa->ifa_name) + ")" << bold_end() << ": ";
+
+                      for (i=0; i <s->sll_halen; i++)
+                      {
+                          printf("%02x%c", (s->sll_addr[i]), (i+1!=s->sll_halen)?':':'\n');
+                      }
+                }
+             }
+         }
+         freeifaddrs(ifaddr);
+    }
+    return;
+}
+
 int hex2dec (string hexadecimal)
 {
     int decimal = strtol(hexadecimal.c_str(), NULL, 16);
-
     return decimal;
 }
