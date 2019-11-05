@@ -18,7 +18,7 @@ using namespace std;
 
 string program_version()
 {
-	return "4.0";
+	return "4.1";
 }
 
 void output_compile_information()
@@ -187,7 +187,7 @@ void output_monitor(int value_argc, char** value_argv)
 				swap_file(0);
 				separator("");
 
-				all_network();
+				get_ip_address(0);
 			}
 			else if(!strcmp(value_argv[2], "-m"))
 			{
@@ -206,7 +206,7 @@ void output_monitor(int value_argc, char** value_argv)
 				swap_megabyte_file();
 				separator("");
 
-				all_network();
+				get_ip_address(0);
 			}
 			else if(!strcmp(value_argv[2], "-c"))
 			{
