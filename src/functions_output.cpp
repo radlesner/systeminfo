@@ -223,6 +223,7 @@ void output_monitor(int value_argc, char** value_argv)
 				cout << bold() << "Min Frequency" << bold_end() << ": " << cpu_freq_min() << " MHz" << endl;
 				separator("");
 				temperatures();
+				separator("");
 			}
 			else if(!strcmp(value_argv[2], "-n"))
 			{
