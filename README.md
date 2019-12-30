@@ -1,19 +1,14 @@
 # systeminfo
 A simple program showing system information in C++ language
-# Usage
+## Usage
 ```sh
 ./systeminfo
 ```
-# Compile
+#@ Compile
 ```sh
-./build.sh
-```
-or
-```sh
-make clean
-make
-```
-or
-```sh
-g++ src/*.cpp -o systeminfo
+$ mkdir build
+$ sudo cmake ../
+$ sudo make
+
+$ sudo make install #optional
 ```
