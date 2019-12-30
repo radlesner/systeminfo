@@ -16,7 +16,6 @@ set(SOURCES ${SOURCE_DIR}/function_output_log.cpp
             )
 
 add_executable(systeminfo ${SOURCES})
-
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/systeminfo_script.sh DESTINATION /usr/local/bin)
 
 install(TARGETS systeminfo RUNTIME DESTINATION bin)
