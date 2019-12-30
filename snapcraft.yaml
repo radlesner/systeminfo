@@ -19,12 +19,10 @@ apps:
 
 parts:
   systeminfo:
-    plugin:
-      - cmake
-      - copy
+    plugin: cmake
     source: .
     build-packages:
       - cmake
       - make
-    files:
-        systeminfo_script.sh: /usr/bin/
+    override-build: |
+      cp systeminfo_script.sh /usr/bin
