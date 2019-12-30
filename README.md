@@ -4,7 +4,7 @@ A simple program showing system information in C++ language
 ```sh
 ./systeminfo
 ```
-#@ Compile
+## Compile
 ```sh
 $ mkdir build
 $ sudo cmake ../
