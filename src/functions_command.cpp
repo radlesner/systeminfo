@@ -38,7 +38,7 @@ void command_check_folder_exist()
 
 void command_activate()
 {
-	system("cd /$HOME/.systeminfo-files && systeminfo_script.sh");
+	system("systeminfo_script.sh");
 }
 
 void command_remove()

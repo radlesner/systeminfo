@@ -4,10 +4,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build cunit",
-            "command": "g++ src/*.cpp -g -O0 -W -Wall -lcunit",
-        },
-        {
             "label": "build",
             "type": "shell",
             "command": "mkdir -p build && cd build && sudo cmake ../ && sudo make",
@@ -20,9 +16,17 @@
             ]
         },
         {
-            "label": "make install",
+            "label": "Install program",
             "type": "shell",
-            "command": "sudo make install",
+            "command": "cd build/ && sudo make install",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Remove program",
+            "type": "shell",
+            "command": "sudo rm /usr/local/bin/systeminfo*",
             "problemMatcher": [
                 "$gcc"
             ]
