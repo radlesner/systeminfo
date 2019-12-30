@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.9)
 project (systeminfo)
 
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 set(SOURCES ${SOURCE_DIR}/function_output_log.cpp
             ${SOURCE_DIR}/function_output_logo.cpp
             ${SOURCE_DIR}/functions_command.cpp
@@ -16,6 +17,7 @@ set(SOURCES ${SOURCE_DIR}/function_output_log.cpp
             )
 
 add_executable(systeminfo ${SOURCES})
+
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/systeminfo_script.sh DESTINATION /usr/local/bin)
 
 install(TARGETS systeminfo RUNTIME DESTINATION bin)

@@ -24,5 +24,3 @@ parts:
     build-packages:
       - cmake
       - make
-    override-build: |
-      cp systeminfo_script.sh /usr/bin
