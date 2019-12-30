@@ -19,14 +19,12 @@ apps:
 
 parts:
   systeminfo:
-    plugin: cmake
+    plugin:
+      - cmake
+      - copy
     source: .
     build-packages:
       - cmake
       - make
-
-  bash_script:
-    plugin: copy
-    source: .
     files:
         systeminfo_script.sh: /usr/bin/
