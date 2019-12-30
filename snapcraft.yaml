@@ -1,20 +1,24 @@
 name: systeminfo
-version: "0.9"
-summary: Simple program showing system information in C++
+version: '4.2'
+summary: Simple program showing system information
 description: |
   A program that displays basic information about the system and resources
+grade: stable
+base: core18
+license: GPL-2.0
 
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs and slots
+parts:
+  systeminfo:
+    plugin: cmake
+    source: .
+    build-packages:
+      - cmake
+      - make
 
 apps:
   systeminfo:
     command: systeminfo
-
-parts:
-  systeminfo:
-    plugin: autotools
-    source-type: git
-    source: https://github.com/CasinoRoyaleKrupier/systeminfo
-    build-packages:
-     - g++
+    plugs:
+      - home
+      - network
+      - network-bind

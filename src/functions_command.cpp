@@ -38,9 +38,7 @@ void command_check_folder_exist()
 
 void command_activate()
 {
-	ifstream mem_file("systeminfo_script.sh");
-	if(mem_file.good() == true)	system("./systeminfo_script.sh");
-	else						system("cd /usr/bin/ && ./systeminfo_script.sh");
+	system("systeminfo_script.sh");
 }
 
 void command_remove()

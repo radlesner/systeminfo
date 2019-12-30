@@ -10,7 +10,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "./build.sh && ./systeminfo",
+            "command": "mkdir -p build && cd build && sudo cmake ../ && sudo make",
             "group": {
                 "kind": "build",
                 "isDefault": true
