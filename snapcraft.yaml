@@ -7,19 +7,6 @@ grade: stable
 base: core18
 license: GPL-2.0
 
-parts:
-  systeminfo:
-    plugin: cmake
-    source: .
-    build-packages:
-      - cmake
-      - make
-    bash_script:
-      plugin: copy
-      source: .
-      files:
-         systeminfo_script.sh: /usr/bin/
-
 apps:
   systeminfo:
     command: systeminfo
@@ -29,3 +16,17 @@ apps:
       - network-bind
       - removable-media
       - personal-files
+
+parts:
+  systeminfo:
+    plugin: cmake
+    source: .
+    build-packages:
+      - cmake
+      - make
+
+  bash_script:
+    plugin: copy
+    source: .
+    files:
+        systeminfo_script.sh: /usr/bin/
