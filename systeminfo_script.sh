@@ -1,7 +1,5 @@
 #!/bin/sh
 
-cd /$HOME/.systeminfo-files
-
 # CPU
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq ] ; then
    cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq >> systeminfo-cpu-status.txt
