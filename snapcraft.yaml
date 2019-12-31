@@ -1,4 +1,4 @@
-name: systeminfo
+name: systeminfoi
 version: '4.2'
 summary: Simple program showing system information
 description: |
@@ -8,8 +8,8 @@ base: core18
 license: GPL-2.0
 
 apps:
-  systeminfo:
-    command: systeminfo
+  systeminfoi:
+    command: systeminfoi
     plugs:
       - home
       - network
@@ -18,7 +18,7 @@ apps:
       - personal-files
 
 parts:
-  systeminfo:
+  systeminfoi:
     plugin: cmake
     source: .
     build-packages:
