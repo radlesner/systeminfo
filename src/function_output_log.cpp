@@ -181,7 +181,7 @@ void output_log()
 
 	cout << "Done" << endl;
 	cout << "Generated date            : " << in_file_time << endl;
-	cout << "Logs localization         : " << home_path() << "/systeminfo-files/logs" << endl;
+	cout << "Logs localization         : " << home_path() << "/.systeminfo-files/logs" << endl;
 	cout << "Name file                 : " << file_name << endl;
 	cout << "Log generation time       : " << time_gen << " ms" << endl;
 }
