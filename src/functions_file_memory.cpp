@@ -39,7 +39,7 @@ void mem_file(int switch_megabyte)
 		else
 		{
 			cout.precision(3);
-			cout << bold() << "RAM  Total/Free/Used" << bold_end() << ": " << mem_max << "/" << mem_available << "/" << mem_used << " GB" << endl;
+			cout << bold() << "RAM  Total/Used/Free" << bold_end() << ": " << mem_max << "/" << mem_used << "/" << mem_available << " GB" << endl;
 		}
 	}
 	else
@@ -80,7 +80,7 @@ void mem_megabyte_file()
 		mem_available	= static_cast<double>( atoi(value_3.c_str()) ) / 1024;
 		mem_used = mem_max - mem_available;
 
-		cout << bold() << "RAM  Total/Free/Used" << bold_end() << ": " << mem_max << "/" << mem_available << "/" << mem_used << " MB" << endl;
+		cout << bold() << "RAM  Total/Used/Free" << bold_end() << ": " << mem_max << "/" << mem_used << "/" << mem_available << " MB" << endl;
 	}
 	else
 	{
