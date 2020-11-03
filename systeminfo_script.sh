@@ -28,10 +28,14 @@ cat /proc/cpuinfo | grep -c "^processor" >> systeminfo-theards.txt
 awk '/^core id/&&!a[$0]++{++i} END {print i}' /proc/cpuinfo >> systeminfo-cores.txt
 
 # HARDWARE
+# if [ -e /sys/devices/virtual/dmi/id/product_version ] ; then
+#     product_name="$(cat /sys/devices/virtual/dmi/id/product_name)" # Motherboard model
+#     product_version=" $(cat /sys/devices/virtual/dmi/id/product_version)"
+#     echo "$product_name$product_version" >> systeminfo-model.txt
+# fi
 if [ -e /sys/devices/virtual/dmi/id/product_version ] ; then
-    product_name="$(cat /sys/devices/virtual/dmi/id/product_name)"
-    product_version=" $(cat /sys/devices/virtual/dmi/id/product_version)"
-    echo "$product_name$product_version" >> systeminfo-model.txt
+    product_version="$(cat /sys/devices/virtual/dmi/id/product_version)"
+    echo "$product_version" >> systeminfo-model.txt
 fi
 
 if [ -e /sys/devices/virtual/dmi/id/board_name ] ; then
@@ -57,12 +61,13 @@ fi
 
 # SYSTEM
 uptime -p | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' >> systeminfo-uptime.txt
-if [ -e /etc/lsb-release ] ; then
+if [ -e /etc/lsb-release ] || [ -e /usr/bin/lsb_release ] ; then
     lsb_release -i | awk {'print $3'} >> systeminfo-distro.txt
     lsb_release -r | awk {'print $2'} >> systeminfo-release.txt
     lsb_release -c | awk {'print $2'} >> systeminfo-codename.txt
 else
     cat /etc/os-release | grep "^NAME" | sort -n | tr -d '"' | awk -F '=' '{print $2}' >> systeminfo-distro.txt
+    cat /etc/os-release | grep "VERSION" | tr -d '"' | awk -F '=' '{print $2}' >> systeminfo-release.txt
 fi
 
 if [ -e /etc/os-release ] ; then
@@ -90,36 +95,42 @@ df -m | grep -i "/dev/hd" | sort -n | awk '{print $1}' >> systeminfo-disks-name.
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $1}' >> systeminfo-disks-name.txt
 df -m | grep -i "/dev/mmcblk" | awk '{print $1}' >> systeminfo-disks-name.txt
 df -m | grep -i "/dev/ro" | awk '{print $1}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/" | awk '{print $1}' >> systeminfo-disks-name.txt
 
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $2}' >> systeminfo-disks-size.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $2}' >> systeminfo-disks-size.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $2}' >> systeminfo-disks-size.txt
 df -m | grep -i "/dev/mmcblk" | awk '{print $2}' >> systeminfo-disks-size.txt
 df -m | grep -i "/dev/ro" | awk '{print $2}' >> systeminfo-disks-size.txt
+df -m | grep -i "/dev/" | awk '{print $2}' >> systeminfo-disks-size.txt
 
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $3}' >> systeminfo-disks-used.txt
 df -m | grep -i "/dev/mmcblk" | awk '{print $3}' >> systeminfo-disks-used.txt
-df -m | grep -i "/dev/ro" | awk '{print $3}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/ro" | awk '{print $3}' >> systeminfo-disks-used.txt
+df -m | grep -i "/dev/" | awk '{print $3}' >> systeminfo-disks-used.txt
 
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $4}' >> systeminfo-disks-avail.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $4}' >> systeminfo-disks-avail.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $4}' >> systeminfo-disks-avail.txt
 df -m | grep -i "/dev/mmcblk" | awk '{print $4}' >> systeminfo-disks-avail.txt
-df -m | grep -i "/dev/ro" | awk '{print $4}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/ro" | awk '{print $4}' >> systeminfo-disks-avail.txt
+df -m | grep -i "/dev/" | awk '{print $4}' >> systeminfo-disks-avail.txt
 
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $5}' >> systeminfo-disks-procent-usage.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $5}' >> systeminfo-disks-procent-usage.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $5}' >> systeminfo-disks-procent-usage.txt
 df -m | grep -i "/dev/mmcblk" | awk '{print $5}' >> systeminfo-disks-procent-usage.txt
-df -m | grep -i "/dev/ro" | awk '{print $5}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/ro" | awk '{print $5}' >> systeminfo-disks-usage.txt
+df -m | grep -i "/dev/" | awk '{print $5}' >> systeminfo-disks-usage.txt
 
 df -m | grep -i "/dev/sd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount.txt
 df -m | grep -i "/dev/hd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount.txt
 df -m | grep -i "/dev/fd" | sort -n | awk '{print $6}' >> systeminfo-disks-mount.txt
 df -m | grep -i "/dev/mmcblk" | awk '{print $6}' >> systeminfo-disks-mount.txt
-df -m | grep -i "/dev/ro" | awk '{print $6}' >> systeminfo-disks-name.txt
+df -m | grep -i "/dev/ro" | awk '{print $6}' >> systeminfo-disks-mount.txt
+df -m | grep -i "/dev/" | awk '{print $6}' >> systeminfo-disks-mount.txt
 
 # NETWORK
 if [ -e /proc/net/route ] ; then

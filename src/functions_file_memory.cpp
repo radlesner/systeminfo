@@ -35,7 +35,7 @@ void mem_file(int switch_megabyte)
 		mem_available	= static_cast<double>( atoi(value_3.c_str()) ) / 1024 / 1000;
 		mem_used = mem_max - mem_available;
 
-		if( (mem_used < 1) && (switch_megabyte == 1) ) mem_megabyte_file();
+		if( (mem_available < 1) && (switch_megabyte == 1) ) mem_megabyte_file();
 		else
 		{
 			cout.precision(3);
