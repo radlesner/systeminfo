@@ -276,7 +276,7 @@ void output_help()
 	cout << "   -c  --cpu             CPU information" << endl;
 	cout << "   -t  --monitor         real-time monitoring" << endl;
 	cout << "       --log             Generating logs" << endl;
-	cout << "       --no-logo         No display logo" << endl;
+	cout << "       --logo            Display logo" << endl;
 	cout << "       --check-files     Check integration files" << endl;
 	cout << "       --help            Help panel" << endl;
 	cout << "       --version         Version program and compilation" << endl;
