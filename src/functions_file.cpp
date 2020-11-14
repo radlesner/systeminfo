@@ -304,6 +304,14 @@ void temperatures()
 			{
 				name_temperature[i] = "CPU sensor";
 			}
+			else if (name_temperature[i] == "pch_wildcat_point")
+			{
+				name_temperature[i] = "PCH Controler";
+			}
+			else if (name_temperature[i] == "iwlwifi_1")
+			{
+				name_temperature[i] = "WiFi Adapter";
+			}
 
 			cout << bold() << name_temperature[i] << bold_end() << ": " << temperature[i] << " \u00B0C" << endl;
 		}
