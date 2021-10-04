@@ -29,7 +29,6 @@ int main(int argc, char** argv)
 			mem_file(0);
 			swap_file(0);
 			separator("");
-			disk_usage(1);
 		}
 		else if(!strcmp(argv[1], "-m") || !strcmp(argv[1], "--megabyte"))
 		{
@@ -37,7 +36,6 @@ int main(int argc, char** argv)
 			mem_megabyte_file();
 			swap_megabyte_file();
 			separator("");
-			disk_usage(0);
 		}
 		else if(!strcmp(argv[1], "-s") || !strcmp(argv[1], "--system"))				output_system();
 		else if(!strcmp(argv[1], "-c") || !strcmp(argv[1], "--cpu"))				output_cpu_only();

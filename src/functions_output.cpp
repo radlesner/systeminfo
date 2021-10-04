@@ -18,7 +18,7 @@ using namespace std;
 
 string program_version()
 {
-	return "4.2.2";
+	return "4.2.4";
 }
 
 void output_compile_information()
@@ -62,9 +62,10 @@ void output_main_information()
 	cout << bold() << "Distribution" << bold_end() << ": " << distribution_file() << " " << release_system() << " (" << cedename_system() << ")" << endl;
 	cout << bold() << "Kernel version" << bold_end() << ": " << buffer.release << endl;
 	cout << bold() << "Uptime" << bold_end() << ": " << uptime_file() << endl;
+	cout << bold() << "CPU" << bold_end() << ": " << cpu_file() << endl;
 	cout << bold() << "CPU Frequency" << bold_end() << ": " << cpu_frequency() << " MHz" << endl;
 	cout << bold() << "CPU fan speed" << bold_end() << ": " << fan_speed() << endl;
-	temperatures();
+	//temperatures();
 	separator("");
 
 	mem_file(1);

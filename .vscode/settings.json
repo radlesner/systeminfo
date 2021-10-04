@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.sql": "sql",
         "iostream": "cpp",
         "ostream": "cpp",
         "*.tcc": "cpp",
@@ -44,7 +45,12 @@
         "tuple": "cpp",
         "typeindex": "cpp",
         "utility": "cpp",
-        "optional": "cpp"
+        "optional": "cpp",
+        "hash_map": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_set": "cpp",
+        "valarray": "cpp"
     },
     "trailing-spaces.trimOnSave": true,
     "terminal.integrated.fontFamily": "monospace",

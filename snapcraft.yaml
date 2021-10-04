@@ -1,5 +1,5 @@
 name: systeminfo
-version: '4.2.2'
+version: '4.2.3'
 summary: Simple program showing system information
 description: |
   A program that displays basic information about the system and resources
